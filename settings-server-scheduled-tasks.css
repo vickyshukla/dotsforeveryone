@@ -1,0 +1,99 @@
+.bg-c-black {
+    background: var(--color-light-gray);
+}
+.bg-c-yellow {
+    background: var(--color-dark-yellow);
+}
+.bg-c-light-black {
+    background: var(--color-light-black);
+}
+.bg-c-gray-2 {
+    background: var(--color-gray-2);
+}
+.bg-c-dark-gray {
+    background: var(--color-dark-gray);
+}
+.text-c-black {
+    color: var(--color-light-gray);
+}
+.text-c-yellow {
+    color: var(--color-dark-yellow);
+}
+.hover-text-c-yellow:hover {
+    color: var(--color-dark-yellow);
+}
+.hover-bg-c-black:hover {
+    background: var(--color-light-gray);
+}
+.hover-bg-c-yellow:hover {
+    background: var(--color-dark-yellow);
+}
+
+
+.nx .sidebar {
+    background: url('/images/sidebar-bg.svg');
+    background-size: cover;
+    background-position: center;
+    min-width: min(290px, 70vw);
+}
+
+.nx .main {
+    min-width: 1000px;
+    background: url('/images/main-bg.png');
+    background-size: cover;
+    background-position: center;
+}
+
+.nx .taskbar {
+    background: url('/images/taskbar-bg.svg');
+    background-size: cover;
+    background-position: center;
+}
+
+.nx footer {
+    background: url('/images/footer-bg.png');
+    background-size: cover;
+    background-position: center;
+}
+
+
+.nx .toggle-bg {
+    background: var(--color-dark-gray);
+}
+.nx .toggle-switch input:checked~.dot {
+    transform: translateX(130%);
+}
+.nx .toggle-switch input:checked~ .toggle-bg{
+    background: var(--color-dark-yellow);
+}
+.nx .dropdown-option {
+    display: none;
+}
+.nx .dropdown-btn:focus ~ .dropdown-option,
+.dropdown-option:hover {
+    display: block;
+}
+
+.nx .radio-button input {
+    display: none;
+}
+.nx .radio-button span {
+    width: 80px;
+}
+.nx .radio-button input:checked ~ span {
+    background: #FFD700;
+    color: #000;
+}
+
+.nx .drop-menu .drop-list {
+    max-height: 0;
+    transition: max-height 0.5s ease-out;
+    overflow: hidden;
+}
+.nx .drop-menu:hover .drop-list {
+    max-height: 500px;
+    transition: max-height 0.25s ease-in;
+}
+.nx .drop-menu:hover .fa-chevron-right {
+    transform: rotate(90deg);
+}
