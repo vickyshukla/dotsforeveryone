@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Rounded Checkboxes with Buttons</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="flex items-center justify-center min-h-screen bg-gray-100">
+    <div class="flex flex-wrap justify-center mb-4 space-x-4">
+        <!-- File Management Section -->
+        <div class="w-full md:w-1/2 xl:w-1/3 p-6">
+          <h2 class="text-lg font-bold mb-4">File Management</h2>
+          <ul class="bg-gray-200 p-4 rounded-lg flex flex-wrap gap-4">
+            <li class="inline-flex items-center p-2 bg-gray-300 rounded-md">
+              <label for="file-manage" class="text-gray-600 flex items-center">
+                <span>File manage</span>
+                <input type="checkbox" id="file-manage" class="rounded-full text-blue-500 focus:ring-blue-500 focus:ring-2 ml-2">
+              </label>
+            </li>
+            <li class="inline-flex items-center p-2 bg-gray-300 rounded-md">
+              <label for="preview" class="text-gray-600 flex items-center">
+                <span>Preview</span>
+                <input type="checkbox" id="preview" class="rounded-full text-blue-500 focus:ring-blue-500 focus:ring-2 ml-2">
+              </label>
+            </li>
+            <li class="inline-flex items-center p-2 bg-gray-300 rounded-md">
+              <label for="search" class="text-gray-600 flex items-center">
+                <span>Search</span>
+                <input type="checkbox" id="search" class="rounded-full text-blue-500 focus:ring-blue-500 focus:ring-2 ml-2">
+              </label>
+            </li>
+            <li class="inline-flex items-center p-2 bg-gray-300 rounded-md">
+              <label for="download" class="text-gray-600 flex items-center">
+                <span>Download</span>
+                <input type="checkbox" id="download" class="rounded-full text-blue-500 focus:ring-blue-500 focus:ring-2 ml-2">
+              </label>
+            </li>
+            <li class="inline-flex items-center p-2 bg-gray-300 rounded-md">
+              <label for="new-file" class="text-gray-600 flex items-center">
+                <span>New file (folder)</span>
+                <input type="checkbox" id="new-file" class="rounded-full text-blue-500 focus:ring-blue-500 focus:ring-2 ml-2">
+              </label>
+            </li>
+            <li class="inline-flex items-center p-2 bg-gray-300 rounded-md">
+              <label for="upload" class="text-gray-600 flex items-center">
+                <span>Upload</span>
+                <input type="checkbox" id="upload" class="rounded-full text-blue-500 focus:ring-blue-500 focus:ring-2 ml-2">
+              </label>
+            </li>
+            <li class="inline-flex items-center p-2 bg-gray-300 rounded-md">
+              <label for="share" class="text-gray-600 flex items-center">
+                <span>Share</span>
+                <input type="checkbox" id="share" class="rounded-full text-blue-500 focus:ring-blue-500 focus:ring-2 ml-2">
+              </label>
+            </li>
+            <li class="inline-flex items-center p-2 bg-gray-300 rounded-md">
+              <label for="edit" class="text-gray-600 flex items-center">
+                <span>Edit</span>
+                <input type="checkbox" id="edit" class="rounded-full text-blue-500 focus:ring-blue-500 focus:ring-2 ml-2">
+              </label>
+            </li>
+            <li class="inline-flex items-center p-2 bg-gray-300 rounded-md">
+              <label for="delete" class="text-gray-600 flex items-center">
+                <span>Delete</span>
+                <input type="checkbox" id="delete" class="rounded-full text-blue-500 focus:ring-blue-500 focus:ring-2 ml-2">
+              </label>
+            </li>
+          </ul>
+        </div>
+        <!-- User Section -->
+        <div class="w-full md:w-1/2 xl:w-1/3 p-6">
+          <h2 class="text-lg font-bold mb-4">User</h2>
+          <ul class="bg-gray-200 p-4 rounded-lg flex flex-wrap gap-4">
+            <li class="inline-flex items-center p-2 bg-gray-300 rounded-md">
+              <label for="move" class="text-gray-600 flex items-center">
+                <span>Move (copy/cut/paste/drag operation)</span>
+                <input type="checkbox" id="move" class="rounded-full text-blue-500 focus:ring-blue-500 focus:ring-2 ml-2">
+              </label>
+            </li>
+            <li class="inline-flex items-center p-2 bg-gray-300 rounded-md">
+              <label for="remote-download" class="text-gray-600 flex items-center">
+                <span>Remote download</span>
+                <input type="checkbox" id="remote-download" class="rounded-full text-blue-500 focus:ring-blue-500 focus:ring-2 ml-2">
+              </label>
+            </li>
+            <li class="inline-flex items-center p-2 bg-gray-300 rounded-md">
+              <label for="decompression" class="text-gray-600 flex items-center">
+                <span>Decompression</span>
+                <input type="checkbox" id="decompression" class="rounded-full text-blue-500 focus:ring-blue-500 focus:ring-2 ml-2">
+              </label>
+            </li>
+            <li class="inline-flex items-center p-2 bg-gray-300 rounded-md">
+              <label for="compression" class="text-gray-600 flex items-center">
+                <span>Compression</span>
+                <input type="checkbox" id="compression" class="rounded-full text-blue-500 focus:ring-blue-500 focus:ring-2 ml-2">
+              </label>
+            </li>
+            <li class="inline-flex items-center p-2 bg-gray-300 rounded-md">
+              <label for="config-modification" class="text-gray-600 flex items-center">
+                <span>Configuration modification (set avatar/change password, etc.)</span>
+                <input type="checkbox" id="config-modification" class="rounded-full text-blue-500 focus:ring-blue-500 focus:ring-2 ml-2">
+              </label>
+            </li>
+            <li class="inline-flex items-center p-2 bg-gray-300 rounded-md">
+              <label for="starred-operation" class="text-gray-600 flex items-center">
+                <span>Starred operation</span>
+                <input type="checkbox" id="starred-operation" class="rounded-full text-blue-500 focus:ring-blue-500 focus:ring-2 ml-2">
+              </label>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+</body>
+</html>
