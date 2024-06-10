@@ -39,3 +39,29 @@
 body{
     font-family: var(--font-family-roboto)!important;
 }
+
+
+/* sidebar */
+.sidebar .drop-menu .drop-list {
+    max-height: 0;
+    transition: max-height 0.5s ease-out;
+    overflow: hidden;
+    background: var(--color-light-white);
+}
+.sidebar .drop-menu.active .drop-list {
+    max-height: 500px;
+    transition: max-height 0.25s ease-in;
+}
+.sidebar .drop-menu.active .fa-chevron-right {
+    transform: rotate(90deg);
+}
+.sidebar li a:hover,
+.sidebar li div.drop-menu > div:hover {
+    transition: all 0.3s ease;
+    background: var(--color-light-black);
+    color: var(--color-dark-yellow);
+}
+.sidebar li a.active{
+    background: var(--color-light-gray);
+    color: var(--color-dark-yellow);
+}
