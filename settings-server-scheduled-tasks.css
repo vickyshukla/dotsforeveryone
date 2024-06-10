@@ -29,19 +29,22 @@
     background: var(--color-dark-yellow);
 }
 
-
+body.nx {
+    overflow-x: hidden;
+}
 .nx .sidebar {
     background: url('/images/sidebar-bg.svg');
     background-size: cover;
     background-position: center;
-    min-width: min(290px, 70vw);
+    min-width: min(290px, 45vw);
+    overflow-y: scroll;
 }
 
 .nx .main {
-    min-width: 1000px;
     background: url('/images/main-bg.png');
     background-size: cover;
     background-position: center;
+    overflow: scroll;
 }
 
 .nx .taskbar {
@@ -56,6 +59,17 @@
     background-position: center;
 }
 
+.nx div[role="dialog"] {
+    padding: 20px 10px;
+}
+.nx div[role="dialog"] .modal-content {
+    max-height: 90vh;
+    overflow: scroll;
+}
+
+.nx .main .content {
+    min-width: 1000px;
+}
 
 .nx .toggle-bg {
     background: var(--color-dark-gray);

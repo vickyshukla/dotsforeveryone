@@ -20,7 +20,7 @@
                 <div class="p-6">
                     <img src="/images/logo.png" alt="Dots Logo">
                 </div>
-                <div class="pt-6">
+                <div class="md:pt-6 ">
                     <ul class="space-y-1">
                         <li>
                             <a class="w-full px-6 py-3 rounded-r-lg hover-bg-c-black hover-text-c-yellow block transition-all flex justify-between items-center"
@@ -105,7 +105,7 @@
 
         <!-- main content -->
         <div class="flex-grow border h-100 main">
-            <div class="flex w-full h-full flex-col">
+            <div class="flex w-full h-full flex-col content">
                 <div class="p-6">
                     <div class="flex items-center gap-4">
                         <i class="fa fa-gear fa-lg"></i> <span class="text-lg">System Settings</span>
@@ -171,7 +171,7 @@
                 <!-- info table -->
                 <div class="p-4 relative h-full flex flex-col">
                     <div class="bg-white">
-                        <table class="table-auto w-full">
+                        <table class="table-auto w-full nx-table">
                             <thead>
                                 <tr class="bg-c-dark-gray">
                                     <th class="py-2 rounded-tl-md text-white text-left pl-3">Name</th>
@@ -263,8 +263,8 @@
         </div>
     </main>
 
-    <footer class="mt-auto w-full">
-        <div class="flex justify-between items center px-6 py-4 bg-white bg-opacity-50">
+    <footer class="mt-auto w-screen">
+        <div class="flex justify-between w-full items center px-6 py-4 bg-white bg-opacity-50">
             <button type="button" class="bg-c-black text-white px-2 py-1 rounded-md">File</button>
             <img src="/images/logo.png" alt="Dots Logo" width="36" height="36">
         </div>
@@ -272,7 +272,7 @@
 
     <!-- edit/add modal -->
     <div id="modal" role="dialog" class="fixed hidden inset-0 flex items-center justify-center bg-black bg-opacity-50">
-        <div class="bg-white rounded-xl overflow-hidden shadow-lg max-w-xl w-full">
+        <div class="bg-white rounded-xl overflow-hidden shadow-lg max-w-xl w-full modal-content">
             <div class="flex py-3 px-5 border-b border-gray-400 justify-between items-center">
                 <h2 class="text-lg font-medium">Edit</h2>
                 <button type="button" id="closeModalButton">
@@ -374,7 +374,7 @@
     <!-- run task modal -->
     <div id="run-task-modal" role="dialog"
         class="fixed hidden inset-0 flex items-center justify-center bg-black bg-opacity-50">
-        <div class="bg-white rounded-xl overflow-hidden shadow-lg max-w-md w-full">
+        <div class="bg-white rounded-xl overflow-hidden shadow-lg max-w-md w-full modal-content">
             <div class="flex py-3 px-5 border-b border-gray-400 justify-between items-center">
                 <h2 class="text-lg font-medium">Run Task</h2>
             </div>
@@ -393,7 +393,7 @@
     <!-- task manager modal -->
     <div id="task-manager-modal" role="dialog"
         class="fixed hidden inset-0 flex items-center justify-center bg-black bg-opacity-50">
-        <div class="bg-white rounded-xl overflow-hidden shadow-lg max-w-md w-full">
+        <div class="bg-white rounded-xl overflow-hidden shadow-lg max-w-md w-full modal-content">
             <div class="flex py-3 px-5 border-b border-gray-400 justify-between items-center">
                 <h2 class="text-lg font-medium">Task Manager</h2>
                 <button type="button" id="closeTaskManagerModalButton">
