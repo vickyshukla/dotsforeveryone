@@ -10,6 +10,7 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="setting-admin-users.css">
+    <link rel="stylesheet" href="storage-aws-features.css">
 </head>
 
 <body>
@@ -25,25 +26,25 @@
 
         <div class="flex items-center justify-between bg-yellow-400 p-2 pl-8  mb-4">
             <div>
-                <h2 class="text-xl">System settings > <span class="font-semibold">Internet access</span></h2>
+                <h2 class="text-xl">Storage / File > <span class="font-semibold">Storage</span></h2>
             </div>
             <div>
-                <button type="button" class="bg-c-black text-c-yellow px-3 py-1 rounded-md openModalButton">
-                    <i class="ri-add-circle-fill"></i> &nbsp; <span>Add</span>
+                <button type="button" class="bg-gray-900 text-yellow-300 px-3 py-1 rounded-md openModalButton">
+                    <i class="ri-add-circle-fill"></i><span >Add</span>
                 </button>
             </div>
         </div>
-        <div class="system-setting-content-wrapper pl-8 p-10 leading-tight bg-gray-200 m-8 rounded-md bg-white rounded-lg ">
+        <div class="flex gap-3 system-setting-content-wrapper pl-8 p-10 leading-tight bg-gray-200 m-8 rounded-md bg-white rounded-lg ">
             <div
-                class="w-full max-w-xs bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-                <div class="flex flex-col items-center pb-10 mt-8">
-                    <img class="w-24 h-24 mb-3 rounded-md shadow-lg" src="/docs/images/people/profile-picture-3.jpg"
+                class="w-full max-w-xs bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 storage-holder-box-style">
+                <div class="flex flex-col items-center pb-10 mt-8 ">
+                    <img class="w-24 h-24 mb-3 rounded-md shadow-lg" src="/docs/images"
                         alt="Bonnie image" />
                     <p class="mb-1 text-l font-medium text-gray-900 dark:text-white">Office</p>
 
                     <div class="flex mt-4 md:mt-6">
 
-                        <button id="dropdownDelayButton" data-dropdown-toggle="dropdownDelay" data-dropdown-delay="500"
+                        <button id="dropdownDelayButton1" data-dropdown-toggle="dropdownDelay1" data-dropdown-delay="500"
                             data-dropdown-trigger="hover"
                             class="text-white bg-gray-700 hover:bg-yellow-400  font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center "
                             type="button">Dropdown hover <svg class="w-2.5 h-2.5 ms-3" aria-hidden="true"
@@ -54,10 +55,10 @@
                         </button>
 
                         <!-- Dropdown menu -->
-                        <div id="dropdownDelay"
+                        <div id="dropdownDelay1"
                             class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
                             <ul class="py-2 text-sm text-gray-700 dark:text-gray-200"
-                                aria-labelledby="dropdownDelayButton">
+                                aria-labelledby="dropdownDelayButton1">
                                 <li>
                                     <a href="#"
                                         class="block px-4 py-2 hover:bg-yellow-300 dark:hover:bg-gray-600 dark:hover:text-white">Dashboard</a>
@@ -77,8 +78,50 @@
                     </div>
                 </div>
             </div>
-            
 
+            <div
+                class="w-full max-w-xs bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 storage-holder-box-style">
+                <div class="flex flex-col items-center pb-10 mt-8 ">
+                    <img class="w-24 h-24 mb-3 rounded-md shadow-lg" src="/docs/images"
+                        alt="Bonnie image" />
+                    <p class="mb-1 text-l font-medium text-gray-900 dark:text-white">Office</p>
+
+                    <div class="flex mt-4 md:mt-6">
+
+                        <button id="dropdownDelayButton2" data-dropdown-toggle="dropdownDelay2" data-dropdown-delay="500"
+                            data-dropdown-trigger="hover"
+                            class="text-white bg-gray-700 hover:bg-yellow-400  font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center "
+                            type="button">Dropdown hover <svg class="w-2.5 h-2.5 ms-3" aria-hidden="true"
+                                xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                    stroke-width="2" d="m1 1 4 4 4-4" />
+                            </svg>
+                        </button>
+
+                        <!-- Dropdown menu -->
+                        <div id="dropdownDelay2"
+                            class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
+                            <ul class="py-2 text-sm text-gray-700 dark:text-gray-200"
+                                aria-labelledby="dropdownDelayButton2">
+                                <li>
+                                    <a href="#"
+                                        class="block px-4 py-2 hover:bg-yellow-300 dark:hover:bg-gray-600 dark:hover:text-white">Dashboard</a>
+                                </li>
+                                <li>
+                                    <a href="#"
+                                        class="block px-4 py-2 hover:bg-yellow-300 dark:hover:bg-gray-600 dark:hover:text-white">Settings</a>
+                                </li>
+                                <li>
+                                    <a href="#"
+                                        class="block px-4 py-2 hover:bg-yellow-300 dark:hover:bg-gray-600 dark:hover:text-white">Earnings</a>
+                                </li>
+                                
+                            </ul>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
         </div>
         <!-- edit/add modal -->
         <div id="modal" role="dialog"
@@ -175,6 +218,7 @@
                 </div>
             </div>
         </div>
+ 
     </main>
     <script>
         // for handling edit/add modal
