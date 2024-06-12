@@ -32,13 +32,6 @@
 body.nx {
     overflow-x: hidden;
 }
-.nx .sidebar {
-    background: url('/images/sidebar-bg.svg');
-    background-size: cover;
-    background-position: center;
-    min-width: min(290px, 45vw);
-    overflow-y: scroll;
-}
 
 .nx .main {
     background: url('/images/main-bg.png');
@@ -69,12 +62,18 @@ body.nx {
 
 .nx div[role="dialog"] .modal-content::-webkit-scrollbar,
 .nx .main::-webkit-scrollbar,
-.nx .sidebar::-webkit-scrollbar {
+.nx-table-container::-webkit-scrollbar {
     display: none;
 }
 
-.nx .main .content {
+.nx-table-container {
+    overflow-y: scroll;
+}
+.nx-table-container table {
     min-width: 1000px;
+}
+.nx .main .content {
+    min-width: 420px;
 }
 
 .nx .toggle-bg {

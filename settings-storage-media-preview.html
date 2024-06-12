@@ -4,16 +4,16 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.2.13/dist/semantic.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.2.13/dist/semantic.min.css">
     <link rel="stylesheet" href="root.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
-        integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="settings-storage-media-preview.css">
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-    <script src="https://cdn.rawgit.com/harvesthq/chosen/gh-pages/chosen.jquery.min.js"></script>
-    <link href="https://cdn.rawgit.com/harvesthq/chosen/gh-pages/chosen.min.css" rel="stylesheet" />
-
+    integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+        
+        <link rel="stylesheet" href="settings-storage-media-preview.css">
 
     <title>Storage Settings - Media file preview & Video Transcoding</title>
 </head>
@@ -21,195 +21,200 @@
 <body class="h-screen w-full flex flex-col nx">
     <main class="flex w-full h-full flex">
         <!-- sidebar -->
-        <aside class="h-full">
-            <div class="h-full w-full sidebar">
-                <div class="p-6">
-                    <img src="/images/logo.png" alt="Dots Logo">
-                </div>
-                <div class="md:pt-6">
-                    <ul class="space-y-1">
-                        <li>
-                            <a class="w-full px-6 py-3 rounded-r-lg block flex justify-between items-center" href="#"
-                                data-link="settings-overview">
-                                <span> Overview </span>
-                            </a>
-                        </li>
-                        <li>
-                            <div role="button" onclick="toggleDropMenu(this)"
-                                class="drop-menu cursor-pointer rounded-r-lg">
-                                <div class="w-full px-6 py-3 flex justify-between items-center" href="#">
-                                    <span> System Settings </span>
-                                    <i class="fa fa-chevron-right text-c-yellow transition-all"></i>
+        <aside class="h-full relative">
+            <input type="checkbox" class="hidden" id="sidebar-toggle"> 
+            <label for="sidebar-toggle" class="absolute lg:hidden top-2 -right-8 px-1">
+                <i class="ri-bar-chart-horizontal-line"></i>
+            </label>
+            <div class="h-full sidebar">
+                <div class="sidebar-container">
+                    <div class="p-6">
+                        <img src="/images/logo.png" alt="Dots Logo">
+                    </div>
+                    <div class="md:pt-6">
+                        <ul class="space-y-1">
+                            <li>
+                                <a class="w-full px-6 py-3 rounded-r-lg block flex justify-between items-center" href="#"
+                                    data-link="settings-overview">
+                                    <span> Overview </span>
+                                    <i class="fa fa-chevron-right text-c-yellow right-arrow"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <div role="button" onclick="toggleDropMenu(this)" class="drop-menu cursor-pointer rounded-r-lg">
+                                    <div class="w-full px-6 py-3 flex justify-between items-center" href="#">
+                                        <span> System Settings </span>
+                                        <i class="fa fa-chevron-right text-c-yellow transition-all"></i>
+                                    </div>
+                                    <ul class="drop-list text-sm space-y-1">
+                                        <li>
+                                            <a href="#"
+                                                class="block py-2 px-8 rounded-r-md w-full flex justify-between items-center">
+                                                <span>Basic</span>
+                                                <i class="fa fa-chevron-right text-c-yellow right-arrow"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#"
+                                                class="block py-2 px-8 rounded-r-md w-full flex justify-between items-center">
+                                                <span>Menu</span>
+                                                <i class="fa fa-chevron-right text-c-yellow right-arrow"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#"
+                                                class="block py-2 px-8 rounded-r-md w-full flex justify-between items-center">
+                                                <span>Notice</span>
+                                                <i class="fa fa-chevron-right text-c-yellow right-arrow"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#"
+                                                class="block py-2 px-8 rounded-r-md w-full flex justify-between items-center">
+                                                <span>Intranet Access</span>
+                                                <i class="fa fa-chevron-right text-c-yellow right-arrow"></i>
+                                            </a>
+                                        </li>
+                                    </ul>
                                 </div>
-                                <ul class="drop-list text-sm space-y-1">
-                                    <li>
-                                        <a href="#"
-                                            class="block py-2 px-8 rounded-r-md w-full flex justify-between items-center">
-                                            <span>Basic</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#"
-                                            class="block py-2 px-8 rounded-r-md w-full flex justify-between items-center">
-                                            <span>Menu</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#"
-                                            class="block py-2 px-8 rounded-r-md w-full flex justify-between items-center">
-                                            <span>Notice</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#"
-                                            class="block py-2 px-8 rounded-r-md w-full flex justify-between items-center">
-                                            <span>Intranet Access</span>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </li>
-                        <li>
-                            <div role="button" onclick="toggleDropMenu(this)"
-                                class="drop-menu cursor-pointer rounded-r-lg">
-                                <div class="w-full px-6 py-3 flex justify-between items-center" href="#">
-                                    <span> Users &amp; Groups </span>
-                                    <i class="fa fa-chevron-right text-c-yellow transition-all"></i>
+                            </li>
+                            <li>
+                                <div role="button" onclick="toggleDropMenu(this)" class="drop-menu cursor-pointer rounded-r-lg">
+                                    <div class="w-full px-6 py-3 flex justify-between items-center" href="#">
+                                        <span> Users &amp; Groups </span>
+                                        <i class="fa fa-chevron-right text-c-yellow transition-all"></i>
+                                    </div>
+                                    <ul class="drop-list text-sm space-y-1">
+                                        <li>
+                                            <a href="#"
+                                                class="block py-2 px-8 rounded-r-md w-full flex justify-between items-center">
+                                                <span>Users &amp; Groups </span>
+                                                <i class="fa fa-chevron-right text-c-yellow right-arrow"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#"
+                                                class="block py-2 px-8 rounded-r-md w-full flex justify-between items-center">
+                                                <span>Role</span>
+                                                <i class="fa fa-chevron-right text-c-yellow right-arrow"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#"
+                                                class="block py-2 px-8 rounded-r-md w-full flex justify-between items-center">
+                                                <span>Document Permission</span>
+                                                <i class="fa fa-chevron-right text-c-yellow right-arrow"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#"
+                                                class="block py-2 px-8 rounded-r-md w-full flex justify-between items-center">
+                                                <span>Intranet Access</span>
+                                                <i class="fa fa-chevron-right text-c-yellow right-arrow"></i>
+                                            </a>
+                                        </li>
+                                    </ul>
                                 </div>
-                                <ul class="drop-list text-sm space-y-1">
-                                    <li>
-                                        <a href="#"
-                                            class="block py-2 px-8 rounded-r-md w-full flex justify-between items-center">
-                                            <span>Users &amp; Groups </span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#"
-                                            class="block py-2 px-8 rounded-r-md w-full flex justify-between items-center">
-                                            <span>Role</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#"
-                                            class="block py-2 px-8 rounded-r-md w-full flex justify-between items-center">
-                                            <span>Document Permission</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#"
-                                            class="block py-2 px-8 rounded-r-md w-full flex justify-between items-center">
-                                            <span>Intranet Access</span>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </li>
-                        <li>
-                            <div role="button" onclick="toggleDropMenu(this)"
-                                class="drop-menu cursor-pointer rounded-r-lg">
-                                <div class="w-full px-6 py-3 flex justify-between items-center" href="#">
-                                    <span>Storage/file</span>
-                                    <i class="fa fa-chevron-right text-c-yellow transition-all"></i>
+                            </li>
+                            <li>
+                                <div role="button" onclick="toggleDropMenu(this)" class="drop-menu cursor-pointer rounded-r-lg">
+                                    <div class="w-full px-6 py-3 flex justify-between items-center" href="#">
+                                        <span>Storage/file</span>
+                                        <i class="fa fa-chevron-right text-c-yellow transition-all"></i>
+                                    </div>
+                                    <ul class="drop-list text-sm space-y-1">
+                                        <li>
+                                            <a href="#"
+                                                class="block py-2 px-8 rounded-r-md w-full flex justify-between items-center">
+                                                <span>Storage</span>
+                                                <i class="fa fa-chevron-right text-c-yellow right-arrow"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#"
+                                                class="block py-2 px-8 rounded-r-md w-full flex justify-between items-center">
+                                                <span>Backup</span>
+                                                <i class="fa fa-chevron-right text-c-yellow right-arrow"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#"
+                                                class="block py-2 px-8 rounded-r-md w-full flex justify-between items-center">
+                                                <span>Share</span>
+                                                <i class="fa fa-chevron-right text-c-yellow right-arrow"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#"
+                                                class="block py-2 px-8 rounded-r-md w-full flex justify-between items-center">
+                                                <span>webDAV Mount</span>
+                                                <i class="fa fa-chevron-right text-c-yellow right-arrow"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="settings-storage-media-preview.html"
+                                                class="block py-2 px-8 rounded-r-md w-full flex justify-between items-center">
+                                                <span>Media file preview &amp; Video</span>
+                                                <i class="fa fa-chevron-right text-c-yellow right-arrow"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#"
+                                                class="block py-2 px-8 rounded-r-md w-full flex justify-between items-center">
+                                                <span>Client and App</span>
+                                                <i class="fa fa-chevron-right text-c-yellow right-arrow"></i>
+                                            </a>
+                                        </li>
+                                    </ul>
                                 </div>
-                                <ul class="drop-list text-sm space-y-1">
-                                    <li>
-                                        <a href="#"
-                                            class="block py-2 px-8 rounded-r-md w-full flex justify-between items-center">
-                                            <span>Storage</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#"
-                                            class="block py-2 px-8 rounded-r-md w-full flex justify-between items-center">
-                                            <span>Backup</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#"
-                                            class="block py-2 px-8 rounded-r-md w-full flex justify-between items-center">
-                                            <span>Share</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#"
-                                            class="block py-2 px-8 rounded-r-md w-full flex justify-between items-center">
-                                            <span>webDAV Mount</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="settings-storage-media-preview.html"
-                                            class="block py-2 px-8 rounded-r-md w-full flex justify-between items-center">
-                                            <span>Media file preview &amp; Video</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#"
-                                            class="block py-2 px-8 rounded-r-md w-full flex justify-between items-center">
-                                            <span>Client and App</span>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </li>
-                        <li>
-                            <a class="w-full px-6 py-3 rounded-r-lg block flex justify-between items-center"
-                                href="settings-plugin.html">
-                                <span>Plugin Center</span>
-                            </a>
-                        </li>
-                        <li>
-                            <div role="button" onclick="toggleDropMenu(this)"
-                                class="drop-menu cursor-pointer rounded-r-lg">
-                                <div class="w-full px-6 py-3 flex justify-between items-center" href="#">
-                                    <span>Saftey Control</span>
-                                    <i class="fa fa-chevron-right text-c-yellow transition-all"></i>
+                            </li>
+                            <li>
+                                <a class="w-full px-6 py-3 rounded-r-lg block flex justify-between items-center"
+                                    href="settings-plugin.html">
+                                    <span>Plugin Center</span>
+                                    <i class="fa fa-chevron-right text-c-yellow right-arrow"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <div role="button" onclick="toggleDropMenu(this)" class="drop-menu cursor-pointer rounded-r-lg">
+                                    <div class="w-full px-6 py-3 flex justify-between items-center" href="#">
+                                        <span>Saftey Control</span>
+                                        <i class="fa fa-chevron-right text-c-yellow transition-all"></i>
+                                    </div>
+                                    <ul class="drop-list text-sm space-y-1">
+                                        <li>
+                                            <a href="#"
+                                                class="block py-2 px-8 rounded-r-md w-full flex justify-between items-center">
+                                                <span>Message Warning</span>
+                                                <i class="fa fa-chevron-right text-c-yellow right-arrow"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#"
+                                                class="block py-2 px-8 rounded-r-md w-full flex justify-between items-center">
+                                                <span>Login Log</span>
+                                                <i class="fa fa-chevron-right text-c-yellow right-arrow"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#"
+                                                class="block py-2 px-8 rounded-r-md w-full flex justify-between items-center">
+                                                <span>Operation Log</span>
+                                                <i class="fa fa-chevron-right text-c-yellow right-arrow"></i>
+                                            </a>
+                                        </li>
+                                    </ul>
                                 </div>
-                                <ul class="drop-list text-sm space-y-1">
-                                    <li>
-                                        <a href="#"
-                                            class="block py-2 px-8 rounded-r-md w-full flex justify-between items-center">
-                                            <span>Message Warning</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#"
-                                            class="block py-2 px-8 rounded-r-md w-full flex justify-between items-center">
-                                            <span>Login Log</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#"
-                                            class="block py-2 px-8 rounded-r-md w-full flex justify-between items-center">
-                                            <span>Operation Log</span>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </li>
-                        <li>
-                            <div role="button" onclick="toggleDropMenu(this)"
-                                class="drop-menu cursor-pointer rounded-r-lg">
-                                <div class="w-full px-6 py-3 flex justify-between items-center" href="#">
-                                    <span>Server</span>
-                                    <i class="fa fa-chevron-right text-c-yellow transition-all"></i>
-                                </div>
-                                <ul class="drop-list text-sm space-y-1">
-                                    <li>
-                                        <a href="settings-server-scheduled-tasks.html"
-                                            class="block py-2 px-8 rounded-r-md w-full flex justify-between items-center">
-                                            <span>Scheduled Tasks</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#"
-                                            class="block py-2 px-8 rounded-r-md w-full flex justify-between items-center">
-                                            <span>Server</span>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </li>
-                    </ul>
+                            </li>
+                            <li>
+                                <a class="w-full px-6 py-3 rounded-r-lg block flex justify-between items-center"
+                                    href="settings-server-scheduled-tasks.html">
+                                    <span>Scheduled Tasks</span>
+                                    <i class="fa fa-chevron-right text-c-yellow right-arrow"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </aside>
@@ -236,16 +241,16 @@
                 <!-- form tabs -->
                 <div class="p-6">
                     <div id="tab-holder">
-                        <input class="tab-manager" type="radio" checked  name="tabs" value="basic" id="basic">
+                        <input class="tab-manager" type="radio"  name="tabs" value="basic" id="basic">
                         <div class="content-holder">
                             <label class="tab-label" for="basic">Basic</label>
                             <!-- basic tab -->
                             <div class="tab-content">
                                 <form action="#">
                                     <div class="flex flex-wrap w-full gap-y-4 items-center">
-                                        <label for="name" class="w-1/6 font-semibold">Permission: <span
+                                        <label for="name" class="w-full md:w-1/6 font-semibold">Permission: <span
                                                 class="text-red-500">*</span></label>
-                                        <div class="flex-grow w-5/6">
+                                        <div class="flex-grow md:w-5/6">
                                             <div class="flex gap-2 w-full max-w-md">
                                                 <input class="hidden" type="checkbox"
                                                     onchange="onPermissionChange(this)" name="permission" id="everyone"
@@ -281,13 +286,13 @@
                                             </span>
                                         </div>
 
-                                        <span class="block w-1/6"></span>
+                                        <span class="block hidden md:block w-full md:w-1/6"></span>
                                         <div class="space-y-2 flex-grow">
                                             <div class="max-w-md hidden pip-select" id="users-pip">
-                                                <select class="w-full text-sm py-2 px-2 rounded-lg text-gray-500"
+                                                <select multiple  class="label ui selection fluid dropdown w-full rounded-lg"
                                                     aria-placeholder="Please choose user" name="permission_users"
                                                     id="permission_users">
-                                                    <option value="none">Please choose user</option>
+                                                    <option value="">Please choose user</option>
                                                     <option value="admin">Admin</option>
                                                     <option value="user">User</option>
                                                     <option value="guest">Guest</option>
@@ -296,10 +301,10 @@
                                             </div>
 
                                             <div class="max-w-md hidden pip-select" id="groups-pip">
-                                                <select class="w-full text-sm py-2 px-2 rounded-lg text-gray-500"
+                                                <select multiple  class="label ui selection fluid dropdown w-full rounded-lg"
                                                     aria-placeholder="Please choose group" name="permission_group"
                                                     id="permission_group">
-                                                    <option value="none">Please choose group</option>
+                                                    <option value="">Please choose group</option>
                                                     <option value="admin">Admin</option>
                                                     <option value="user">User</option>
                                                     <option value="guest">Guest</option>
@@ -308,10 +313,10 @@
                                             </div>
 
                                             <div class="max-w-md hidden pip-select" id="role-pip">
-                                                <select class="w-full text-sm py-2 px-2 rounded-lg text-gray-500"
+                                                <select multiple  class="label ui selection fluid dropdown w-full rounded-lg"
                                                     aria-placeholder="Please choose role" name="permission_role"
                                                     id="permission_role">
-                                                    <option value="none">Please choose role</option>
+                                                    <option value="">Please choose role</option>
                                                     <option value="admin">Admin</option>
                                                     <option value="user">User</option>
                                                     <option value="guest">Guest</option>
@@ -324,10 +329,10 @@
                                     <hr>
                                     <br>
                                     <div class="flex flex-wrap w-full gap-y-4 items-center">
-                                        <label for="imageMagicPath" class="w-1/6 font-semibold">imageMagic Path: <span
+                                        <label for="imageMagicPath" class="w-full md:w-1/6 font-semibold">imageMagic Path: <span
                                                 class="text-red-500">*</span>
                                         </label>
-                                        <div class="w-5/6 flex gap-2 flex-wrap items-center">
+                                        <div class="w-full md:w-5/6 flex gap-2 flex-wrap items-center">
                                             <input type="text" required name="imageMagicPath" id="imageMagicPath"
                                                 class="bg-gray-50 border flex-grow max-w-md border-gray-300 text-gray-900 text-sm rounded-xl block p-2 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
                                                 placeholder="convert" />
@@ -336,10 +341,10 @@
                                             </span>
                                         </div>
 
-                                        <label for="ffmpegBinPath" class="w-1/6 font-semibold">ffmpegBin Path: <span
+                                        <label for="ffmpegBinPath" class="w-full md:w-1/6 font-semibold">ffmpegBin Path: <span
                                                 class="text-red-500">*</span>
                                         </label>
-                                        <div class="w-5/6 flex gap-2 flex-wrap items-center">
+                                        <div class="w-full md:w-5/6 flex gap-2 flex-wrap items-center">
                                             <input type="text" required name="ffmpegBinPath" id="ffmpegBinPath"
                                                 class="bg-gray-50 flex-grow max-w-md border border-gray-300 text-gray-900 text-sm rounded-xl block p-2 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
                                                 placeholder="ffmpeg" />
@@ -348,9 +353,9 @@
                                             </span>
                                         </div>
 
-                                        <span class="w-1/6 block"></span>
+                                        <span class="hidden md:block w-1/6 block"></span>
 
-                                        <div class="flex gap-2 ml-auto items-center w-5/6">
+                                        <div class="flex flex-wrap gap-2 ml-auto items-center w-full md:w-5/6 ">
                                             <label for="current" class="cursor-pointer radio-button">
                                                 <input type="radio" name="type" id="current" value="current" checked>
                                                 <span
@@ -373,7 +378,7 @@
                             </div>
                         </div>
 
-                        <input class="tab-manager" type="radio" name="tabs" value="video-transcoding"
+                        <input class="tab-manager" type="radio"  name="tabs" value="video-transcoding"
                             id="video-transcoding">
                         <div class="content-holder">
                             <label class="tab-label" for="video-transcoding">Video Transcoding</label>
@@ -388,7 +393,7 @@
                                 <form action="#" class="space-y-3">
 
                                     <div class="flex flex-wrap gap-2 items-center">
-                                        <label for="enable_video_transcoding" class="font-semibold w-1/6">Enable Video
+                                        <label for="enable_video_transcoding" class="font-semibold w-full md:w-1/6">Enable Video
                                             Transcoding: </label>
                                         <label for="toggle-enable-transcoding"
                                             class="toggle-switch flex items-center cursor-pointer">
@@ -408,12 +413,12 @@
 
                                     <div class="w-full space-y-3" style="visibility: hidden;" id="when-transcoding">
                                         <div class="flex flex-wrap gap-2 items-center">
-                                            <label for="concurrency_limit" class="font-semibold w-1/6">Concurrency
+                                            <label for="concurrency_limit" class="font-semibold w-full md:w-1/6">Concurrency
                                                 Limit:
                                             </label>
-                                            <div class="flex gap-2 items-center flex-grow">
+                                            <div class="flex flex-wrap gap-2 items-center flex-grow">
                                                 <div
-                                                    class="flex w-full max-w-xs items-center p-0 bg-white border rounded-lg overflow-hidden">
+                                                    class="flex w-full md:max-w-xs items-center p-0 bg-white border rounded-lg overflow-hidden">
                                                     <input class="flex-grow px-2 outline-none text-sm py-1"
                                                         type="number" name="concurrency_limit" id="concurrency_limit">
                                                     <span
@@ -426,11 +431,11 @@
                                         </div>
 
                                         <div class="flex flex-wrap gap-2 items-center">
-                                            <label for="maximum_transcoding_file" class="font-semibold w-1/6">Maximum
+                                            <label for="maximum_transcoding_file" class="font-semibold w-full md:w-1/6">Maximum
                                                 transcoding file: </label>
-                                            <div class="flex gap-2 items-center flex-grow">
+                                            <div class="flex flex-wrap gap-2 items-center flex-grow">
                                                 <div
-                                                    class="flex w-full max-w-xs items-center p-0 bg-white border rounded-lg overflow-hidden">
+                                                    class="flex w-full md:max-w-xs items-center p-0 bg-white border rounded-lg overflow-hidden">
                                                     <input class="flex-grow px-2 outline-none text-sm py-1"
                                                         type="number" name="maximum_transcoding_file"
                                                         id="maximum_transcoding_file">
@@ -447,11 +452,11 @@
 
 
                                         <div class="flex flex-wrap gap-2 items-center">
-                                            <label for="maximum_transcoding_file2" class="font-semibold w-1/6">Maximum
+                                            <label for="maximum_transcoding_file2" class="font-semibold w-full md:w-1/6">Maximum
                                                 transcoding file: </label>
-                                            <div class="flex gap-2 items-center flex-grow">
+                                            <div class="flex flex-wrap gap-2 items-center flex-grow">
                                                 <input type="number"
-                                                    class="w-full px-2 outline-none text-sm max-w-xs items-center py-1.5 bg-white border rounded-lg"
+                                                    class="w-full px-2 outline-none text-sm md:max-w-xs items-center py-1.5 bg-white border rounded-lg"
                                                     name="maximum_transcoding_file2" id="maximum_transcoding_file2">
                                                 <span class="text-xs text-gray-500 mt-1">
                                                     Maximum number of transcoding tasks allowed at the same time
@@ -461,18 +466,17 @@
 
 
                                         <div class="flex flex-wrap w-full gap-2 items-center">
-                                            <label for="file_format" class="font-semibold w-1/6">File
+                                            <label for="file_format" class="font-semibold w-full md:w-1/6">File
                                                 format:
                                             </label>
-                                            <div class="flex gap-2 items-center flex-grow">
-                                                <select data-placeholder="Select content" multiple
-                                                    class="chosen-select w-full max-w-xs rounded-lg border-none outline-none"
+                                            <div class="flex flex-wrap gap-2 items-center flex-grow">
+                                                <select data-placeholder="Select content" multiple  class="label ui selection fluid dropdown w-full md:max-w-xs rounded-lg"
                                                     name="file_format">
                                                     <option value=""></option>
-                                                    <option>3gp</option>
-                                                    <option>3av</option>
-                                                    <option>mop</option>
-                                                    <option>mp4a</option>
+                                                    <option value="3gp">3gp</option>
+                                                    <option value="3av">3av</option>
+                                                    <option value="mop">mop</option>
+                                                    <option value="mp4a">mp4a</option>
                                                 </select>
                                                 <span class="text-xs text-gray-500 mt-1">
                                                     Associate extension to the plugin
@@ -484,9 +488,9 @@
                                         <br>
 
                                         <div class="flex flex-wrap gap-2 items-center">
-                                            <label for="default_quality" class="font-semibold w-1/6">Default Qualtiy:
+                                            <label for="default_quality" class="font-semibold w-full md:w-1/6">Default Quality:
                                             </label>
-                                            <div class="flex gap-2 items-center">
+                                            <div class="flex flex-wrap gap-2 items-center">
                                                 <div class="flex gap-2 items-center">
                                                     <label for="quality_normal" class="cursor-pointer radio-button">
                                                         <input type="radio" name="default_quality" id="quality_normal"
@@ -518,19 +522,19 @@
                             </div>
                         </div>
 
-                        <input class="tab-manager" type="radio" name="tabs" value="others"  id="others">
+                        <input class="tab-manager" type="radio"  checked name="tabs" value="others"  id="others">
                         <div class="content-holder">
                             <label class="tab-label" for="others">Others</label>
                             <!-- others tab -->
                             <div class="tab-content">
                                 <form action="#" class="space-y-3">
                                         <div class="flex flex-wrap gap-2 items-center">
-                                            <label for="priority" class="font-semibold w-1/6">Priority:
+                                            <label for="priority" class="font-semibold w-full md:w-1/6">Priority:
                                             </label>
-                                            <div class="flex gap-2 items-center flex-grow">
+                                            <div class="flex flex-wrap gap-2 items-center flex-grow">
                                                 <div
-                                                    class="flex w-full max-w-xs items-center p-0 bg-white border rounded-lg overflow-hidden">
-                                                    <input class="flex-grow px-2 outline-none text-sm py-1"
+                                                    class="flex w-full md:max-w-xs items-center p-0 bg-white border rounded-lg overflow-hidden">
+                                                    <input class="flex-grow px-2 outline-none text-sm py-2"
                                                         type="number" name="priority" id="priority">
 
                                                 </div>
@@ -542,17 +546,17 @@
 
 
                                         <div class="flex flex-wrap w-full gap-2 items-center">
-                                            <label for="others_formats" class="font-semibold w-1/6">Formats:
+                                            <label for="others_formats" class="font-semibold w-full md:w-1/6">Formats:
                                             </label>
-                                            <div class="flex gap-2 items-center flex-grow">
-                                                <select data-placeholder="Select content" multiple
-                                                    class="chosen-select w-full max-w-xs rounded-lg border-none outline-none"
+                                            <div class="flex flex-wrap gap-2 items-center flex-grow">
+                                                <select data-placeholder="Select content" multiple  class="label ui selection fluid dropdown w-full md:max-w-xs rounded-lg"
+                                                   
                                                     name="others_formats">
                                                     <option value=""></option>
-                                                    <option>3gp</option>
-                                                    <option>3av</option>
-                                                    <option>mop</option>
-                                                    <option>mp4a</option>
+                                                    <option value="3gp">3gp</option>
+                                                    <option value="3av">3av</option>
+                                                    <option value="mop">mop</option>
+                                                    <option value="mp4a">mp4a</option>
                                                 </select>
                                                 <span class="text-xs text-gray-500 mt-1">
                                                     Transcoding only when the file format is specified
@@ -562,18 +566,17 @@
 
 
                                         <div class="flex flex-wrap w-full gap-2 items-center">
-                                            <label for="others_file_thumbnail" class="font-semibold w-1/6">File
+                                            <label for="others_file_thumbnail" class="font-semibold w-full md:w-1/6">File
                                                 thumbnail:
                                             </label>
-                                            <div class="flex gap-2 items-center flex-grow">
-                                                <select data-placeholder="Select content" multiple
-                                                    class="chosen-select w-full max-w-xs rounded-lg border-none outline-none"
+                                            <div class="flex flex-wrap gap-2 items-center flex-grow">
+                                                <select data-placeholder="Select content" multiple  class="label ui selection fluid dropdown w-full md:max-w-xs rounded-lg"
                                                     name="others_file_thumbnail">
                                                     <option value=""></option>
-                                                    <option>3gp</option>
-                                                    <option>3av</option>
-                                                    <option>mop</option>
-                                                    <option>mp4a</option>
+                                                    <option value="3gp">3gp</option>
+                                                    <option value="3av">3av</option>
+                                                    <option value="mop">mop</option>
+                                                    <option value="mp4a">mp4a</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -583,7 +586,7 @@
                                         <br>
 
                                         <div class="flex flex-wrap gap-2 items-center">
-                                            <label for="default_quality" class="font-semibold w-1/6">Debug mode:
+                                            <label for="default_quality" class="font-semibold w-full md:w-1/6">Debug mode:
                                             </label>
                                             <label for="toggle-debug_mode"
                                                 class="toggle-switch flex items-center cursor-pointer">
@@ -611,8 +614,8 @@
         </div>
     </main>
 
-    <footer class="mt-auto w-screen">
-        <div class="flex justify-between w-full items center px-6 py-4 bg-white bg-opacity-50">
+    <footer class="w-screen">
+        <div class="flex justify-between w-full items center px-2 md:px-6 py-2 md:py-4 bg-white bg-opacity-50">
             <button type="button" class="bg-c-black text-white px-2 py-1 rounded-md">File</button>
             <img src="/images/logo.png" alt="Dots Logo" width="36" height="36">
         </div>
@@ -665,18 +668,21 @@
             }
         }
 
-        // i don't know why this juglling is required but when i remove it, the width of multiple select box collapses
-        setTimeout(() => {
-            document.querySelectorAll('.chosen-container.chosen-container-multi').forEach(e => {
-                e.removeAttribute('style');
-                e.classList.add('w-full', 'max-w-xs');
-            })
-        }, 2000)
     </script>
     <script defer>
-        $(".chosen-select").chosen({
-            no_results_text: "Oops, nothing found!"
+        $('.label.ui.dropdown')
+            .dropdown();
+
+        $('.no.label.ui.dropdown')
+            .dropdown({
+                useLabels: false
+            });
+
+        $('.ui.button').on('click', function () {
+            $('.ui.dropdown')
+                .dropdown('restore defaults')
         })
+
     </script>
 
     <script defer>

@@ -39,13 +39,6 @@
 body.nx {
     overflow-x: hidden;
 }
-.nx .sidebar {
-    background: url('/images/sidebar-bg.svg');
-    background-size: cover;
-    background-position: center;
-    min-width: min(290px, 45vw);
-    overflow-y: scroll;
-}
 
 .nx .main {
     background: url('/images/main-bg.png');
@@ -53,6 +46,7 @@ body.nx {
     background-position: center;
     overflow: scroll;
 }
+
 
 .nx .taskbar {
     background: url('/images/taskbar-bg.svg');
@@ -75,13 +69,12 @@ body.nx {
 }
 
 .nx div[role="dialog"] .modal-content::-webkit-scrollbar,
-.nx .main::-webkit-scrollbar,
-.nx .sidebar::-webkit-scrollbar {
+.nx .main::-webkit-scrollbar {
     display: none;
 }
 
 .nx .main .content {
-    min-width: 1000px;
+    min-width: 420px;
 }
 
 .nx .toggle-bg {
@@ -117,7 +110,9 @@ body.nx {
 .nx #tab-holder {
 	position: relative;
 }
-
+.nx #tab-holder .tab-content {
+    padding-bottom: 1rem;
+}
 .nx #tab-holder input.tab-manager[type="radio"] {
     position: absolute;
     left: -100%;
@@ -149,13 +144,11 @@ body.nx {
 }
 
 
-/*multiple select - chosen css override*/
-.chosen-container-multi .chosen-choices {
-    border: none !important;
-    border-radius: 0.5rem;
-    padding: 0.2rem 0.5rem !important;
+/*multiple select -  css override*/
+.ui.selection.dropdown {
+    border-radius: 7px !important;
 }
-.chosen-container-multi .chosen-choices li.search-choice {
-    background-color: none !important;
-    background: none !important;
+.ui.label{
+    background-color: #fff !important;
+    border-radius: 10px !important;
 }
