@@ -57,9 +57,21 @@ body{
     transition: all 0.3s ease;
     overflow-y: scroll;
     overflow-x: hidden;
+    padding-bottom: 1rem;
 }
 .sidebar .sidebar-container {
     min-width: 290px;
+}
+
+@media (width > 768px){
+    .sidebar {
+        max-height: calc(100vh - 60px);
+    }
+}
+@media (width < 767.98px){
+    .sidebar {
+        max-height: calc(100vh - 45px);
+    }
 }
 
 @media (width > 992px) {

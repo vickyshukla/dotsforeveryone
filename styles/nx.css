@@ -1,45 +1,59 @@
 .bg-c-black {
     background: var(--color-light-gray);
 }
+
 .bg-c-yellow {
     background: var(--color-dark-yellow);
 }
+
 .bg-c-light-black {
     background: var(--color-light-black);
 }
+
 .bg-c-gray-2 {
     background: var(--color-gray-2);
 }
+
 .bg-c-dark-gray {
     background: var(--color-dark-gray);
 }
+
 .bg-c-light-white {
     background: var(--color-light-white);
 }
+
 .text-c-black {
     color: var(--color-light-gray);
 }
+
 .text-c-yellow {
     color: var(--color-dark-yellow);
 }
-.text-c-light-black{
+
+.text-c-light-black {
     color: var(--color-light-black);
 }
+
 .text-c-gray-2 {
     color: var(--color-gray-2);
 }
+
 .text-c-dark-gray {
     color: var(--color-dark-gray);
 }
+
 .text-c-light-white {
     color: var(--color-light-white);
 }
+
 .hover-text-c-yellow:hover {
     color: var(--color-dark-yellow);
 }
+
 .hover-bg-c-black:hover {
     background: var(--color-light-gray);
 }
+
 .hover-bg-c-yellow:hover {
     background: var(--color-dark-yellow);
 }
@@ -59,9 +73,15 @@ body.nx {
     overflow: scroll;
 }
 
-@media (width > 768px){
+@media (width > 768px) {
     .nx .main {
-        max-height: calc(100vh - 66px);
+        max-height: calc(100vh - 60px);
+    }
+}
+
+@media (width < 767.98px) {
+    .nx .main {
+        max-height: calc(100vh - 45px);
     }
 }
 
@@ -75,11 +95,14 @@ body.nx {
     background: url('/images/footer-bg.png');
     background-size: cover;
     background-position: center;
+    position: fixed;
+    bottom: 0;
 }
 
 .nx div[role="dialog"] {
     padding: 20px 10px;
 }
+
 .nx div[role="dialog"] .modal-content {
     max-height: 90vh;
     overflow: scroll;
@@ -96,10 +119,12 @@ body.nx {
     .nx-table-container {
         overflow-y: scroll;
     }
-.nx-table-container table {
-    min-width: 1000px;
+
+    .nx-table-container table {
+        min-width: 1000px;
+    }
 }
-}
+
 .nx .main .content {
     min-width: 360px;
 }
@@ -107,16 +132,20 @@ body.nx {
 .nx .toggle-bg {
     background: var(--color-dark-gray);
 }
+
 .nx .toggle-switch input:checked~.dot {
     transform: translateX(130%);
 }
-.nx .toggle-switch input:checked~ .toggle-bg{
+
+.nx .toggle-switch input:checked~.toggle-bg {
     background: var(--color-dark-yellow);
 }
+
 .nx .dropdown-option {
     display: none;
 }
-.nx .dropdown-btn:focus ~ .dropdown-option,
+
+.nx .dropdown-btn:focus~.dropdown-option,
 .dropdown-option:hover {
     display: block;
 }
@@ -124,10 +153,12 @@ body.nx {
 .nx .radio-button input {
     display: none;
 }
+
 .nx .radio-button span {
     width: 80px;
 }
-.nx .radio-button input:checked ~ span {
+
+.nx .radio-button input:checked~span {
     background: #FFD700;
     color: #000;
 }
@@ -135,11 +166,13 @@ body.nx {
 /* file specific */
 
 .nx #tab-holder {
-	position: relative;
+    position: relative;
 }
+
 .nx #tab-holder .tab-content {
     padding-bottom: 1rem;
 }
+
 .nx #tab-holder input.tab-manager[type="radio"] {
     position: absolute;
     left: -100%;
@@ -147,24 +180,28 @@ body.nx {
     height: 0;
     display: none;
 }
-.nx #tab-holder input.tab-manager[type="radio"] + div.content-holder > label.tab-label {
+
+.nx #tab-holder input.tab-manager[type="radio"]+div.content-holder>label.tab-label {
     float: left;
     margin-right: 1rem;
     cursor: pointer;
 }
-.nx #tab-holder input.tab-manager[type="radio"] + div.content-holder > div.tab-content {
-	position: absolute;
+
+.nx #tab-holder input.tab-manager[type="radio"]+div.content-holder>div.tab-content {
+    position: absolute;
     width: 100%;
-	display: none;
-}
-.nx #tab-holder input.tab-manager[type="radio"]:checked + div.content-holder > div.tab-content {
-	display: block;
-}
-.nx #tab-holder input.tab-manager[type="radio"]:checked + div.content-holder > label.tab-label {
-	border-bottom: 2px solid var(--color-dark-yellow);
+    display: none;
 }
 
-.nx #tab-holder .tab-content form input[type="checkbox"]:checked + label {
+.nx #tab-holder input.tab-manager[type="radio"]:checked+div.content-holder>div.tab-content {
+    display: block;
+}
+
+.nx #tab-holder input.tab-manager[type="radio"]:checked+div.content-holder>label.tab-label {
+    border-bottom: 2px solid var(--color-dark-yellow);
+}
+
+.nx #tab-holder .tab-content form input[type="checkbox"]:checked+label {
     background: var(--color-dark-yellow);
     color: var(--color-light-gray);
 }
@@ -174,7 +211,8 @@ body.nx {
 .ui.selection.dropdown {
     border-radius: 7px !important;
 }
-.ui.label{
+
+.ui.label {
     background-color: #fff !important;
     border-radius: 10px !important;
 }
@@ -183,12 +221,15 @@ body.nx {
 .tab-control {
     border-bottom: 2px solid transparent;
 }
+
 .tab-control.active {
     border-color: var(--color-dark-yellow);
 }
+
 .tab-content {
     display: none;
 }
+
 .tab-content.active {
     display: block;
 }
