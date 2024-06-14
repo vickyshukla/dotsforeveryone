@@ -478,9 +478,35 @@
 
                     <!-- data and space usage -->
                     <div class="bg-white rounded border p-2">
-                        <div class="flex gap-3">
-                            <button type="button" onclick="showTab(this)" class="tab-control font-semibold text-sm px-1 active" data-tab="user-data-space" data-control="user-data-tab">User Data</button>
-                            <button type="button" onclick="showTab(this)" class="tab-control font-semibold text-sm px-1" data-tab="user-data-space" data-control="space-usage-tab">Space Usage</button>
+                        <div class="flex flex-wrap gap-2 justify-between">
+                            <div class="flex gap-3">
+                                <button type="button" onclick="showTab(this)" class="tab-control font-semibold text-sm px-1 active" data-tab="user-data-space" data-control="user-data-tab">User Data</button>
+                                <button type="button" onclick="showTab(this)" class="tab-control font-semibold text-sm px-1" data-tab="user-data-space" data-control="space-usage-tab">Space Usage</button>
+                            </div>
+                            <div class="">
+                                <form action="#" class="flex gap-2">
+                                    <label for="day" class="cursor-pointer radio-button">
+                                        <input type="radio" name="graph-timeframe" id="day" value="day" checked>
+                                        <span
+                                            class="block py-1 px-2 text-sm rounded-md text-center bg-gray-200">Day</span>
+                                    </label>
+                                    <label for="week" class="cursor-pointer radio-button">
+                                        <input type="radio" name="graph-timeframe" id="week" value="week">
+                                        <span
+                                            class="block py-1 px-2 text-sm rounded-md text-center bg-gray-200">Week</span>
+                                    </label>
+                                    <label for="month" class="cursor-pointer radio-button">
+                                        <input type="radio" name="graph-timeframe" id="month" value="month">
+                                        <span
+                                            class="block py-1 px-2 text-sm rounded-md text-center bg-gray-200">Month</span>
+                                    </label>
+                                    <label for="year" class="cursor-pointer radio-button">
+                                        <input type="radio" name="graph-timeframe" id="year" value="year">
+                                        <span
+                                            class="block py-1 px-2 text-sm rounded-md text-center bg-gray-200">Year</span>
+                                    </label>
+                                </form>
+                            </div>
                         </div>
                         <div class="pt-2">
                             <div class="tab-content user-data-space active" id="user-data-tab">
