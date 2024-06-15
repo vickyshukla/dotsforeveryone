@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+   <style>
+      .hidden {
+        display: none;
+      }
+      .draggable {
+        cursor: move;
+      }
+      #browser-window {
+        width: 500px;
+        height: 400px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        max-height: 100vh;
+      }
+
+      .triangle {
+        width: 0;
+        height: 0;
+        border-style: solid;
+      }
+      .triangle-up {
+        border-width: 0 10px 17.32px 10px;
+        border-color: transparent transparent red transparent;
+      }
+
+      .maximized {
+        width: 100% !important;
+        height: 100% !important;
+        top: 0 !important;
+        left: 0 !important;
+        transform: none !important;
+      }
+      
+    </style>
+  </head>
+  <body class="bg-purple-700">
+    <div class="p-8 bg-blue-600">
+      <div
+        id="browser-window"
+        class="border border-gray-200 shadow-2xl rounded-tl-lg rounded-tr-lg bg-gray-100"
+      >
+        <div
+          id="title-bar"
+          class="py-2 px-2 bg-gray-200 rounded-tl-md rounded-tr-md flex items-center draggable"
+        >
+          <div
+            id="close-btn"
+            class="triangle triangle-up border-b-red-400 cursor-pointer flex mr-3"
+          ></div>
+          <div
+            id="minimize-btn"
+            class="triangle triangle-up border-b-yellow-400 cursor-pointer flex mr-3"
+          ></div>
+          <div
+            id="maximize-btn"
+            class="triangle triangle-up border-b-green-400 cursor-pointer flex mr-3"
+          ></div>
+          <div
+            class="flex-auto px-2 py-1 ml-5 mr-1 rounded-md bg-white text-xs"
+          >
+            https://www.dotsui.com
+          </div>
+        </div>
+        <div id="content" class="px-2 py-4 bg-white min-h-screen">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse enim,
+          eveniet molestiae possimus reprehenderit, amet labore libero maxime
+          repudiandae odit, id dolore! Rerum hic quisquam voluptatem dolorum
+          itaque? Repellat, ut!
+        </div>
+      </div>
+    </div>
+
+    <script>
+      document.getElementById("close-btn").addEventListener("click", function() {
+        document.getElementById("browser-window").classList.add("hidden");
+      });
+
+      document.getElementById("minimize-btn").addEventListener("click", function() {
+        document.getElementById("content").classList.toggle("hidden");
+      });
+
+      let isMaximized = false;
+      let prevState = {};
+
+      document.getElementById("maximize-btn").addEventListener("click", function() {
+        const browserWindow = document.getElementById("browser-window");
+
+        if (isMaximized) {
+          // Restore the window to its previous size and position
+          browserWindow.style.width = prevState.width;
+          browserWindow.style.height = prevState.height;
+          browserWindow.style.top = prevState.top;
+          browserWindow.style.left = prevState.left;
+          browserWindow.style.transform = prevState.transform;
+          isMaximized = false;
+        } else {
+          // Save the current size and position
+          prevState = {
+            width: browserWindow.style.width,
+            height: browserWindow.style.height,
+            top: browserWindow.style.top,
+            left: browserWindow.style.left,
+            transform: browserWindow.style.transform
+          };
+
+          // Maximize the window
+          browserWindow.classList.add("maximized");
+          isMaximized = true;
+        }
+      });
+
+      function dragElement(el) {
+        const titleBar = document.getElementById("title-bar");
+        let pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+
+        titleBar.onmousedown = dragMouseDown;
+
+        function dragMouseDown(e) {
+          if (isMaximized) return; // Prevent dragging when maximized
+          e = e || window.event;
+          e.preventDefault();
+          pos3 = e.clientX;
+          pos4 = e.clientY;
+          document.onmouseup = closeDragElement;
+          document.onmousemove = elementDrag;
+        }
+
+        function elementDrag(e) {
+          e = e || window.event;
+          e.preventDefault();
+          pos1 = pos3 - e.clientX;
+          pos2 = pos4 - e.clientY;
+          pos3 = e.clientX;
+          pos4 = e.clientY;
+          el.style.top = (el.offsetTop - pos2) + "px";
+          el.style.left = (el.offsetLeft - pos1) + "px";
+        }
+
+        function closeDragElement() {
+          document.onmouseup = null;
+          document.onmousemove = null;
+        }
+      }
+
+      // Make the browser window draggable
+      dragElement(document.getElementById("browser-window"));
+    </script>
+  </body>
+</html>
