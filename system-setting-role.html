@@ -1,0 +1,987 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Role</title>
+    <link
+      href="https://unpkg.com/tailwindcss@^2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="system-setting-role.css" />
+    <link rel="stylesheet" href="root.css" />
+  </head>
+  <body>
+    <div class="Role w-full h-screen">
+      <div class="Role-container w-full">
+
+        <!-- Sidebar -->
+        <button
+          data-drawer-target="default-sidebar"
+          data-drawer-toggle="default-sidebar"
+          aria-controls="default-sidebar"
+          type="button"
+          class="inline-flex items-center p-2 mt-2 ms-3 text-sm text-gray-500 rounded-lg sm:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+        >
+          <span class="sr-only">Open sidebar</span>
+          <svg
+            class="w-6 h-6"
+            aria-hidden="true"
+            fill="currentColor"
+            viewBox="0 0 20 20"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              clip-rule="evenodd"
+              fill-rule="evenodd"
+              d="M2 4.75A.75.75 0 012.75 4h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 4.75zm0 10.5a.75.75 0 01.75-.75h7.5a.75.75 0 010 1.5h-7.5a.75.75 0 01-.75-.75zM2 10a.75.75 0 01.75-.75h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 10z"
+            ></path>
+          </svg>
+        </button>
+
+        <aside
+          id="default-sidebar"
+          class="fixed top-0 left-0 z-40 w-64 lg:w-1/6 h-full transition-transform -translate-x-full sm:translate-x-0"
+          aria-label="Sidebar"
+        >
+          <div
+            class="Role-sidebar h-full overflow-y-auto bg-gray-50 dark:bg-gray-800"
+          >
+            <div class="Role-logo px-9 py-7">
+              <img class="w-16 h-16" src="/images/logo.png" alt="logo" />
+            </div>
+            <nav class="mt-5">
+              <a href="#" class="block py-2.5 px-6 hover-effect">Overview</a>
+              <div class="mt-2">
+                <button
+                  class="w-full flex justify-between items-center py-2.5 px-6 hover-effect"
+                  onclick="toggleDropdown('settingsDropdown')"
+                >
+                  <span>System settings</span>
+                  <svg
+                    class="w-4 h-4 ml-2"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M19 9l-7 7-7-7"
+                    ></path>
+                  </svg>
+                </button>
+                <div id="settingsDropdown" class="hidden">
+                  <a href="#" class="block py-2.5 px-14 hover-effect"
+                    >Subitem 1</a
+                  >
+                  <a href="#" class="block py-2.5 px-14 hover-effect"
+                    >Subitem 2</a
+                  >
+                </div>
+              </div>
+              <div class="mt-2">
+                <button
+                  class="w-full flex justify-between items-center py-2.5 px-6 hover-effect"
+                  onclick="toggleDropdown('adminDropdown')"
+                >
+                  <span>Admin & Users</span>
+                  <svg
+                    class="w-4 h-4 ml-2"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M19 9l-7 7-7-7"
+                    ></path>
+                  </svg>
+                </button>
+                <div id="adminDropdown" class="block">
+                  <a href="#" class="block py-2.5 px-14 hover-effect"
+                    >Users and Groups</a
+                  >
+                  <a href="#" class="block py-2.5 px-14 hover-effect">Role</a>
+                  <a href="#" class="block py-2.5 px-14 hover-effect"
+                    >Document Permission</a
+                  >
+                </div>
+              </div>
+              <a href="#" class="block py-2.5 px-6 hover-effect mt-2"
+                >Storage / file</a
+              >
+              <a href="#" class="block py-2.5 px-6 hover-effect mt-2"
+                >Plugin center</a
+              >
+              <a href="#" class="block py-2.5 px-6 hover-effect mt-2"
+                >Safety control</a
+              >
+              <a href="#" class="block py-2.5 px-6 hover-effect mt-2">Server</a>
+            </nav>
+          </div>
+        </aside>
+
+        <!-- Main container -->
+        <div class="right-container h-full sm:ml-64">
+          <div class="Role-header w-full h-32">
+            <div class="flex items-center gap-3 py-6 px-6">
+              <i class="ri-settings-3-fill ri-2x"></i>
+              <h1 class="text-lg font-normal">System Settings</h1>
+            </div>
+            <div
+              class="Role-yellowbar w-full h-12 bg-no-repeat bg-cover bg-center flex items-center justify-between px-7"
+            >
+              <span class="text-base font-normal"
+                >Admin & User <i class="ri-arrow-right-line ri-lg"></i
+                ><span class="font-medium">Role</span></span
+              >
+              <span>
+                <button
+                  class="add-btn py-2 px-6 bg-black text-sm rounded-md openModalButton"
+                >
+                  <i class="ri-add-circle-fill"></i>
+                  Add
+                </button>
+              </span>
+            </div>
+          </div>
+          <div class="Role-content p-2">
+            <div class="p-4 relative">
+              <div class="rounded-md overflow-x-scroll sm:overflow-x-hidden">
+                <table class="table-auto w-full">
+                  <thead>
+                    <tr class="bg-gray-400">
+                      <th class="py-2 rounded-tl-md text-white text-left pl-3">
+                        Name
+                      </th>
+                      <th class="py-2 text-white text-left pl-3">
+                        Information
+                      </th>
+                      <th class="py-2 text-white text-left pl-3">
+                        Description
+                      </th>
+                      <th class="py-2 text-white text-left pl-3">
+                        Modification
+                      </th>
+                      <th class="py-2 rounded-tr-md text-white text-right pr-3">
+                        Action
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody class="border bg-white">
+                    <tr class="text-sm border-t h-14">
+                      <td class="py-2 pl-3">Ordinary User</td>
+                      <td class="py-2 pl-3">
+                        <span class="border bg-yellow-300 py-2 px-5 rounded"
+                          >System</span
+                        >
+                      </td>
+                      <td class="py-2 pl-3">Super administrator</td>
+                      <td class="py-2 pl-3">27-09-2023 03:47</td>
+                      <td class="py-2 text-right pr-3">
+                        <div
+                          class="flex relative justify-end text-sm gap-3 ml-auto"
+                        >
+                          <div class="relative">
+                            <button type="button" class="dropdown-btn">
+                              Action &nbsp;
+                              <i class="fa-solid fa-chevron-down fa-sm"></i>
+                            </button>
+                            <div
+                              class="absolute text-xs dropdown-option z-10 min-w-full bg-gray-100 border rounded-md"
+                            >
+                              <button
+                                class="block hover:bg-yellow-300 w-full px-2 py-1"
+                              >
+                                Run
+                              </button>
+                              <button
+                                class="block hover:bg-yellow-300 w-full px-2 py-1"
+                              >
+                                Log
+                              </button>
+                            </div>
+                          </div>
+                          <button class="text-blue-500 openModalButton">
+                            Edit
+                          </button>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr class="text-sm border-t h-14">
+                      <td class="py-2 pl-3">Department Admistrator</td>
+                      <td class="py-2 pl-3">
+                        <span class="border bg-yellow-300 py-2 px-5 rounded"
+                          >System</span
+                        >
+                      </td>
+                      <td class="py-2 pl-3">Super administrator</td>
+                      <td class="py-2 pl-3">27-09-2023 03:47</td>
+                      <td class="py-2 text-right pr-3">
+                        <div
+                          class="flex relative justify-end text-sm gap-3 ml-auto"
+                        >
+                          <div class="relative">
+                            <button type="button" class="dropdown-btn">
+                              Action &nbsp;
+                              <i class="fa-solid fa-chevron-down fa-sm"></i>
+                            </button>
+                            <div
+                              class="absolute text-xs dropdown-option z-10 min-w-full bg-gray-100 border rounded-md"
+                            >
+                              <button
+                                class="block hover:bg-yellow-300 w-full px-2 py-1"
+                              >
+                                Run
+                              </button>
+                              <button
+                                class="block hover:bg-yellow-300 w-full px-2 py-1"
+                              >
+                                Log
+                              </button>
+                            </div>
+                          </div>
+                          <button class="text-blue-500 openModalButton">
+                            Edit
+                          </button>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr class="text-sm border-t h-14">
+                      <td class="py-2 pl-3">Ordinary User</td>
+                      <td class="py-2 pl-3">
+                        <span class="border bg-yellow-300 py-2 px-5 rounded"
+                          >System</span
+                        >
+                      </td>
+                      <td class="py-2 pl-3">Super administrator</td>
+                      <td class="py-2 pl-3">27-09-2023 03:47</td>
+                      <td class="py-2 text-right pr-3">
+                        <div
+                          class="flex relative justify-end text-sm gap-3 ml-auto"
+                        >
+                          <div class="relative">
+                            <button type="button" class="dropdown-btn">
+                              Action &nbsp;
+                              <i class="fa-solid fa-chevron-down fa-sm"></i>
+                            </button>
+                            <div
+                              class="absolute text-xs dropdown-option z-10 min-w-full bg-gray-100 border rounded-md"
+                            >
+                              <button
+                                class="block hover:bg-yellow-300 w-full px-2 py-1"
+                              >
+                                Run
+                              </button>
+                              <button
+                                class="block hover:bg-yellow-300 w-full px-2 py-1"
+                              >
+                                Log
+                              </button>
+                            </div>
+                          </div>
+                          <button class="text-blue-500 openModalButton">
+                            Edit
+                          </button>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr class="text-sm border-t h-14">
+                      <td class="py-2 pl-3">Ordinary User</td>
+                      <td class="py-2 pl-3">
+                        <span class="border bg-yellow-300 py-2 px-5 rounded"
+                          >System</span
+                        >
+                      </td>
+                      <td class="py-2 pl-3">Super administrator</td>
+                      <td class="py-2 pl-3">27-09-2023 03:47</td>
+                      <td class="py-2 text-right pr-3">
+                        <div
+                          class="flex relative justify-end text-sm gap-3 ml-auto"
+                        >
+                          <div class="relative">
+                            <button type="button" class="dropdown-btn">
+                              Action &nbsp;
+                              <i class="fa-solid fa-chevron-down fa-sm"></i>
+                            </button>
+                            <div
+                              class="absolute text-xs dropdown-option z-10 min-w-full bg-gray-100 border rounded-md"
+                            >
+                              <button
+                                class="block hover:bg-yellow-300 w-full px-2 py-1"
+                              >
+                                Run
+                              </button>
+                              <button
+                                class="block hover:bg-yellow-300 w-full px-2 py-1"
+                              >
+                                Log
+                              </button>
+                            </div>
+                          </div>
+                          <button class="text-blue-500 openModalButton">
+                            Edit
+                          </button>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr class="text-sm border-t h-14">
+                      <td class="py-2 pl-3">Ordinary User</td>
+                      <td class="py-2 pl-3">
+                        <span class="border bg-yellow-300 py-2 px-5 rounded"
+                          >System</span
+                        >
+                      </td>
+                      <td class="py-2 pl-3">Super administrator</td>
+                      <td class="py-2 pl-3">27-09-2023 03:47</td>
+                      <td class="py-2 text-right pr-3">
+                        <div
+                          class="flex relative justify-end text-sm gap-3 ml-auto"
+                        >
+                          <div class="relative">
+                            <button type="button" class="dropdown-btn">
+                              Action &nbsp;
+                              <i class="fa-solid fa-chevron-down fa-sm"></i>
+                            </button>
+                            <div
+                              class="absolute text-xs dropdown-option z-10 min-w-full bg-gray-100 border rounded-md"
+                            >
+                              <button
+                                class="block hover:bg-yellow-300 w-full px-2 py-1"
+                              >
+                                Run
+                              </button>
+                              <button
+                                class="block hover:bg-yellow-300 w-full px-2 py-1"
+                              >
+                                Log
+                              </button>
+                            </div>
+                          </div>
+                          <button class="text-blue-500 openModalButton">
+                            Edit
+                          </button>
+                        </div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="fixed bottom-16 right-4 pb-2">
+                Total 1 page <span class="text-yellow-400">(5 records)</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <footer
+        class="w-full fixed bottom-0 h-14 flex items-center justify-between px-9"
+      >
+        <button
+          id="footerButton"
+          class="text-black px-4 py-3 rounded-md hover:bg-black hover:text-white"
+        >
+          File
+        </button>
+        <div class="flex items-center gap-4">
+          <img
+            id="footer-logo"
+            class="w-10 h-10"
+            src="/images/logo.png"
+            alt="Logo"
+          />
+          <div class="refresh"></div>
+        </div>
+      </footer>
+
+      <!-- Modal -->
+      <div
+        id="modal"
+        role="dialog"
+        class="fixed hidden inset-0 flex items-center justify-center bg-black bg-opacity-50"
+      >
+        <div class="bg-white mt-46 rounded-lg shadow-lg w-full max-w-2xl">
+          <div class="flex justify-between items-center p-4 border-b">
+            <h1 class="text-lg font-semibold" id="staticBackdropLabel">Role</h1>
+            <i
+              class="ri-close-circle-fill ri-lg cursor-pointer"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></i>
+          </div>
+          <form autocomplete="on">
+          <div
+            class="p-4 overflow-y-auto"
+            style="max-height: calc(100vh - 8rem)"
+          >
+              <div class="grid grid-cols-12 gap-4">
+                <div class="col-span-2">
+                  <label for="name" class="block font-bold"
+                    >Name:<span class="text-red-500">*</span></label
+                  >
+                </div>
+                <div class="col-span-10 pr-28">
+                  <input
+                    id="name"
+                    class="w-full p-2 border rounded-xl outline-none pl-5"
+                    type="text"
+                    placeholder="Please enter an username"
+                    autocomplete="name"
+                  />
+                </div>
+              </div>
+              <div class="grid grid-cols-12 gap-4 mt-4">
+                <div class="col-span-2">
+                  <label for="display" class="block font-bold">Display:</label>
+                </div>
+                <div class="col-span-10 flex items-center">
+                  <label for="display" class="inline-flex items-center me-5 cursor-pointer">
+                    <input id="display" type="checkbox" class="sr-only peer" />
+                    <div
+                      class="relative w-11 h-6 bg-gray-200 rounded-full peer dark:bg-gray-700 peer-focus:ring-4 peer-focus:ring-yellow-400 dark:peer-focus:ring-yellow-800 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-yellow-400"
+                    ></div>
+                  </label>
+                  <p class="text-sm text-gray-500">
+                    Whether to display when setting user role
+                  </p>
+                </div>
+              </div>
+              <div class="grid grid-cols-12 gap-4 mt-4">
+                <div class="col-span-2">
+                  <label for="filesize" class="block font-bold"
+                    >File size:<span class="text-red-500">*</span></label
+                  >
+                </div>
+                <div class="col-span-10 flex items-center space-x-2">
+                  <div class="relative w-full">
+                    <input
+                      id="filesize"
+                      class="w-full p-2 border rounded-xl outline-none pl-5"
+                      type="text"
+                      placeholder="Please upload file size"
+                    />
+                    <div
+                      class="absolute inset-y-0 right-0 flex items-center bg-gray-300 w-10 rounded-r-xl pl-2"
+                    >
+                      <p class="font-normal">GB</p>
+                    </div>
+                  </div>
+                  <p class="text-sm text-gray-500">(GB) 0 is unlimited</p>
+                </div>
+              </div>
+              <div class="grid grid-cols-12 gap-4 mt-4">
+                <div class="col-span-2 flex items-start">
+                  <label for="roleDescription" class="block font-bold"
+                    >Role description:<span class="text-red-500">*</span></label
+                  >
+                </div>
+                <div class="col-span-10 pr-28">
+                  <textarea
+                    id="roleDescription"
+                    class="w-full p-2 border rounded"
+                    rows="4"
+                  ></textarea>
+                </div>
+              </div>
+              <hr class="my-4" />
+              <div>
+                <div class="flex justify-center">
+                  <button
+                    type="button"
+                    class="title-btn px-8 py-2 bg-yellow-400 text-black rounded"
+                  >
+                    Documentation
+                  </button>
+                </div>
+                <div class="grid grid-cols-12 gap-4 mt-10">
+                  <div class="col-span-2 flex items-start">
+                    <h3 class="block font-bold">Fle manage:</h3>
+                  </div>
+                  <div
+                    class="col-span-10 md:col-span-9 grid grid-cols-1 md:grid-cols-4 gap-3"
+                  >
+                    <div
+                      class="checkbox-container flex items-center border px-3 py-2 rounded"
+                    >
+                      <input type="checkbox" class="mr-1" name="preview"/>
+                      <span>Preview</span>
+                    </div>
+                    <div
+                      class="checkbox-container flex items-center border px-3 py-2 rounded"
+                    >
+                      <input type="checkbox" class="mr-1" name="search" />
+                      <span>Search</span>
+                    </div>
+                    <div
+                      class="checkbox-container flex items-center  border md:w-min px-3 py-2 rounded"
+                    >
+                      <input type="checkbox" class="mr-1" name="download" />
+                      <span>Download</span>
+                    </div>
+                    <div
+                      class="checkbox-container flex items-center border md:ml-3 md:w-max px-3 py-2 rounded"
+                    >
+                      <input type="checkbox" class="mr-1" name="newfile" />
+                      <span>New file/folder</span>
+                    </div>
+                    <div
+                      class="checkbox-container flex items-center border px-3 py-2 rounded"
+                    >
+                      <input type="checkbox" class="mr-1" name="preview" />
+                      <span>Preview</span>
+                    </div>
+                    <div
+                      class="checkbox-container flex items-center border px-3 py-2 rounded"
+                    >
+                      <input type="checkbox" class="mr-1" name="search" />
+                     <span>Search</span>
+                    </div>
+                    <div
+                      class="checkbox-container flex items-center border md:w-min px-3 py-2 rounded"
+                    >
+                      <input type="checkbox" class="mr-1" name="download" />
+                      <span>Download</span>
+                    </div>
+                    <div
+                      class="checkbox-container flex items-center border md:ml-3 md:w-max px-3 py-2 rounded"
+                    >
+                      <input type="checkbox" class="mr-1" name="newfile" />
+                      <span>New file/folder</span>
+                    </div>
+                    <div
+                      class="checkbox-container flex items-center border px-3 py-2 rounded"
+                    >
+                      <input type="checkbox" class="mr-1" name="preview" />
+                      <span>Preview</span>
+                    </div>
+                    <div
+                      class="checkbox-container flex items-center border px-3 py-2 rounded"
+                    >
+                      <input type="checkbox" class="mr-1" name="search" />
+                      <span>Search</span>
+                    </div>
+                    <div
+                      class="checkbox-container flex items-center border md:w-min px-3 py-2 rounded"
+                    >
+                      <input type="checkbox" class="mr-1" name="download" />
+                      <span>Download</span>
+                    </div>
+                    <div
+                      class="checkbox-container flex items-center border md:ml-3 md:w-max px-3 py-2 rounded"
+                    >
+                      <input type="checkbox" class="mr-1" name="newfile" />
+                      <span>New file/folder</span>
+                    </div>
+                    <div
+                      class="checkbox-container flex items-center border px-3 py-2 rounded"
+                    >
+                      <input type="checkbox" class="mr-1" name="preview" />
+                      <span>Preview</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <hr class="my-4" />
+              <div>
+                <div class="grid grid-cols-12 gap-4 mt-4">
+                  <div class="col-span-2">
+                    <h3 class="block font-bold">User:</label>
+                  </div>
+                  <div
+                    class="col-span-9 grid grid-cols-1 md:grid-cols-4 gap-3"
+                  >
+                    <div
+                      class="checkbox-container flex items-center border px-3 py-2 rounded"
+                    >
+                      <input type="checkbox" class="mr-1" name="preview" />
+                      <span>Preview</span>
+                    </div>
+                    <div
+                      class="checkbox-container flex items-center border px-3 py-2 rounded"
+                    >
+                      <input type="checkbox" class="mr-1" name="search" />
+                      <span>Search</span>
+                    </div>
+                 <div
+                      class="checkbox-container flex items-center border md:w-min px-3 py-2 rounded"
+                    >
+                      <input type="checkbox" class="mr-1" name="download" />
+                      <span>Download</span>
+                    </div>
+                    <div
+                      class="checkbox-container flex items-center border md:ml-3 md:w-max px-3 py-2 rounded"
+                    >
+                      <input type="checkbox" class="mr-1" name="newfile" />
+                      <span>New file/folder</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <hr class="my-4" />
+              <div>
+                <div class="flex justify-center">
+                  <button
+                    type="button"
+                    class="title-btn px-12 py-2 bg-yellow-400 text-black rounded"
+                  >
+                    Backstage
+                  </button>
+                </div>
+                <div class="grid grid-cols-12 gap-4 mt-10">
+                  <div class="col-span-2">
+                    <h3 class="block font-bold"
+                      >Backstage:</h3
+                    >
+                  </div>
+                  <div
+                    class="col-span-9 grid grid-cols-1 md:grid-cols-4 gap-3"
+                  >
+                    <div
+                      class="checkbox-container flex items-center border px-3 py-2 rounded"
+                    >
+                      <input type="checkbox" class="mr-1" name="preview" />
+                      <span>Preview</span>
+                    </div>
+                    <div
+                      class="checkbox-container flex items-center border px-3 py-2 rounded"
+                    >
+                      <input type="checkbox" class="mr-1" name="search" />
+                      <span>Search</span>
+                    </div>
+                    <div
+                      class="checkbox-container flex items-center border md:w-min px-3 py-2 rounded"
+                    >
+                      <input type="checkbox" class="mr-1" name="download" />
+                      <span>Download</span>
+                    </div>
+                    <div
+                      class="checkbox-container flex items-center border md:ml-3 md:w-max px-3 py-2 rounded"
+                    >
+                      <input type="checkbox" class="mr-1" name="newfile" />
+                      <span>New file/folder</span>
+                    </div>
+                    <div
+                      class="checkbox-container flex items-center border px-3 py-2 rounded"
+                    >
+                      <input type="checkbox" class="mr-1" name="preview" />
+                      <span>Preview</span>
+                    </div>
+                    <div
+                      class="checkbox-container flex items-center border px-3 py-2 rounded"
+                    >
+                      <input type="checkbox" class="mr-1" name="search" />
+                      <span>Search</span>
+                    </div>
+                    <div
+                      class="checkbox-container flex items-center border md:w-min px-3 py-2 rounded"
+                    >
+                      <input type="checkbox" class="mr-1" name="download" />
+                      <span>Download</span>
+                    </div>
+                    <div
+                      class="checkbox-container flex items-center border md:ml-3 md:w-max px-3 py-2 rounded"
+                    >
+                      <input type="checkbox" class="mr-1" name="newfile" />
+                      <span>New file/folder</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <hr class="my-4" />
+              <div>
+                <div class="grid grid-cols-12 gap-4 mt-4">
+                  <div class="col-span-2">
+                    <h3 class="block font-bold">Role:</h3>
+                  </div>
+                  <div
+                    class="col-span-9 grid grid-cols-1 md:grid-cols-4 gap-3"
+                  >
+                    <div
+                      class="checkbox-container flex items-center  border px-3 py-2 rounded"
+                    >
+                      <input type="checkbox" class="mr-1" name="preview" />
+                      <span>Preview</span>
+                    </div>
+                    <div
+                      class="checkbox-container flex items-center  border px-3 py-2 rounded"
+                    >
+                      <input type="checkbox" class="mr-1" name="search" />
+                      <span>Search</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <hr class="my-4" />
+              <div>
+                <div class="grid grid-cols-12 gap-4 mt-4">
+                  <div class="col-span-2">
+                    <h3 class="block font-bold">Job:</h3>
+                  </div>
+                  <div
+                    class="col-span-9 grid grid-cols-1 md:grid-cols-4 gap-3"
+                  >
+                    <div
+                      class="checkbox-container flex items-center border px-3 py-2 rounded"
+                    >
+                      <input type="checkbox" class="mr-1" name="preview" />
+                      <span>Preview</span>
+                    </div>
+                    <div
+                      class="checkbox-container flex items-center border px-3 py-2 rounded"
+                    >
+                      <input type="checkbox" class="mr-1" name="search" />
+                      <span>Search</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <hr class="my-4" />
+              <div>
+                <div class="grid grid-cols-12 gap-4 mt-4">
+                  <div class="col-span-2">
+                    <h3 class="block font-bold"
+                      >User & Groups:</h3
+                    >
+                  </div>
+                  <div
+                    class="col-span-9 grid grid-cols-1 md:grid-cols-4 gap-3"
+                  >
+                    <div
+                      class="checkbox-container flex items-center border px-3 py-2 rounded"
+                    >
+                      <input type="checkbox" class="mr-1" name="preview" />
+                      <span>Preview</span>
+                    </div>
+                    <div
+                      class="checkbox-container flex items-center border px-3 py-2 rounded"
+                    >
+                      <input type="checkbox" class="mr-1" name="search" />
+                      <span>Search</span>
+                    </div>
+                    <div
+                      class="checkbox-container flex items-center border md:w-min px-3 py-2 rounded"
+                    >
+                      <input type="checkbox" class="mr-1" name="download" />
+                      <span>Download</span>
+                    </div>
+                    <div
+                      class="checkbox-container flex items-center border md:ml-3 md:w-max px-3 py-2 rounded"
+                    >
+                      <input type="checkbox" class="mr-1" name="newfile" />
+                      <span>New file/folder</span>
+                    </div>
+                    <div
+                      class="checkbox-container flex items-center border px-3 py-2 rounded"
+                    >
+                      <input type="checkbox" class="mr-1" name="preview" />
+                      <span>Preview</span>
+                    </div>
+                    <div
+                      class="checkbox-container flex items-center border px-3 py-2 rounded"
+                    >
+                      <input type="checkbox" class="mr-1" name="search" />
+                      <span>Search</span>
+                    </div>
+                    <div
+                      class="checkbox-container flex items-center border md:w-min px-3 py-2 rounded"
+                    >
+                      <input type="checkbox" class="mr-1" name="download" />
+                      <span>Download</span>
+                    </div>
+                    <div
+                      class="checkbox-container flex items-center border md:ml-3 md:w-max px-3 py-2 rounded"
+                    >
+                      <input type="checkbox" class="mr-1" name="newfile" />
+                      <span>New file/folder</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <hr class="my-4" />
+              <div>
+                <div class="grid grid-cols-12 gap-4 mt-4">
+                  <div class="col-span-2">
+                    <h3 class="block font-bold"
+                      >Document Permission:</h3
+                    >
+                  </div>
+                  <div
+                    class="col-span-9 grid grid-cols-1 md:grid-cols-4 gap-3"
+                  >
+                    <div
+                      class="checkbox-container flex items-center border px-3 py-2 rounded"
+                    >
+                      <input type="checkbox" class="mr-1" name="preview" />
+                      <span>Preview</span>
+                    </div>
+                    <div
+                      class="checkbox-container flex items-center border px-3 py-2 rounded"
+                    >
+                      <input type="checkbox" class="mr-1" name="search" />
+                      <span>Search</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <hr class="my-4" />
+              <div>
+                <div class="grid grid-cols-12 gap-4 mt-4">
+                  <div class="col-span-2">
+                    <h3 class="block font-bold"
+                      >Plugin Center:</h3
+                    >
+                  </div>
+                  <div
+                    class="col-span-9 grid grid-cols-1 md:grid-cols-4 gap-3"
+                  >
+                    <div
+                      class="checkbox-container flex items-center border px-3 py-2 rounded"
+                    >
+                      <input type="checkbox" class="mr-1" name="preview" />
+                      <span>Preview</span>
+                    </div>
+                    <div
+                      class="checkbox-container flex items-center border px-3 py-2 rounded"
+                    >
+                      <input type="checkbox" class="mr-1" name="search" />
+                      <span>Search</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <hr class="my-4" />
+              <div>
+                <div class="grid grid-cols-12 gap-4 mt-4">
+                  <div class="col-span-2">
+                    <h3 class="block font-bold"
+                      >Storage/file:</h3
+                    >
+                  </div>
+                  <div
+                    class="col-span-9 grid grid-cols-1 md:grid-cols-4 gap-3"
+                  >
+                    <div
+                      class="checkbox-container flex items-center border px-3 py-2 rounded"
+                    >
+                      <input type="checkbox" class="mr-1" name="preview" />
+                      <span>Preview</span>
+                    </div>
+                    <div
+                      class="checkbox-container flex items-center border px-3 py-2 rounded"
+                    >
+                      <input type="checkbox" class="mr-1" name="search" />
+                      <span>Search</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <hr class="my-4" />
+              <div>
+                <div class="grid grid-cols-12 gap-4 mt-4">
+                  <div class="col-span-2">
+                    <h3 class="block font-bold"
+                      >Scheduled Tasks:</h3
+                    >
+                  </div>
+                  <div
+                    class="col-span-9 grid grid-cols-1 md:grid-cols-4 gap-3"
+                  >
+                    <div
+                      class="checkbox-container flex items-center border px-3 py-2 rounded"
+                    >
+                      <input type="checkbox" class="mr-1" name="preview"/>
+                      <span>Preview</span>
+                    </div>
+                    <div
+                      class="checkbox-container flex items-center border px-3 py-2 rounded"
+                    >
+                      <input type="checkbox" class="mr-1" name="search" />
+                      <span>Search</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <hr class="my-4" />
+              <div>
+                <div class="grid grid-cols-12 gap-4 mt-4">
+                  <div class="col-span-2"></div>
+                  <div
+                    class="col-span-10 grid grid-cols-1 md:grid-cols-4 gap-3"
+                  >
+                    <div
+                      class="checkbox-container flex items-center space-x-2 border w-max px-4 py-2 rounded"
+                    >
+                      <input type="checkbox" class="mr-2" name="selectall" />
+                      <span>Select All / Cancel</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="flex justify-end p-4">
+            <button class="bg-black text-white px-12 py-2 rounded-full">
+              Save
+            </button>
+          </div>
+          </div>       
+          </form>
+        </div>
+      </div>
+    </div>
+    <script>
+      //Modal Open Functionality
+      const openModalButton = document.querySelectorAll(".openModalButton");
+      const modal = document.getElementById("modal");
+
+      openModalButton.forEach((e) => {
+        e.addEventListener("click", () => {
+          modal.classList.remove("hidden");
+        });
+      });
+
+      window.addEventListener("click", (event) => {
+        if (event.target == modal) {
+          modal.classList.add("hidden");
+        }
+      });
+
+      // Script to toggle modal visibility
+      document
+        .querySelectorAll('[data-bs-toggle="modal"]')
+        .forEach((button) => {
+          button.addEventListener("click", () => {
+            document
+              .querySelector(button.getAttribute("data-bs-target"))
+              .classList.remove("hidden");
+          });
+        });
+
+      document
+        .querySelectorAll('[data-bs-dismiss="modal"]')
+        .forEach((button) => {
+          button.addEventListener("click", () => {
+            button.closest(".fixed").classList.add("hidden");
+          });
+        });
+
+      function toggleDropdown(dropdownId) {
+        var dropdown = document.getElementById(dropdownId);
+        dropdown.classList.toggle("hidden");
+      }
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
+  </body>
+</html>

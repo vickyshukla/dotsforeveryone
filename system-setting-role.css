@@ -1,0 +1,109 @@
+.Role-container {
+  height: calc(100% - 56px);
+}
+
+#default-sidebar {
+  height: calc(100% - 56px);
+}
+
+.Role-sidebar {
+  background-image: url("/images/sidebarimg.png");
+}
+
+.all-tab {
+  background: var(--color-light-gray);
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+}
+
+nav .hover-effect:hover {
+  background: var(--color-light-gray);
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  color: var(--color-dark-yellow);
+}
+
+.Role-content {
+  height: calc(100% - 112px);
+}
+
+.Role-yellowbar {
+  background-image: url("/images/Yellowbar.png");
+}
+
+.right-container {
+background-color: var(--color-white);
+}
+
+footer {
+  background-image: url(/images/Wallpaper.png),linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5));
+  background-blend-mode: lighten;
+  background-position: bottom right;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.refresh {
+  width: 4px;
+  height: 27px;
+  border-radius: 3px;
+  background: rgba(198, 198, 198, 0.764);
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25),
+    0px 4px 4px 0px rgba(0, 0, 0, 0.25) inset;
+}
+
+.add-btn {
+  background: var(--color-light-gray);
+  color: var(--color-dark-yellow);
+}
+
+.dropdown-option {
+  display: none;
+}
+
+.dropdown-btn:focus ~ .dropdown-option,
+.dropdown-option:hover {
+  display: block;
+}
+
+input {
+  background-color: var(--color-light-gray);
+}
+
+.title-btn {
+  background-color: var(--color-dark-yellow);
+}
+
+input[type="checkbox"] {
+  border: 2px solid var(--color-dark-yellow);
+  outline: none;
+}
+
+input[type="checkbox"]:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+input[type="checkbox"]:checked {
+  background-color: var(--color-pure-black);
+}
+
+hr {
+  border: 1px solid var(--color-light-white);
+}
+
+.checkbox-container {
+  background-color: var(--color-lighten-gray);
+}
+
+#modal{
+  z-index: 999;
+}
+
+@media(max-width:640px){
+
+#default-sidebar {
+  height: 100%
+}
+
+}

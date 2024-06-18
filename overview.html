@@ -2,18 +2,692 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Users and Groups</title>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="root.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+        integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="styles/nx.css">
+    <link rel="stylesheet" href="overview.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <title>Overview</title>
 </head>
 
-<body class="bg-gray-100 p-8">
-    <div class="bg-yellow-400 p-4 rounded-md mb-4">
-        <h2 class="text-xl">Overview</h2>
+<body class="h-screen w-full flex flex-col nx">
+    <main class="flex w-full h-full flex">
+        <!-- sidebar -->
+        <aside class="h-full relative">
+            <input type="checkbox" class="hidden" id="sidebar-toggle"> 
+            <label for="sidebar-toggle" class="absolute lg:hidden top-2 -right-8 px-1">
+                <i class="ri-bar-chart-horizontal-line"></i>
+            </label>
+            <div class="h-full sidebar">
+                <div class="sidebar-container">
+                    <div class="p-6">
+                        <img src="/images/logo.png" alt="Dots Logo">
+                    </div>
+                    <div class="md:pt-6">
+                        <ul class="space-y-1">
+                            <li>
+                                <a class="w-full px-6 py-3 rounded-r-lg block flex justify-between items-center" href="overview.html">
+                                    <span> Overview </span>
+                                    <i class="fa fa-chevron-right text-c-yellow right-arrow"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <div role="button" onclick="toggleDropMenu(this)" class="drop-menu cursor-pointer rounded-r-lg">
+                                    <div class="w-full px-6 py-3 flex justify-between items-center" href="#">
+                                        <span> System Settings </span>
+                                        <i class="fa fa-chevron-right text-c-yellow transition-all"></i>
+                                    </div>
+                                    <ul class="drop-list text-sm space-y-1">
+                                        <li>
+                                            <a href="#"
+                                                class="block py-2 px-8 rounded-r-md w-full flex justify-between items-center">
+                                                <span>Basic</span>
+                                                <i class="fa fa-chevron-right text-c-yellow right-arrow"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#"
+                                                class="block py-2 px-8 rounded-r-md w-full flex justify-between items-center">
+                                                <span>Menu</span>
+                                                <i class="fa fa-chevron-right text-c-yellow right-arrow"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#"
+                                                class="block py-2 px-8 rounded-r-md w-full flex justify-between items-center">
+                                                <span>Notice</span>
+                                                <i class="fa fa-chevron-right text-c-yellow right-arrow"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#"
+                                                class="block py-2 px-8 rounded-r-md w-full flex justify-between items-center">
+                                                <span>Intranet Access</span>
+                                                <i class="fa fa-chevron-right text-c-yellow right-arrow"></i>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li>
+                                <div role="button" onclick="toggleDropMenu(this)" class="drop-menu cursor-pointer rounded-r-lg">
+                                    <div class="w-full px-6 py-3 flex justify-between items-center" href="#">
+                                        <span> Users &amp; Groups </span>
+                                        <i class="fa fa-chevron-right text-c-yellow transition-all"></i>
+                                    </div>
+                                    <ul class="drop-list text-sm space-y-1">
+                                        <li>
+                                            <a href="#"
+                                                class="block py-2 px-8 rounded-r-md w-full flex justify-between items-center">
+                                                <span>Users &amp; Groups </span>
+                                                <i class="fa fa-chevron-right text-c-yellow right-arrow"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#"
+                                                class="block py-2 px-8 rounded-r-md w-full flex justify-between items-center">
+                                                <span>Role</span>
+                                                <i class="fa fa-chevron-right text-c-yellow right-arrow"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#"
+                                                class="block py-2 px-8 rounded-r-md w-full flex justify-between items-center">
+                                                <span>Document Permission</span>
+                                                <i class="fa fa-chevron-right text-c-yellow right-arrow"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#"
+                                                class="block py-2 px-8 rounded-r-md w-full flex justify-between items-center">
+                                                <span>Intranet Access</span>
+                                                <i class="fa fa-chevron-right text-c-yellow right-arrow"></i>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li>
+                                <div role="button" onclick="toggleDropMenu(this)" class="drop-menu cursor-pointer rounded-r-lg">
+                                    <div class="w-full px-6 py-3 flex justify-between items-center" href="#">
+                                        <span>Storage/file</span>
+                                        <i class="fa fa-chevron-right text-c-yellow transition-all"></i>
+                                    </div>
+                                    <ul class="drop-list text-sm space-y-1">
+                                        <li>
+                                            <a href="#"
+                                                class="block py-2 px-8 rounded-r-md w-full flex justify-between items-center">
+                                                <span>Storage</span>
+                                                <i class="fa fa-chevron-right text-c-yellow right-arrow"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#"
+                                                class="block py-2 px-8 rounded-r-md w-full flex justify-between items-center">
+                                                <span>Backup</span>
+                                                <i class="fa fa-chevron-right text-c-yellow right-arrow"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#"
+                                                class="block py-2 px-8 rounded-r-md w-full flex justify-between items-center">
+                                                <span>Share</span>
+                                                <i class="fa fa-chevron-right text-c-yellow right-arrow"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#"
+                                                class="block py-2 px-8 rounded-r-md w-full flex justify-between items-center">
+                                                <span>webDAV Mount</span>
+                                                <i class="fa fa-chevron-right text-c-yellow right-arrow"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="settings-storage-media-preview.html"
+                                                class="block py-2 px-8 rounded-r-md w-full flex justify-between items-center">
+                                                <span>Media file preview &amp; Video</span>
+                                                <i class="fa fa-chevron-right text-c-yellow right-arrow"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#"
+                                                class="block py-2 px-8 rounded-r-md w-full flex justify-between items-center">
+                                                <span>Client and App</span>
+                                                <i class="fa fa-chevron-right text-c-yellow right-arrow"></i>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li>
+                                <a class="w-full px-6 py-3 rounded-r-lg block flex justify-between items-center"
+                                    href="settings-plugin.html">
+                                    <span>Plugin Center</span>
+                                    <i class="fa fa-chevron-right text-c-yellow right-arrow"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <div role="button" onclick="toggleDropMenu(this)" class="drop-menu cursor-pointer rounded-r-lg">
+                                    <div class="w-full px-6 py-3 flex justify-between items-center" href="#">
+                                        <span>Saftey Control</span>
+                                        <i class="fa fa-chevron-right text-c-yellow transition-all"></i>
+                                    </div>
+                                    <ul class="drop-list text-sm space-y-1">
+                                        <li>
+                                            <a href="#"
+                                                class="block py-2 px-8 rounded-r-md w-full flex justify-between items-center">
+                                                <span>Message Warning</span>
+                                                <i class="fa fa-chevron-right text-c-yellow right-arrow"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#"
+                                                class="block py-2 px-8 rounded-r-md w-full flex justify-between items-center">
+                                                <span>Login Log</span>
+                                                <i class="fa fa-chevron-right text-c-yellow right-arrow"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#"
+                                                class="block py-2 px-8 rounded-r-md w-full flex justify-between items-center">
+                                                <span>Operation Log</span>
+                                                <i class="fa fa-chevron-right text-c-yellow right-arrow"></i>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li>
+                                <a class="w-full px-6 py-3 rounded-r-lg block flex justify-between items-center"
+                                    href="settings-server-scheduled-tasks.html">
+                                    <span>Scheduled Tasks</span>
+                                    <i class="fa fa-chevron-right text-c-yellow right-arrow"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- main content -->
+        <div class="flex-grow border h-100 main">
+            <div class="flex w-full h-full flex-col content">
+                <div class="p-6">
+                    <div class="flex items-center gap-4">
+                        <i class="fa fa-gear fa-lg"></i> <span class="text-lg">System Settings</span>
+                    </div>
+                </div>
+
+                <!-- top taskbar -->
+                <div class="taskbar flex items-center justify-between px-6 py-4">
+                    <div class="flex items-center gap-4 w-full md:w-1/2">
+                        <div class="flex gap-2 items-center">
+                            Overview
+                        </div>
+                    </div>
+                    <div class="flex-grow md:w-1/2">
+                        <div class="flex items-center justify-end gap-2 md:gap-6">
+                                <button type="button" class="border px-3 hover:bg-black hover:text-white text-sm text-c-light-black py-1 rounded border-gray-500">
+                                    <i class="ri-download-line"></i>&nbsp;Export
+                                </button>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- overview content -->
+                <div class="p-4 space-y-2">
+                    <!-- info cards -->
+                    <div class="flex gap-2 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4">
+                        <div class="bg-white border p-2 flex flex-col h-full">
+                            <div class="border-b pb-1">
+                                <i class="ri-account-circle-line"></i>&nbsp;<span class="font-semibold">User</span>
+                            </div>
+                            <div class="text-center py-2 space-y-2 mt-auto">
+                                <span class="block text-sm">Total no. of users</span>
+                                <span class="block text-3xl font-bold text-c-yellow">02</span>
+                            </div>
+                            <div class="mt-auto grid grid-cols-2 border-t pt-1">
+                                <div class="flex items-center gap-2 text-xs">
+                                    <span class="block w-2 h-2 rounded-full bg-green-400"></span>
+                                    <span>Online: 01</span>
+                                </div>
+                                <div class="flex items-center gap-2 text-xs">
+                                    <span class="block w-2 h-2 rounded-full bg-red-400"></span>
+                                    <span>Offline: 01</span>
+                                </div>
+                            </div>
+                        </div>
+                    
+                        <div class="bg-white border p-2 flex flex-col h-full">
+                            <div class="border-b pb-1">
+                                <i class="ri-base-station-line"></i>&nbsp;<span class="font-semibold">Access Today</span>
+                            </div>
+                            <div class="text-xs py-2 space-y-1 mt-auto">
+                                <div class="flex gap-2 items-center">
+                                    <span class="w-1/3">Upload</span>
+                                    <div class="w-full bg-gray-200 rounded-full h-1.5 dark:bg-gray-700">
+                                        <div class="bg-c-yellow h-1.5 rounded-full" style="width: 45%"></div>
+                                    </div>
+                                </div>
+                                <div class="flex gap-2 items-center">
+                                    <span class="w-1/3">Download</span>
+                                    <div class="w-full bg-gray-200 rounded-full h-1.5 dark:bg-gray-700">
+                                        <div class="bg-c-yellow h-1.5 rounded-full" style="width: 25%"></div>
+                                    </div>
+                                </div>
+                                <div class="flex gap-2 items-center">
+                                    <span class="w-1/3">Edit</span>
+                                    <div class="w-full bg-gray-200 rounded-full h-1.5 dark:bg-gray-700">
+                                        <div class="bg-c-yellow h-1.5 rounded-full" style="width: 5%"></div>
+                                    </div>
+                                </div>
+                                <div class="flex gap-2 items-center">
+                                    <span class="w-1/3">Delete</span>
+                                    <div class="w-full bg-gray-200 rounded-full h-1.5 dark:bg-gray-700">
+                                        <div class="bg-c-yellow h-1.5 rounded-full" style="width: 70%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mt-auto text-xs grid grid-cols-2  border-t pt-1">
+                                <div>
+                                    <span>Request: 01</span>
+                                </div>
+                                <div>
+                                    <span>Users: 01</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-white border p-2 flex flex-col h-full">
+                            <div class="border-b pb-1">
+                                <i class="ri-folder-4-line"></i>&nbsp;<span class="font-semibold">File</span>
+                            </div>
+                            <div class="text-center py-2 space-y-2 mt-auto">
+                                <span class="block text-sm">Space Used</span>
+                                <span class="block text-3xl font-bold text-c-yellow">4 GB</span>
+                            </div>
+                            <div class="text-xs py-1 mt-auto">
+                                <div>
+                                    <span>Actual: 3.8GB</span>
+                                </div>
+                                <div>
+                                    <span>Saved: 0B</span>
+                                </div>
+                            </div>
+                            <div class="mt-auto grid grid-cols-2 border-t pt-1">
+                                <div class="flex items-center gap-2 text-xs">
+                                    <span>Count: 192</span>
+                                </div>
+                                <div class="flex items-center gap-2 text-xs">
+                                    <span>Today: 0B</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-white border p-2 flex flex-col h-full">
+                            <div class="border-b pb-1">
+                                <i class="ri-macbook-line"></i>&nbsp;<span class="font-semibold">System</span>
+                            </div>
+                            <div class="py-1 space-y-1">
+                                <span class="block text-sm">System Score</span>
+                                <div class="w-full bg-gray-200 rounded-full h-1.5 dark:bg-gray-700">
+                                    <div class="bg-green-400 h-1.5 rounded-full" style="width: 90%"></div>
+                                </div>
+                            </div>
+                            <div class="text-xs py-2 space-y-1">
+                                <div class="flex gap-2 items-center">
+                                    <span class="w-1/3">Disk</span>
+                                    <div class="w-full bg-gray-200 rounded-full h-1.5 dark:bg-gray-700">
+                                        <div class="bg-c-yellow h-1.5 rounded-full" style="width: 45%"></div>
+                                    </div>
+                                </div>
+                                <div class="flex gap-2 items-center">
+                                    <span class="w-1/3">Storage</span>
+                                    <div class="w-full bg-gray-200 rounded-full h-1.5 dark:bg-gray-700">
+                                        <div class="bg-c-yellow h-1.5 rounded-full" style="width: 25%"></div>
+                                    </div>
+                                </div>
+                                <div class="flex gap-2 items-center">
+                                    <span class="w-1/3">Lite Speed</span>
+                                    <span class="w-2/3 text-green-400">Normal</span>
+                                </div>
+                                <div class="flex gap-2 items-center">
+                                    <span class="w-1/3">PHP</span>
+                                    <span class="w-2/3 text-green-400">Normal</span>
+                                </div>
+                                <div class="flex gap-2 items-center">
+                                    <span class="w-1/3">MySQL</span>
+                                    <span class="w-2/3 text-green-400">Normal</span>
+                                </div>
+                            </div>
+                            <div class="mt-auto flex gap-2 text-xs pt-1 border-t">
+                                <span class="text-gray-400">Name: </span>
+                                <span><a href="desktop.dots.in">desktop.dots.in</a></span>
+                                <button class="ml-auto"><i class="ri-clipboard-line"></i></button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- table and donut chart -->
+                    <div class="grid grid-cols-1 md:grid-cols-4 gap-2">
+                        <div class="col-span-1 md:col-span-3 p-2 border bg-white">
+                            <div class="flex gap-3">
+                                <button type="button" onclick="showTab(this)" class="tab-control font-semibold text-sm px-1 active" data-tab="donut-space" data-control="user-space-tab">User Space</button>
+                                <button type="button" onclick="showTab(this)" class="tab-control font-semibold text-sm px-1" data-tab="donut-space" data-control="group-space-tab">Group Space</button>
+                            </div>
+                            <div class="pt-4">
+                                <div class="tab-content donut-space active" id="user-space-tab">
+                                    <div class="bg-white nx-table-container">
+                                        <table class="table-auto w-full">
+                                            <thead>
+                                                <tr class="bg-c-dark-gray">
+                                                    <th class="py-2 rounded-tl-md text-white text-left pl-3">ID</th>
+                                                    <th class="py-2 text-white text-left pl-3">Name</th>
+                                                    <th class="py-2 text-white text-left pl-3">Used</th>
+                                                    <th class="py-2 text-white text-left pl-3">Limited Size</th>
+                                                    <th class="py-2 rounded-tr-md text-white text-left pr-3">Creation</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody class="border">
+                                                <tr class="text-sm border-t">
+                                                    <td class="py-2 pl-3">
+                                                        <input type="checkbox">
+                                                    </td>
+                                                    <td class="py-2 pl-3">Me</td>
+                                                    <td class="py-2 pl-3">0 B</td>
+                                                    <td class="py-2 pl-3">3 GB</td>
+                                                    <td class="py-2 pr-3">
+                                                        <div class="flex relative text-sm gap-2 ml-auto">
+                                                            <span><i class="ri-calendar-2-line"></i>&nbsp;12-09-2024</span>
+                                                            <span><i class="ri-time-line"></i>&nbsp;07:45</span>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr class="text-sm border-t">
+                                                    <td class="py-2 pl-3 rounded-bl-lg">
+                                                        <input type="checkbox">
+                                                    </td>
+                                                    <td class="py-2 pl-3">Aadi Manav</td>
+                                                    <td class="py-2 pl-3">0 B</td>
+                                                    <td class="py-2 pl-3">3 GB</td>
+                                                    <td class="py-2  text-right pr-3">
+                                                        <div class="flex relative text-sm gap-2 ml-auto">
+                                                            <span><i class="ri-calendar-2-line"></i>&nbsp;12-09-2024</span>
+                                                            <span><i class="ri-time-line"></i>&nbsp;07:45</span>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <div class="tab-content donut-space" id="group-space-tab">
+                                    <div class="bg-white nx-table-container">
+                                        <table class="table-auto w-full">
+                                            <thead>
+                                                <tr class="bg-c-dark-gray">
+                                                    <th class="py-2 rounded-tl-md text-white text-left pl-3">ID</th>
+                                                    <th class="py-2 text-white text-left pl-3">Name</th>
+                                                    <th class="py-2 text-white text-left pl-3">Used</th>
+                                                    <th class="py-2 text-white text-left pl-3">Limited Size</th>
+                                                    <th class="py-2 rounded-tr-md text-white text-left pr-3">Creation</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody class="border">
+                                                <tr class="text-sm border-t">
+                                                    <td class="py-2 pl-3">
+                                                        <input type="checkbox">
+                                                    </td>
+                                                    <td class="py-2 pl-3">Network Disk</td>
+                                                    <td class="py-2 pl-3">0 B</td>
+                                                    <td class="py-2 pl-3">3 GB</td>
+                                                    <td class="py-2 pr-3">
+                                                        <div class="flex relative text-sm gap-2 ml-auto">
+                                                            <span><i class="ri-calendar-2-line"></i>&nbsp;12-09-2024</span>
+                                                            <span><i class="ri-time-line"></i>&nbsp;07:45</span>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-span-1 md:col-span-1 border bg-white">
+                            <div class="p-1">
+                                <div class="text-sm p-1">File Usage Ratio <span class="text-gray-400">[All]</span></div>
+                                <canvas id="usage-ratio-donut"></canvas>
+                                <div class="border-t p-1 mt-1 flex text-xs">
+                                    <div class="text-center w-full">
+                                        Total: 1.4 MB
+                                    </div>
+                                    <div class="text-center w-full">
+                                        Files: 442
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- data and space usage -->
+                    <div class="bg-white rounded border p-2">
+                        <div class="flex flex-wrap gap-2 justify-between">
+                            <div class="flex gap-3">
+                                <button type="button" onclick="showTab(this)" class="tab-control font-semibold text-sm px-1 active" data-tab="user-data-space" data-control="user-data-tab">User Data</button>
+                                <button type="button" onclick="showTab(this)" class="tab-control font-semibold text-sm px-1" data-tab="user-data-space" data-control="space-usage-tab">Space Usage</button>
+                            </div>
+                            <div class="">
+                                <form action="#" class="flex gap-2">
+                                    <label for="day" class="cursor-pointer radio-button">
+                                        <input type="radio" name="graph-timeframe" id="day" value="day" checked>
+                                        <span
+                                            class="block py-1 px-2 text-sm rounded-md text-center bg-gray-200">Day</span>
+                                    </label>
+                                    <label for="week" class="cursor-pointer radio-button">
+                                        <input type="radio" name="graph-timeframe" id="week" value="week">
+                                        <span
+                                            class="block py-1 px-2 text-sm rounded-md text-center bg-gray-200">Week</span>
+                                    </label>
+                                    <label for="month" class="cursor-pointer radio-button">
+                                        <input type="radio" name="graph-timeframe" id="month" value="month">
+                                        <span
+                                            class="block py-1 px-2 text-sm rounded-md text-center bg-gray-200">Month</span>
+                                    </label>
+                                    <label for="year" class="cursor-pointer radio-button">
+                                        <input type="radio" name="graph-timeframe" id="year" value="year">
+                                        <span
+                                            class="block py-1 px-2 text-sm rounded-md text-center bg-gray-200">Year</span>
+                                    </label>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="pt-2">
+                            <div class="tab-content user-data-space active" id="user-data-tab">
+                                <canvas id="user-data-chart" height="400"></canvas>
+                            </div>
+                            <div class="tab-content user-data-space" id="space-usage-tab">
+                                <canvas id="space-usage-chart" height="400"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <footer class="w-screen">
+        <div class="flex justify-between w-full items center px-2 md:px-6 py-2 md:py-4 bg-white bg-opacity-50">
+            <button type="button" class="bg-c-black text-white px-2 py-1 rounded-md">File</button>
+            <img src="/images/logo.png" alt="Dots Logo" width="36" height="36">
+        </div>
+    </footer>
+
+    <!-- run task scheduled message -->
+    <div id="run-success" class="fixed z-10 w-full transition-all" style="top: -120px;">
+        <div class="max-w-sm mx-auto">
+            <div class="flex items-center border rounded-md bg-white">
+                <div class="bg-c-yellow py-2 px-3">
+                    <i class="fa-solid fa-check fa-lg text-black"></i>
+                </div>
+                <p id="run-success-message" class="px-3 text-center w-full text-gray-700 text-sm">The scheduled task has
+                    restarted</p>
+            </div>
+        </div>
     </div>
-    <h1 class="text-2xl mb-4">Overview</h1>
-    <p>Content for Users and Groups goes here...</p>
+
+    <script defer src="script/sidebar.js"></script>
+    <script defer src="script/tabs.js"></script>
+
+    <script defer>
+        function showSuccessMessage(message) {
+            runSuccessMessage.innerText = message;
+            runSuccessModal.style.top = '20px';
+            setTimeout(() => {
+                runSuccessModal.style.top = '-120px';
+            }, 3000);
+        }
+    </script><script defer>
+        // for doughnut 
+        const ctx = document.getElementById('usage-ratio-donut');
+
+        new Chart(ctx, {
+            type: 'doughnut',
+            data: {
+                labels: [
+                    'Users',
+                    'Group',
+                    'Others'
+                ],
+                datasets: [{
+                    label: 'My First Dataset',
+                    data: [300, 50, 100],
+                    backgroundColor: [
+                        'rgb(255, 99, 132)',
+                        'rgb(54, 162, 235)',
+                        'rgb(255, 205, 86)'
+                    ],
+                    hoverOffset: 4
+                }]
+            },
+            options: {
+                plugins: {
+                    title: "File Usage Ratio",
+                }
+            }
+        });
+
+        // for line chart - user data
+        const ctx2 = document.getElementById('user-data-chart');
+        
+        new Chart(ctx2, {
+            type: 'line',
+            data: {
+                labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+                datasets: [
+                {
+                    label: 'Total Users',
+                    data: [65, 59, 80, 81, 56, 55, 40], // Data points for the first line
+                    borderColor: 'rgba(255, 99, 132, 1)', // Line color
+                    backgroundColor: 'rgba(255, 99, 132, 0.2)', // Fill color under the line
+                    fill: false, // Whether to fill under the line
+                    tension: 0.3
+                },
+                {
+                    label: 'New Users',
+                    data: [28, 48, 40, 19, 86, 27, 90], // Data points for the second line
+                    borderColor: 'rgba(54, 162, 235, 1)', // Line color
+                    backgroundColor: 'rgba(54, 162, 235, 0.2)', // Fill color under the line
+                    fill: false, // Whether to fill under the line
+                    tension: 0.3
+                },
+                {
+                    label: 'Logins',
+                    data: [18, 35, 60, 30, 70, 50, 80], // Data points for the third line
+                    borderColor: 'rgba(75, 192, 192, 1)', // Line color
+                    backgroundColor: 'rgba(75, 192, 192, 0.2)', // Fill color under the line
+                    fill: false, // Whether to fill under the line
+                    tension: 0.3
+                }
+            ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                x: {
+                    beginAtZero: true // Ensures the x-axis starts at zero
+                },
+                y: {
+                    beginAtZero: true // Ensures the y-axis starts at zero
+                }
+            }
+            }
+        });
+    
+        // for line chart - space usage
+        const ctx3 = document.getElementById('space-usage-chart');
+        
+        new Chart(ctx3, {
+            type: 'line',
+            data: {
+                labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+                datasets: [
+                {
+                    label: 'Total',
+                    data: [65, 59, 80, 81, 56, 55, 40], // Data points for the first line
+                    borderColor: 'rgba(255, 99, 132, 1)', // Line color
+                    backgroundColor: 'rgba(255, 99, 132, 0.2)', // Fill color under the line
+                    fill: true, // Whether to fill under the line
+                    tension: 0.4
+                },
+                {
+                    label: 'Actual',
+                    data: [28, 48, 40, 19, 86, 27, 90], // Data points for the second line
+                    borderColor: 'rgba(54, 162, 235, 1)', // Line color
+                    backgroundColor: 'rgba(54, 162, 235, 0.2)', // Fill color under the line
+                    fill: true, // Whether to fill under the line
+                    tension: 0.4
+                },
+                {
+                    label: 'User',
+                    data: [18, 35, 60, 30, 70, 50, 80], // Data points for the third line
+                    borderColor: 'rgba(75, 192, 192, 1)', // Line color
+                    backgroundColor: 'rgba(75, 192, 192, 0.2)', // Fill color under the line
+                    fill: true, // Whether to fill under the line
+                    tension: 0.4
+                },
+                {
+                    label: 'Group',
+                    data: [30, 70, 50, 80, 18, 35, 60 ], // Data points for the third line
+                    borderColor: 'rgba(75, 145, 142, 1)', // Line color
+                    backgroundColor: 'rgba(75, 145, 142, 0.2)', // Fill color under the line
+                    fill: true, // Whether to fill under the line
+                    tension: 0.4
+                }
+            ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                x: {
+                    beginAtZero: true // Ensures the x-axis starts at zero
+                },
+                y: {
+                    beginAtZero: true // Ensures the y-axis starts at zero
+                }
+            }
+            }
+        });
+    </script>
 </body>
 
 </html>

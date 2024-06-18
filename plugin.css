@@ -1,0 +1,83 @@
+.plugin-container {
+  height: calc(100% - 56px);
+}
+
+.plugin-sidebar {
+  background-image: url("/images/sidebarimg.png");
+}
+
+.all-tab {
+  background: var(--color-light-gray);
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+}
+
+nav ul li:hover {
+  background: var(--color-light-gray);
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  color: var(--color-dark-yellow);
+}
+
+.plugin-content {
+  height: calc(100% - 112px);
+}
+
+#default-sidebar {
+  height: calc(100% - 56px);
+}
+
+.plugin-yellowbar {
+  background-image: url("/images/Yellowbar.png");
+}
+
+.right-container {
+background-color: var(--color-white);
+}
+
+.small-container {
+  border: 1px solid gray;
+  background-color: rgb(229, 228, 228);
+}
+
+.small-container .img-container {
+  box-shadow: 0 4px rgba(0, 0, 0, 0.2);
+}
+
+.add-btn {
+  color: var(--color-dark-yellow);
+}
+
+#All {
+  color: var(--color-dark-yellow);
+}
+
+#dropdownDefaultButton {
+  border-radius: 5px;
+  background: var(--color-light-gray);
+}
+
+footer {
+  background-image: url(/images/Wallpaper.png),linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5));
+  background-blend-mode: lighten;
+  background-position: bottom right;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.refresh {
+  width: 4px;
+  height: 27px;
+  border-radius: 3px;
+  background: rgba(198, 198, 198, 0.764);
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25),
+    0px 4px 4px 0px rgba(0, 0, 0, 0.25) inset;
+}
+
+@media(max-width:640px){
+
+#default-sidebar {
+  height: 100%
+}
+
+}

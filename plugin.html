@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Plugin</title>
+    <link
+      href="https://unpkg.com/tailwindcss@^2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+     <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="plugin.css" />
+    <link rel="stylesheet" href="root.css" />
+  </head>
+  <body>
+    <div class="plugin w-full h-screen">
+      <div class="plugin-container w-full">
+        <button
+          data-drawer-target="default-sidebar"
+          data-drawer-toggle="default-sidebar"
+          aria-controls="default-sidebar"
+          type="button"
+          class="inline-flex items-center p-2 mt-2 ms-3 text-sm text-gray-500 rounded-lg sm:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+        >
+          <span class="sr-only">Open sidebar</span>
+          <svg
+            class="w-6 h-6"
+            aria-hidden="true"
+            fill="currentColor"
+            viewBox="0 0 20 20"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              clip-rule="evenodd"
+              fill-rule="evenodd"
+              d="M2 4.75A.75.75 0 012.75 4h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 4.75zm0 10.5a.75.75 0 01.75-.75h7.5a.75.75 0 010 1.5h-7.5a.75.75 0 01-.75-.75zM2 10a.75.75 0 01.75-.75h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 10z"
+            ></path>
+          </svg>
+        </button>
+        <aside
+          id="default-sidebar"
+          class="fixed top-0 left-0 z-40 w-64 lg:w-1/6 h-full transition-transform -translate-x-full sm:translate-x-0"
+          aria-label="Sidebar"
+        >
+          <div class="plugin-sidebar h-full bg-no-repeat bg-cover bg-center">
+            <div class="plugin-logo px-9 py-7">
+              <img class="w-16 h-16" src="/images/logo.png" alt="logo" />
+            </div>
+            <nav>
+              <ul class="grid gap-2">
+                <li class="all-tab">
+                  <a class="flex items-center py-3 text-sm" href="#">
+                    <span id="All" class="text-base font-normal px-10"
+                      >All</span
+                    >
+                  </a>
+                </li>
+                <li>
+                  <a class="flex items-center py-3 text-sm" href="#">
+                    <span class="text-base font-normal px-10"> Installed </span>
+                  </a>
+                </li>
+                <li>
+                  <a
+                    class="flex items-center py-3 text-sm transition-colors"
+                    href="#"
+                  >
+                    <span class="text-base font-normal px-10"> Update </span>
+                  </a>
+                </li>
+                <li>
+                  <a
+                    class="flex items-center py-3 text-sm ransition-colors"
+                    href="#"
+                  >
+                    <span class="text-base font-normal px-10">
+                      Enterprise
+                    </span>
+                  </a>
+                </li>
+                <li>
+                  <a
+                    class="flex items-center py-3 text-sm transition-colors"
+                    href="#"
+                  >
+                    <span class="text-base font-normal px-10"> File </span>
+                  </a>
+                </li>
+                <li>
+                  <a
+                    class="flex items-center py-3 text-sm transition-colors"
+                    href="#"
+                  >
+                    <span class="text-base font-normal px-10"> Security </span>
+                  </a>
+                </li>
+                <li>
+                  <a
+                    class="flex items-center py-3 text-sm transition-colors"
+                    href="#"
+                  >
+                    <span class="text-base font-normal px-10"> Utilities </span>
+                  </a>
+                </li>
+                <li>
+                  <a
+                    class="flex items-center py-3 text-sm transition-colors"
+                    href="#"
+                  >
+                    <span class="text-base font-normal px-10"> Media </span>
+                  </a>
+                </li>
+                <li>
+                  <a
+                    class="flex items-center py-3 text-sm transition-colors"
+                    href="#"
+                  >
+                    <span class="text-base font-normal px-10"> Others </span>
+                  </a>
+                </li>
+                <li>
+                  <a
+                    class="flex items-center py-3 text-sm transition-colors"
+                    href="#"
+                  >
+                    <span class="text-base font-normal px-10">
+                      Customization
+                    </span>
+                  </a>
+                </li>
+              </ul>
+            </nav>
+          </div>
+        </aside>
+
+        <div class="right-container h-full sm:ml-64">
+          <div class="plugin-header w-full h-28">
+            <div class="flex items-center py-3 px-6">
+              <h1 class="text-base font-medium mb-2">Plugin</h1>
+            </div>
+            <div
+              class="plugin-yellowbar w-full h-12 bg-no-repeat bg-cover bg-center flex items-center justify-between px-7"
+            >
+              <span class="text-base font-medium">All</span>
+              <span class="relative">
+                <input
+                  class="py-1 px-6 outline-none rounded-sm border-none"
+                  type="search"
+                  placeholder="Search"
+                />
+                <i id="searchicon" class="ri-search-line absolute right-3 top-1"></i>
+              </span>
+            </div>
+          </div>
+          <div
+            class="plugin-content flex gap-10 flex-wrap p-5 overflow-y-scroll"
+          ></div>
+        </div>
+      </div>
+      <footer
+        class="w-full fixed bottom-0 h-14 flex items-center justify-between px-9"
+      >
+        <button
+          id="footerButton"
+          class="text-black px-4 py-3 rounded-md hover:bg-black hover:text-white"
+        >
+          File
+        </button>
+        <div class="flex items-center gap-4">
+          <img
+            id="footer-logo"
+            class="w-10 h-10"
+            src="/images/logo.png"
+            alt="Logo"
+          />
+          <div class="refresh"></div>
+        </div>
+      </footer>
+    </div>
+
+    <script>
+      //Dynamically added the containers
+      const container = document.querySelector(".plugin-content");
+      const data = [
+        { id: 1, name: "Office", image: "/images/OfficeImg.png" },
+        { id: 2, name: "WebDAV Mount", image: "/images/WebdavImg.png" },
+        {
+          id: 3,
+          name: "Internet access",
+          image: "/images/internetaccessImg.png",
+        },
+        { id: 4, name: "Picasa Viewer", image: "/images/Picasa.png" },
+        { id: 5, name: "Minder Diagram", image: "/images/MinderImg.png" },
+      ];
+
+      data.forEach((item) => {
+        const smallContainer = document.createElement("div");
+        smallContainer.id = `${item.id}`;
+        smallContainer.className =
+          "small-container w-48 h-56 rounded-lg flex flex-col items-center justify-center gap-5";
+
+        smallContainer.innerHTML = `
+                <div class="img-container w-16 h-16 rounded-lg bg-white shadow-black flex items-center justify-center">
+                    <img class="w-10 h-10" src="${item.image}" alt="${item.name} Image">
+                </div>
+                <h1 class="font-medium">${item.name}</h1>
+                <div> 
+                    <button id="dropdownDefaultButton" data-dropdown-toggle="dropdown${item.id}" class="dropdown-button flex items-center justify-between gap-2 text-yellow-300 rounded-md text-lg py-2 px-8 w-min" type="button">Enable<i class="ri-arrow-down-s-line text-white"></i>
+                    </button>
+
+                    <div id="dropdown${item.id}" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
+                        <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownDefaultButton">
+                          <li>
+                            <button type="button" class="dropdown-item block w-full px-4 py-2 text-base hover:bg-yellow-400 hover:text-black flex items-center gap-2"><i class="ri-edit-box-line"></i>Update</button>
+                          </li>
+                          <li>
+                            <button type="button" class="dropdown-item block w-full px-4 py-2 text-base hover:bg-yellow-400 hover:text-black flex items-center gap-2"><i class="ri-delete-bin-6-line"></i>Manual update</a>
+                          </li>
+                           <li>
+                            <button type="button" class="dropdown-item block w-full px-4 py-2 text-base hover:bg-yellow-400 hover:text-black flex items-center gap-2"><i class="ri-edit-box-line"></i>Configure</a>
+                          </li>
+                           <li>
+                            <button type="button" class="dropdown-item block w-full px-4 py-2 text-base hover:bg-yellow-400 hover:text-black flex items-center gap-2"><i class="ri-delete-bin-6-line"></i>Disable</a>
+                          </li>
+                           <li>
+                            <button type="button" class="dropdown-item block w-full px-4 py-2 text-base hover:bg-yellow-400 hover:text-black flex items-center gap-2"><i class="ri-edit-box-line"></i>Uninstall</a>
+                          </li>
+                            <li>
+                          <button type="button" class="dropdown-item block w-full px-4 py-2 text-base hover:bg-yellow-400 hover:text-black flex items-center gap-2"><i class="ri-edit-box-line"></i>Enable</button>
+                      </li>
+                        </ul>
+                    </div>
+                </div>
+            `;
+        container.appendChild(smallContainer);
+        const dropdownButton = smallContainer.querySelector(".dropdown-button");
+        const dropdownMenu = smallContainer.querySelector(
+          `#dropdown${item.id}`
+        );
+        const dropdownItems = smallContainer.querySelectorAll(".dropdown-item");
+
+        dropdownItems.forEach((dropdownItem) => {
+          dropdownItem.addEventListener("click", function () {
+            dropdownButton.innerHTML =
+              this.textContent +
+              '<i class="text-white ri-arrow-down-s-line"></i>';
+            dropdownMenu.classList.add("hidden");
+          });
+        });
+      });
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
+  </body>
+</html>
