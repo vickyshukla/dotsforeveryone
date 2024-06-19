@@ -5,9 +5,6 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="root.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
-        integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="styles/nx.css">
     <title>Server Settings - Scheduled Tasks</title>
 </head>
@@ -41,7 +38,7 @@
                                     </div>
                                     <ul class="drop-list text-sm space-y-1">
                                         <li>
-                                            <a href="#"
+                                            <a href="system-settings-basic.html"
                                                 class="block py-2 px-8 rounded-r-md w-full flex justify-between items-center">
                                                 <span>Basic</span>
                                                 <i class="ri-arrow-right-s-line text-c-yellow right-arrow text-2xl"></i>
@@ -217,7 +214,7 @@
             <div class="flex w-full h-full flex-col content">
                 <div class="p-6">
                     <div class="flex items-center gap-4">
-                        <i class="fa fa-gear fa-lg"></i> <span class="text-lg">System Settings</span>
+                        <i class="ri-settings-3-fill text-2xl"></i> <span class="text-lg">System Settings</span>
                     </div>
                 </div>
 
@@ -306,8 +303,7 @@
                                     <td class="py-2  text-right pr-3">
                                         <div class="flex relative justify-end text-sm gap-3 ml-auto">
                                             <div class="relative">
-                                                <button type="button" class="dropdown-btn">Action &nbsp; <i
-                                                        class="fa-solid fa-chevron-down fa-sm"></i> </button>
+                                                <button type="button" class="dropdown-btn">Action &nbsp; <i class="ri-arrow-down-s-line"></i></button>
                                                 <div
                                                     class="absolute text-xs dropdown-option w-20 z-10 min-w-full bg-gray-100 border rounded-md">
                                                     <button
@@ -340,8 +336,7 @@
                                     <td class="py-2  text-right pr-3">
                                         <div class="flex relative justify-end text-sm gap-3 ml-auto">
                                             <div class="relative">
-                                                <button type="button" class="dropdown-btn">Action &nbsp; <i
-                                                        class="fa-solid fa-chevron-down fa-sm"></i> </button>
+                                                <button type="button" class="dropdown-btn">Action &nbsp; <i class="ri-arrow-down-s-line"></i></button>
                                                 <div
                                                     class="absolute text-xs dropdown-option w-20 z-10 min-w-full bg-gray-100 border rounded-md">
                                                     <button
@@ -379,7 +374,7 @@
             <div class="flex py-3 px-5 border-b border-gray-400 justify-between items-center">
                 <h2 class="text-lg font-medium">Edit</h2>
                 <button type="button" id="closeModalButton">
-                    <i class="fa-solid fa-circle-xmark fa-lg"></i>
+                    <i class="ri-close-circle-fill text-lg"></i>
                 </button>
             </div>
             <div class="p-5">
@@ -500,7 +495,7 @@
             <div class="flex py-3 px-5 border-b border-gray-400 justify-between items-center">
                 <h2 class="text-lg font-medium">Task Manager</h2>
                 <button type="button" id="closeTaskManagerModalButton">
-                    <i class="fa-solid fa-circle-xmark fa-lg"></i>
+                    <i class="ri-close-circle-fill text-lg"></i>
                 </button>
             </div>
             <div class="p-5 text-center">
@@ -517,7 +512,7 @@
         <div class="max-w-sm mx-auto">
             <div class="flex items-center border rounded-md bg-white">
                 <div class="bg-c-yellow py-2 px-3">
-                    <i class="fa-solid fa-check fa-lg text-black"></i>
+                    <i class="ri-check-line text-xl"></i>
                 </div>
                 <p id="run-success-message" class="px-3 text-center w-full text-gray-700 text-sm">The scheduled task has
                     restarted</p>
