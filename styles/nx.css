@@ -29,6 +29,9 @@
 .text-c-yellow {
     color: var(--color-dark-yellow);
 }
+.text-link-blue{
+    color: var(--color-link-blue);
+}
 
 .text-c-light-black {
     color: var(--color-light-black);
@@ -75,13 +78,15 @@ body.nx {
 
 @media (width > 768px) {
     .nx .main {
-        max-height: calc(100vh - 60px);
+        /* max-height: calc(100vh - 60px); */
+        max-height: calc(100vh);
     }
 }
 
 @media (width < 767.98px) {
     .nx .main {
-        max-height: calc(100vh - 45px);
+        /* max-height: calc(100vh - 45px); */
+        max-height: calc(100vh);
     }
 }
 
@@ -95,6 +100,7 @@ body.nx {
     background: url('/images/footer-bg.png');
     background-size: cover;
     background-position: center;
+    display: none;
     position: fixed;
     bottom: 0;
 }
@@ -130,11 +136,12 @@ body.nx {
 }
 
 .nx .toggle-bg {
-    background: var(--color-dark-gray);
+    background: var(--color-gray-3);
+    border: 1px solid var(--color-gray-3);
 }
 
 .nx .toggle-switch input:checked~.dot {
-    transform: translateX(130%);
+    transform: translateX(118%);
 }
 
 .nx .toggle-switch input:checked~.toggle-bg {
@@ -145,6 +152,12 @@ body.nx {
     display: none;
 }
 
+.nx  .tooltip {
+    display: none;
+}
+.nx .has-tooltip:hover ~ .tooltip {
+    display: block;
+}
 .nx .dropdown-btn:focus~.dropdown-option,
 .dropdown-option:hover {
     display: block;
@@ -224,6 +237,7 @@ body.nx {
 
 .tab-control.active {
     border-color: var(--color-dark-yellow);
+    font-weight: bold;
 }
 
 .tab-content {
@@ -232,4 +246,11 @@ body.nx {
 
 .tab-content.active {
     display: block;
+}
+
+/* no dark outline on input focus */
+.nx input:focus,
+.nx textarea:focus,
+.nx select:focus{
+    outline: none;
 }
