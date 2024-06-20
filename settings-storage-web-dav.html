@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="root.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+        integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="styles/nx.css">
+    <title>Server Settings - Scheduled Tasks</title>
+</head>
+
+<body class="h-screen w-full flex flex-col nx">
+    <main class="flex w-full h-full flex">
+        <!-- sidebar -->
+        <aside class="h-full relative">
+            <input type="checkbox" class="hidden" id="sidebar-toggle"> 
+            <label for="sidebar-toggle" class="absolute lg:hidden top-2 -right-8 px-1">
+                <i class="ri-bar-chart-horizontal-line"></i>
+            </label>
+            <div class="h-full sidebar">
+                <div class="sidebar-container">
+                    <div class="p-6">
+                        <img src="/images/logo.png" alt="Dots Logo">
+                    </div>
+                    <div class="md:pt-6">
+                        <ul class="space-y-1">
+                            <li>
+                                <a class="w-full px-6 py-3 rounded-r-lg block flex justify-between items-center" href="overview.html">
+                                    <span> Overview </span>
+                                    <i class="ri-arrow-right-s-line text-c-yellow right-arrow text-2xl"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <div role="button" onclick="toggleDropMenu(this)" class="drop-menu cursor-pointer rounded-r-lg">
+                                    <div class="w-full px-6 py-3 flex justify-between items-center" href="#">
+                                        <span> System Settings </span>
+                                        <i class="ri-arrow-right-s-line text-c-yellow big-right-arrow text-2xl"></i>
+                                    </div>
+                                    <ul class="drop-list text-sm space-y-1">
+                                        <li>
+                                            <a href="system-settings-basic.html"
+                                                class="block py-2 px-8 rounded-r-md w-full flex justify-between items-center">
+                                                <span>Basic</span>
+                                                <i class="ri-arrow-right-s-line text-c-yellow right-arrow text-2xl"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#"
+                                                class="block py-2 px-8 rounded-r-md w-full flex justify-between items-center">
+                                                <span>Menu</span>
+                                                <i class="ri-arrow-right-s-line text-c-yellow right-arrow text-2xl"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#"
+                                                class="block py-2 px-8 rounded-r-md w-full flex justify-between items-center">
+                                                <span>Notice</span>
+                                                <i class="ri-arrow-right-s-line text-c-yellow right-arrow text-2xl"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#"
+                                                class="block py-2 px-8 rounded-r-md w-full flex justify-between items-center">
+                                                <span>Intranet Access</span>
+                                                <i class="ri-arrow-right-s-line text-c-yellow right-arrow text-2xl"></i>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li>
+                                <div role="button" onclick="toggleDropMenu(this)" class="drop-menu cursor-pointer rounded-r-lg">
+                                    <div class="w-full px-6 py-3 flex justify-between items-center" href="#">
+                                        <span> Users &amp; Groups </span>
+                                        <i class="ri-arrow-right-s-line text-c-yellow big-right-arrow text-2xl"></i>
+                                    </div>
+                                    <ul class="drop-list text-sm space-y-1">
+                                        <li>
+                                            <a href="#"
+                                                class="block py-2 px-8 rounded-r-md w-full flex justify-between items-center">
+                                                <span>Users &amp; Groups </span>
+                                                <i class="ri-arrow-right-s-line text-c-yellow right-arrow text-2xl"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#"
+                                                class="block py-2 px-8 rounded-r-md w-full flex justify-between items-center">
+                                                <span>Role</span>
+                                                <i class="ri-arrow-right-s-line text-c-yellow right-arrow text-2xl"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#"
+                                                class="block py-2 px-8 rounded-r-md w-full flex justify-between items-center">
+                                                <span>Document Permission</span>
+                                                <i class="ri-arrow-right-s-line text-c-yellow right-arrow text-2xl"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#"
+                                                class="block py-2 px-8 rounded-r-md w-full flex justify-between items-center">
+                                                <span>Intranet Access</span>
+                                                <i class="ri-arrow-right-s-line text-c-yellow right-arrow text-2xl"></i>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li>
+                                <div role="button" onclick="toggleDropMenu(this)" class="drop-menu cursor-pointer rounded-r-lg">
+                                    <div class="w-full px-6 py-3 flex justify-between items-center" href="#">
+                                        <span>Storage/file</span>
+                                        <i class="ri-arrow-right-s-line text-c-yellow big-right-arrow text-2xl"></i>
+                                    </div>
+                                    <ul class="drop-list text-sm space-y-1">
+                                        <li>
+                                            <a href="#"
+                                                class="block py-2 px-8 rounded-r-md w-full flex justify-between items-center">
+                                                <span>Storage</span>
+                                                <i class="ri-arrow-right-s-line text-c-yellow right-arrow text-2xl"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#"
+                                                class="block py-2 px-8 rounded-r-md w-full flex justify-between items-center">
+                                                <span>Backup</span>
+                                                <i class="ri-arrow-right-s-line text-c-yellow right-arrow text-2xl"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#"
+                                                class="block py-2 px-8 rounded-r-md w-full flex justify-between items-center">
+                                                <span>Share</span>
+                                                <i class="ri-arrow-right-s-line text-c-yellow right-arrow text-2xl"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="settings-storage-web-dav.html"
+                                                class="block py-2 px-8 rounded-r-md w-full flex justify-between items-center">
+                                                <span>webDAV Mount</span>
+                                                <i class="ri-arrow-right-s-line text-c-yellow right-arrow text-2xl"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="settings-storage-media-preview.html"
+                                                class="block py-2 px-8 rounded-r-md w-full flex justify-between items-center">
+                                                <span>Media file preview &amp; Video</span>
+                                                <i class="ri-arrow-right-s-line text-c-yellow right-arrow text-2xl"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#"
+                                                class="block py-2 px-8 rounded-r-md w-full flex justify-between items-center">
+                                                <span>Client and App</span>
+                                                <i class="ri-arrow-right-s-line text-c-yellow right-arrow text-2xl"></i>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li>
+                                <a class="w-full px-6 py-3 rounded-r-lg block flex justify-between items-center"
+                                    href="settings-plugin.html">
+                                    <span>Plugin Center</span>
+                                    <i class="ri-arrow-right-s-line text-c-yellow right-arrow text-2xl"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <div role="button" onclick="toggleDropMenu(this)" class="drop-menu cursor-pointer rounded-r-lg">
+                                    <div class="w-full px-6 py-3 flex justify-between items-center" href="#">
+                                        <span>Saftey Control</span>
+                                        <i class="ri-arrow-right-s-line text-c-yellow big-right-arrow text-2xl"></i>
+                                    </div>
+                                    <ul class="drop-list text-sm space-y-1">
+                                        <li>
+                                            <a href="#"
+                                                class="block py-2 px-8 rounded-r-md w-full flex justify-between items-center">
+                                                <span>Message Warning</span>
+                                                <i class="ri-arrow-right-s-line text-c-yellow right-arrow text-2xl"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#"
+                                                class="block py-2 px-8 rounded-r-md w-full flex justify-between items-center">
+                                                <span>Login Log</span>
+                                                <i class="ri-arrow-right-s-line text-c-yellow right-arrow text-2xl"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#"
+                                                class="block py-2 px-8 rounded-r-md w-full flex justify-between items-center">
+                                                <span>Operation Log</span>
+                                                <i class="ri-arrow-right-s-line text-c-yellow right-arrow text-2xl"></i>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li>
+                                <a class="w-full px-6 py-3 rounded-r-lg block flex justify-between items-center"
+                                    href="settings-server-scheduled-tasks.html">
+                                    <span>Scheduled Tasks</span>
+                                    <i class="ri-arrow-right-s-line text-c-yellow right-arrow text-2xl"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- main content -->
+        <div class="flex-grow border h-100 main">
+            <div class="flex w-full h-full flex-col content">
+                <div class="p-6">
+                    <div class="flex items-center gap-4">
+                        <i class="ri-settings-3-fill text-2xl"></i> <span class="text-lg">Meant to be web DAV Page</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script defer src="script/sidebar.js"></script>
+</body>
+
+</html>
