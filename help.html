@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Help</title>
+     <link href="https://unpkg.com/tailwindcss@^2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
+     <link rel="stylesheet" href="root.css">
+     <link rel="stylesheet" href="help.css">
+</head>
+<body>
+    <div class="w-full h-screen">
+        <div class="help-page w-full">
+            <nav class="py-5 px-10">
+                <img class="w-12 h-12" src="/images/logo.png" alt="Logo">
+            </nav>
+            <div class="user-input w-full flex flex-col items-center justify-center px-28">
+              <div class="text-center flex flex-col items-center justify-center gap-4 p-10">
+                <img src="/images/profile.png" alt="Profile">
+                <h1 class="text-5xl font-medium">Hello <span class="username underline underline-offset-8 decoration-1">Rachel!</span></h1>
+                <p class="tracking-wide">Tell us your problem so we can get the right help and support.</p>
+              </div>
+              <div class="w-full mt-5">
+                <textarea class="w-full h-10 border-b-2 border-black outline-none" id="textInput" maxlength="90"></textarea>
+                 <div class="counter font-medium" id="charCounter">90 Characters remaining</div>
+              </div>
+              <div class="submit-btn mt-28">
+                <button class="py-1.5 px-20 text-white">Submit</button>
+              </div>
+            </div>
+        </div>
+         <footer class="w-full h-14 flex items-center justify-between px-9">
+        <button
+          id="footerButton"
+          class="text-black px-4 py-3 rounded-md hover:bg-black hover:text-white"
+        >
+          File
+        </button>
+        <div class="flex items-center gap-4">
+              <img
+            id="footer-logo"
+            class="w-10 h-10"
+            src="/images/logo.png"
+            alt="Logo"
+          />
+          <div class="refresh">
+          </div>
+          </div>
+      </footer>
+    </div>
+
+    <script>
+       const textInput = document.getElementById('textInput');
+        const charCounter = document.getElementById('charCounter');
+
+        textInput.addEventListener('input', () => {
+            const remaining = 90 - textInput.value.length;
+            charCounter.textContent = `${remaining} characters remaining`;
+        });
+    </script>
+</body>
+</html>

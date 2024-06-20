@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="initial-scale=1, width=device-width" />
+      <link href="https://unpkg.com/tailwindcss@^2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="root.css" />
+    <link rel="stylesheet" href="login.css" />
+  </head>
+  <body>
+    <div class="login-screen w-full h-screen flex items-center justify-center gap-2 relative">
+      <div class="left-background w-1/2 h-full bg-no-repeat bg-cover bg-center">
+        <div class="blur-container">
+        </div>
+      </div>
+      <div
+        class="right-background w-1/2 h-full bg-no-repeat bg-cover bg-center"
+      >
+        <div class="login-container">
+          <div class="logo flex items-center justify-center mt-10">
+            <img class="w-20 h-20" src="/images/logo.png" alt="Logo" />
+          </div>
+          <div class="login flex items-center justify-center mt-16 pl-10">
+            <div class="left-container w-2/5 flex items-center justify-center">
+              <img
+                class="vector-img w-60 h-60"
+                src="/images/profileloginvector.png"
+                alt="background"
+              />
+              <img
+                class="profile-img w-24 h-24"
+                src="/images/profile.png"
+                alt="profile"
+              />
+            </div>
+            <div class="right-container w-3/5 px-5 py-0">
+              <h1 class="mb-8 text-2xl font-normal">Welcome back...</h1>
+              <form>
+                <input class="userinput" type="text" placeholder="Username" required/>
+                <input class="userinput" type="password" placeholder="Password" required />
+                <div class="flex items-center w-5 gap-1">
+                  <input type="checkbox" />
+                  <p class="text-xs font-normal">Remember</p>
+                  <p class="text-xs font-normal">me</p>
+                </div>
+                <button class="userinput" id="login-btn"><a href="dashboard.html">Login</a></button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

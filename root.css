@@ -28,7 +28,6 @@
     --color-lighten-gray:#F9F9F9;
     --color-medium-gray:#6D6D6D;
     --color-link-blue: #00ADEF;
-    --bg-linear-gradient: linear-gradient(204deg, #FFF 15.46%, rgba(217, 217, 217, 0.56) 118.36%);
     --box-shadow:0px 4px 4px 0px rgba(0, 0, 0, 0.25);
     --border-radius:0px 10px 10px 0px;
    /*Font Family and Font Size */
@@ -67,17 +66,10 @@ body{
 
 @media (width > 768px){
     .sidebar {
-        /* max-height: calc(100vh - 60px); */
-        max-height: calc(100vh);
+        max-height: calc(100vh - 60px);
     }
 }
-@media (width < 767.98px){
-    .sidebar {
-        /* max-height: calc(100vh - 45px); */
-        max-height: calc(100vh);
 
-    }
-}
 
 @media (width > 992px) {
     .sidebar {
