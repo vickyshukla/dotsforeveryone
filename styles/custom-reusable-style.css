@@ -40,6 +40,10 @@ body{
   background: #d9d9d9;
 }
 
+.bg-custom-pure-white{
+  background: var(--color-white);
+}
+
 .hover-color-custom-yellow:hover {
   color: #fdcf01;
 }
@@ -151,12 +155,31 @@ input[type="range"]::-webkit-slider-thumb {
 .custom-select-option:hover {
   background-color: #f3f4f6;
 }
+
+.custom-bg-black{
+  background: var(--color-dark-gray);
+}
+
+
 .custom-outline{
-  border: 1px solid var( --color-light-black);
+  border-color:1px solid var( --color-light-black);
 }
 .custom-outline:hover{
-  outline: 1px solid var(--color-dark-yellow);
+  outline:1px solid var(--color-dark-yellow);
+  border: none;
+   /* Add outline on hover */
+  outline-offset: -1px; /* Offset to keep the size same */
 }
+.custom-outline:focus{
+  border: 1px solid var(--color-dark-yellow);
+  
+}
+
+.custom-bg-hover:hover{
+  background: var(--color-dark-yellow);
+  color: var(--color-pure-black);
+}
+
 
 /* ****************Storage Aws Features Users Custom Style********************** */
 
@@ -164,5 +187,41 @@ input[type="range"]::-webkit-slider-thumb {
     max-width: 12rem;
 }
 
+/*****************************Safety Control Custom Style***************/
+
+
+.dropdown:hover .dropdown-menu {
+            display: block;
+            z-index: 1;
+}
+
+
+/* Basic styles for the dropdown */
+
+
+
+
+/* Submenu styles */
+.dropdown-submenu {
+  position: relative;
+}
+
+.dropdown-content-sub {
+  display: none;
+  position: absolute;
+  left: 100%;
+  top: 0;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+
+
+
+
+.dropdown-submenu:hover .dropdown-content-sub {
+  display: block;
+}
 
 
