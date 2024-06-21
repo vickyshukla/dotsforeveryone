@@ -393,7 +393,7 @@
 
                     <!-- table and donut chart -->
                     <div class="grid grid-cols-1 md:grid-cols-4 gap-2">
-                        <div class="col-span-1 md:col-span-3 p-2 border bg-white rounded-md">
+                        <div class="col-span-1 md:col-span-3 p-2 border bg-white rounded-md relative">
                             <div class="flex gap-4">
                                 <button type="button" onclick="showTab(this)" class="tab-control styled text-sm px-1 pb-1 active" data-tab="donut-space" data-control="user-space-tab">User Space</button>
                                 <button type="button" onclick="showTab(this)" class="tab-control styled text-sm px-1 pb-1" data-tab="donut-space" data-control="group-space-tab">Group Space</button>
@@ -473,6 +473,17 @@
                                                 </tr>
                                             </tbody>
                                         </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="absolute bottom-2 right-2">
+                                <div class="flex items-center text-sm gap-2">
+                                    <span>Total 1 page</span>
+                                    <span class="text-c-yellow">(2 records)</span>
+                                    <span>100/pages</span>
+                                    <div class="flex flex-col">
+                                        <button class="hover-bg-c-yellow px-0.5 rounded-sm"><i class="ri-arrow-up-s-line"></i></button>
+                                        <button class="hover-bg-c-yellow px-0.5 rounded-sm"><i class="ri-arrow-down-s-line"></i></button>
                                     </div>
                                 </div>
                             </div>
