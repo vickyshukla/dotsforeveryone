@@ -75,6 +75,9 @@
 .border-c-yellow {
     border-color: var(--color-dark-yellow);
 }
+.border-gray-3 {
+    border-color: var(--color-gray-3);
+}
 
 body.nx {
     overflow-x: hidden;
@@ -304,10 +307,15 @@ body.nx {
 } */
 .nx input[type="checkbox"].c-checkbox:checked::after {
     content: "✔";
-    font-size: 1em;
+    width: 100%;
     height: 1em;
+    font-size: 1em;
     position: absolute;
-    top: -0.2em;
+    top: -2px;
+    left: 1px;
+}
+.nx td input[type="checkbox"].c-checkbox:checked::after {
+    top: -3.5px;
 }
 
 

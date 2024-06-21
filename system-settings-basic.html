@@ -262,7 +262,7 @@
                                         <div
                                             class="flex border flex-grow rounded-lg overflow-hidden bg-white items-center max-w-sm">
                                             <input type="number" name="company-name" required
-                                                class="flex-grow py-1.5 text-sm px-2" id="company-name">
+                                                class="flex-grow text-sm px-2" id="company-name">
                                         </div>
                                         <div class="text-xs text-c-gray-2 mt-1">
                                             For product logo title
@@ -279,7 +279,7 @@
                                         <div
                                             class="flex border flex-grow rounded-lg overflow-hidden bg-white items-center max-w-sm">
                                             <input type="number" name="product-subtitle" required
-                                                class="flex-grow py-1.5 text-sm px-2" id="product-subtitle">
+                                                class="flex-grow text-sm px-2" id="product-subtitle">
                                         </div>
                                         <div class="text-xs text-c-gray-2 mt-1">
                                             Product subtitle
@@ -298,7 +298,7 @@
                                         <div
                                             class="flex border flex-grow rounded-lg overflow-hidden bg-white items-center max-w-sm">
                                             <input type="number" name="directory-exclusion" required
-                                                class="flex-grow py-1.5 text-sm px-2" id="directory-exclusion">
+                                                class="flex-grow text-sm px-2" id="directory-exclusion">
                                         </div>
                                         <div class="text-xs text-c-gray-2 mt-1">
                                             Hidden files, separated by commas
@@ -315,7 +315,7 @@
                                         <div
                                             class="flex border flex-grow rounded-lg overflow-hidden bg-white items-center max-w-sm">
                                             <input type="number" name="default-directories" required
-                                                class="flex-grow py-1.5 text-sm px-2" id="default-directories">
+                                                class="flex-grow text-sm px-2" id="default-directories">
                                         </div>
                                         <div class="text-xs text-c-gray-2 mt-1">
                                             Separated by commas
@@ -331,7 +331,7 @@
                                         <div
                                             class="flex border flex-grow rounded-lg overflow-hidden bg-white items-center max-w-sm">
                                             <input type="number" name="default-apps" required
-                                                class="flex-grow py-1.5 text-sm px-2" id="default-apps">
+                                                class="flex-grow text-sm px-2" id="default-apps">
                                         </div>
                                         <div class="text-xs text-c-gray-2 mt-1">
                                             Application centers applications, multiple separated by commas
@@ -473,8 +473,65 @@
                                     </div>
                                 </div>
 
-                                <div id="enable-registration-true" class="space-y-5 tab-content">
-                                    please
+                                <div id="enable-registration-true" class="space-y-5 tab-content active">
+                                    <div class="flex flex-wrap gap-y-1">
+                                        <div class="w-full md:w-1/3 xl:w-1/6">
+                                            <label class="font-semibold text-sm">Registration review:</label>
+                                        </div>
+                                        <div class="w-full  md:w-2/3 xl:w-5/6">
+                                            <div class="flex flex-wrap gap-2 items-center">
+                                                <label for="registration-review"
+                                                    class="toggle-switch flex items-center cursor-pointer">
+                                                    <div class="relative">
+                                                        <input type="checkbox" name="registration-review"  id="registration-review"
+                                                            class="sr-only">
+                                                        <div class="block toggle-bg w-14 h-7 rounded-full border"></div>
+                                                        <div
+                                                            class="dot absolute left-0.5 top-0.5 bg-white w-6 h-6 rounded-full transition shadow-lg">
+                                                        </div>
+                                                    </div>
+                                                </label>
+                                                <div class="text-xs text-c-gray-2 mt-1">
+                                                    The administrator needs to review and enable it in (Users & groups) for registered users to use normally
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="flex flex-wrap gap-y-1">
+                                        <div class="w-full md:w-1/3 xl:w-1/6">
+                                            <label for="space-size" class="font-semibold text-sm">Space
+                                                Size:</label>
+                                        </div>
+                                        <div class="w-full flex items-center gap-2 md:w-2/3 xl:w-5/6">
+                                            <div
+                                                class="flex w-full border border-gray-3 rounded-lg overflow-hidden bg-white items-center max-w-sm">
+                                                <input type="number" name="space-size" required
+                                                    class="flex-grow text-sm px-2" id="space-size">
+                                                <span class="block text-xs px-3 py-1.5 border-l border-gray-3">GB</span>
+                                            </div>
+                                            <div class="text-xs text-c-gray-2">
+                                                (GB) 0 is unlimited
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="flex flex-wrap gap-y-1">
+                                        <div class="w-full md:w-1/3 xl:w-1/6">
+                                            <label for="role" class="font-semibold text-sm">Role:</label>
+                                        </div>
+                                        <div class="w-full flex items-center gap-2 md:w-2/3 xl:w-5/6">
+                                            <div
+                                                class="flex w-full border border-gray-3 rounded-lg overflow-hidden bg-white items-center max-w-sm">
+                                                <input name="space-size" required
+                                                    class="flex-grow text-sm px-2" id="space-size">
+                                                <span class="block text-xs px-3 py-1.5 border-l border-gray-3"><i class="ri-arrow-down-s-line"></i></span>
+                                            </div>
+                                            <div class="text-xs text-c-gray-2">
+                                                (GB) 0 is unlimited
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </form>
                         </div>
@@ -493,8 +550,8 @@
                                         <div
                                             class="flex border rounded-lg overflow-hidden bg-white items-center max-w-sm">
                                             <input type="number" name="upload-shared-size" required
-                                                class="flex-grow py-1.5 text-sm px-2" id="upload-shared-size">
-                                            <span class="block text-xs px-2 py-1 border-l">MB</span>
+                                                class="flex-grow text-sm px-2" id="upload-shared-size">
+                                            <span class="block text-xs px-3 py-1.5 border-l border-gray-3">MB</span>
                                         </div>
                                         <div class="text-xs text-c-gray-2 mt-1">
                                             When uploading a large file, it is cut into pieces for concurrent upload, so
@@ -518,7 +575,7 @@
                                         <div
                                             class="flex border rounded-lg overflow-hidden bg-white items-center max-w-sm">
                                             <input type="number" name="upload-concurrent-threads" required
-                                                class="flex-grow py-1.5 text-sm px-2" id="upload-concurrent-threads">
+                                                class="flex-grow text-sm px-2" id="upload-concurrent-threads">
                                         </div>
                                         <div class="text-xs text-c-gray-2 mt-1">
                                             Recommended = 10; simultaneous uploads of files or shards
@@ -535,7 +592,7 @@
                                         <div
                                             class="flex border rounded-lg overflow-hidden bg-white items-center max-w-sm">
                                             <input type="number" name="retry-on-error"
-                                                class="flex-grow py-1.5 text-sm px-2" required id="retry-on-error">
+                                                class="flex-grow text-sm px-2" required id="retry-on-error">
                                         </div>
                                         <div class="text-xs text-c-gray-2 mt-1">
                                             Recommendation = 5; number of retransmissions will be automatically
@@ -554,7 +611,7 @@
                                     <div class="w-full md:w-2/3 xl:w-5/6">
                                         <div
                                             class="flex border rounded-lg overflow-hidden bg-white items-center max-w-sm">
-                                            <input name="upload-ignore-file" class="flex-grow py-1.5 text-sm px-2"
+                                            <input name="upload-ignore-file" class="flex-grow text-sm px-2"
                                                 id="upload-ignore-file">
                                         </div>
                                         <div class="text-xs text-c-gray-2 mt-1">
@@ -603,9 +660,9 @@
                                         <div
                                             class="flex border rounded-lg overflow-hidden bg-white items-center max-w-sm">
                                             <input name="compressed-download-size-limit"
-                                                class="flex-grow py-1.5 text-sm px-2"
+                                                class="flex-grow text-sm px-2"
                                                 id="compressed-download-size-limit">
-                                            <span class="block text-xs px-2 py-1 border-l">GB</span>
+                                            <span class="block text-xs px-3 py-1.5 border-l border-gray-3">GB</span>
                                         </div>
                                         <div class="text-xs text-c-gray-2 mt-1">
                                             0 means no limit; in order to avoid excessive server performance
@@ -685,9 +742,9 @@
                                         <div
                                             class="flex border rounded-lg overflow-hidden bg-white items-center max-w-sm">
                                             <input type="number" name="drag-and-drop-content-size-limit"
-                                                class="flex-grow py-1.5 text-sm px-2"
+                                                class="flex-grow text-sm px-2"
                                                 id="drag-and-drop-content-size-limit">
-                                            <span class="block text-xs px-2 py-1 border-l">MB</span>
+                                            <span class="block text-xs px-3 py-1.5 border-l border-gray-3">MB</span>
                                         </div>
                                         <div class="text-xs text-c-gray-2 mt-1">
                                             0 means no limit; the size of the dragged content will be subject to this
@@ -726,8 +783,8 @@
                                             <div
                                                 class="flex border rounded-lg overflow-hidden bg-white items-center max-w-sm">
                                                 <input type="number" name="download-limit-apply"
-                                                    class="flex-grow py-1.5 text-sm px-2" id="download-limit-apply">
-                                                <span class="block text-xs px-2 py-1 border-l">MB/s</span>
+                                                    class="flex-grow text-sm px-2" id="download-limit-apply">
+                                                <span class="block text-xs px-3 py-1.5 border-l border-gray-3">MB/s</span>
                                             </div>
                                             <div class="text-xs text-c-gray-2 mt-1">
                                                 Limit the download speed, and you can uniformly limit the speed of the
@@ -795,7 +852,7 @@
                                                 class="flex border rounded-lg overflow-hidden bg-white items-center max-w-sm">
                                                 <input name="mailbox-server"
                                                     placeholder="Please enter the mail server address"
-                                                    class="flex-grow py-1.5 text-sm px-2" required id="mailbox-server">
+                                                    class="flex-grow text-sm px-2" required id="mailbox-server">
                                             </div>
                                             <div class="text-xs text-c-gray-2 mt-1">
                                                 Mailbox server, such as: smtp.163.com, the port can be customized (the
@@ -812,7 +869,7 @@
                                             <div
                                                 class="flex border rounded-lg overflow-hidden bg-white items-center max-w-sm">
                                                 <input name="outbox" placeholder="Please enter the email address"
-                                                    class="flex-grow py-1.5 text-sm px-2" required id="outbox">
+                                                    class="flex-grow text-sm px-2" required id="outbox">
                                             </div>
                                             <div class="text-xs text-c-gray-2 mt-1">
                                                 System email address, POP3/SMTP service needs to be enabled
@@ -853,10 +910,10 @@
                                         <div class="w-full md:w-2/3 xl:w-5/6">
                                             <div class="flex gap-2">
                                                 <div
-                                                    class="flex w-full border rounded-lg overflow-hidden bg-white items-center max-w-sm">
+                                                    class="flex w-full border border-gray-3 rounded-lg overflow-hidden bg-white items-center max-w-sm">
                                                     <input name="authorization-password"
                                                         placeholder="Please fill in the email authorization"
-                                                        class="flex-grow py-1.5 text-sm px-2" required
+                                                        class="flex-grow text-sm px-2" required
                                                         id="authorization-password">
                                                 </div>
                                                 <button class="text-xs text-c-yellow mt-1">
