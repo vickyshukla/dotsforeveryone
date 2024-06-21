@@ -167,6 +167,7 @@ body.nx {
 
 .nx  .tooltip {
     display: none;
+    border: 1px solid var(--color-dark-yellow);
 }
 .nx .has-tooltip:hover ~ .tooltip {
     display: block;
