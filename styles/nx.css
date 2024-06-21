@@ -24,7 +24,9 @@
 .bg-c-creame-yellow {
     background: var(--color-creame-yellow);
 }
-
+.bg-c-green {
+    background: var(--color-green);
+}
 .text-c-black {
     color: var(--color-light-gray);
 }
@@ -233,9 +235,6 @@ body.nx {
 
 .nx button {
     white-space: nowrap;
-}
-.nx button:active{
-    scale: 0.9;
 }
 
 /*multiple select -  css override*/

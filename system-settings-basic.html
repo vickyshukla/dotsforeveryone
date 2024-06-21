@@ -236,17 +236,17 @@
                 <!-- tabs and more -->
                 <div class="p-6">
                     <div class="flex pb-4 gap-4 overflow-x-scroll hide-scrollbar">
-                        <button type="button" onclick="showTab(this)" class="tab-control styled text-sm px-1"
+                        <button type="button" onclick="showTab(this)" class="tab-control styled text-sm px-1 pb-0.5"
                             data-tab="ss-basics" data-control="basic">Basic</button>
-                        <button type="button" onclick="showTab(this)" class="tab-control styled text-sm px-1"
+                        <button type="button" onclick="showTab(this)" class="tab-control styled text-sm px-1 pb-0.5"
                             data-tab="ss-basics" data-control="security">Security</button>
-                        <button type="button" onclick="showTab(this)" class="tab-control styled text-sm px-1 active"
+                        <button type="button" onclick="showTab(this)" class="tab-control styled text-sm px-1 pb-0.5 active"
                             data-tab="ss-basics" data-control="registration">Registration</button>
-                        <button type="button" onclick="showTab(this)" class="tab-control styled text-sm px-1"
+                        <button type="button" onclick="showTab(this)" class="tab-control styled text-sm px-1 pb-0.5"
                             data-tab="ss-basics" data-control="upload-download">Upload Download</button>
-                        <button type="button" onclick="showTab(this)" class="tab-control styled text-sm px-1"
+                        <button type="button" onclick="showTab(this)" class="tab-control styled text-sm px-1 pb-0.5"
                             data-tab="ss-basics" data-control="email">Email</button>
-                        <button type="button" onclick="showTab(this)" class="tab-control styled text-sm px-1"
+                        <button type="button" onclick="showTab(this)" class="tab-control styled text-sm px-1 pb-0.5"
                             data-tab="ss-basics" data-control="others">Others</button>
                     </div>
                     <div>
@@ -458,7 +458,7 @@
                                             <label for="enable-registration"
                                                 class="toggle-switch flex items-center cursor-pointer">
                                                 <div class="relative">
-                                                    <input type="checkbox" id="enable-registration"
+                                                    <input type="checkbox" name="enable-registration" onchange="toggleTab(this)" data-target="enable-registration-true" id="enable-registration"
                                                         class="sr-only">
                                                     <div class="block toggle-bg w-14 h-7 rounded-full border"></div>
                                                     <div
@@ -471,6 +471,10 @@
                                             </div>
                                         </div>
                                     </div>
+                                </div>
+
+                                <div id="enable-registration-true" class="space-y-5 tab-content">
+                                    please
                                 </div>
                             </form>
                         </div>
