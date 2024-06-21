@@ -279,7 +279,7 @@
                                     <th class="py-2 text-white text-left pl-3">Mission Details</th>
                                     <th class="py-2 text-white text-left pl-3">Last Execution</th>
                                     <th class="py-2 text-white text-left pl-3">Status</th>
-                                    <th class="py-2 rounded-tr-md text-white pl-3">Action</th>
+                                    <th class="py-2 rounded-tr-md text-left text-white pl-3">Action</th>
                                 </tr>
                             </thead>
                             <tbody class="border">
@@ -300,12 +300,12 @@
                                             </div>
                                         </label>
                                     </td>
-                                    <td class="py-2  text-right pr-3">
-                                        <div class="flex relative justify-end text-sm gap-3 ml-auto">
+                                    <td class="py-2 pl-3 pr-2">
+                                        <div class="flex relative text-sm gap-3">
                                             <div class="relative">
-                                                <button type="button" class="dropdown-btn">Action &nbsp; <i class="ri-arrow-down-s-line"></i></button>
+                                                <button type="button" class="dropdown-btn">Action&nbsp;<i class="ri-arrow-down-s-line"></i></button>
                                                 <div
-                                                    class="absolute text-xs dropdown-option w-20 z-10 min-w-full bg-gray-100 border rounded-md">
+                                                    class="absolute text-xs dropdown-option w-20 z-10 min-w-full space-y-1 border rounded-md">
                                                     <button
                                                         class="block hover-bg-c-yellow w-full px-2 py-1 runTaskModalButton">Run</button>
                                                     <button
@@ -333,12 +333,12 @@
                                             </div>
                                         </label>
                                     </td>
-                                    <td class="py-2  text-right pr-3">
-                                        <div class="flex relative justify-end text-sm gap-3 ml-auto">
+                                    <td class="py-2 pl-3 pr-2">
+                                        <div class="flex relative text-sm gap-3">
                                             <div class="relative">
-                                                <button type="button" class="dropdown-btn">Action &nbsp; <i class="ri-arrow-down-s-line"></i></button>
+                                                <button type="button" class="dropdown-btn">Action&nbsp;<i class="ri-arrow-down-s-line"></i></button>
                                                 <div
-                                                    class="absolute text-xs dropdown-option w-20 z-10 min-w-full bg-gray-100 border rounded-md">
+                                                    class="absolute text-xs dropdown-option w-20 z-10 min-w-full space-y-1 border rounded-md">
                                                     <button
                                                         class="block hover-bg-c-yellow w-full px-2 py-1 runTaskModalButton">Run</button>
                                                     <button
@@ -373,8 +373,8 @@
         <div class="bg-white rounded-xl overflow-hidden shadow-lg max-w-xl w-full modal-content">
             <div class="flex py-3 px-5 border-b border-gray-400 justify-between items-center">
                 <h2 class="text-lg font-medium">Edit</h2>
-                <button type="button" id="closeModalButton">
-                    <i class="ri-close-circle-fill text-lg"></i>
+                <button type="button" id="closeModalButton" class="hover-text-c-yellow">
+                    <i class="ri-close-circle-fill text-xl"></i>
                 </button>
             </div>
             <div class="p-5">
@@ -481,9 +481,9 @@
             </div>
             <div class="grid grid-cols-2 gap-4 my-3 px-5">
                 <button type="button" id="runTaskButton"
-                    class="bg-gray-800 hover-bg-c-black text-white rounded-full px-4 py-2 text-sm">Yes</button>
+                    class="bg-c-black text-white rounded-full px-4 py-2 text-sm">Yes</button>
                 <button type="button" id="closeRunTaskModalButton"
-                    class="hover:bg-yellow-500 hover:text-white text-c-yellow border border-yellow-400 rounded-full px-4 py-2 text-sm">Cancel</button>
+                    class="hover-bg-c-yellow hover:text-white text-c-yellow border border-c-yellow rounded-full px-4 py-2 text-sm">Cancel</button>
             </div>
         </div>
     </div>
@@ -494,8 +494,8 @@
         <div class="bg-white rounded-xl overflow-hidden shadow-lg max-w-md w-full modal-content">
             <div class="flex py-3 px-5 border-b border-gray-400 justify-between items-center">
                 <h2 class="text-lg font-medium">Task Manager</h2>
-                <button type="button" id="closeTaskManagerModalButton">
-                    <i class="ri-close-circle-fill text-lg"></i>
+                <button type="button" id="closeTaskManagerModalButton" class="hover-text-c-yellow">
+                    <i class="ri-close-circle-fill text-xl"></i>
                 </button>
             </div>
             <div class="p-5 text-center">

@@ -228,7 +228,7 @@
                     </div>
                     <div class="flex-grow md:w-1/2">
                         <div class="flex items-center justify-end gap-2 md:gap-6">
-                                <button type="button" class="border px-3 hover-bg-c-black hover:text-white text-sm text-black py-1 rounded border-gray-600">
+                                <button type="button" class="border px-3 hover-bg-c-black hover-text-c-yellow text-sm text-black py-1 rounded border-gray-600">
                                     <i class="ri-download-line"></i>&nbsp;Export
                                 </button>
                         </div>
@@ -340,7 +340,7 @@
                             <div class="pt-2 space-y-1">
                                 <span class="block text-sm">System Score</span>
                                 <div class="w-full bg-gray-200 rounded-full h-1.5 dark:bg-gray-700 relative">
-                                    <span class="absolute right-0 -top-4 text-xs text-green-400">90%</span>
+                                    <span class="absolute right-0 -top-4 text-xs text-c-green">90%</span>
                                     <div class="bg-green-400 h-1.5 rounded-full" style="width: 90%"></div>
                                 </div>
                             </div>
@@ -359,15 +359,15 @@
                                 </div>
                                 <div class="flex gap-2 items-center">
                                     <span class="w-1/3">Lite Speed</span>
-                                    <span class="w-2/3 text-green-400">Normal</span>
+                                    <span class="w-2/3 text-c-green">Normal</span>
                                 </div>
                                 <div class="flex gap-2 items-center">
                                     <span class="w-1/3">PHP</span>
-                                    <span class="w-2/3 text-green-400">Normal</span>
+                                    <span class="w-2/3 text-c-green">Normal</span>
                                 </div>
                                 <div class="flex gap-2 items-center">
                                     <span class="w-1/3">MySQL</span>
-                                    <span class="w-2/3 text-green-400">Normal</span>
+                                    <span class="w-2/3 text-c-green">Normal</span>
                                 </div>
                             </div>
                             <div class="mt-auto flex gap-2 text-xs pt-1 border-t">
@@ -395,8 +395,8 @@
                     <div class="grid grid-cols-1 md:grid-cols-4 gap-2">
                         <div class="col-span-1 md:col-span-3 p-2 border bg-white rounded-md">
                             <div class="flex gap-4">
-                                <button type="button" onclick="showTab(this)" class="tab-control text-sm px-1 active" data-tab="donut-space" data-control="user-space-tab">User Space</button>
-                                <button type="button" onclick="showTab(this)" class="tab-control text-sm px-1" data-tab="donut-space" data-control="group-space-tab">Group Space</button>
+                                <button type="button" onclick="showTab(this)" class="tab-control styled text-sm px-1 pb-1 active" data-tab="donut-space" data-control="user-space-tab">User Space</button>
+                                <button type="button" onclick="showTab(this)" class="tab-control styled text-sm px-1 pb-1" data-tab="donut-space" data-control="group-space-tab">Group Space</button>
                             </div>
                             <div class="pt-4">
                                 <div class="tab-content donut-space active" id="user-space-tab">
@@ -414,7 +414,7 @@
                                             <tbody class="border">
                                                 <tr class="text-sm border-t">
                                                     <td class="py-2 pl-3">
-                                                        <input type="checkbox" class="c-checkbox">
+                                                        <input type="checkbox" class="c-checkbox" style="width: 16px; height: 16px; font-size: 11px;">
                                                     </td>
                                                     <td class="py-2 pl-3">Me</td>
                                                     <td class="py-2 pl-3">0 B</td>
@@ -428,7 +428,7 @@
                                                 </tr>
                                                 <tr class="text-sm border-t">
                                                     <td class="py-2 pl-3 rounded-bl-lg">
-                                                        <input type="checkbox" class="c-checkbox">
+                                                        <input type="checkbox" class="c-checkbox" style="width: 16px; height: 16px; font-size: 11px;">
                                                     </td>
                                                     <td class="py-2 pl-3">Aadi Manav</td>
                                                     <td class="py-2 pl-3">0 B</td>
@@ -497,8 +497,8 @@
                     <div class="bg-white rounded border p-2 rounded-md">
                         <div class="flex flex-wrap gap-2 justify-between">
                             <div class="flex gap-4">
-                                <button type="button" onclick="showTab(this)" class="tab-control text-sm px-1 active" data-tab="user-data-space" data-control="user-data-tab">User Data</button>
-                                <button type="button" onclick="showTab(this)" class="tab-control text-sm px-1" data-tab="user-data-space" data-control="space-usage-tab">Space Usage</button>
+                                <button type="button" onclick="showTab(this)" class="tab-control styled text-sm px-1 active" data-tab="user-data-space" data-control="user-data-tab">User Data</button>
+                                <button type="button" onclick="showTab(this)" class="tab-control styled text-sm px-1" data-tab="user-data-space" data-control="space-usage-tab">Space Usage</button>
                             </div>
                             <div class="">
                                 <form action="#" class="flex gap-2">
