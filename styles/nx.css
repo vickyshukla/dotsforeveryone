@@ -1,3 +1,6 @@
+body.nx {
+    color: var(--color-light-gray);
+}
 .bg-c-black {
     background: var(--color-light-gray);
 }
@@ -324,4 +327,18 @@ body.nx {
 .nx select option:hover,
 .nx select:focus > option:checked {
     box-shadow: 0 0 10px 100px var(--color-dark-yellow) inset;
+}
+
+/* multiselect dropdown new */
+.nx .ss-dropdown {
+    position: relative;
+}
+
+.nx .ss-dropdown button.toggler {
+
+}
+.nx .ss-dropdown-options {
+    position: absolute;
+    width: 100%;
+    margin-top: 2px;
 }

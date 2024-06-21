@@ -521,14 +521,16 @@
                                             <label for="role" class="font-semibold text-sm">Role:</label>
                                         </div>
                                         <div class="w-full flex items-center gap-2 md:w-2/3 xl:w-5/6">
-                                            <div
-                                                class="flex w-full border border-gray-3 rounded-lg overflow-hidden bg-white items-center max-w-sm">
-                                                <input name="space-size" required
-                                                    class="flex-grow text-sm px-2" id="space-size">
-                                                <span class="block text-xs px-3 py-1.5 border-l border-gray-3"><i class="ri-arrow-down-s-line"></i></span>
-                                            </div>
-                                            <div class="text-xs text-c-gray-2">
-                                                (GB) 0 is unlimited
+                                            <div class="w-full border border-gray-3 rounded-lg bg-white max-w-sm ss-dropdown">
+                                                <button type="button" class="w-full flex items-center toggler">
+                                                    <span class="mx-2 flex-grow text-left text-sm selection" id="selected-role">Selected</span>
+                                                    <span class="block text-xs px-3 py-1.5 border-l border-gray-3"><i class="ri-arrow-down-s-line"></i></span>
+                                                </button>
+                                                <div class="ss-dropdown-options overflow-hidden border border-gray-3 text-xs flex flex-col rounded-md bg-white">
+                                                    <label class="px-2 py-1 hover-bg-c-yellow cursor-pointer"><input type="radio" onchange="singleSelectPut(this)" data-put="selected-role" class="hidden" name="role" value="ordinary">Ordinary</label>
+                                                    <label class="px-2 py-1 hover-bg-c-yellow cursor-pointer"><input type="radio" onchange="singleSelectPut(this)" data-put="selected-role" class="hidden" name="role" value="admin">Admin</label>
+                                                    <label class="px-2 py-1 hover-bg-c-yellow cursor-pointer"><input type="radio" onchange="singleSelectPut(this)" data-put="selected-role" class="hidden" name="role" value="department">Department</label>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -954,6 +956,9 @@
 
     <script defer src="script/sidebar.js"></script>
     <script defer src="script/tabs.js"></script>
+    <script defer src="script/ss-dropdown.js">
+        
+    </script>
 
 </body>
 
