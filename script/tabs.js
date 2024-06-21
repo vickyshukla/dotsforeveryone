@@ -25,3 +25,13 @@ function showTab(eventTarget) {
     eventTarget.classList.add('active');
 
 }
+
+function toggleTab(eventTarget) {
+    const tabTarget = eventTarget.getAttribute('data-target');
+
+    if(eventTarget.checked){
+        document.getElementById(tabTarget).classList.add('active');
+    } else {
+        document.getElementById(tabTarget).classList.remove('active');
+    }
+}
