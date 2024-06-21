@@ -127,5 +127,17 @@ document.addEventListener('DOMContentLoaded', function () {
 
     document.querySelectorAll('.dropdown').forEach(initializeDropdown);
 });
+ 
 
+document.getElementById('basicBtn').addEventListener('click', function() {
+    document.getElementById('moreSettings').classList.add('hidden');
+    this.classList.add('active');
+    document.getElementById('moreSettingsBtn').classList.remove('active');
+});
+
+document.getElementById('moreSettingsBtn').addEventListener('click', function() {
+    document.getElementById('moreSettings').classList.remove('hidden');
+    this.classList.add('active');
+    document.getElementById('basicBtn').classList.remove('active');
+});
 
