@@ -138,6 +138,13 @@ input[type="range"]::-webkit-slider-thumb {
   border-end-end-radius: 0.75rem; 
 }
 
+.custom-safety-btn{
+  background-color: var(--color-lighten-gray);
+  border: 0.8px solid var(--color-light-black);
+  text-align: center;
+  font-size: 1rem;
+  font-weight: 500;
+}
 
 
 /* Additional custom styles for the user info dropdown created by Vigh*/
@@ -220,6 +227,10 @@ input[type="range"]::-webkit-slider-thumb {
   background: #555; /* Color of the scrollbar thumb on hover */
 }
 
+.custom-text-color{
+  color: var(--color-light-gray);
+}
+
 
 
 
@@ -248,11 +259,20 @@ input[type="range"]::-webkit-slider-thumb {
 
 /*****************************Safety Control Custom Style***************/
 
+.custom-dropdown-menu{
+  border-radius: 5px;
+  border: 1px solid rgba(104, 134, 134, 0.53);
+  background: var(--color-lighten-gray);
+  margin-top: 1px;
+  width: 9.5rem;
+}
 
 .dropdown:hover .dropdown-menu {
             display: block;
             z-index: 1;
+           
 }
+
 
 
 /* Basic styles for the dropdown */

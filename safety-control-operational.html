@@ -241,84 +241,82 @@
                         </button>
                     </div>
                 </div>
-                <div class="users-admin-btn-grp pl-8 flex items-center relative justify-between flex-wrap">
+                <div class="users-admin-btn-grp pl-6 flex items-center relative justify-between flex-wrap">
                     <div class="flex items-center gap-2 flex-wrap">
                         <button
-                            class="flex items-center focus:border-yellow-500 dropdown-toggle border border-gray-300 rounded px-6 py-1 mr-1 hover:border-yellow-300">Today</button>
+                            class="custom-safety-btn rounded px-6 py-1 mr-1 hover:border-yellow-300">Today</button>
                         <button
-                            class="flex items-center focus:border-yellow-500 dropdown-toggle border border-gray-300 rounded px-6 py-1 mr-1 hover:border-yellow-300">Last
+                            class="custom-safety-btn rounded px-6 py-1 mr-1 hover:border-yellow-300">Last
                             7 days</button>
                         <button
-                            class="flex items-center focus:border-yellow-500 dropdown-toggle border border-gray-300 rounded px-6 py-1 mr-1 hover:border-yellow-300">Today</button>
+                            class="custom-safety-btn rounded px-6 py-1 mr-1 hover:border-yellow-300">Today</button>
                         <button
-                            class="flex items-center focus:border-yellow-500 dropdown-toggle border border-gray-300 rounded px-6 py-1 mr-1 hover:border-yellow-300">Last
+                            class="custom-safety-btn rounded px-6 py-1 mr-1 hover:border-yellow-300">Last
                             7 days</button>
                         <button
-                            class="flex items-center focus:border-yellow-500 dropdown-toggle border border-gray-300 rounded px-6 py-1 mr-1 hover:border-yellow-300">Last
+                            class="custom-safety-btn rounded px-6 py-1 mr-1 hover:border-yellow-300">Last
                             30 days</button>
                         <button
-                            class="flex items-center focus:border-yellow-500 dropdown-toggle border border-gray-300 rounded px-6 py-1 mr-1 hover:border-yellow-300">Customize</button>
+                            class="custom-safety-btn rounded px-6 py-1 mr-1 hover:border-yellow-300">Customize</button>
 
-                            <div class="dropdown inline-block relative">
-                                <button class="flex items-center border rounded px-6 py-1 custom-outline">
-                                  <span class="mr-1">Select User</span>
-                                  <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-                                    <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
-                                  </svg>
-                                </button>
-                                <ul class="dropdown-menu absolute hidden text-gray-700 pt-2 shadow bg-custom-pure-white text-xs">
-                                  <li>
+                        <div class="dropdown inline-block relative">
+                            <button class="border rounded px-6 py-1 custom-safety-btn custom-outline">
+                            <span class="mr-1">Select User</span>
+                            <i class="ri-arrow-down-s-fill"></i>
+                            </button>
+                            <ul class="dropdown-menu custom-dropdown-menu absolute hidden text-gray-700 shadow bg-custom-pure-white text-xs">
+                                <li>
                                     <a class="rounded-t custom-bg-hover py-2 px-4 block whitespace-no-wrap px-4" href="#">All</a>
-                                  </li>
-                                  <li class="dropdown-submenu group">
-                                    <a class="rounded-b custom-bg-hover py-2 px-4 block whitespace-no-wrap flex justify-between items-center" href="#">
+                                </li>
+                                <li class="dropdown-submenu group">
+                                    <a class=" custom-bg-hover py-2 px-4 block whitespace-no-wrap flex justify-between items-center" href="#">
                                         File operations
-                                      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none" class="ml-1">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none" class="ml-1">
                                         <path d="M5.83333 9.91683L8.75 7.00016L5.83333 4.0835" stroke="#111111" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                                      </svg>
+                                    </svg>
                                     </a>
-                                    <ul class="dropdown-content-sub group-hover:block text-gray-700 pt-2 shadow bg-custom-pure-white">
-                                      <li><a class="custom-bg-hover py-2 px-4 block whitespace-no-wrap" href="#">Nested Option 1</a></li>
-                                      <li><a class="custom-bg-hover py-2 px-4 block whitespace-no-wrap" href="#">Nested Option 2</a></li>
-                                      <li><a class="custom-bg-hover py-2 px-4 block whitespace-no-wrap" href="#">Nested Option 1</a></li>
-                                      <li><a class="custom-bg-hover py-2 px-4 block whitespace-no-wrap" href="#">Nested Option 2</a></li>
+                                    <ul class="dropdown-content-sub custom-dropdown-menu ml-0.5 group-hover:block text-gray-700  shadow bg-custom-pure-white">
+                                        <li><a class="custom-bg-hover py-2 rounded-t  px-4 block whitespace-no-wrap" href="#">Nested Option 1</a></li>
+                                        <li><a class="custom-bg-hover py-2 px-4 block whitespace-no-wrap" href="#">Nested Option 2</a></li>
+                                        <li><a class="custom-bg-hover py-2 px-4 block whitespace-no-wrap" href="#">Nested Option 1</a></li>
+                                        <li><a class="custom-bg-hover py-2 rounded-b px-4 block whitespace-no-wrap" href="#">Nested Option 2</a></li>
                                     </ul>
-                                  </li>
-                                  <li class="dropdown-submenu group">
-                                    <a class="rounded-b custom-bg-hover py-2 px-4 block whitespace-no-wrap flex justify-between items-center" href="#">
+                                </li>
+                                <li class="dropdown-submenu group">
+                                    <a class=" custom-bg-hover py-2 px-4 block whitespace-no-wrap flex justify-between items-center" href="#">
                                         User configuration
-                                      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none" class="ml-1">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none" class="ml-1">
                                         <path d="M5.83333 9.91683L8.75 7.00016L5.83333 4.0835" stroke="#111111" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                                      </svg>
+                                    </svg>
                                     </a>
-                                    <ul class="dropdown-content-sub group-hover:block text-gray-700 pt-2 shadow bg-custom-pure-white">
-                                      <li><a class="custom-bg-hover py-2 px-4 block whitespace-no-wrap" href="#">Nested Option 1</a></li>
-                                      <li><a class="custom-bg-hover py-2 px-4 block whitespace-no-wrap" href="#">Nested Option 2</a></li>
-                                      <li><a class="custom-bg-hover py-2 px-4 block whitespace-no-wrap" href="#">Nested Option 1</a></li>
-                                      <li><a class="custom-bg-hover py-2 px-4 block whitespace-no-wrap" href="#">Nested Option 2</a></li>
+                                    <ul class="dropdown-content-sub custom-dropdown-menu ml-0.5 group-hover:block text-gray-700 shadow bg-custom-pure-white">
+                                        <li><a class="custom-bg-hover rounded-t  py-2 px-4 block whitespace-no-wrap" href="#">Nested Option 1</a></li>
+                                        <li><a class="custom-bg-hover py-2 px-4 block whitespace-no-wrap" href="#">Nested Option 2</a></li>
+                                        <li><a class="custom-bg-hover py-2 px-4 block whitespace-no-wrap" href="#">Nested Option 1</a></li>
+                                        <li><a class="custom-bg-hover rounded-b py-2 px-4 block whitespace-no-wrap" href="#">Nested Option 2</a></li>
                                     </ul>
-                                  </li>
-                                  <li class="dropdown-submenu group">
+                                </li>
+                                <li class="dropdown-submenu group">
                                     <a class="rounded-b custom-bg-hover py-2 px-4 block whitespace-no-wrap flex justify-between items-center" href="#">
                                         Backend
-                                      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none" class="ml-1">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none" class="ml-1">
                                         <path d="M5.83333 9.91683L8.75 7.00016L5.83333 4.0835" stroke="#111111" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                                      </svg>
+                                    </svg>
                                     </a>
-                                    <ul class="dropdown-content-sub group-hover:block text-gray-700 pt-2 shadow bg-custom-pure-white">
-                                      <li><a class="custom-bg-hover py-2 px-4 block whitespace-no-wrap" href="#">Nested Option 1</a></li>
-                                      <li><a class="custom-bg-hover py-2 px-4 block whitespace-no-wrap" href="#">Nested Option 2</a></li>
-                                      <li><a class="custom-bg-hover py-2 px-4 block whitespace-no-wrap" href="#">Nested Option 1</a></li>
-                                      <li><a class="custom-bg-hover py-2 px-4 block whitespace-no-wrap" href="#">Nested Option 2</a></li>
+                                    <ul class="dropdown-content-sub custom-dropdown-menu ml-0.5 group-hover:block text-gray-700 shadow bg-custom-pure-white">
+                                    <li><a class="custom-bg-hover py-2 rounded-t  px-4 block whitespace-no-wrap" href="#">Nested Option 1</a></li>
+                                    <li><a class="custom-bg-hover py-2 px-4 block whitespace-no-wrap" href="#">Nested Option 2</a></li>
+                                    <li><a class="custom-bg-hover py-2 px-4 block whitespace-no-wrap" href="#">Nested Option 1</a></li>
+                                    <li><a class="custom-bg-hover py-2 rounded-b px-4 block whitespace-no-wrap" href="#">Nested Option 2</a></li>
                                     </ul>
-                                  </li>
-                                </ul>
-                              </div>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
 
                 </div>
 
-                <div class="users-admin-content-wrapper pl-8  pr-3">
+                <div class="users-admin-content-wrapper pl-6 pr-3">
                     <div class="container mx-auto mt-10">
                         <!-- Searchable Table -->
                         <div class="relative overflow-x-auto shadow rounded-md">
@@ -348,11 +346,13 @@
                                         </th>
                                     </tr>
                                 </thead>
-                                <tbody>
+                                <tbody class="custom-text-color">
                                     <tr class=" bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                                         <th scope="row"
-                                            class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                            <span class="bg-gray-300 rounded-full px-2 mr-2"></span> Me
+                                            class="px-6 py-4 font-normal text-gray-900 whitespace-nowrap dark:text-white flex gap-2 items-center">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 20 20" fill="none">
+                                                <circle cx="10" cy="10" r="10" fill="#D9D9D9"/>
+                                              </svg> Me
                                         </th>
                                         <td class="px-6 py-4">
                                             26-02-2024
@@ -423,8 +423,10 @@
                                     </tr>
                                     <tr class=" bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                                         <th scope="row"
-                                            class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                            <span class="bg-gray-300 rounded-full px-2 mr-2"></span> Me
+                                            class="px-6 py-4 font-normal text-gray-900 whitespace-nowrap dark:text-white flex gap-2 items-center">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 20 20" fill="none">
+                                                <circle cx="10" cy="10" r="10" fill="#D9D9D9"/>
+                                              </svg> Me
                                         </th>
                                         <td class="px-6 py-4">
                                             26-02-2024
@@ -470,8 +472,10 @@
                                     </tr>
                                     <tr class=" bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                                         <th scope="row"
-                                            class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                            <span class="bg-gray-300 rounded-full px-2 mr-2"></span> Me
+                                            class="px-6 py-4 font-normal text-gray-900 whitespace-nowrap dark:text-white flex gap-2 items-center">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 20 20" fill="none">
+                                                <circle cx="10" cy="10" r="10" fill="#D9D9D9"/>
+                                              </svg> Me
                                         </th>
                                         <td class="px-6 py-4">
                                             26-02-2024
