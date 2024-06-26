@@ -223,7 +223,7 @@
             <div class="flex w-full h-full flex-col content">
                 <div class="p-6">
                     <div class="flex items-center gap-4">
-                        <i class="ri-settings-5-fill text-2xl"></i><span class="text-lg">System Settings</span>
+                        <i class="ri-settings-3-fill text-2xl"></i><span class="text-lg">System Settings</span>
                     </div>
                 </div>
 
@@ -235,59 +235,61 @@
                                 class="font-semibold">Login</span>
                         </div>
                     </div>
+                    <button type="button" class="absolute right-0 border px-6 py-1 mr-4 hover-bg-c-black hover-text-c-yellow text-sm text-black  rounded border-gray-600">
+                        <i class="ri-download-line"></i>&nbsp;Export
+                    </button>
                 </div>
-                <div class="users-admin-btn-grp pl-8 flex items-center relative justify-between flex-wrap">
+                <div class="users-admin-btn-grp pl-6 flex items-center relative justify-between flex-wrap">
                     <div class="flex items-center gap-2 flex-wrap">
                         <button
-                            class="flex items-center focus:border-yellow-500 dropdown-toggle border border-gray-300 rounded px-6 py-1 mr-1 hover:border-yellow-300">Today</button>
+                            class="custom-safety-btn rounded px-6 py-1 mr-1 hover:border-yellow-300">Today</button>
                         <button
-                            class="flex items-center focus:border-yellow-500 dropdown-toggle border border-gray-300 rounded px-6 py-1 mr-1 hover:border-yellow-300">Last
+                            class="custom-safety-btn focus:border-yellow-500 rounded px-6 py-1 mr-1 hover:border-yellow-300">Last
                             7 days</button>
                         <button
-                            class="flex items-center focus:border-yellow-500 dropdown-toggle border border-gray-300 rounded px-6 py-1 mr-1 hover:border-yellow-300">Today</button>
-                        <button
-                            class="flex items-center focus:border-yellow-500 dropdown-toggle border border-gray-300 rounded px-6 py-1 mr-1 hover:border-yellow-300">Last
-                            7 days</button>
-                        <button
-                            class="flex items-center focus:border-yellow-500 dropdown-toggle border border-gray-300 rounded px-6 py-1 mr-1 hover:border-yellow-300">Last
+                            class="custom-safety-btn rounded px-6 py-1 mr-1 hover:border-yellow-300">Last
                             30 days</button>
                         <button
-                            class="flex items-center focus:border-yellow-500 dropdown-toggle border border-gray-300 rounded px-6 py-1 mr-1 hover:border-yellow-300">Customize</button>
+                            class="custom-safety-btn rounded px-6 py-1 mr-1 hover:border-yellow-300">Customize</button>
 
-                        <div class="dropdown inline-block relative">
-                            <button
-                                class="flex items-center border  rounded px-6 py-1 custom-outline">
+                            <div class="dropdown inline-block relative">
+                                <button class=" rounded px-6 py-1 custom-outline custom-safety-btn">
                                 <span class="mr-1">Select User</span>
-                                <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg"
-                                    viewBox="0 0 20 20">
-                                    <path
-                                        d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
-                                </svg>
-                            </button>
-                            <ul class="dropdown-menu absolute hidden text-gray-700 pt-2  shadow bg-custom-pure-white">
-                                <li class=""><a
-                                        class="rounded-t custom-bg-hover py-2 px-4 block whitespace-no-wrap"
-                                        href="#">Options 1</a></li>
-                                <li class=""><a class="custom-bg-hover py-2 px-4 block whitespace-no-wrap"
-                                        href="#">Two</a></li>
-                                <li class=""><a
-                                        class="rounded-b  custom-bg-hover py-2 px-4 block whitespace-no-wrap"
-                                        href="#">Three is the  </a></li>
-                            </ul>
-                        </div>
-                        <button
-                            class="absolute right-0 flex items-center border  rounded px-6 py-1 mr-4 custom-bg-hover">
-                            <i class="ri-download-line pr-2"></i> </i> export</button>
+                                <i class="ri-arrow-down-s-fill"></i>
+                                </button>
+                                <ul class="dropdown-menu custom-dropdown-menu absolute hidden text-gray-700 shadow bg-custom-pure-white text-xs">
+                                    <li>
+                                        <a class="custom-bg-hover rounded-t py-2 px-4 block whitespace-no-wrap px-4" href="#">All</a>
+                                    </li>
+                                    <li class="dropdown-submenu group">
+                                        <a class=" custom-bg-hover py-2 px-4 block whitespace-no-wrap flex justify-between items-center" href="#">
+                                            File operations
+                                        </a>
+                                    </li>
+                                    <li class="dropdown-submenu group">
+                                        <a class=" custom-bg-hover py-2 px-4 block whitespace-no-wrap flex justify-between items-center" href="#">
+                                            User configuration
+                                        </a>
+                                    </li>
+                                    <li class="dropdown-submenu group">
+                                        <a class="rounded-b custom-bg-hover py-2 px-4 block whitespace-no-wrap flex justify-between items-center" href="#">
+                                            Backend
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        
+                              
                     </div>
 
                 </div>
 
-                <div class="users-admin-content-wrapper pl-8  pr-3">
+                <div class="users-admin-content-wrapper pl-6  pr-3">
                     <div class="container mx-auto mt-10">
                         <!-- Searchable Table -->
                         <div class="relative overflow-x-auto shadow rounded-md">
-                            <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-                                <thead class="text-xs text-white uppercase custom-bg-black dark:text-white">
+                            <table class="w-full text-left rtl:text-right">
+                                <thead class="text-white capitalcase custom-bg-black ">
                                     <tr>
                                         <th scope="col" class="px-6 py-3">
                                             User
@@ -296,10 +298,7 @@
                                             Log in date
                                         </th>
                                         <th scope="col" class="px-6 py-3">
-                                            Log in time
-                                        </th>
-                                        <th scope="col" class="px-6 py-3">
-                                            Action
+                                            System
                                         </th>
                                         <th scope="col" class="px-6 py-3">
                                             System
@@ -313,10 +312,12 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr class=" bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                                    <tr class=" bg-white border-b dark:bg-gray-800 dark:border-gray-700 text-base">
                                         <th scope="row"
-                                            class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                            <span class="bg-gray-300 rounded-full px-2 mr-2"></span> Me
+                                            class="px-6 py-4 font-normal text-gray-900 whitespace-nowrap dark:text-white flex gap-2 items-center">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 20 20" fill="none">
+                                                <circle cx="10" cy="10" r="10" fill="#D9D9D9"/>
+                                              </svg> Me
                                         </th>
                                         <td class="px-6 py-4">
                                             26-02-2024
@@ -324,14 +325,7 @@
                                         <td class="px-6 py-4">
                                             14:20:21
                                         </td>
-                                        <td class="px-6 py-4">
-                                            <span class="flex items-center">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 10 10" fill="none" class="mr-1">
-                                                    <circle cx="5" cy="5" r="5" fill="#36C752"/>
-                                                  </svg>
-                                                Logged in
-                                            </span>
-                                        </td>
+                                       
                                         <td class="px-6 py-4 flex items-center">
                                             <span class="flex items-center">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" class="mr-2"
@@ -387,8 +381,10 @@
                                     </tr>
                                     <tr class=" bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                                         <th scope="row"
-                                            class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                            <span class="bg-gray-300 rounded-full px-2 mr-2"></span> Me
+                                            class="px-6 py-4 font-normal text-gray-900 whitespace-nowrap dark:text-white flex gap-2 items-center">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 20 20" fill="none">
+                                                <circle cx="10" cy="10" r="10" fill="#D9D9D9"/>
+                                              </svg> Me
                                         </th>
                                         <td class="px-6 py-4">
                                             26-02-2024
@@ -396,14 +392,7 @@
                                         <td class="px-6 py-4">
                                             14:20:21
                                         </td>
-                                        <td class="px-6 py-4">
-                                            <span class="flex items-center">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 10 10" fill="none" class="mr-2">
-                                                    <circle cx="5" cy="5" r="5" fill="#FDCF01"/>
-                                                  </svg>
-                                                Logged out
-                                            </span>
-                                        </td>
+                                        
                                         <td class="px-6 py-4 flex items-center">
                                             <span class="flex items-center">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" class="mr-2"
@@ -434,8 +423,10 @@
                                     </tr>
                                     <tr class=" bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                                         <th scope="row"
-                                            class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                            <span class="bg-gray-300 rounded-full px-2 mr-2"></span> Me
+                                            class="px-6 py-4 font-normal text-gray-900 whitespace-nowrap dark:text-white flex gap-2 items-center">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 20 20" fill="none">
+                                                <circle cx="10" cy="10" r="10" fill="#D9D9D9"/>
+                                              </svg> Me
                                         </th>
                                         <td class="px-6 py-4">
                                             26-02-2024
@@ -443,14 +434,7 @@
                                         <td class="px-6 py-4">
                                             14:20:21
                                         </td>
-                                        <td class="px-6 py-4">
-                                            <span class="flex items-center">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 10 10" fill="none" class="mr-1">
-                                                    <circle cx="5" cy="5" r="5" fill="#FDCF01"/>
-                                                  </svg>
-                                                Logged out
-                                            </span>
-                                        </td>
+                                        
                                         <td class="px-6 py-4 flex items-center">
                                             <span class="flex items-center">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" class="mr-2"
@@ -490,12 +474,7 @@
         </div>
 
     </main>
-    <footer class="w-screen">
-        <div class=" flex justify-between w-full items center px-2 md:px-6 py-2 md:py-4 bg-white bg-opacity-50">
-            <button type="button" class="bg-c-black text-white px-2 py-1 rounded-md">File</button>
-            <img src="images/dots-logo.svg" alt="Dots Logo" width="36" height="36">
-        </div>
-    </footer>
+     
   
     <script defer src="script/sidebar.js"></script>
 </body>
