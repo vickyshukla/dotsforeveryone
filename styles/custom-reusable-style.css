@@ -5,7 +5,11 @@
 
 
 /* ****************setting Admin Users Custom Style********************** */
-
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
 body{
     font-family: "Roboto", sans-serif;
     
@@ -144,6 +148,10 @@ input[type="range"]::-webkit-slider-thumb {
   text-align: center;
   font-size: 1rem;
   font-weight: 500;
+}
+
+.font-size-18{
+  font-size: 18px!important;
 }
 
 
