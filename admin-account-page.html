@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Account Page</title>
+     <link
+      href="https://unpkg.com/tailwindcss@^2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles/custom.css">
+    <link rel="stylesheet" href="styles/cs.css" />
+    <link rel="stylesheet" href="styles/root.css" />
+</head>
+<body class="w-full h-screen cs account">
+    <main class="w-full h-full flex">
+    <!-- Sidebar -->
+      <aside class="h-full relative">
+        <input type="checkbox" class="hidden" id="sidebar-toggle" />
+        <label
+          for="sidebar-toggle"
+          class="absolute lg:hidden top-7 -right-8 px-1"
+        >
+             <i class="ri-bar-chart-horizontal-line"></i>
+        </label>
+        <div class="h-full sidebar">
+          <div class="sidebar-container">
+            <div class="p-6">
+              <img class="w-24" src="/images/logo.png" alt="Dots Logo" />
+            </div>
+            <div class=" py-4 flex flex-col items-center justify-center">
+                <img class="w-24" src="/images/profile.png" alt="Profile image">
+                <div class="flex flex-col justify-center items-center pt-3">
+                    <h1 class="text-2xl font-normal">Administrator</h1>
+                    <p class="font-light text-2xl">Admin</p>
+                </div>
+            </div>
+            <div class="md:pt-6">
+              <ul class="space-y-1">
+                <li>
+                     <a class="w-full px-6 py-3 rounded-r-lg block flex justify-between items-center" href="admin-account-page.html">
+                       <span> Account </span>
+                       <i class="ri-arrow-right-s-line text-c-yellow transition-all text-2xl"></i>
+                      </a>
+                </li>
+                <li>
+                  <a class="w-full px-6 py-3 rounded-r-lg block flex justify-between items-center" href="admin-wallpaper-page.html">
+                       <span> Wallpaper </span>
+                       <i class="ri-arrow-right-s-line text-c-yellow transition-all text-2xl"></i>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </aside>
+
+      <!-- Main content -->
+       <div class="flex-grow border h-100 main">
+          <div class="flex flex-col w-full h-full content">
+             <div class=" px-9 lg:px-5 py-4">
+               <div class="flex items-center gap-4">
+                <img class="w-12" src="images/profile.png" alt="profile img">
+                <span class="text-lg font-normal text-c-black">Administrator</span>
+              </div>
+            </div>
+
+              <!-- top taskbar -->
+            <div class="taskbar bg-no-repeat bg-cover bg-center flex items-center justify-between px-3 sm:px-6 py-4">
+               <div class="flex items-center gap-4 w-full md:w-1/2">
+                        <div class="flex gap-1 sm:gap-2 items-center">
+                            <span class="text-c-black font-medium">Account</span>
+                        </div>
+               </div>
+            </div>
+
+            <!-- Content -->
+             <div class="w-full h-full px-3 sm:px-6">
+                <div class="py-6 flex items-center justify-between border-b stroke-color">
+                    <div class="w-28">
+                        <span class="text-base font-bold text-c-black">Avatar:</span>
+                    </div>
+                    <div class="flex-grow w-full">
+                        <img class="w-12" src="images/profile.png" alt="">
+                    </div>
+                </div>
+                <!-- For nickname -->
+                 <div  class="border-b stroke-color">
+                  <div id="nickname-div" class="py-4 flex flex-col sm:flex-row items-start relative">
+                     <div class="w-28">
+                        <label for="nickname-input" class="text-base font-bold text-c-black">Nickname:</label>
+                    </div>
+                    <div class="flex-grow flex items-start justify-between w-full">
+                        <div class="w-full">
+                            <div class="flex items-start sm:items-center flex-col sm:flex-row gap-1 sm:gap-2 w-full">
+                              <input type="text" id="nickname-input" class="text-c-black font-normal text-base sm:text-lg" disabled  value="Administrator">
+                              <p id="nickname-hint" class="text-xs sm:text-sm font-light text-c-black hidden pl-1 sm:pl-0">Cannot repeat</p>
+                            </div>
+                            <div id="nickname-buttons" class="mt-2 hidden flex gap-4 sm:gap-6">
+                                <button class="bg-c-black text-white rounded-full px-10 py-1 sm:px-14 sm:py-2" type="submit"> OK</button>
+                                <button class="cancel-btn text-c-yellow px-8 py-1 sm:px-12 sm:py-2 rounded-full border border-c-yellow">Cancel </button>
+                            </div>
+                        </div>
+                    </div> 
+                    <div class="absolute right-0">
+                       <button id="nickname-edit" onclick="enableNicknameEdit('nickname-input','nickname-hint','nickname-buttons', 'nickname-edit', 'nickname-close','nickname-div')" class="text-c-sky">Edit</button>
+                            <i id="nickname-close" class="ri-close-circle-fill ri-lg cursor-pointer hidden" onclick="disableNicknameEdit('nickname-input','nickname-hint','nickname-buttons', 'nickname-edit', 'nickname-close','nickname-div')"></i>
+                    </div>    
+                  </div>
+                </div>
+                <!-- For email -->
+                <div class="border-b stroke-color">
+                  <div id="email-div" class="py-4 flex flex-col sm:flex-row items-start relative">
+                     <div class="w-28">
+                        <span for="email" class="text-base font-bold text-c-black">Email:</span>
+                    </div>
+                    <div class="flex-grow flex items-start justify-between w-full">
+                      <div class="w-full">
+                        <span id="email-heading" class="text-c-gray-2 font-normal text-base sm:text-lg">Click to blind</span>
+                        <div id="email-content" class="hidden">
+                          <div class="flex flex-col lg:flex-row items-start lg:items-center gap-1 sm:gap-2 w-full">
+                             <input type="text" class="enabled-input text-c-black font-normal text-sm sm:text-base" placeholder="Please input the email address">
+                             <p class="text-xs sm:text-sm font-light text-c-black pl-1 sm:pl-0">Some businesses require email verfication</p>
+                          </div>
+                          <div class="input-div relative mt-2">
+                            <div class="flex items-center h-full">
+                              <input type="text" class="text-c-black text-sm sm:text-base font-normal h-full" placeholder="Please enter your email">
+                              <span class="bg-c-gray-4 text-sm sm:text-base px-2 h-full flex items-center border-l border-gray text-c-black">
+                                Verification
+                              </span>
+                            </div>
+                          </div>
+                          <div class="mt-2 flex gap-4 sm:gap-6">
+                               <button class="bg-c-black text-white rounded-full px-10 py-1 sm:px-14 sm:py-2" type="submit"> OK</button>
+                                <button class="cancel-btn text-c-yellow px-8 py-1 sm:px-12 sm:py-2 rounded-full border border-c-yellow">Cancel </button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="absolute right-0">
+                      <button id="email-edit" class="text-c-sky"  onclick="enableEdit('email-content','email-heading', 'email-edit', 'email-close','email-div')">Edit</button>
+                           <i id="email-close" class="ri-close-circle-fill ri-lg cursor-pointer hidden" onclick="disableEdit('email-content','email-heading', 'email-edit', 'email-close','email-div')"></i>
+                    </div>
+                  </div> 
+                </div>
+                <!-- For Password -->
+                <div class="border-b stroke-color">
+                  <div id="password-div" class=" py-4 flex flex-col sm:flex-row items-start relative">
+                    <div class="w-28">
+                        <span class="text-base font-bold text-c-black">Password:</span>
+                    </div>
+                    <div class="flex-grow flex items-start justify-between w-full">
+                      <div class="w-full">
+                        <span id="password-heading" class="text-c-gray-2 font-normal text-base sm:text-lg">Click to modify password</span>
+                        <div id="password-content" class="hidden">
+                          <div class="flex flex-col lg:flex-row items-start lg:items-center gap-1 sm:gap-2 w-full">
+                            <div class="input-div relative">
+                              <div class="flex items-center justify-between h-full">
+                                <input type="text" class="text-c-black text-sm sm:text-base font-normal h-full" placeholder="Old password">
+                                <span class="bg-c-gray-4 h-full px-4 flex items-center border-l border-gray">
+                                <i class="ri-eye-close-line"></i>
+                                </span>
+                            </div>
+                            </div>
+                             <p class=" text-xs sm:text-sm font-light text-c-black pl-1 sm:pl-0">Forgot your password? you can <span class="text-c-sky">Reset</span></p>
+                          </div>
+                          <div class="input-div relative mt-2">
+                            <div class="flex items-center justify-between h-full">
+                              <input type="text" class="text-c-black text-sm sm:text-base font-normal h-full" placeholder="Please enter a new password">
+                              <span class="bg-c-gray-4 h-full px-4 flex items-center border-l border-gray">
+                              <i class="ri-eye-close-line"></i>
+                              </span>
+                            </div>
+                            
+                          </div>
+                           <div class="input-div relative mt-2">
+                            <div class="flex items-center justify-between h-full">
+                               <input type="text" class="text-c-black text-sm sm:text-base font-normal h-full" placeholder="Please enter the password again">
+                              <span class="bg-c-gray-4 flex items-center px-4 h-full border-l border-gray">
+                             <i class="ri-eye-line"></i>
+                              </span>
+                            </div>
+                             
+                          </div>
+                          <div class="mt-2 flex gap-4 sm:gap-6">
+                               <button class="bg-c-black text-white rounded-full px-10 py-1 sm:px-14 sm:py-2" type="submit"> OK</button>
+                                <button class="cancel-btn text-c-yellow px-8 py-1 sm:px-12 sm:py-2 rounded-full border border-c-yellow">Cancel </button>
+                          </div>
+                        </div>
+                      </div>
+                      <div>
+                      </div>                    
+                    </div>
+                      <div class="absolute right-0">
+                         <button id="password-edit" class="text-c-sky" onclick="enableEdit('password-content','password-heading','password-edit','password-close','password-div')">Edit</button>
+                           <i id="password-close" class="ri-close-circle-fill ri-lg cursor-pointer hidden" onclick="disableEdit('password-content','password-heading','password-edit','password-close','password-div')"></i>
+                      </div>
+                  </div>  
+                </div>
+             </div>
+          </div>
+       </div>
+    </main>
+
+     <script defer src="script/sidebar.js"></script>
+    <script>
+
+      // functionality for nickname inputs
+     function enableNicknameEdit(inputId, hintId, btnId, editId, closeId, mainDiv) {
+      const input = document.getElementById(inputId);
+      const hint = document.getElementById(hintId);
+      const buttons = document.getElementById(btnId);
+      const editBtn = document.getElementById(editId);
+      const closeBtn = document.getElementById(closeId);
+      const div = document.getElementById(mainDiv);
+
+      input.disabled = false;
+      input.classList.add('enabled-input');
+      input.classList.remove('hidden')
+      hint.classList.remove('hidden');
+      buttons.classList.remove('hidden');
+      editBtn.classList.add('hidden');
+      closeBtn.classList.remove('hidden');
+      div.classList.add('bg-edit-mode');
+    }
+
+    function disableNicknameEdit(inputId, hintId, btnId, editId, closeId, mainDiv) {
+      const input = document.getElementById(inputId);
+      const hint = document.getElementById(hintId);
+      const buttons = document.getElementById(btnId);
+      const editBtn = document.getElementById(editId);
+      const closeBtn = document.getElementById(closeId);
+      const div = document.getElementById(mainDiv);
+
+      input.disabled = true;
+      input.classList.remove('enabled-input');
+      hint.classList.add('hidden');
+      buttons.classList.add('hidden');
+      editBtn.classList.remove('hidden');
+      closeBtn.classList.add('hidden');
+      div.classList.remove('bg-edit-mode');
+    }
+
+   // functionality for email and password
+     function enableEdit(divId, headingId, editId, closeId,mainDiv) {
+       const div = document.getElementById(divId);
+      const heading = document.getElementById(headingId);
+      const edit = document.getElementById(editId);
+      const close = document.getElementById(closeId);
+      const main = document.getElementById(mainDiv);
+
+      div.classList.remove('hidden');
+      heading.classList.add('hidden');
+      edit.classList.add('hidden');
+      close.classList.remove('hidden')
+      main.classList.add('bg-edit-mode');
+    }
+
+      function disableEdit(divId, headingId, editId, closeId,mainDiv) {
+      const div = document.getElementById(divId);
+      const heading = document.getElementById(headingId);
+      const edit = document.getElementById(editId);
+      const close = document.getElementById(closeId);
+      const main = document.getElementById(mainDiv);
+
+      div.classList.add('hidden');
+      heading.classList.remove('hidden');
+      edit.classList.remove('hidden');
+      close.classList.add('hidden')
+      main.classList.remove('bg-edit-mode');
+    }
+
+    </script>
+</body>
+</html>

@@ -3,12 +3,13 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="initial-scale=1, width=device-width" />
-      <link href="https://unpkg.com/tailwindcss@^2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
-    <link rel="stylesheet" href="root.css" />
-    <link rel="stylesheet" href="login.css" />
+    <link href="https://unpkg.com/tailwindcss@^2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="styles/root.css" />
+    <link rel="stylesheet" href="styles/custom.css" />
+    <link rel="stylesheet" href="styles/cs.css">
   </head>
-  <body>
-    <div class="login-screen w-full h-screen flex items-center justify-center gap-2 relative">
+  <body class="login">
+    <div class="login-screen w-full h-screen flex items-center justify-center gap-2 relative cs">
       <div class="left-background w-1/2 h-full bg-no-repeat bg-cover bg-center">
         <div class="blur-container">
         </div>
@@ -20,7 +21,7 @@
           <div class="logo flex items-center justify-center mt-10">
             <img class="w-20 h-20" src="/images/logo.png" alt="Logo" />
           </div>
-          <div class="login flex items-center justify-center mt-16 pl-10">
+          <div class="user-login flex items-center justify-center mt-16 pl-10">
             <div class="left-container w-2/5 flex items-center justify-center">
               <img
                 class="vector-img w-60 h-60"
@@ -28,7 +29,7 @@
                 alt="background"
               />
               <img
-                class="profile-img w-24 h-24"
+                class="profile-img w-24 h-24 ml-5 mb-2"
                 src="/images/profile.png"
                 alt="profile"
               />
@@ -38,12 +39,16 @@
               <form>
                 <input class="userinput" type="text" placeholder="Username" required/>
                 <input class="userinput" type="password" placeholder="Password" required />
-                <div class="flex items-center w-5 gap-1">
-                  <input type="checkbox" />
-                  <p class="text-xs font-normal">Remember</p>
-                  <p class="text-xs font-normal">me</p>
+                <div class="login-remember px-2 flex items-center justify-between w-72">
+                  <div class="flex items-center gap-2">
+                    <input type="checkbox" class="border border-yellow-300"/>
+                    <p class="text-xs font-normal">Remember me</p>
+                  </div>
+                  <div class="flex items-center">
+                   <a href="forget-password.html" class="hover:text-blue-500 text-xs font-normal text-c-black">Forget Password ?</a>
+                  </div>
                 </div>
-                <button class="userinput" id="login-btn"><a href="dashboard.html">Login</a></button>
+                <button class="userinput" id="login-btn">Login</button>
               </form>
             </div>
           </div>

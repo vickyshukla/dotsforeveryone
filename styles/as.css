@@ -1,0 +1,524 @@
+.bg-c-black {
+    background: var(--color-light-gray);
+}
+
+.bg-c-yellow {
+    background: var(--color-dark-yellow);
+}
+
+.bg-c-light-black {
+    background: var(--color-light-black);
+}
+
+.bg-c-light-black1 {
+    background: var(--color-light-black1);
+}
+
+.bg-c-light-blue {
+    background: var(--color-light-blue);
+}
+
+.bg-c-light-pink {
+    background: var(--color-light-pink);
+}
+
+.bg-c-gray-2 {
+    background: var(--color-gray-2);
+}
+
+.bg-c-gray-3 {
+    background: var(--color-gray);
+}
+
+.bg-c-gray-4 {
+    background: var(--color-gray-4);
+}
+
+.bg-c-dark-gray {
+    background: var(--color-dark-gray);
+}
+
+.bg-c-white {
+    background: var(--color-white);
+}
+
+.bg-c-light-white {
+    background: var(--color-light-white);
+}
+
+.bg-c-light-white-smoke {
+    background: var(--color-light-white-smoke);
+}
+
+.bg-c-light-gray {
+    background: var(--color-light-gray);
+}
+
+.bg-c-lighten-gray {
+    background: var(--color-lighten-gray);
+}
+
+.bg-c-lightest-gray {
+    background: var(--color-lightest-gray);
+}
+
+.bg-c-creame-yellow {
+    background: var(--color-creame-yellow);
+}
+
+.bg-c-green {
+    background: var(--color-green);
+}
+
+.text-c-black {
+    color: var(--color-light-gray);
+}
+
+.text-dark-black {
+    color: var(--color-pure-black);
+}
+
+.text-c-gray-opaque{
+    color: var(--color-gray-opaque);
+}
+
+.text-c-white {
+    color: var(--color-white);
+}
+
+.text-c-yellow {
+    color: var(--color-dark-yellow);
+}
+
+.text-link-blue {
+    color: var(--color-link-blue);
+}
+
+.text-c-sky {
+    color: var(--color-light-sky);
+}
+
+.text-c-green {
+    color: var(--color-green);
+}
+
+.text-c-light-black {
+    color: var(--color-light-black);
+}
+
+.text-c-light-gray {
+    color: var(--color-light-gray);
+}
+
+.text-c-gray-2 {
+    color: var(--color-gray-2);
+}
+
+.text-c-dark-gray {
+    color: var(--color-dark-gray);
+}
+
+.text-c-medium-gray {
+    color: var(--color-medium-gray);
+}
+
+.text-c-dark-red {
+    color: var(--color-dark-red);
+}
+
+.text-c-light-white {
+    color: var(--color-light-white);
+}
+
+.hover-text-c-yellow:hover {
+    color: var(--color-dark-yellow);
+}
+
+.hover-bg-c-black:hover {
+    background: var(--color-light-gray);
+}
+
+.hover-bg-c-yellow:hover,
+.hover-bg-c-yellow:focus {
+    background: var(--color-dark-yellow);
+}
+
+.hover-border-c-yellow:hover,
+.hover-border-c-yellow:focus,
+.hover-border-c-yellow:active {
+    border-color: var(--color-dark-yellow);
+}
+
+.border-c-yellow {
+    border-color: var(--color-dark-yellow);
+}
+
+.border-c-sky {
+    border-color: var(--color-light-sky);
+}
+
+.border-c-light-blue {
+    border-color: var(--color-light-blue);
+}
+
+.border-c-gray-opaque {
+    border-color: var(--color-gray-opaque);
+}
+
+.border-c-dark-gray-opaque {
+    border-color: var(--color-dark-gray-opaque);
+}
+
+.border-c-medium-gray {
+    border-color: var(--color-medium-gray);
+}
+
+.border-c-light-black {
+    border-color: var(--color-light-black);
+}
+
+.border-c-gray {
+    border-color: var(--color-gray);
+}
+
+.border-c-light-gray {
+    border-color: var(--color-light-gray);
+}
+
+.border-c-light-gray1 {
+    border-color: var(--color-light-gray1);
+}
+
+.border-gray-3 {
+    border-color: var(--color-gray-3);
+}
+
+.border-c-silver-gray {
+    border-color: var(--color-silver-gray);
+}
+
+.font-size-24 {
+    font-size: var(--font-size-24);
+}
+
+.font-size-20 {
+    font-size: var(--font-size-20);
+}
+
+.font-size-16 {
+    font-size: var(--font-size-16);
+}
+
+.font-size-14 {
+    font-size: var(--font-size-14);
+}
+
+.font-size-18 {
+    font-size: var(--font-size-18);
+}
+
+.font-weight-500 {
+    font-weight: var(--font-weight-500);
+}
+
+/* common css for all pages*/
+body.fm {
+    color: var(--color-light-gray);
+    font-weight: var(--font-weight-400);
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+
+.fm .main {
+    background: url("/images/main-bg.png");
+    background-size: cover;
+    background-position: center;
+    overflow: scroll;
+}
+
+.fm .taskbar {
+    background: url("/images/taskbar-bg.svg");
+    background-size: cover;
+    background-position: center;
+}
+
+.fm .main .content {
+    min-width: 320px;
+}
+
+@media (width > 768px) {
+    .fm .main {
+        /* max-height: calc(100vh - 60px); */
+        max-height: calc(100vh);
+    }
+}
+
+@media (width < 767.98px) {
+    .fm .main {
+        /* max-height: calc(100vh - 45px); */
+        max-height: calc(100vh);
+    }
+}
+
+/* css for popups*/
+.fm div[role="dialog"] {
+    padding: 20px 10px;
+}
+
+.fm div[role="dialog"] .modal-content {
+    max-height: 90vh;
+    overflow: scroll;
+}
+
+.fm div[role="dialog"] .modal-content::-webkit-scrollbar,
+.fm .main::-webkit-scrollbar,
+.cs-table-container::-webkit-scrollbar,
+.hide-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+
+@media (width < 768px) {
+    .cs-table-container {
+        overflow-y: scroll;
+        overflow-x: scroll;
+    }
+
+    .cs-table-container table {
+        min-width: 1000px;
+    }
+}
+
+/* css for toggle button*/
+.fm .toggle-bg {
+    background: #dcdcdc;
+    border: 1px solid var(--border-light-gray);
+}
+
+.fm .toggle-switch input:checked~.dot {
+    transform: translateX(118%);
+    background: #f9f9f9;
+}
+
+.fm .toggle-switch input:checked~.toggle-bg {
+    background: var(--color-dark-yellow);
+}
+
+/* css for tooltip*/
+.fm .tooltip {
+    display: none;
+}
+
+.fm .has-tooltip:hover~.tooltip {
+    display: block;
+}
+
+/* tab css used in storage-file page */
+.fm .tab-control {
+    border-bottom: 2px solid transparent;
+}
+
+.fm .tab-control.active {
+    border-color: var(--color-dark-yellow);
+    font-weight: bold;
+}
+
+.fm .tab-content {
+    display: none;
+}
+
+.fm .tab-content.active {
+    display: block;
+}
+
+.fm .tab-underline {
+    background-color: var(--color-dark-yellow);
+    /* Yellow-300 */
+    height: 4px;
+    border-radius: 9999px;
+    /* Full rounded corners */
+    bottom: -6px;
+}
+
+.fm .tab-active {
+    color: var(--color-light-gray);
+    /* Yellow-300 */
+    font-weight: 500;
+}
+
+/* no dark outline on input focus */
+.fm input:focus,
+.fm textarea:focus,
+.fm select:focus {
+    outline: none;
+}
+
+/* checkbox with yellow border */
+.fm input[type="checkbox"].c-checkbox {
+    accent-color: var(--color-dark-yellow);
+}
+
+.fm input[type="checkbox"].c-checkbox {
+    appearance: none;
+    -webkit-appearance: none;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    font-size: 2rem;
+    padding: 0.1rem;
+    width: 16px;
+    cursor: pointer;
+    position: relative;
+    height: 16px;
+    border: 2px solid var(--color-dark-yellow);
+    border-radius: 2px;
+    flex-shrink: 0;
+    /* Prevent shrinking */
+}
+
+.fm input[type="checkbox"].c-checkbox:checked::after {
+    content: "\2713";
+    font-size: 12px;
+    position: absolute;
+    height: 12px;
+    top: -2.5px;
+    left: 2px;
+    font-weight: 600;
+}
+
+@media (max-width: 480px) {
+    .fm input[type="checkbox"].d-checkbox:checked::after {
+        top: -4px;
+    }
+}
+
+/* dropdown used in action of document permission page*/
+.fm .dropdown-option {
+    display: none;
+    background-color: #f9f9f9;
+}
+
+.fm .dropdown-btn:focus~.dropdown-option,
+.dropdown-option:hover {
+    display: block;
+}
+
+/* resizable sidebar used in filemanager and word document page */
+.fm .resizable-sidebar {
+    position: fixed;
+    top: 11.4rem;
+    right: 1.1rem;
+    max-height: 100vh;
+    bottom: 0;
+    background-color: #f9f9f9;
+}
+
+.fm .resizable-sidebar .resizer {
+    width: 5px;
+    height: 100%;
+    background-color: #d1d5db;
+    cursor: ew-resize;
+    position: absolute;
+    top: 0;
+    left: -2.5px;
+}
+
+@media (max-width: 768px) {
+    .fm .resizable-sidebar {
+        width: 92% !important;
+    }
+}
+
+/* custom buttons and dropdown used in file share and user&group page */
+.fm .custom-safety-btn {
+    background-color: var(--color-lighten-gray);
+    border: 0.8px solid var(--color-light-black);
+    text-align: center;
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.fm .custom-safety-btn:hover {
+    border-color: var(--color-dark-yellow);
+}
+
+.fm .custom-bg-hover:hover {
+    background: var(--color-dark-yellow);
+    color: var(--color-pure-black);
+}
+
+.fm .custom-dropdown-menu {
+    border-radius: 5px;
+    border: 1px solid rgba(104, 134, 134, 0.53);
+    background: var(--color-lighten-gray);
+    margin-top: 1px;
+    width: 11.7rem;
+}
+
+.fm .dropdown:hover .dropdown-menu {
+    display: block;
+    z-index: 1;
+}
+
+/* responsive taskbar in filemanager and popup in user&group page*/
+@media (width < 400px) {
+    .fm .title {
+        width: 33.333333%;
+    }
+
+    .fm .subcontent {
+        width: 66.666667%;
+    }
+
+    .fm .maintitle,
+    .fm .textsize {
+        font-size: 12px;
+    }
+
+    .fm .flex-responsive {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .fm .search {
+        /* max-height: calc(100vh - 45px); */
+        display: none;
+    }
+
+    .fm .taskicon {
+        /* max-height: calc(100vh - 45px); */
+        width: 13.5rem;
+    }
+
+    .fm .searchicon {
+        padding: 8px;
+    }
+}
+
+@media (width > 400px) {
+    .fm .title {
+        width: 25%;
+    }
+
+    .fm .subcontent {
+        width: 75%;
+    }
+
+    .fm .maintitle {
+        font-size: 16px;
+    }
+
+    .fm .textsize {
+        font-size: 14px;
+    }
+}
+
+/* overlay height in filemanager page */
+.fm .overlay-height {
+    height: calc(100% - 32px);
+}
+
+/* nodata image container height in file share page */
+.fm .nodata {
+    height: 50vh;
+}

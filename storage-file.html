@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Storage file</title>
+    <link
+      href="https://unpkg.com/tailwindcss@^2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles/custom.css" />
+    <link rel="stylesheet" href="styles/root.css" />
+    <link rel="stylesheet" href="styles/cs.css">
+  </head>
+  <body class="h-screen w-full cs plugin">
+      <main class="flex w-full h-full">
+
+        <!-- Sidebar -->
+        <aside class="h-full relative">
+        <input type="checkbox" class="hidden" id="sidebar-toggle" />
+        <label
+          for="sidebar-toggle"
+          class="absolute lg:hidden top-1 -right-8 px-1"
+        >
+          <i class="ri-bar-chart-horizontal-line"></i>
+        </label>
+        <div class="h-full sidebar">
+          <div class="sidebar-container">
+            <div class="p-6">
+              <img class="w-24" src="/images/logo.png" alt="Dots Logo" />
+            </div>
+            <div class="md:pt-4">
+              <ul class="space-y-1">
+                <li>
+                  <a
+                    class="w-full px-6 py-3 rounded-r-lg block flex justify-between items-center"
+                    href="overview.html"
+                  >
+                    <span> Overview </span>
+                    <i
+                      class="ri-arrow-right-s-line text-c-yellow right-arrow text-2xl"
+                    ></i>
+                  </a>
+                </li>
+                <li>
+                  <div
+                    role="button"
+                    onclick="toggleDropMenu(this)"
+                    class="drop-menu cursor-pointer rounded-r-lg"
+                  >
+                    <div
+                      class="w-full px-6 py-3 flex justify-between items-center"
+                      href="#"
+                    >
+                      <span> System Settings </span>
+                      <i
+                        class="ri-arrow-right-s-line text-c-yellow transition-all text-2xl"
+                      ></i>
+                    </div>
+                    <ul class="drop-list text-sm space-y-1">
+                      <li>
+                        <a
+                          href="system-setting-basic-page.html"
+                          class="block py-2 px-8 rounded-r-md w-full flex justify-between items-center"
+                        >
+                          <span>Basic</span>
+                          <i
+                            class="ri-arrow-right-s-line text-c-yellow right-arrow text-2xl"
+                          ></i>
+                        </a>
+                      </li>
+                      <li>
+                        <a
+                          href="#"
+                          class="block py-2 px-8 rounded-r-md w-full flex justify-between items-center"
+                        >
+                          <span>Menu</span>
+                          <i
+                            class="ri-arrow-right-s-line text-c-yellow right-arrow text-2xl"
+                          ></i>
+                        </a>
+                      </li>
+                      <li>
+                        <a
+                          href="system-setting-notice.html"
+                          class="block py-2 px-8 rounded-r-md w-full flex justify-between items-center"
+                        >
+                          <span>Notice</span>
+                          <i
+                            class="ri-arrow-right-s-line text-c-yellow right-arrow text-2xl"
+                          ></i>
+                        </a>
+                      </li>
+                      <li>
+                        <a
+                          href="#"
+                          class="block py-2 px-8 rounded-r-md w-full flex justify-between items-center"
+                        >
+                          <span>Intranet Access</span>
+                          <i
+                            class="ri-arrow-right-s-line text-c-yellow right-arrow text-2xl"
+                          ></i>
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </li>
+                <li>
+                  <div
+                    role="button"
+                    onclick="toggleDropMenu(this)"
+                    class="drop-menu cursor-pointer rounded-r-lg"
+                  >
+                    <div
+                      class="w-full px-6 py-3 flex justify-between items-center"
+                      href="#"
+                    >
+                      <span> Users &amp; Groups </span>
+                      <i
+                        class="ri-arrow-right-s-line text-c-yellow transition-all text-2xl"
+                      ></i>
+                    </div>
+                    <ul class="drop-list text-sm space-y-1">
+                      <li>
+                        <a
+                          href="admin&users-users&groups.html"
+                          class="block py-2 px-8 rounded-r-md w-full flex justify-between items-center"
+                        >
+                          <span>Users &amp; Groups </span>
+                          <i
+                            class="ri-arrow-right-s-line text-c-yellow right-arrow text-2xl"
+                          ></i>
+                        </a>
+                      </li>
+                      <li>
+                        <a
+                          href="system-setting-role.html"
+                          class="block py-2 px-8 rounded-r-md w-full flex justify-between items-center"
+                        >
+                          <span>Role</span>
+                          <i
+                            class="ri-arrow-right-s-line text-c-yellow right-arrow text-2xl"
+                          ></i>
+                        </a>
+                      </li>
+                      <li>
+                        <a
+                          href="admin&user-document-permission.html"
+                          class="block py-2 px-8 rounded-r-md w-full flex justify-between items-center"
+                        >
+                          <span>Document Permission</span>
+                          <i
+                            class="ri-arrow-right-s-line text-c-yellow right-arrow text-2xl"
+                          ></i>
+                        </a>
+                      </li>
+                      <li>
+                        <a
+                          href="#"
+                          class="block py-2 px-8 rounded-r-md w-full flex justify-between items-center"
+                        >
+                          <span>Intranet Access</span>
+                          <i
+                            class="ri-arrow-right-s-line text-c-yellow right-arrow text-2xl"
+                          ></i>
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </li>
+                <li>
+                  <div
+                    role="button"
+                    onclick="toggleDropMenu(this)"
+                    class="drop-menu cursor-pointer rounded-r-lg"
+                  >
+                    <div
+                      class="w-full px-6 py-3 flex justify-between items-center"
+                      href="#"
+                    >
+                      <span>Storage/file</span>
+                      <i
+                        class="ri-arrow-right-s-line text-c-yellow transition-all text-2xl"
+                      ></i>
+                    </div>
+                    <ul class="drop-list text-sm space-y-1">
+                      <li>
+                        <a
+                          href="storage-file.html"
+                          class="block py-2 px-8 rounded-r-md w-full flex justify-between items-center"
+                        >
+                          <span>Storage</span>
+                          <i
+                            class="ri-arrow-right-s-line text-c-yellow right-arrow text-2xl"
+                          ></i>
+                        </a>
+                      </li>
+                      <li>
+                        <a
+                          href="storage-file-backup.html"
+                          class="block py-2 px-8 rounded-r-md w-full flex justify-between items-center"
+                        >
+                          <span>Backup</span>
+                          <i
+                            class="ri-arrow-right-s-line text-c-yellow right-arrow text-2xl"
+                          ></i>
+                        </a>
+                      </li>
+                      <li>
+                        <a
+                          href="storage-file-share.html"
+                          class="block py-2 px-8 rounded-r-md w-full flex justify-between items-center"
+                        >
+                          <span>Share</span>
+                          <i
+                            class="ri-arrow-right-s-line text-c-yellow right-arrow text-2xl"
+                          ></i>
+                        </a>
+                      </li>
+                      <li>
+                        <a
+                          href="#"
+                          class="block py-2 px-8 rounded-r-md w-full flex justify-between items-center"
+                        >
+                          <span>webDAV Mount</span>
+                          <i
+                            class="ri-arrow-right-s-line text-c-yellow right-arrow text-2xl"
+                          ></i>
+                        </a>
+                      </li>
+                      <li>
+                        <a
+                          href="settings-storage-media-preview.html"
+                          class="block py-2 px-8 rounded-r-md w-full flex justify-between items-center"
+                        >
+                          <span>Media file preview &amp; Video</span>
+                          <i
+                            class="ri-arrow-right-s-line text-c-yellow right-arrow text-2xl"
+                          ></i>
+                        </a>
+                      </li>
+                      <li>
+                        <a
+                          href="#"
+                          class="block py-2 px-8 rounded-r-md w-full flex justify-between items-center"
+                        >
+                          <span>Client and App</span>
+                          <i
+                            class="ri-arrow-right-s-line text-c-yellow right-arrow text-2xl"
+                          ></i>
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </li>
+                <li>
+                  <a
+                    class="w-full px-6 py-3 rounded-r-lg block flex justify-between items-center"
+                    href="settings-plugin.html"
+                  >
+                    <span>Plugin Center</span>
+                    <i
+                      class="ri-arrow-right-s-line text-c-yellow right-arrow text-2xl"
+                    ></i>
+                  </a>
+                </li>
+                <li>
+                  <div
+                    role="button"
+                    onclick="toggleDropMenu(this)"
+                    class="drop-menu cursor-pointer rounded-r-lg"
+                  >
+                    <div
+                      class="w-full px-6 py-3 flex justify-between items-center"
+                      href="#"
+                    >
+                      <span>Saftey Control</span>
+                      <i
+                        class="ri-arrow-right-s-line text-c-yellow transition-all text-2xl"
+                      ></i>
+                    </div>
+                    <ul class="drop-list text-sm space-y-1">
+                      <li>
+                        <a
+                          href="#"
+                          class="block py-2 px-8 rounded-r-md w-full flex justify-between items-center"
+                        >
+                          <span>Message Warning</span>
+                          <i
+                            class="ri-arrow-right-s-line text-c-yellow right-arrow text-2xl"
+                          ></i>
+                        </a>
+                      </li>
+                      <li>
+                        <a
+                          href="#"
+                          class="block py-2 px-8 rounded-r-md w-full flex justify-between items-center"
+                        >
+                          <span>Login Log</span>
+                          <i
+                            class="ri-arrow-right-s-line text-c-yellow right-arrow text-2xl"
+                          ></i>
+                        </a>
+                      </li>
+                      <li>
+                        <a
+                          href="#"
+                          class="block py-2 px-8 rounded-r-md w-full flex justify-between items-center"
+                        >
+                          <span>Operation Log</span>
+                          <i
+                            class="ri-arrow-right-s-line text-c-yellow right-arrow text-2xl"
+                          ></i>
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </li>
+                <li>
+                  <a
+                    class="w-full px-6 py-3 rounded-r-lg block flex justify-between items-center"
+                    href="settings-server-scheduled-tasks.html"
+                  >
+                    <span>Scheduled Tasks</span>
+                    <i
+                      class="ri-arrow-right-s-line text-c-yellow right-arrow text-2xl"
+                    ></i>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </aside>
+
+        <!-- Main content -->
+        <div class="flex-grow border bg-red-500 h-100 main">
+        <div class="flex w-full h-full flex-col content">
+           <div class=" px-2 lg:px-5 py-6">
+               <div class="flex items-center gap-4">
+                <i class="ri-settings-3-fill ri-xl"></i>
+                <span class="text-lg text-c-black">System settings</span>
+              </div>
+            </div>
+          <!-- top taskbar -->
+          <div class="taskbar flex items-center justify-between px-3 sm:px-6 py-2">
+            <div class="flex items-center gap-4 w-full md:w-1/2">
+                <div class="flex gap-1 sm:gap-2 items-center">
+                    <span class="text-c-light-black">Storage / File</span> <i class="ri-arrow-right-line ri-lg" style="color: #4D4D4D;"></i><span class="font-semibold text-c-black">Storage</span>
+                </div>
+            </div>
+
+            <div class="flex-grow md:w-1/2">
+              <div class="flex items-center justify-end gap-2 md:gap-6">
+                <div>
+                    <button onclick="showModal()" type="button" class=" flex items-center justify-center gap-2 bg-c-black text-c-yellow px-4 py-1.5 rounded-md ">
+                          <i class="ri-add-circle-fill"></i><span class="text-sm">Add</span>
+                        </button>
+                    </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- content -->
+            <div class="plugin-content relative h-full overflow-y-auto">
+              <div class="flex flex-wrap flex-row justify-center sm:justify-start gap-7 md:gap-5 py-3 px-2 md:px-3 lg:px-6">
+                <div class="small-container flex flex-col items-center justify-center gap-5 relative openModal">
+                <div class="img-container rounded-xl bg-white shadow-black flex items-center justify-center">
+                    <img class="w-10 h-10" src="images/OfficeImg.png" alt="Office Image">
+                </div>
+                <h1 class="font-medium text-lg text-c-black">Office</h1>
+                <div> 
+                    <button id="dropdownDefaultButton1" class="dropdown-button flex items-center justify-between w-36 sm:w-40 text-c-yellow rounded-md text-lg overflow-hidden border border-c-light-gray" type="button">
+                      <span class="title flex items-center justify-center w-full text-base sm:text-lg">
+                         Enable
+                      </span>
+                       <span class="bg-white py-1 px-2">
+                        <i class="ri-arrow-down-s-line text-black"></i>
+                       </span> 
+                    </button>
+
+                    <div id="dropdown1" class="dropdown-menu z-10 hidden bg-c-lighten-gray rounded-lg shadow w-48  absolute -right-5 top-52 md:-right-5 lg:right-2 sm:top-52 overflow-hidden">
+                        <ul class="text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownDefaultButton">
+                          <li>
+                            <button type="button" class="dropdown-item w-full px-6 py-1.5 text-base hover:bg-yellow-400 hover:text-black flex items-center gap-3"><i class="ri-edit-box-line"></i>Update</button>
+                          </li>
+                          <li>
+                            <button type="button" class="dropdown-item w-full px-6 py-1.5 text-base hover:bg-yellow-400 hover:text-black flex items-center gap-3"><i class="ri-edit-2-line"></i>Manual update</a>
+                          </li>
+                           <li>
+                            <button type="button" class="dropdown-item w-full px-6 py-1.5 text-base hover:bg-yellow-400 hover:text-black flex items-center gap-3"><i class="ri-tools-fill"></i>Configure</a>
+                          </li>
+                           <li>
+                            <button type="button" class="dropdown-item w-full px-6 py-1.5 text-base hover:bg-yellow-400 hover:text-black flex items-center gap-3"><i class="ri-prohibited-line"></i>Disable</a>
+                          </li>
+                           <li>
+                            <button type="button" class="dropdown-item w-full px-6 py-1.5 text-base hover:bg-yellow-400 hover:text-black flex items-center gap-3"><i class="ri-uninstall-line"></i>Uninstall</a>
+                          </li>
+                        </ul>
+                    </div>
+                </div>
+                </div>
+               <div class="small-container flex flex-col items-center justify-center relative gap-5">
+                <div class="img-container rounded-xl bg-white shadow-black flex items-center justify-center">
+                    <img class="w-10 h-10" src="images/WebdavImg.png" alt="Office Image">
+                </div>
+                <h1 class="font-medium text-lg text-c-black">WebDAV Mount</h1>
+                <div> 
+                   <button id="dropdownDefaultButton2" class="dropdown-button flex items-center justify-between w-36 sm:w-40 text-c-yellow rounded-md text-lg overflow-hidden border border-c-light-gray" type="button">
+                      <span class="title flex items-center justify-center w-full text-base sm:text-lg">
+                         Enable
+                      </span>
+                       <span class="bg-white py-1 px-2">
+                        <i class="ri-arrow-down-s-line text-black"></i>
+                       </span> 
+                    </button>
+
+                    <div id="dropdown2" class="dropdown-menu z-10 hidden bg-c-lighten-gray rounded-lg shadow w-48  absolute -right-6 top-48 md:-right-5 lg:right-2 sm:top-52 overflow-hidden">
+                        <ul class="text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownDefaultButton">
+                          <li>
+                            <button type="button" class="dropdown-item w-full px-6 py-1.5 text-base hover:bg-yellow-400 hover:text-black flex items-center gap-3"><i class="ri-edit-box-line"></i>Update</button>
+                          </li>
+                          <li>
+                            <button type="button" class="dropdown-item w-full px-6 py-1.5 text-base hover:bg-yellow-400 hover:text-black flex items-center gap-3"><i class="ri-edit-2-line"></i>Manual update</a>
+                          </li>
+                           <li>
+                            <button type="button" class="dropdown-item w-full px-6 py-1.5 text-base hover:bg-yellow-400 hover:text-black flex items-center gap-3"><i class="ri-tools-fill"></i>Configure</a>
+                          </li>
+                           <li>
+                            <button type="button" class="dropdown-item w-full px-6 py-1.5 text-base hover:bg-yellow-400 hover:text-black flex items-center gap-3"><i class="ri-prohibited-line"></i>Disable</a>
+                          </li>
+                           <li>
+                            <button type="button" class="dropdown-item w-full px-6 py-1.5 text-base hover:bg-yellow-400 hover:text-black flex items-center gap-3"><i class="ri-uninstall-line"></i>Uninstall</a>
+                          </li>
+                        </ul>
+                    </div>
+                </div>
+              </div>
+              </div>
+            </div>
+        </div>
+        </div>
+      </main>
+
+
+      <!-- Add modal -->
+         <div id="modal" role="dialog" class="fixed hidden inset-0 flex items-center justify-center bg-black bg-opacity-50">
+            <div class="bg-white rounded-2xl overflow-hidden shadow-lg max-w-2xl w-full bg-c-lighten-gray modal-content">
+                <div class="flex py-4 px-5 justify-start items-center">
+                    <button type="button" id="closeModalButton" class="py-1.5 px-3 bg-c-lightest-gray rounded-md text-c-black text-base" onclick="hideModal()">
+                    <i class="ri-arrow-left-line text-black mr-3"></i>Back
+                    </button>
+                </div>
+                <div class="p-5">
+                    <form class="space-y-4 text-sm">
+                        <div class="flex flex-wrap w-full gap-y-4 items-start">
+                            <h3 class="w-full sm:w-1/4 font-bold text-c-black text-sm sm:text-base">Storage type:</h3>
+                           <div class="select sm:w-3/4 sm:ml-auto w-full">
+                                <div class="selectBtn rounded-xl" data-type="firstOption">Local Drive</div>
+                                <div class="selectDropdown">
+                                    <div class="option" data-type="firstOption">First option</div>
+                                    <div class="option" data-type="secondOption">Second option</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex flex-wrap w-full gap-y-4 items-start">
+                            <h3 class="sm:w-1/4 w-full font-bold text-c-black text-sm sm:text-base">Name: <sup class="text-red-500">*</sup></h3>
+                            <div class="sm:w-3/4 w-full sm:ml-auto flex flex-col gap-2">
+                                <input type="text"  class="w-full bg-c-lighten-gray border border-gray text-gray-900 text-sm rounded-xl block p-2 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white">
+                                <p class="text-xs font-light text-c-black">
+                                    Storage name to distinguish different storage
+                                </p>
+                            </div>
+
+                        </div>
+                        <div class="flex flex-wrap w-full gap-y-4 items-start">
+                            <h3 class="w-full sm:w-1/4 font-bold text-c-black text-sm sm:text-base">Space size: <sup class="text-red-500">*</sup></h3>
+                            <div class="w-full sm:w-3/4 sm:ml-auto flex flex-col gap-2">
+                                <div class="relative w-full">
+                                    <input
+                                    id="filesize"
+                                    class="w-full p-2 bg-c-lighten-gray border border-gray rounded-xl outline-none"
+                                    type="number"
+                                    placeholder=""
+                                    />
+                                    <div
+                                    class="absolute inset-y-0 right-0 flex items-center justify-center bg-c-gray-4 border border-gray w-10 rounded-r-xl px-6"
+                                    >
+                                    <p class="font-normal">GB</p>
+                                    </div>
+                                </div>
+                                <p class="text-xs font-light text-c-black">Please fill in according to the actual available space of the selected storage directory</p>
+                            </div>
+
+                        </div>
+                         <div class="flex flex-wrap w-full gap-y-4 items-start">
+                            <h3 class="w-full sm:w-1/4 font-bold text-c-black text-sm sm:text-base">Directory: <sup class="text-red-500">*</sup></h3>
+                            <div class="w-full sm:w-3/4 sm:ml-auto flex flex-col gap-2">
+                               <div class="w-full bg-c-lighten-gray border border-gray rounded-xl flex items-center overflow-hidden">
+                                            <input type="text" id="create-pictureicon" name="create-pictureicon" class="w-full bg-c-lighten-gray text-c-black text-sm px-2 focus:outline-none border-none" required>
+                                            <div class="px-4 py-1.5 border-l border-gray">
+                                                <img class="w-6 h-5 sm:h-6" src="/images/Folder.png" alt="Folder Image">
+                                            </div>      
+                                        </div>
+                                <p class="text-xs font-light text-c-black">File storage directory, please ensure it has write permissions</p>
+                            </div>
+
+                        </div>
+                        <div class="flex flex-wrap gap-y-4 items-start">
+                            <div class="w-full sm:w-1/4 font-bold text-c-black text-sm sm:text-base">Default: </div>
+                            <div class="w-full sm:w-3/4 ml-auto flex flex-col gap-2">
+                                <label for="toggle-debug" class="toggle-switch flex items-center cursor-pointer">
+                                    <div class="relative">
+                                        <input type="checkbox" id="toggle-debug" class="sr-only">
+                                        <div class="block toggle-bg w-14 h-7 rounded-full border"></div>
+                                        <div class="dot absolute left-0.5 top-0.5 bg-white w-6 h-6 rounded-full transition shadow-lg">
+                                        </div>
+                                    </div>
+                                </label>
+                                <p class="text-xs text-c-black font-light">The default item is the only valid system storage. If you choose to enable it, other default storage methods will be automatically cancelled. Please operate with caution.</p>
+                            </div>
+
+                        </div>
+                        <div class="flex justify-end mt-3">
+                            <button
+                                class="bg-c-black hover-bg-c-black text-white rounded-full w-32 py-2 text-base">Save</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+         </div>
+
+   
+
+    <script defer src="script/sidebar.js"></script>
+    <script src="script/select-dropdown.js"></script>
+    <script>
+     const container = document.querySelector(".plugin-content");
+     const dropdownButton = document.querySelector(".dropdown-button");
+     const dropdownMenu = document.querySelector(".dropdown-menu");
+     const dropdownItems = document.querySelectorAll(".dropdown-item");
+     const title = document.querySelector(".title");
+
+    // Open/Close Dropdown on Button Click
+    dropdownButton.addEventListener("click", function (event) {
+      event.stopPropagation(); // Prevent click from bubbling up to the document
+      dropdownMenu.classList.toggle("hidden");
+    });
+
+    // Handle Clicks on Dropdown Items
+    dropdownItems.forEach((dropdownItem) => {
+      dropdownItem.addEventListener("click", function (event) {
+        event.stopPropagation();
+        title.innerHTML = this.textContent ;
+        dropdownMenu.classList.add("hidden");
+      });
+    });
+
+    // Hide Dropdown on Click Outside
+    document.addEventListener("click", function (event) {
+      const targetedDiv = document.querySelector('.plugin-content');
+      if (!container.contains(event.target) || targetedDiv.contains(event.target)) {
+        dropdownMenu.classList.add("hidden");
+      }
+    });
+
+    // handling the add modal
+      const Modal = document.getElementById('modal');
+
+        function showModal(){
+            Modal.classList.remove('hidden');
+        }
+        function hideModal(){
+            Modal.classList.add('hidden');
+        }
+    </script>
+  </body>
+</html>

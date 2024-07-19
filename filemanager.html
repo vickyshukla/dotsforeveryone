@@ -1,0 +1,1354 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet"/>
+    <link href="https://unpkg.com/tailwindcss@^2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="styles/root.css" />
+    <link rel="stylesheet" href="styles/as.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.2.13/dist/semantic.min.js"></script>
+  </head>
+
+  <body class="h-screen w-full flex flex-col fm">
+    <main class="flex w-full h-full flex">
+      <!-- Sidebar -->
+      <aside class="h-full relative">
+        <input type="checkbox" class="hidden" id="sidebar-toggle" />
+        <label
+          for="sidebar-toggle"
+          class="absolute lg:hidden top-1 -right-8 md:-right-10 px-1"
+        >
+          <i class="ri-bar-chart-horizontal-line"></i>
+        </label>
+        <div class="h-full sidebar">
+          <div class="sidebar-container">
+            <div class="p-6">
+              <img class="w-24" src="/images/logo.png" alt="Dots Logo" />
+            </div>
+            <div class="md:pt-6">
+              <ul class="space-y-1">
+                <li>
+                  <div
+                    role="button"
+                    onclick="toggleDropMenu(this)"
+                    class="drop-menu cursor-pointer rounded-r-lg"
+                  >
+                    <div
+                      class="w-full px-6 py-3 flex justify-between items-center bg-c-black rounded-r-xl"
+                      href="#"
+                    >
+                      <span class="font-normal"><a href="filemanager.html">Position</a></span>
+                      <i
+                        class="ri-arrow-right-s-line text-c-yellow big-right-arrow text-2xl"
+                      ></i>
+                    </div>
+                    <ul class="drop-list text-sm space-y-1">
+                      <li>
+                        <a
+                          href="#"
+                          id="starred-link"
+                          class="block py-2 px-8 rounded-r-md w-full flex justify-between items-center subdrop"
+                          onclick="event.stopPropagation();toggleSubDropMenu();"
+                        >
+                          <span class="font-normal">Starred</span>
+                          <i
+                            class="ri-arrow-right-s-line text-c-yellow text-2xl subdrop-right-arrow"
+                          ></i>
+                        </a>
+                        <ul
+                          class="drop-list text-sm space-y-1 hidden"
+                          id="subdrop-menu"
+                        >
+                          <li>
+                            <a
+                              href="#"
+                              class="block py-2 px-8 rounded-r-md w-full flex justify-between items-center"
+                            >
+                              <span class="font-normal">submenu1</span>
+                              <i
+                                class="ri-arrow-right-s-line text-c-yellow text-2xl"
+                              ></i>
+                            </a>
+                          </li>
+                          <li>
+                            <a
+                              href="#"
+                              class="block py-2 px-8 rounded-r-md w-full flex justify-between items-center"
+                            >
+                              <span class="font-normal">submenu2</span>
+                              <i
+                                class="ri-arrow-right-s-line text-c-yellow text-2xl"
+                              ></i>
+                            </a>
+                          </li>
+                        </ul>
+                      </li>
+                      <li>
+                        <a
+                          href="#"
+                          class="block py-2 px-8 rounded-r-md w-full flex justify-between items-center"
+                        >
+                          <span class="font-normal">Personal</span>
+                          <i
+                            class="ri-arrow-right-s-line text-c-yellow text-2xl"
+                          ></i>
+                        </a>
+                      </li>
+                      <li>
+                        <a
+                          href="#"
+                          class="block py-2 px-8 rounded-r-md w-full flex justify-between items-center"
+                        >
+                          <span class="font-normal">Group</span>
+                          <i
+                            class="ri-arrow-right-s-line text-c-yellow text-2xl"
+                          ></i>
+                        </a>
+                      </li>
+                      <li>
+                        <a
+                          href="#"
+                          class="block py-2 px-8 rounded-r-md w-full flex justify-between items-center"
+                        >
+                          <span class="font-normal">Collaborate with me</span>
+                          <i
+                            class="ri-arrow-right-s-line text-c-yellow text-2xl"
+                          ></i>
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </li>
+                <li>
+                  <div
+                    role="button"
+                    onclick="toggleDropMenu(this)"
+                    class="drop-menu cursor-pointer rounded-r-lg"
+                  >
+                    <div
+                      class="w-full px-6 py-3 flex justify-between items-center"
+                      href="#"
+                    >
+                      <span class="font-normal">Tools </span>
+                      <i
+                        class="ri-arrow-right-s-line text-c-yellow big-right-arrow text-2xl"
+                      ></i>
+                    </div>
+                  </div>
+                </li>
+                <li>
+                  <div
+                    role="button"
+                    onclick="toggleDropMenu(this)"
+                    class="drop-menu cursor-pointer rounded-r-lg"
+                  >
+                    <div
+                      class="w-full px-6 py-3 flex justify-between items-center"
+                      href="#"
+                    >
+                      <span class="font-normal">File type</span>
+                      <i
+                        class="ri-arrow-right-s-line text-c-yellow big-right-arrow text-2xl"
+                      ></i>
+                    </div>
+                  </div>
+                </li>
+
+                <li>
+                  <div
+                    role="button"
+                    onclick="toggleDropMenu(this)"
+                    class="drop-menu cursor-pointer rounded-r-lg"
+                  >
+                    <div
+                      class="w-full px-6 py-3 flex justify-between items-center"
+                      href="#"
+                    >
+                      <span class="font-normal">Tags</span>
+                      <i
+                        class="ri-arrow-right-s-line text-c-yellow big-right-arrow text-2xl"
+                      ></i>
+                    </div>
+                  </div>
+                </li>
+                <li>
+                  <div
+                    role="button"
+                    onclick="toggleDropMenu(this)"
+                    class="drop-menu cursor-pointer rounded-r-lg"
+                  >
+                    <div
+                      class="w-full px-6 py-3 flex justify-between items-center"
+                      href="#"
+                    >
+                      <span class="font-normal">Network Driver</span>
+                      <i
+                        class="ri-arrow-right-s-line text-c-yellow big-right-arrow text-2xl"
+                      ></i>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </aside>
+      <div class="flex-grow h-100 main">
+        <div class="flex w-full h-full flex-col content">
+          <div class="px-3 md:px-6 py-3 py-6 pb-2 md:pb-6">
+            <div class="flex items-center gap-4">
+              <span class="text-xl text-c-black font-normal">File</span>
+            </div>
+          </div>
+          <!-- topTaskbar in desktops -->
+          <div
+            class="pt-4 pb-3.5 w-full hidden md:flex flex-row items-center gap-2 taskbar"
+          >
+            <div
+              class="flex bg-c-white rounded-md w-20 h-10 justify-evenly ml-6"
+            >
+              <button>
+                <i class="ri-arrow-left-line ri-lg"></i>
+              </button>
+              <button>
+                <i class="ri-arrow-right-line ri-lg text-c-gray-opaque"></i>
+              </button>
+            </div>
+
+            <div
+              class="flex items-center rounded-md overflow-hidden bg-c-white h-10 md:ml-6 md:w-61 lg:w-8/12 cursor-pointer"
+            >
+              <button
+                class="pt-3 pb-3 pl-4 hidden md:flex items-center justify-center border-r border-c-gray-opaque pr-3"
+              >
+                <i class="ri-arrow-up-line ri-lg"></i>
+              </button>
+
+              <div
+                class="flex items-center flex-grow flex-shrink overflow-x-auto"
+              >
+                <button class="flex items-center px-2">
+                  <i class="ri-home-4-line pr-2"></i>Personal
+                  <i class="ri-arrow-drop-down-line ri-lg"></i> <span>/</span>
+                </button>
+                <button class="flex items-center px-2">
+                  Desktop
+                  <i class="ri-arrow-drop-down-line ri-lg"></i> <span>/</span>
+                </button>
+                <button class="flex items-center px-2 whitespace-nowrap">
+                  <span class="flex-shrink-0">New folder(0)</span>
+                  <i class="ri-arrow-drop-down-line ri-lg"></i> <span>/</span>
+                </button>
+              </div>
+
+              <button
+                class="pr-5 pt-3 pb-3 px-4 flex items-center justify-center"
+              >
+                <i class="ri-star-line ri-lg"></i>
+              </button>
+
+              <button class="pr-4 pt-3 pb-3 flex items-center justify-center">
+                <i class="ri-loop-left-line ri-lg"></i>
+              </button>
+            </div>
+
+            <div
+              class="flex items-center rounded-md overflow-hidden flex-shrink-0 flex-grow bg-c-white h-10 ml-7 mr-6 w-11/12 md:w-2/12"
+            >
+              <input
+                type="text"
+                class="pl-4 pt-2.5 pb-2.5 flex-shrink flex-grow border-none outline-none font-size-16 w-2/12"
+                placeholder="Search"
+              />
+              <div class="pt-3 pb-3 pr-4 flex items-center justify-center">
+                <i class="ri-search-line ri-lg"></i>
+              </div>
+            </div>
+          </div>
+
+          <!-- topTaskbar in mobile -->
+          <div class="md:hidden w-full">
+            <div
+              class="flex items-center justify-between overflow-hidden flex-shrink-0 bg-transparent h-10 w-11/12 ml-5 sm:ml-7 mb-3 mr-6 cursor-pointer relative flex-shrink-0 flex-grow"
+            >
+              <div
+                class="absolute inset-y-0 left-0 flex items-center space-x-6 w-3/4 sm:w-5/6 overflow-x-auto font-size-16"
+              >
+                <button class="flex items-center">
+                  <i class="ri-home-4-line pr-2"></i>Personal
+                  <i class="ri-arrow-drop-down-line ri-lg"></i> <span>/</span>
+                </button>
+                <button class="flex items-center">
+                  Desktop
+                  <i class="ri-arrow-drop-down-line ri-lg"></i> <span>/</span>
+                </button>
+                <button class="flex items-center">
+                  <span class="truncate">New folder(0)</span>
+                  <i class="ri-arrow-drop-down-line ri-lg"></i>
+                </button>
+                <button class="flex items-center">
+                  <span class="truncate">New folder(0)</span>
+                  <i class="ri-arrow-drop-down-line ri-lg"></i></button
+                ><button class="flex items-center">
+                  <span class="truncate">New folder(0)</span>
+                  <i class="ri-arrow-drop-down-line ri-lg"></i>
+                </button>
+              </div>
+
+              <div
+                class="absolute inset-y-0 right-0 flex items-center space-x-2"
+              >
+                <button
+                  class="pr-2 pt-3 pb-3 flex items-center justify-center"
+                  onclick="toggleView();"
+                >
+                  <i class="ri-gallery-view-2 ri-lg"></i>
+                </button>
+                <button
+                  class="pt-3 pb-3 flex items-center justify-center dropdown-toggle"
+                  onclick="toggleDropdown('morePaneDropdown')"
+                >
+                  <i class="ri-more-fill ri-lg"></i>
+                </button>
+              </div>
+            </div>
+            <div
+              id="morePaneDropdown"
+              class="dropdown-hover-bg-c-yellow absolute z-10 right-4 bg-c-white border border-c-medium-gray rounded-lg shadow-md hidden w-10"
+            >
+              <div class="hover-bg-c-yellow rounded-t-lg">
+                <a
+                  href="#"
+                  class="block p-1 flex justify-center items-center dropdown-item"
+                  onclick="togglePanel('detail');"
+                >
+                  <i class="ri-profile-line font-size-20"></i>
+                </a>
+              </div>
+              <div class="hover-bg-c-yellow rounded-b-lg">
+                <a
+                  href="#"
+                  class="block p-1 flex justify-center items-center dropdown-item"
+                  onclick="togglePanel('preview');"
+                  ><i class="ri-eye-line font-size-20"></i
+                ></a>
+              </div>
+            </div>
+
+            <div
+              class="pt-4 pb-3.5 w-full flex flex-col items-center gap-2 taskbar"
+            >
+              <div
+                class="flex items-center rounded-md overflow-hidden flex-shrink-0 flex-grow bg-c-white h-10 ml-7 mr-6 w-11/12 md:w-2/12"
+              >
+                <input
+                  type="text"
+                  class="pl-4 pt-2.5 pb-2.5 flex-shrink flex-grow border-none outline-none font-size-16 w-2/12"
+                  placeholder="Search"
+                />
+                <div class="pt-3 pb-3 pr-4 flex items-center justify-center">
+                  <i class="ri-search-line ri-lg"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- actionbar -->
+          <div
+            class="border-b border-c-light-gray1 flex justify-between items-center hidden md:flex text-c-black"
+          >
+            <div class="flex ml-6 gap-x-6 mt-3 mb-3">
+              <div class="relative flex items-center">
+                <button class="flex">
+                  <img src="images/new.svg" class="pr-2.5" /><span
+                    class="font-size-18"
+                    >New</span
+                  >
+                </button>
+                <button
+                  class="dropdown-toggle mt-1"
+                  onclick="toggleDropdown('newDropdown')"
+                >
+                  <i class="ri-arrow-drop-down-line ri-lg"></i>
+                </button>
+                <div
+                  id="newDropdown"
+                  class="dropdown-hover-bg-c-yellow absolute mt-2 z-10 bg-c-white border border-c-medium-gray font-size-16 rounded-lg shadow-md hidden w-52 top-full"
+                >
+                  <div class="hover-bg-c-yellow rounded-t-lg">
+                    <a href="#" class="block p-2 pl-4 dropdown-item"
+                      ><div class="flex">
+                        <img src="images/text.svg" class="pr-4" /><span class="font-normal"
+                          >txt File</span
+                        >
+                      </div></a
+                    >
+                  </div>
+                  <div class="hover-bg-c-yellow">
+                    <a href="#" class="block p-2 pl-4 dropdown-item"
+                      ><div class="flex">
+                        <img src="images/md.svg" class="pr-4" /><span class="font-normal"
+                          >md File</span
+                        >
+                      </div></a
+                    >
+                  </div>
+                  <div class="hover-bg-c-yellow border-b border-c-silver-gray">
+                    <a href="#" class="block p-2 pl-4 dropdown-item"
+                      ><div class="flex">
+                        <img src="images/html.svg" class="pr-4" /><span class="font-normal"
+                          >html File</span
+                        >
+                      </div></a
+                    >
+                  </div>
+                  <div class="hover-bg-c-yellow">
+                    <a href="#" class="block p-2 pl-4 dropdown-item"
+                      ><div class="flex">
+                        <img src="images/word.svg" class="pr-4" /><span class="font-normal"
+                          >Word docx file</span
+                        >
+                      </div></a
+                    >
+                  </div>
+                  <div class="hover-bg-c-yellow">
+                    <a href="#" class="block p-2 pl-4 dropdown-item"
+                      ><div class="flex">
+                        <img src="images/excel1.svg" class="pr-4" /><span class="font-normal"
+                          >Excel xslx file</span
+                        >
+                      </div></a
+                    >
+                  </div>
+                  <div class="hover-bg-c-yellow border-b border-c-silver-gray">
+                    <a href="#" class="block p-2 pl-4 dropdown-item"
+                      ><div class="flex">
+                        <img src="images/powerpoint1.svg" class="pr-4" /><span class="font-normal"
+                          >Powerpoint pdf File</span
+                        >
+                      </div></a
+                    >
+                  </div>
+                  <div class="hover-bg-c-yellow border-b border-c-silver-gray">
+                    <a href="#" class="block p-2 pl-4 dropdown-item"
+                      ><div class="flex">
+                        <img src="images/minder.svg" class="pr-4" /><span class="font-normal"
+                          class=""
+                          >Minder diagram</span
+                        >
+                      </div></a
+                    >
+                  </div>
+                  <div class="hover-bg-c-yellow">
+                    <a href="#" class="block p-2 pl-4 dropdown-item"
+                      ><div class="flex">
+                        <img src="images/appstore.svg" class="pr-4" /><span class="font-normal"
+                          >Light app</span
+                        >
+                      </div></a
+                    >
+                  </div>
+                  <div class="hover-bg-c-yellow">
+                    <a href="#" class="block p-2 pl-4 dropdown-item"
+                      ><div class="flex">
+                        <img src="images/chrome.svg" class="pr-4" /><span class="font-normal"
+                          >New URL</span
+                        >
+                      </div></a
+                    >
+                  </div>
+                  <div class="hover-bg-c-yellow rounded-b-lg">
+                    <a href="#" class="block p-2 pl-4 dropdown-item"
+                      ><div class="flex">
+                        <img src="images/shared-folder.svg" class="pr-4" /><span class="font-normal"
+                          >File shortcut</span
+                        >
+                      </div></a
+                    >
+                  </div>
+                </div>
+              </div>
+              <div class="relative flex items-center">
+                <button
+                  class="flex gap-x-2"
+                  onclick="togglePopup('uploadPopup');"
+                >
+                  <i class="ri-upload-2-line ri-lg mt-1"></i>
+                  <span class="font-size-18 font-normal">Upload</span>
+                </button>
+                <button
+                  class="dropdown-toggle mt-1"
+                  onclick="toggleDropdown('uploadDropdown')"
+                >
+                  <i class="ri-arrow-drop-down-line ri-lg"></i>
+                </button>
+                <div
+                  id="uploadDropdown"
+                  class="dropdown-hover-bg-c-yellow absolute mt-2 z-10 bg-c-white border border-c-medium-gray font-size-16 rounded-lg shadow-md hidden md:w-40 lg:w-52 xl:w-68 top-full"
+                >
+                  <div class="hover-bg-c-yellow rounded-t-lg">
+                    <a href="#" class="block p-2 pl-4 dropdown-item"
+                      ><div class="flex">
+                        <i class="ri-upload-2-line ri-lg pr-4 mt-1"></i>
+                        <span class="font-normal" onclick="togglePopup('uploadPopup');"
+                          >Upload File</span
+                        >
+                      </div></a
+                    >
+                  </div>
+                  <div class="hover-bg-c-yellow rounded-b-lg">
+                    <a href="#" class="block p-2 pl-4 dropdown-item"
+                      ><div class="flex">
+                        <i class="ri-upload-2-line ri-lg pr-4 mt-1"></i>
+                        <span class="font-normal">Upload Folder</span>
+                      </div></a
+                    >
+                  </div>
+                </div>
+              </div>
+
+              <button>
+                <i class="ri-scissors-2-fill ri-lg"></i>
+              </button>
+              <button>
+                <i class="ri-file-copy-line ri-lg"></i>
+              </button>
+              <button>
+                <img src="images/paste.svg" />
+              </button>
+              <button>
+                <img src="images/rename.svg" />
+              </button>
+              <button onclick="togglePopup('sharePopup');">
+                <i class="ri-share-fill ri-lg"></i>
+              </button>
+              <button>
+                <i class="ri-delete-bin-line ri-lg"></i>
+              </button>
+              <div class="relative flex items-center">
+                <button class="flex gap-x-2">
+                  <i class="ri-arrow-up-down-line ri-lg mt-1"></i>
+                  <span class="font-size-18">Sort</span>
+                </button>
+                <button
+                  class="dropdown-toggle"
+                  onclick="toggleDropdown('sortDropdown')"
+                >
+                  <i class="ri-arrow-drop-down-line ri-lg"></i>
+                </button>
+                <div
+                  id="sortDropdown"
+                  class="dropdown-hover-bg-c-yellow absolute top-full mt-2 z-10 bg-c-white border border-c-medium-gray font-size-16 rounded-lg shadow-md hidden md:w-40 lg:w-44 xl:w-68"
+                >
+                  <div class="hover-bg-c-yellow rounded-t-lg">
+                    <a href="#" class="block p-2 pl-4 dropdown-item"
+                      ><div class="flex">
+                        <i class="ri-check-line pr-3 ri-lg mt-1"></i
+                        ><span class="font-normal">Name</span>
+                      </div></a
+                    >
+                  </div>
+                  <div class="hover-bg-c-yellow">
+                    <a href="#" class="block p-2 pl-12 dropdown-item font-normal">Type </a>
+                  </div>
+                  <div class="hover-bg-c-yellow">
+                    <a href="#" class="block p-2 pl-12 dropdown-item font-normal">Size </a>
+                  </div>
+                  <div class="hover-bg-c-yellow border-b border-color-gray7">
+                    <a href="#" class="block p-2 pl-12 dropdown-item font-normal"
+                      >Modification
+                    </a>
+                  </div>
+                  <div class="hover-bg-c-yellow rounded-t-lg">
+                    <a href="#" class="block p-2 pl-4 dropdown-item"
+                      ><div class="flex">
+                        <i class="ri-check-line pr-3 ri-lg mt-1"></i
+                        ><span class="font-normal">Increasing</span>
+                      </div></a
+                    >
+                  </div>
+                  <div class="hover-bg-c-yellow rounded-b-lg">
+                    <a href="#" class="block p-2 pl-12 dropdown-item font-normal"
+                      >Decrement
+                    </a>
+                  </div>
+                </div>
+              </div>
+              <div class="relative flex items-center">
+                <button class="flex gap-x-2" onclick="toggleView()">
+                  <i class="ri-gallery-view-2 ri-lg mt-1"></i>
+                  <span class="font-size-18 font-normal">View</span>
+                </button>
+                <button
+                  class="dropdown-toggle"
+                  onclick="toggleDropdown('viewDropdown')"
+                >
+                  <i class="ri-arrow-drop-down-line ri-lg"></i>
+                </button>
+                <div
+                  id="viewDropdown"
+                  class="dropdown-hover-bg-c-yellow absolute top-full mt-2 z-10 bg-c-white border border-c-medium-gray font-size-16 rounded-lg shadow-md hidden md:w-44 xl:w-68"
+                >
+                  <div class="hover-bg-c-yellow rounded-t-lg">
+                    <a href="#" class="block p-2 pl-4 dropdown-item"
+                      ><div class="flex">
+                        <i class="ri-gallery-view-2 text-sm mt-1 pr-4"></i>
+                        <span class="font-normal">Tiny</span>
+                      </div></a
+                    >
+                  </div>
+                  <div class="hover-bg-c-yellow">
+                    <a href="#" class="block p-2 pl-4 dropdown-item"
+                      ><div class="flex">
+                        <i class="ri-gallery-view-2 text-base mt-1 pr-4"></i>
+                        <span class="font-normal">Small icon</span>
+                      </div></a
+                    >
+                  </div>
+                  <div class="hover-bg-c-yellow">
+                    <a href="#" class="block p-2 pl-4 dropdown-item"
+                      ><div class="flex">
+                        <i class="ri-gallery-view-2 text-lg pr-4"></i>
+                        <span class="font-normal">Medium icon</span>
+                      </div></a
+                    >
+                  </div>
+                  <div class="hover-bg-c-yellow">
+                    <a href="#" class="block p-2 pl-4 dropdown-item"
+                      ><div class="flex">
+                        <i class="ri-gallery-view-2 text-xl pr-4"></i>
+                        <span class="font-normal">Big icon</span>
+                      </div></a
+                    >
+                  </div>
+                  <div class="hover-bg-c-yellow">
+                    <a href="#" class="block p-2 pl-4 dropdown-item"
+                      ><div class="flex">
+                        <i class="ri-gallery-view-2 text-2xl pr-4"></i>
+                        <span class="font-normal">Oversized icon</span>
+                      </div></a
+                    >
+                  </div>
+                  <div class="hover-bg-c-yellow">
+                    <a
+                      href="#"
+                      class="block p-2 pl-4 dropdown-item"
+                      onclick="toggleView();"
+                      ><div class="flex">
+                        <i class="ri-list-check ri-lg mt-1 pr-4"></i
+                        ><span class="font-normal">List View</span>
+                      </div></a
+                    >
+                  </div>
+                  <div class="hover-bg-c-yellow">
+                    <a
+                      href="#"
+                      class="block p-2 pl-4 dropdown-item"
+                      onclick="togglePanel('detail');"
+                      ><div class="flex items-center">
+                        <i
+                          class="ri-profile-line pr-4 color-light-gray font-size-20"
+                        ></i
+                        ><span class="font-normal">Detail pane</span>
+                      </div></a
+                    >
+                  </div>
+                  <div class="hover-bg-c-yellow rounded-b-lg">
+                    <a
+                      href="#"
+                      class="block p-2 pl-4 dropdown-item"
+                      onclick="togglePanel('preview');"
+                      ><div class="flex items-center">
+                        <i
+                          class="ri-eye-line pr-4 color-light-gray font-size-20"
+                        ></i>
+                        <span class="font-normal">Preview pane</span>
+                      </div></a
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div id="zoom" class="mr-6">
+              <button
+                class="mt-2 mb-2 dropdown-toggle"
+                onclick="toggleDropdown('zoomDropdown')"
+              >
+                <i class="ri-zoom-in-line font-size-20"></i>
+              </button>
+              <div
+                id="zoomDropdown"
+                class="dropdown-hover-bg-c-yellow absolute z-10 -ml-2 bg-c-white border border-c-medium-gray rounded-lg shadow-md hidden"
+              >
+                <div class="rounded-t-lg">
+                  <a href="#" class="block p-3 pb-4 dropdown-item">
+                    <div
+                      class="relative w-1 h-28 bg-c-black rounded-full"
+                      id="slide"
+                    >
+                      <div
+                        id="draggable"
+                        class="absolute top-0 -left-1.5 w-4 h-4 bg-c-yellow rounded-full cursor-pointer"
+                      ></div>
+                      <div
+                        id="progress"
+                        class="bg-c-yellow rounded-full"
+                        style="height: 0"
+                      ></div>
+                    </div>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!--Main content -->
+          <div class="relative h-full overflow-y-auto">
+            <!--grid container -->
+            <div
+              id="gridContainer"
+              class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8 xl:grid-cols-10 2xl:grid-cols-12 gap-4 transition-all duration-300 p-4 overflow-y-auto"
+            >
+              <div class="relative group w-full md:w-full max-w-sm">
+                <img src="images/excel.svg" alt="Your Image" class="w-full" />
+                <div
+                  class="absolute inset-0 flex items-center justify-center transition-opacity duration-300 overlay"
+                >
+                  <div
+                    class="absolute inset-0 bg-c-light-blue bg-opacity-50 opacity-0 group-hover:opacity-50 group-focus:opacity-50 transition-opacity duration-300"
+                  ></div>
+                  <input
+                    type="checkbox"
+                    class="c-checkbox top-0 left-0 mt-2 ml-2 h-4 w-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                    style="position: absolute !important"
+                  />
+                  <i
+                    class="ri-arrow-down-line absolute top-0 right-0 mr-2 mt-0.5 text-c-white opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                  ></i>
+                  <i
+                    class="ri-edit-line edit-icon absolute bottom-0 right-0 pb-1 mr-2 text-c-white cursor-pointer opacity-0 group-hover:opacity-100 transition-opacity duration-300 hover-text-c-yellow"
+                  ></i>
+                </div>
+                <div class="left-0 right-0 bottom-0 text-center font-size-18">
+                  <p
+                    id="text-display"
+                    class="whitespace-normal break-words text-ellipsis font-normal"
+                  >
+                    Test docx
+                  </p>
+                  <input
+                    type="text"
+                    class="text-input hidden w-full text-center h-8 -mt-4 bg-transparent border-2 border-c-light-blue"
+                    value="Test docx"
+                  />
+                </div>
+              </div>
+              <div class="relative group w-full md:w-full max-w-sm">
+                <img src="images/excel.svg" alt="Your Image" class="w-full" />
+                <div class="left-0 right-0 bottom-0 text-center font-size-18">
+                  <p
+                    id="text-display"
+                    class="whitespace-normal break-words text-ellipsis font-normal"
+                  >
+                    Test docx
+                  </p>
+                </div>
+              </div>
+              <div class="relative group w-full md:w-full max-w-sm">
+                <img src="images/excel.svg" alt="Your Image" class="w-full" />
+                <div class="left-0 right-0 bottom-0 text-center font-size-18">
+                  <p
+                    id="text-display"
+                    class="whitespace-normal break-words text-ellipsis font-normal"
+                  >
+                    Test docx
+                  </p>
+                </div>
+              </div>
+              <div class="relative group w-full md:w-full max-w-sm">
+                <img src="images/excel.svg" alt="Your Image" class="w-full" />
+                <div class="left-0 right-0 bottom-0 text-center font-size-18">
+                  <p
+                    id="text-display"
+                    class="whitespace-normal break-words text-ellipsis font-normal"
+                  >
+                    Test docx
+                  </p>
+                </div>
+              </div>
+            </div>
+            <!--table container -->
+            <div id="tableContainer" class="hidden">
+              <!--table container in mobile-->
+              <div class="md:hidden" id="mobileList">
+                <ul>
+                  <li
+                    class="flex items-center pl-2 pr-3.5 pt-3 pb-3 border-b border-c-medium-gray font-size-20 justify-between"
+                  >
+                    <div class="ml-4 flex-row">
+                      <div class="flex items-center space-x-2">
+                        <div class="flex-shrink-0">
+                          <img
+                            src="images/excel.svg"
+                            alt="Document Image"
+                            class="w-20 h-20"
+                          />
+                        </div>
+                        <div class="flex flex-col justify-between">
+                          <div class="font-weight-500">Testdocument.xls</div>
+                          <div class="font-normal">08-14 01:10</div>
+                        </div>
+                      </div>
+                    </div>
+                    <div>
+                      <i class="ri-more-fill"></i>
+                    </div>
+                  </li>
+                  <li
+                    class="flex items-center pl-2 pr-3.5 pt-3 pb-3 border-b border-c-medium-gray font-size-20 justify-between"
+                  >
+                    <div class="ml-4 flex-row">
+                      <div class="flex items-center space-x-2">
+                        <div class="flex-shrink-0">
+                          <img
+                            src="images/powerpoint.svg"
+                            alt="Document Image"
+                            class="w-20 h-20"
+                          />
+                        </div>
+                        <div class="flex flex-col justify-between">
+                          <div class="font-weight-500">Testdocument.pdf</div>
+                          <div class="font-normal">08-14 01:10</div>
+                        </div>
+                      </div>
+                    </div>
+                    <div>
+                      <i class="ri-more-fill"></i>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+              <!--table container in desktop-->
+              <div
+                class="m-6 overflow-x-auto rounded-lg hidden md:flex"
+                id="deskList"
+              >
+                <table class="min-w-full bg-c-white rounded-lg shadow-lg">
+                  <thead class="bg-c-dark-gray rounded-t-lg">
+                    <tr
+                      class="text-left font-medium border-none text-c-white font-size-18"
+                    >
+                      <th class="px-4 py-2">Name</th>
+                      <th class="px-4 py-2">Type</th>
+                      <th class="px-4 py-2">Size</th>
+                      <th class="px-4 py-2">Modification</th>
+                      <th class="px-4 py-2">Editor</th>
+                      <th class="px-4 py-2">Creation</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="cursor-pointer text-left font-size-16">
+                      <td class="px-4 py-2">
+                        <div class="flex items-center font-normal">
+                          <img
+                            src="images/excel.svg"
+                            alt="Your Image"
+                            class="w-8 h-6 pr-2"
+                          />
+                          Testdocument.xls
+                        </div>
+                      </td>
+                      <td class="px-4 py-2 font-normal">excel File</td>
+                      <td class="px-4 py-2 font-normal">236KB</td>
+                      <td class="px-4 py-2 font-normal">04-25 17:23</td>
+                      <td class="px-4 py-2">
+                        <div class="flex items-center font-normal">
+                          <img
+                            src="images/me.png"
+                            alt="Your Image"
+                            class="w-6 h-6 pr-1"
+                          />Me
+                        </div>
+                      </td>
+                      <td class="px-4 py-2 font-normal">03-25 18:09</td>
+                    </tr>
+                    <tr class="cursor-pointer text-left font-size-16">
+                      <td class="px-4 py-2">
+                        <div class="flex items-center font-normal">
+                          <img
+                            src="images/powerpoint.svg"
+                            alt="Your Image"
+                            class="w-8 h-6 pr-2"
+                          />
+                          Testdocument.pdf
+                        </div>
+                      </td>
+                      <td class="px-4 py-2 font-normal">pdf File</td>
+                      <td class="px-4 py-2 font-normal">236KB</td>
+                      <td class="px-4 py-2 font-normal">04-25 17:23</td>
+                      <td class="px-4 py-2 font-normal">
+                        <div class="flex items-center font-normal">
+                          <img
+                            src="images/me.png"
+                            alt="Your Image"
+                            class="w-6 h-6 pr-1"
+                          />Me
+                        </div>
+                      </td>
+                      <td class="px-4 py-2 font-normal">03-25 18:09</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <!--panes-->
+            <div
+              id="panel"
+              class="resizable-sidebar hidden overflow-y-auto md:mt-4 md:w-1/3 lg:w-1/5"
+            >
+              <div class="resizer"></div>
+              <!--detail pane-->
+              <div id="detailContent" class="font-size-14">
+                <div class="flex items-start justify-between border-b p-1">
+                  <div class="flex items-end space-x-4">
+                    <div class="flex-shrink-0">
+                      <img
+                        src="images/excel.svg"
+                        alt="Document Image"
+                        class="w-16 h-16"
+                      />
+                    </div>
+                    <div class="flex flex-col justify-between font-normal">
+                      <p>Document</p>
+                      <p>561KB</p>
+                      <p>Today 12:06</p>
+                    </div>
+                    <div class="space-x-4">
+                      <button>
+                     <i class="ri-star-line font-size-20"></i>
+                      </button>
+                      <button>
+                        <i class="ri-pushpin-2-line font-size-20"></i>
+                      </button>
+                    </div>
+                  </div>
+                  <div>
+                    <button
+                      class="p-1 hover-dark-yellow"
+                      onclick="togglePanel('detail');"
+                    >
+                      <i class="ri-close-fill font-size-18"></i>
+                    </button>
+                  </div>
+                </div>
+
+                <div class="flex justify-start space-x-14 mt-2 font-normal">
+                  <p class="pl-5">Path</p>
+                  <p>
+                    Personal / Documents
+                    <button><i class="ri-file-copy-2-line"></i></button>
+                    <button><i class="ri-link"></i></button>
+                  </p>
+                </div>
+                <div class="flex justify-start space-x-7 mt-2 font-normal">
+                  <p class="pl-5">Currently</p>
+                  <p>
+                    120 files&#40;121File, 1Folder&#41;
+                    <button><i class="ri-information-2-line"></i></button>
+                  </p>
+                </div>
+                <div class="flex justify-start space-x-14 mt-2 font-normal">
+                  <p class="pl-5">Size</p>
+                  <p>797KB&#40;815,628 Byte&#41;</p>
+                </div>
+                <div class="flex justify-start space-x-7 mt-2 font-normal">
+                  <p class="pl-5">Creation</p>
+                  <p>2024-09-21 13:47</p>
+                </div>
+                <div class="flex justify-start space-x-1 mt-2 border-b pb-2 font-normal">
+                  <p class="pl-5">Modification</p>
+                  <p>Today 01:10</p>
+                </div>
+                <div class="flex justify-start space-x-8 mt-2 font-normal">
+                  <p class="pl-5">Creator</p>
+                  <p class="flex items-start justify-center ">
+                    <img src="images/me.png" />Me
+                  </p>
+                </div>
+                <div class="flex justify-start space-x-11 mt-2 font-normal">
+                  <p class="pl-5">Editor</p>
+                  <p class="flex items-start justify-center">
+                    <img src="images/me.png" />Me
+                  </p>
+                </div>
+                <div class="flex justify-start space-x-3 mt-2 border-b pb-2 font-normal">
+                  <p class="pl-5">Description</p>
+                  <p>
+                    Add document discription
+                    <button><i class="ri-edit-2-fill"></i></button>
+                  </p>
+                </div>
+                <div class="flex justify-between mt-2">
+                  <p class="pl-5 font-semibold">File tag</p>
+                  <p>
+                    <i class="ri-bookmark-3-line pr-3"></i>
+                  </p>
+                </div>
+                <div class="flex justify-start space-x-11 mt-2">
+                  <p class="pl-5 font-normal">No tags,click settings</p>
+                </div>
+              </div>
+              <!--preview pane-->
+              <div id="previewContent" class="font-size-14 hidden">
+                <div class="flex items-start justify-between border-b p-1">
+                  <div class="flex items-end space-x-4">
+                    <div class="flex-shrink-0">
+                      <img
+                        src="images/excel.svg"
+                        alt="Document Image"
+                        class="w-16 h-16"
+                      />
+                    </div>
+                    <div class="flex flex-col justify-between font-normal">
+                      <p>Document</p>
+                      <p>561KB</p>
+                      <p>Today 12:06</p>
+                    </div>
+                    <div class="space-x-4">
+                      <button>
+                      <i class="ri-star-line font-size-20"></i>
+                      </button>
+                      <button>
+                        <i class="ri-pushpin-2-line font-size-20"></i>
+                      </button>
+                    </div>
+                  </div>
+                  <div>
+                    <button
+                      class="p-1 hover-dark-yellow"
+                      onclick="togglePanel('preview');"
+                    >
+                      <i class="ri-close-fill font-size-18"></i>
+                    </button>
+                  </div>
+                </div>
+                <div class="flex items-center justify-center p-6">
+                  <iframe
+                    src="http://web.simmons.edu/~grovesd/comm244/notes/week2/links"
+                    class="w-full"
+                    style="height: 55vh"
+                    frameborder="0"
+                  ></iframe>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!--upload popup-->
+          <div
+            id="uploadPopup"
+            class="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-50 hidden"
+          >
+            <div
+              class="bg-c-white rounded-2xl shadow-lg md:w-9/12 lg:w-7/12 xl:w-6/12 2xl:w-2/5 max-w-7xl max-h-screen overflow-y-auto"
+            >
+              <div
+                class="flex justify-between items-center border-b border-gray-3 px-6 p-4"
+              >
+                <h2 class="font-size-20 font-weight-500">Local Upload</h2>
+                <button onclick="togglePopup('uploadPopup')">
+                 <i class="ri-close-circle-fill ri-xl"></i>
+                </button>
+              </div>
+              <form class="px-6 p-4" onsubmit="return false">
+                <div
+                  class="mb-4 flex flex-col md:flex-row items-center justify-between border-b border-gray-3 pb-4"
+                >
+                  <div class="w-full md:w-auto mb-4 md:mb-0 flex relative">
+                    <input
+                      type="button"
+                      class="border border-r-0 rounded-l-lg p-2 px-4 bg-c-light-gray text-c-yellow font-size-16 border-c-light-gray"
+                      value="Select the File"
+                      onclick="event.stopPropagation();"
+                    />
+                    <button
+                      class="border border-l-0 rounded-r-lg px-2 dropdown-toggle border-c-light-gray"
+                      onclick="event.stopPropagation();toggleDropdown('selectFileDropdown')"
+                    >
+                     <i class="ri-arrow-drop-down-line ri-xl"></i>
+                    </button>
+                    <div
+                      id="selectFileDropdown"
+                      class="dropdown-hover-bg-c-yellow absolute top-full left-32 md:left-3/4 mt-1 z-10 bg-c-white border border-c-medium-gray rounded-lg shadow-md hidden w-44"
+                    >
+                      <div class="hover-bg-c-yellow rounded-lg">
+                        <a href="#" class="block p-2 pl-4 dropdown-item"
+                          ><div class="flex">
+                            <img src="images/upload.svg" class="pr-4" /><span
+                              class="font-size-16"
+                              >Upload Folder</span
+                            >
+                          </div></a
+                        >
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    class="flex flex-wrap justify-start md:justify-end w-full md:w-auto"
+                  >
+                    <button
+                      class="bg-c-light-black1 text-c-light-black hover-bg-c-yellow font-size-16 font-weight-500 px-6 py-2.5 rounded-md m-1 md:m-0 md:ml-2"
+                      onclick="event.stopPropagation();"
+                    >
+                      Pause
+                    </button>
+                    <button
+                      class="bg-c-light-black1 text-c-light-black hover-bg-c-yellow font-size-16 font-weight-500 px-6 py-2.5 rounded-md m-1 md:m-0 md:ml-2"
+                      onclick="event.stopPropagation();"
+                    >
+                      Clear All
+                    </button>
+                    <button
+                      class="bg-c-light-black1 text-c-light-black hover-bg-c-yellow font-size-16 font-weight-500 px-4 py-2.5 md:px-6 rounded-md m-1 md:m-0 md:ml-2"
+                      onclick="event.stopPropagation();"
+                    >
+                      Cleared Out
+                    </button>
+                  </div>
+                </div>
+                <div
+                  class="mb-4 overflow-y-auto h-56 w-full border border-gray-3 rounded-lg font-normal font-size-16"
+                >
+                  <div
+                    class="grid grid-cols-1 md:grid-cols-2 gap-1 p-2 px-4 border-b border-gray-3"
+                  >
+                    <div class="flex items-center">
+                      <img src="images/powerpoint.svg" class="w-8 h-8 mr-2" />
+                      <span>PowerPoint 560301.pptx </span>
+                    </div>
+                    <div class="flex items-center justify-start md:justify-end">
+                      <span class="pr-3">158kbs</span>
+                      <span>Uploaded Successfully</span>
+                      <input
+                        type="checkbox"
+                        class="relative c-checkbox ml-2 h-4 w-4"
+                      />
+                    </div>
+                  </div>
+                  <div
+                    class="grid grid-cols-1 md:grid-cols-2 gap-1 p-2 px-4 border-b border-gray-3"
+                  >
+                    <div class="flex items-center">
+                      <img src="images/powerpoint.svg" class="w-8 h-8 mr-2" />
+                      <span>PowerPoint 560301.pptx </span>
+                    </div>
+                    <div class="flex items-center justify-start md:justify-end">
+                      <span class="pr-3">158kbs</span>
+                      <span>Uploaded Successfully</span>
+                      <input
+                        type="checkbox"
+                        class="relative c-checkbox ml-2 h-4 w-4"
+                      />
+                    </div>
+                  </div>
+                  <div
+                    class="flex items-center justify-center h-20 mt-5 font-size-20"
+                  >
+                    Drop File Here
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+          <!--share popup-->
+          <div
+            id="sharePopup"
+            role="dialog"
+            class="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-50 hidden"
+          >
+            <div
+              class="bg-c-white rounded-xl shadow-lg w-11/12 md:w-3/4 lg:w-7/12 xl:w-1/2 2xl:w-2/5 max-w-7xl max-h-screen modal-content overflow-y-auto"
+            >
+              <div
+                class="sticky z-10 bg-c-white top-0 flex justify-between items-center gap-2 border-b border-gray-3 p-4 px-6 w-full"
+              >
+                <div class="flex flex-col md:flex-row md:gap-6">
+                  <h2 class="font-size-20 md:text-xl font-weight-500">
+                    Link Sharing
+                  </h2>
+                  <p class="text-xs md:text-sm lg:text-base">
+                    <span class="font-weight-500">Location:</span>
+                    <span class="font-normal">/Personal/Documents/document01.docx</span>
+                    <span class="font-weight-500">Share time:</span> <span class="font-normal">Yesterday
+                    15:48,</span> <span class="font-weight-500">Downloads:</span> <span class="font-normal">
+                      0,
+                    </span>
+                    <span class="font-weight-500">Views:</span> <span class="font-normal">0</span>
+                  </p>
+                </div>
+                <button onclick="togglePopup('sharePopup');">
+                 <i class="ri-close-circle-fill ri-xl"></i>
+                </button>
+              </div>
+              <form
+                class="p-4 px-6 text-xs md:text-sm lg:text-base space-y-3 overflow-auto-y h-96"
+              >
+                <div class="flex flex-wrap items-center">
+                  <label class="block w-full md:w-1/4 font-weight-500"
+                    >URL:<span class="text-c-dark-red">*</span></label
+                  >
+                  <div class="flex w-full md:w-3/4">
+                    <input
+                      type="text"
+                      class="flex-grow border border-gray-3 rounded-l-xl p-2 focus:outline-none focus:ring-0"
+                      placeholder="Enter URL"
+                      required
+                    />
+                    <button
+                      class="border border-gray-3 bg-c-light-black1 hover-bg-c-yellow p-2 px-4"
+                    >
+                      <i class="ri-share-box-line"></i>
+                    </button>
+                    <button
+                      class="border border-gray-3 bg-c-light-black1 hover-bg-c-yellow p-2 px-4"
+                    >
+                      <i class="ri-file-copy-2-line"></i>
+                    </button>
+                    <button
+                      class="border border-gray-3 rounded-r-xl bg-c-light-black1 hover-bg-c-yellow p-2 px-4"
+                    >
+                      <i class="ri-qr-code-line"></i>
+                    </button>
+                  </div>
+                </div>
+                <div class="flex flex-wrap items-center">
+                  <label class="block w-full md:w-1/4 font-weight-500"
+                    >Password:<span class="text-c-dark-red">*</span></label
+                  >
+                  <div class="flex w-full md:w-3/4">
+                    <input
+                      type="password"
+                      id="password"
+                      class="flex-grow border border-gray-3 rounded-l-xl p-2 focus:outline-none focus:ring-0"
+                      placeholder="Enter password"
+                      required
+                    />
+                    <button
+                      type="button"
+                      class="border border-gray-3 rounded-r-xl bg-c-light-black1 hover-bg-c-yellow p-2"
+                    >
+                      Random
+                    </button>
+                  </div>
+                </div>
+                <p class="mt-2 w-full md:w-3/4 md:ml-auto text-left font-normal">
+                  Only extract password to view, no privacy and security
+                </p>
+                <div class="flex flex-wrap items-center">
+                  <label class="block w-full md:w-1/4 font-weight-500"
+                    >Share to View:<span class="text-c-dark-red">*</span></label
+                  >
+                  <div class="flex w-full md:w-3/4">
+                    <input
+                      type="text"
+                      class="flex-grow border border-gray-3 rounded-xl p-2 focus:outline-none focus:ring-0"
+                      placeholder="Please enter multiple viewer"
+                      required
+                    />
+                  </div>
+                </div>
+                <div class="flex flex-wrap items-center">
+                  <label class="block w-full md:w-1/4 font-weight-500"
+                    >Share to Edit:<span class="text-c-dark-red">*</span></label
+                  >
+                  <div class="flex w-full md:w-3/4">
+                    <input
+                      type="text"
+                      class="flex-grow border border-gray-3 rounded-xl p-2 focus:outline-none focus:ring-0"
+                      placeholder="Please enter multiple editor"
+                      required
+                    />
+                  </div>
+                </div>
+                <div class="mt-2 w-full md:w-3/4 md:ml-auto text-left">
+                  <button
+                    type="button"
+                    class="bg-c-light-black1 hover-bg-c-yellow p-2 px-4 rounded-lg flex items-center"
+                    onclick="toggleDropdown('additionalSettings')"
+                  >
+                    Advanced
+                   <i class="ri-arrow-drop-down-line ri-xl pl-2"></i>
+                  </button>
+                </div>
+
+                <div id="additionalSettings" class="hidden pt-2 space-y-3">
+                  <div class="flex flex-wrap items-center">
+                    <label class="block w-full md:w-1/4 font-weight-500"
+                      >Share title:</label
+                    >
+                    <input
+                      type="text"
+                      id="additionalOption1"
+                      class="flex-grow border border-gray-3 rounded-xl p-2 w-full md:w-2/3 focus:outline-none focus:ring-0"
+                      placeholder="Share file name by default, can be customized"
+                    />
+                  </div>
+                  <div class="flex flex-wrap items-center">
+                    <label class="block w-full md:w-1/4 font-weight-500"
+                      >Need login:</label
+                    >
+                    <label
+                      for="toggle"
+                      class="toggle-switch flex items-center cursor-pointer w-full md:w-2/3"
+                    >
+                      <div class="relative">
+                        <input type="checkbox" id="toggle" class="sr-only" />
+                        <div
+                          class="block bg-c-light-black1 w-14 h-7 rounded-full border toggle-bg"
+                        ></div>
+                        <div
+                          class="dot absolute left-0.5 top-0.5 bg-c-white w-6 h-6 rounded-full transition"
+                        ></div>
+                      </div>
+                      <p class="ml-4 font-normal">Only internal member can access</p>
+                    </label>
+                  </div>
+                  <div class="flex flex-wrap items-center">
+                    <label class="block w-full md:w-1/4 font-weight-500"
+                      >Expiry date:</label
+                    >
+                    <label
+                      for="toggle-2"
+                      class="toggle-switch flex items-center cursor-pointer w-full md:w-2/3"
+                    >
+                      <div class="relative">
+                        <input type="checkbox" id="toggle-2" class="sr-only" />
+                        <div
+                          class="block bg-c-light-black1 w-14 h-7 rounded-full border toggle-bg"
+                        ></div>
+                        <div
+                          class="dot absolute left-0.5 top-0.5 bg-c-white w-6 h-6 rounded-full transition"
+                        ></div>
+                      </div>
+                      <p class="ml-4 font-normal">Automatically expire after the limit</p>
+                    </label>
+                  </div>
+                </div>
+                <div class="flex justify-end pb-4">
+                  <button
+                    type="submit"
+                    class="bg-c-light-gray text-c-white px-6 py-2 rounded-full"
+                  >
+                    Copy & Save
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <script src="script/sidebar.js"></script>
+    <script src="script/filemanager.js"></script>
+  </body>
+</html>
