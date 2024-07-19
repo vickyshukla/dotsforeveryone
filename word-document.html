@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Word Processor</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles/root.css" />
+    <link rel="stylesheet" href="styles/as.css" />
+    <style>
+        .w-22 {
+              width: 8rem;
+            }
+            .dropzone {
+                        border: 2px dashed #ccc;
+                        padding: 20px;
+                        text-align: center;
+                        height: 50vh; /* Adjust height to fill the popup */
+                        overflow-y: auto; /* Enable vertical scrolling if content overflows */
+                    }
+
+
+            .dropzone.dragover {
+                background-color: #e2e8f0;
+            }
+
+            #popupuploadfiles {
+                display: none;
+            }
+
+               .popup {
+                width: 9rem;
+                height : 2.3rem;/* Adjust width as needed */
+               /* z-index: 999999;  Ensure  popup is above other content*/
+
+            }
+            .bookshelf{
+                background-image: url("/public/images/appshelf.png");
+                background-repeat: no-repeat;
+                background-position: center;
+                background-size: 30rem 3.5rem;
+
+            }
+            .mainiframeiconheader{
+                z-index:999999;
+            }
+            .disabledicon {
+                opacity: 0.5; /* Reduce opacity to visually disable the icon */
+                pointer-events: none; /* Disable pointer events on the icon */
+                /* Add any additional styling for the disabled appearance */
+            }
+            .popup-header,.popup-buttons {
+                padding-bottom: 1rem;
+            }
+            .scroll-content {
+                white-space: nowrap;
+                -webkit-overflow-scrolling: touch; /* Optional: smooth scrolling on iOS
+            }
+            .scrollbar-hidden {
+                scrollbar-width: none; /* Hide the scrollbar for Firefox */
+            }
+
+            .scrollbar-hidden::-webkit-scrollbar {
+                display: none; /* Hide the scrollbar for WebKit browsers (Chrome, Safari, etc.) */
+            }
+            .popupiframe {
+                position: fixed;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                background-color: white;
+                border: 1px solid #ccc;
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+                z-index: 9999;
+                width: 80%; /* Adjust width as needed */
+                height: 80%; /* Fixed height */
+                overflow: auto; /* Enable scrolling if content overflows */
+            }
+
+            .popupiframe-content {
+                padding: 10px;
+            }
+
+            .popupiframe-header {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 10px;
+                background-color: #333;
+                color: white;
+                border-top-left-radius: 5px;
+                border-top-right-radius: 5px;
+            }
+
+            .popupiframe-header i {
+                cursor: pointer;
+            }
+
+            .popupiframe iframe {
+                width: 100%;
+                height: 93.2%;
+                border: none;
+            }
+            /*  .triangle {*/
+            /*  width: 0;*/
+            /*  height: 0;*/
+            /*  border-style: solid;*/
+            /}/
+            /.triangle-up {/
+            /*  border-width: 0 10px 17.32px 10px;*/
+            /*  border-color: transparent transparent red transparent;*/
+            /}/
+
+            .maximized {
+            width: 100% !important;
+            height: 100% !important;
+            top: 0 !important;
+            left: 0 !important;
+            transform: none !important;
+            }
+
+            .triangle-btn {
+            width: 0;
+            height: 0;
+            border-top: 4px solid transparent;
+            border-bottom: 4px solid transparent;
+            border-left: 6px solid transparent;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            transform: translateY(-50%);
+            }
+             .desktopapp-clicked{
+                  border-radius: 5px;
+                  background: #fdfdfd3d;
+                  backdrop-filter: blur(2px);
+                  border: 1px solid rgba(255, 255, 255, 0.2);
+                  border-right-color: rgba(255, 255, 255, 0.1);
+                  border-bottom-color: rgba(255, 255, 255, 0.1);
+                  box-shadow: 0 20px 30px rgba(0, 0, 0, 0.1);
+                  padding: 10px;
+                  position: relative;
+                  @include flex-center;
+                  flex-direction: column;
+              }
+              /* Hide scrollbar for Chrome, Safari, and Opera */
+      .mention-textbox::-webkit-scrollbar, .mention-list::-webkit-scrollbar {
+          display: none;
+      }
+      /* Hide scrollbar for IE, Edge, and Firefox */
+      .mention-textbox,.mention-list {
+          -ms-overflow-style: none; /* IE and Edge */
+          scrollbar-width: none; /* Firefox */
+      }
+    </style>
+  </head>
+  <body>
+    <!--Iframe popup-->
+    <div
+      id="iframepopup{{ $iframe['filetype'] . $iframefile['filekey'] }}"
+      class="draggableelement popupiframe fixed inset-0 bg-black-900 bg-opacity-50 flex items-center justify-center"
+    >
+      <div
+        class="draggable bg-black bg-opacity-70 rounded-lg shadow-lg w-full h-full relative"
+      >
+        <div class="flex justify-between items-center p-1 pr-2 border-b">
+          <span class="text-lg flex font-semibold"
+            ><img
+              class="w-5 h-5 mt-1"
+              src="{{ asset($constants['APPFILEPATH'] . $iframe['appicon']) }}"
+            />
+            <h2 class="text-white ml-2 font-thin">{{ $iframe['appname'] }}</h2>
+          </span>
+          <div class="flex space-x-1">
+            <a
+              href="#"
+              class="maximizeiframe-btn"
+              data-iframe-id="{{ $iframe['filetype'] . $iframefile['filekey'] }}"
+              ><i class="ri-triangle-fill text-green-400 text-lg"></i
+            ></a>
+            <a
+              href="#"
+              class="minimizeiframe-btn"
+              data-iframe-id="{{ $iframe['filetype'] . $iframefile['filekey'] }}"
+              ><i class="ri-triangle-fill text-yellow-400 text-lg"></i
+            ></a>
+            <a
+              href="#"
+              class="closeiframe-btn"
+              data-filekey="{{ $iframefile['filekey'] }}"
+              data-iframefile-id="{{ $iframe['filetype'] . $iframefile['filekey'] }}"
+              data-appkey="{{ $iframe['appkey'] }}"
+              data-filetype="{{ $iframe['filetype'] }}"
+              data-isfile="{{ $iframe['isfile'] }}"
+              ><i class="ri-triangle-fill text-red-400 text-lg"></i
+            ></a>
+          </div>
+        </div>
+        <!--comment section-->
+        <div
+          class="commentssection absolute bottom-0 top-9 flex h-11/12 flex-col border-r bg-c-lighten-gray hidden md:w-1/3 xl:w-1/5 font-size-14"
+        >
+          <div
+            class="resizer absolute top-0 right-0 w-1 h-full"
+            style="cursor: ew-resize; background-color: #d1d5db"
+          ></div>
+          <div
+            class="sticky top-0 z-10 flex items-center justify-between border-b px-4 py-2"
+          >
+            <h3 class="font-medium font-size-16">Comments</h3>
+            <div>
+              <button class="pr-2" onclick="togglePane('.addcomment')">
+                <i class="ri-chat-new-line ri-lg"></i>
+              </button>
+              <button onclick="togglePane('.commentssection')">
+                <i class="ri-close-fill ri-lg"></i>
+              </button>
+            </div>
+          </div>
+          <!--chat list-->
+          <div class="flex-1 overflow-auto comment-list">
+            <div class="space-y-4 p-4">
+              <div class="grid gap-2 border-b">
+                <div class="flex items-start gap-3">
+                  <div class="h-8 w-8 rounded-full">
+                    <img
+                      src="images/avatar.png"
+                      alt="Avatar"
+                      class="h-8 w-8 rounded-full"
+                    />
+                  </div>
+                  <div class="flex-1 space-y-1">
+                    <div class="flex items-center justify-between">
+                      <div class="font-medium">John Doe</div>
+                      <div class="text-xs">10-07-2024 10:45</div>
+                    </div>
+                    <p>This is a great document! I have a few suggestions...</p>
+                    <div class="flex items-center gap-2">
+                      <button class="p-2">
+                        <i class="ri-reply-line"></i>
+                      </button>
+                      <button class="p-2">
+                        <i class="ri-delete-bin-line"></i>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                <div class="ml-11 grid gap-2">
+                  <div class="flex items-start gap-3">
+                    <div class="h-8 w-8 rounded-full">
+                      <img
+                        src="images/avatar.png"
+                        alt="Avatar"
+                        class="h-8 w-8 rounded-full"
+                      />
+                    </div>
+                    <div class="flex-1 space-y-1">
+                      <div class="flex items-center justify-between">
+                        <div class="font-medium">Sarah Anderson</div>
+                        <div class="text-xs">1 hour ago</div>
+                      </div>
+                      <p>
+                        I agree, those are great suggestions. Let me add a few
+                        more...
+                      </p>
+                      <div class="flex items-center gap-2">
+                        <button class="p-2">
+                          <i class="ri-reply-line"></i>
+                        </button>
+                        <button class="p-2">
+                          <i class="ri-delete-bin-line"></i>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="ml-11 grid gap-2">
+                  <div class="flex items-start gap-3">
+                    <div class="h-8 w-8 rounded-full">
+                      <img
+                        src="images/avatar.png"
+                        alt="Avatar"
+                        class="h-8 w-8 rounded-full"
+                      />
+                    </div>
+                    <div class="flex-1 space-y-1">
+                      <div class="flex items-center justify-between">
+                        <div class="font-medium">Sarah Anderson</div>
+                        <div class="text-xs">1 hour ago</div>
+                      </div>
+                      <p>
+                        I agree, those are great suggestions. Let me add a few
+                        more...
+                      </p>
+                      <div class="flex items-center gap-2">
+                        <button class="p-2">
+                          <i class="ri-reply-line"></i>
+                        </button>
+                        <button class="p-2">
+                          <i class="ri-delete-bin-line"></i>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="grid gap-2">
+                <div class="flex items-start gap-3">
+                  <div class="h-8 w-8 rounded-full">
+                    <img
+                      src="images/avatar.png"
+                      alt="Avatar"
+                      class="h-8 w-8 rounded-full"
+                    />
+                  </div>
+                  <div class="flex-1 space-y-1">
+                    <div class="flex items-center justify-between">
+                      <div class="font-medium">John Doe</div>
+                      <div class="text-xs">10-07-2024 10:45</div>
+                    </div>
+                    <p>This is a great document! I have a few suggestions...</p>
+                    <div class="flex items-center gap-2">
+                      <button class="p-2">
+                        <i class="ri-reply-line"></i>
+                      </button>
+                      <button class="p-2">
+                        <i class="ri-delete-bin-line"></i>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                <div class="ml-11 grid gap-2">
+                  <div class="flex items-start gap-3">
+                    <div class="h-8 w-8 rounded-full">
+                      <img
+                        src="images/avatar.png"
+                        alt="Avatar"
+                        class="h-8 w-8 rounded-full"
+                      />
+                    </div>
+                    <div class="flex-1 space-y-1">
+                      <div class="flex items-center justify-between">
+                        <div class="font-medium">Sarah Anderson</div>
+                        <div class="text-xs">1 hour ago</div>
+                      </div>
+                      <p>
+                        I agree, those are great suggestions. Let me add a few
+                        more...
+                      </p>
+                      <div class="flex items-center gap-2">
+                        <button class="p-2">
+                          <i class="ri-reply-line"></i>
+                        </button>
+                        <button class="p-2">
+                          <i class="ri-delete-bin-line"></i>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!--Add comment-->
+          <div
+            class="addcomment flex items-center gap-x-2 sticky bottom-0 z-10 border-t px-4 py-2 hidden bg-c-lighten-gray relative"
+          >
+            <div class="w-3/4">
+              <div
+                class="mention-container w-full relative bg-c-white border border-gray-3 p-2 rounded-lg"
+              >
+                <div
+                  contenteditable="true"
+                  class="mention-textbox w-full h-20 overflow-auto focus:outline-none"
+                  placeholder="Type your message here..."
+                ></div>
+                <!-- Mention list -->
+                <div
+                  class="mention-list absolute bottom-full h-28 overflow-y-auto mb-2 left-0 w-full bg-c-white border border-gray-3 rounded-lg shadow-lg mt-1 hidden"
+                >
+                  <ul class="list list-none">
+                    <!-- Mention list items will be injected here -->
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <button
+              class="border px-3 hover-bg-c-black hover-text-c-yellow text-sm py-1 rounded border-gray-600 bg-c-yellow"
+            >
+              Post
+            </button>
+          </div>
+        </div>
+        <!--Iframe-->
+        <iframe
+          id="iframe{{ $iframe['filetype'] . $iframefile['filekey'] }}"
+          src="https://desktop2.sizaf.com/filemanager/Desktop"
+          class="w-full h-full frame"
+        ></iframe>
+        <!--chat button-->
+        <div
+          class="absolute bottom-5 left-5 bg-gray-300 rounded-full px-2 py-1 commentbutton"
+        >
+          <button
+            class="comment"
+            data-filekey="{{ $iframe['filetype'] . $iframefile['filekey'] }}"
+            onclick="togglePane('.commentssection')"
+          >
+            <i class="ri-chat-4-line ri-lg"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const comment = document.querySelector(".commentssection");
+        const commentButton = document.querySelector(".commentbutton");
+        const frame = document.querySelector(".frame");
+        const resizer = document.querySelector(".resizer");
+        const mentionTextbox = document.querySelector(".mention-textbox");
+        const mentionList = document.querySelector(".mention-list");
+        const mentionListItems = document.querySelector(".list");
+        const commentList = document.querySelector(".comment-list");
+        const iframePopup = document.querySelector(".popupiframe iframe");
+
+        // Toggle visibility of the comments pane
+        function togglePane(id) {
+          let element = document.querySelector(id);
+          if (element) {
+            // Ensure the element exists
+            element.classList.toggle("hidden");
+            if (!element.classList.contains("hidden")) {
+              scrollToBottom();
+            }
+            updateFrameMargin();
+          } else {
+            console.error(`Element with selector ${id} not found.`);
+          }
+        }
+
+        // Scroll to the bottom of the comment list
+        function scrollToBottom() {
+          if (commentList) {
+            commentList.scrollTop = commentList.scrollHeight;
+          }
+        }
+
+        // Update the margin of the frame based on the comments pane width
+        function updateFrameMargin() {
+          if (window.innerWidth > 768 && comment) {
+            // Check if comment is not null
+            if (comment.classList.contains("hidden")) {
+              iframePopup.style.width = "100%";
+              iframePopup.style.marginLeft = "0";
+              commentButton.style.marginLeft = "0";
+            } else {
+              const commentsWidth = comment.offsetWidth;
+              iframePopup.style.width = `calc(100% - ${commentsWidth}px)`;
+              commentButton.style.marginLeft = `${comment.offsetWidth}px`;
+              iframePopup.style.marginLeft = `${comment.offsetWidth}px`;
+            }
+          }
+        }
+
+        let startX, startWidth;
+
+        // Initialize the resizing of the comment section
+        const initResize = (e) => {
+          e.preventDefault();
+          startX = e.clientX;
+          startWidth = comment.offsetWidth;
+
+          window.addEventListener("mousemove", startResizing);
+          window.addEventListener("mouseup", stopResizing);
+        };
+
+        // Start resizing the comment section
+        const startResizing = (e) => {
+          const minWidth = 250;
+          const maxWidth = 500;
+          let newWidth = startWidth + (e.clientX - startX);
+
+          if (newWidth < minWidth) newWidth = minWidth;
+          else if (newWidth > maxWidth) newWidth = maxWidth;
+
+          if (comment) {
+            comment.style.width = `${newWidth}px`;
+            updateFrameMargin();
+          }
+        };
+
+        // Stop resizing the comment section
+        const stopResizing = () => {
+          window.removeEventListener("mousemove", startResizing);
+          window.removeEventListener("mouseup", stopResizing);
+        };
+
+        if (resizer) {
+          resizer.addEventListener("mousedown", initResize);
+        }
+
+        // Update frame margin initially in case the comments section is not hidden
+        updateFrameMargin();
+
+        const users = ["alice", "bob", "charlie", "dave"]; // Example users for mention list
+        const placeholderText = "Type your comment here..."; // placeholder
+
+        // Initial setup for the mention textbox
+        mentionTextbox.textContent = placeholderText;
+
+        // Event listener to manage placeholder behavior
+        mentionTextbox.addEventListener("focus", function () {
+          if (this.textContent === placeholderText) {
+            this.textContent = "";
+          }
+        });
+
+        mentionTextbox.addEventListener("blur", function () {
+          if (this.textContent === "") {
+            this.textContent = placeholderText;
+          }
+        });
+
+        // Event listeners for handling input and keydown events
+        mentionTextbox.addEventListener("input", handleInput);
+        mentionTextbox.addEventListener("keydown", handleKeyDown);
+
+        // Function to handle input events
+        function handleInput(e) {
+          const text = mentionTextbox.innerText;
+          const cursorPos = getCaretPosition();
+          const textBeforeCursor = text.substring(0, cursorPos);
+          const atIndex = textBeforeCursor.lastIndexOf("@");
+
+          if (text.charAt(cursorPos - 1) === "@") {
+            showMentionList(atIndex);
+          } else {
+            hideMentionList();
+          }
+
+          applyMentionStyles();
+        }
+
+        // Function to handle keydown events
+        function handleKeyDown(e) {
+          if (
+            e.key === "ArrowDown" &&
+            !mentionList.classList.contains("hidden")
+          ) {
+            mentionList.querySelector("li").focus();
+            e.preventDefault();
+          }
+        }
+
+        // Function to show the mention list
+        function showMentionList(atIndex) {
+          mentionListItems.innerHTML = users
+            .map(
+              (user) =>
+                `<li tabindex="0" class="p-2 hover-bg-c-yellow cursor-pointer">${user}</li>`
+            )
+            .join("");
+          mentionList.classList.remove("hidden");
+
+          mentionListItems.querySelectorAll("li").forEach((item) => {
+            item.addEventListener("click", () => selectMention(item, atIndex));
+          });
+        }
+
+        // Function to hide the mention list
+        function hideMentionList() {
+          mentionList.classList.add("hidden");
+        }
+
+        // Function to select a mention from the list
+        function selectMention(item, atIndex) {
+          const mentionText = item.innerText; // Get the mention text
+          const text = mentionTextbox.innerText;
+          const cursorPos = getCaretPosition();
+          const textBeforeAt = text.substring(0, atIndex);
+          const textAfterAt = text.substring(cursorPos);
+
+          mentionTextbox.innerText =
+            textBeforeAt + "@" + mentionText + "&nbsp;" + textAfterAt; // Update text with mention
+          setCaretPosition(atIndex + mentionText.length + 2); // Adjust caret position
+
+          hideMentionList();
+          applyMentionStyles();
+        }
+
+        // Function to apply styles to mentions
+        function applyMentionStyles() {
+          const text = mentionTextbox.innerText;
+          console.log(text);
+          const html = text.replace(
+            /(@\w+)/g,
+            '<span class="text-link-blue">$1</span>'
+          );
+          console.log(html);
+          mentionTextbox.innerHTML = html;
+          setCaretToEnd();
+        }
+
+        // Function to set the caret to the end
+        function setCaretToEnd() {
+          const range = document.createRange();
+          const sel = window.getSelection();
+          range.selectNodeContents(mentionTextbox);
+          range.collapse(false);
+          sel.removeAllRanges();
+          sel.addRange(range);
+        }
+
+        // Function to get the caret position
+        function getCaretPosition() {
+          const selection = window.getSelection();
+          const range = selection.getRangeAt(0);
+          const preCaretRange = range.cloneRange();
+          preCaretRange.selectNodeContents(mentionTextbox);
+          preCaretRange.setEnd(range.endContainer, range.endOffset);
+          return preCaretRange.toString().length;
+        }
+
+        // Function to set the caret position
+        function setCaretPosition(chars) {
+          if (chars >= 0) {
+            const selection = window.getSelection();
+            const range = createRange(mentionTextbox, { count: chars });
+            if (range) {
+              range.collapse(false);
+              selection.removeAllRanges();
+              selection.addRange(range);
+            }
+          }
+        }
+
+        // Function to create a range for caret position
+        function createRange(node, chars, range) {
+          if (!range) {
+            range = document.createRange();
+            range.selectNode(node);
+            range.setStart(node, 0);
+          }
+
+          if (chars.count === 0) {
+            range.setEnd(node, chars.count);
+          } else if (node && chars.count > 0) {
+            if (node.nodeType === Node.TEXT_NODE) {
+              if (node.textContent.length < chars.count) {
+                chars.count -= node.textContent.length;
+              } else {
+                range.setEnd(node, chars.count);
+                chars.count = 0;
+              }
+            } else {
+              for (let i = 0; i < node.childNodes.length; i++) {
+                range = createRange(node.childNodes[i], chars, range);
+                if (chars.count === 0) {
+                  break;
+                }
+              }
+            }
+          }
+
+          return range;
+        }
+
+        window.togglePane = togglePane; // Expose togglePane globally
+      });
+    </script>
+  </body>
+</html>
