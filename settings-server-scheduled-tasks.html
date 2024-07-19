@@ -5,100 +5,206 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="root.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
-        integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="settings-server-scheduled-tasks.css">
+    <link rel="stylesheet" href="styles/nx.css">
     <title>Server Settings - Scheduled Tasks</title>
 </head>
 
 <body class="h-screen w-full flex flex-col nx">
     <main class="flex w-full h-full flex">
         <!-- sidebar -->
-        <aside class="h-full">
-            <div class="h-full w-full sidebar">
-                <div class="p-6">
-                    <img src="/images/logo.png" alt="Dots Logo">
-                </div>
-                <div class="md:pt-6 ">
-                    <ul class="space-y-1">
-                        <li>
-                            <a class="w-full px-6 py-3 rounded-r-lg hover-bg-c-black hover-text-c-yellow block transition-all flex justify-between items-center"
-                                href="#">
-                                <span> Overview </span>
-
-                            </a>
-                        </li>
-                        <li>
-                            <div class="drop-menu cursor-pointer rounded-r-lg  transition-all ">
-                                <div class="w-full px-6 py-3 flex justify-between items-center" href="#">
-                                    <span> System Settings </span>
-                                    <i class="fa fa-chevron-right text-c-yellow transition-all"></i>
+        <aside class="h-full relative">
+            <input type="checkbox" class="hidden" id="sidebar-toggle"> 
+            <label for="sidebar-toggle" class="absolute lg:hidden top-2 -right-8 px-1">
+                <i class="ri-bar-chart-horizontal-line"></i>
+            </label>
+            <div class="h-full sidebar">
+                <div class="sidebar-container">
+                    <div class="p-6">
+                        <img src="/images/logo.png" alt="Dots Logo">
+                    </div>
+                    <div class="md:pt-6">
+                        <ul class="space-y-1">
+                            <li>
+                                <a class="w-full px-6 py-3 rounded-r-lg block flex justify-between items-center" href="overview.html">
+                                    <span> Overview </span>
+                                    <i class="ri-arrow-right-s-line text-c-yellow right-arrow text-2xl"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <div role="button" onclick="toggleDropMenu(this)" class="drop-menu cursor-pointer rounded-r-lg">
+                                    <div class="w-full px-6 py-3 flex justify-between items-center" href="#">
+                                        <span> System Settings </span>
+                                        <i class="ri-arrow-right-s-line text-c-yellow big-right-arrow text-2xl"></i>
+                                    </div>
+                                    <ul class="drop-list text-sm space-y-1">
+                                        <li>
+                                            <a href="system-settings-basic.html"
+                                                class="block py-2 px-8 rounded-r-md w-full flex justify-between items-center">
+                                                <span>Basic</span>
+                                                <i class="ri-arrow-right-s-line text-c-yellow right-arrow text-2xl"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#"
+                                                class="block py-2 px-8 rounded-r-md w-full flex justify-between items-center">
+                                                <span>Menu</span>
+                                                <i class="ri-arrow-right-s-line text-c-yellow right-arrow text-2xl"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#"
+                                                class="block py-2 px-8 rounded-r-md w-full flex justify-between items-center">
+                                                <span>Notice</span>
+                                                <i class="ri-arrow-right-s-line text-c-yellow right-arrow text-2xl"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#"
+                                                class="block py-2 px-8 rounded-r-md w-full flex justify-between items-center">
+                                                <span>Intranet Access</span>
+                                                <i class="ri-arrow-right-s-line text-c-yellow right-arrow text-2xl"></i>
+                                            </a>
+                                        </li>
+                                    </ul>
                                 </div>
-                                <ul class="drop-list bg-gray-50 text-sm space-y-1">
-                                    <li>
-                                        <a href="#"
-                                            class="block py-2 px-8 transition-all rounded-r-md w-full flex justify-between items-center hover-bg-c-black hover-text-c-yellow">
-                                            <span>Some Link</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#"
-                                            class="block py-2 px-8 transition-all rounded-r-md w-full flex justify-between items-center hover-bg-c-black hover-text-c-yellow">
-                                            <span>Some Link</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#"
-                                            class="block py-2 px-8 transition-all rounded-r-md w-full flex justify-between items-center hover-bg-c-black hover-text-c-yellow">
-                                            <span>Some Link</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#"
-                                            class="block py-2 px-8 transition-all rounded-r-md w-full flex justify-between items-center hover-bg-c-black hover-text-c-yellow">
-                                            <span>Some Link</span>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </li>
-                        <li>
-                            <a class="w-full px-6 py-3 rounded-r-lg hover-bg-c-black hover-text-c-yellow block transition-all flex justify-between items-center"
-                                href="#">
-                                <span> User and Group </span>
-
-                            </a>
-                        </li>
-                        <li>
-                            <a class="w-full px-6 py-3 rounded-r-lg hover-bg-c-black hover-text-c-yellow block transition-all flex justify-between items-center"
-                                href="#">
-                                <span> Storage/File </span>
-
-                            </a>
-                        </li>
-                        <li>
-                            <a class="w-full px-6 py-3 rounded-r-lg hover-bg-c-black hover-text-c-yellow block transition-all flex justify-between items-center"
-                                href="#">
-                                <span> Plugin Center </span>
-
-                            </a>
-                        </li>
-                        <li>
-                            <a class="w-full px-6 py-3 rounded-r-lg hover-bg-c-black hover-text-c-yellow block transition-all flex justify-between items-center"
-                                href="#">
-                                <span> Saftey Control </span>
-
-                            </a>
-                        </li>
-                        <li>
-                            <a class="w-full px-6 py-3 rounded-r-lg bg-c-black text-c-yellow hover-bg-c-black hover-text-c-yellow block flex justify-between items-center"
-                                href="#">
-                                <span> Server </span>
-
-                            </a>
-                        </li>
-                    </ul>
+                            </li>
+                            <li>
+                                <div role="button" onclick="toggleDropMenu(this)" class="drop-menu cursor-pointer rounded-r-lg">
+                                    <div class="w-full px-6 py-3 flex justify-between items-center" href="#">
+                                        <span> Users &amp; Groups </span>
+                                        <i class="ri-arrow-right-s-line text-c-yellow big-right-arrow text-2xl"></i>
+                                    </div>
+                                    <ul class="drop-list text-sm space-y-1">
+                                        <li>
+                                            <a href="#"
+                                                class="block py-2 px-8 rounded-r-md w-full flex justify-between items-center">
+                                                <span>Users &amp; Groups </span>
+                                                <i class="ri-arrow-right-s-line text-c-yellow right-arrow text-2xl"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#"
+                                                class="block py-2 px-8 rounded-r-md w-full flex justify-between items-center">
+                                                <span>Role</span>
+                                                <i class="ri-arrow-right-s-line text-c-yellow right-arrow text-2xl"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#"
+                                                class="block py-2 px-8 rounded-r-md w-full flex justify-between items-center">
+                                                <span>Document Permission</span>
+                                                <i class="ri-arrow-right-s-line text-c-yellow right-arrow text-2xl"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#"
+                                                class="block py-2 px-8 rounded-r-md w-full flex justify-between items-center">
+                                                <span>Intranet Access</span>
+                                                <i class="ri-arrow-right-s-line text-c-yellow right-arrow text-2xl"></i>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li>
+                                <div role="button" onclick="toggleDropMenu(this)" class="drop-menu cursor-pointer rounded-r-lg">
+                                    <div class="w-full px-6 py-3 flex justify-between items-center" href="#">
+                                        <span>Storage/file</span>
+                                        <i class="ri-arrow-right-s-line text-c-yellow big-right-arrow text-2xl"></i>
+                                    </div>
+                                    <ul class="drop-list text-sm space-y-1">
+                                        <li>
+                                            <a href="#"
+                                                class="block py-2 px-8 rounded-r-md w-full flex justify-between items-center">
+                                                <span>Storage</span>
+                                                <i class="ri-arrow-right-s-line text-c-yellow right-arrow text-2xl"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#"
+                                                class="block py-2 px-8 rounded-r-md w-full flex justify-between items-center">
+                                                <span>Backup</span>
+                                                <i class="ri-arrow-right-s-line text-c-yellow right-arrow text-2xl"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#"
+                                                class="block py-2 px-8 rounded-r-md w-full flex justify-between items-center">
+                                                <span>Share</span>
+                                                <i class="ri-arrow-right-s-line text-c-yellow right-arrow text-2xl"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="settings-storage-web-dav.html"
+                                                class="block py-2 px-8 rounded-r-md w-full flex justify-between items-center">
+                                                <span>webDAV Mount</span>
+                                                <i class="ri-arrow-right-s-line text-c-yellow right-arrow text-2xl"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="settings-storage-media-preview.html"
+                                                class="block py-2 px-8 rounded-r-md w-full flex justify-between items-center">
+                                                <span>Media file preview &amp; Video</span>
+                                                <i class="ri-arrow-right-s-line text-c-yellow right-arrow text-2xl"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#"
+                                                class="block py-2 px-8 rounded-r-md w-full flex justify-between items-center">
+                                                <span>Client and App</span>
+                                                <i class="ri-arrow-right-s-line text-c-yellow right-arrow text-2xl"></i>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li>
+                                <a class="w-full px-6 py-3 rounded-r-lg block flex justify-between items-center"
+                                    href="settings-plugin.html">
+                                    <span>Plugin Center</span>
+                                    <i class="ri-arrow-right-s-line text-c-yellow right-arrow text-2xl"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <div role="button" onclick="toggleDropMenu(this)" class="drop-menu cursor-pointer rounded-r-lg">
+                                    <div class="w-full px-6 py-3 flex justify-between items-center" href="#">
+                                        <span>Saftey Control</span>
+                                        <i class="ri-arrow-right-s-line text-c-yellow big-right-arrow text-2xl"></i>
+                                    </div>
+                                    <ul class="drop-list text-sm space-y-1">
+                                        <li>
+                                            <a href="#"
+                                                class="block py-2 px-8 rounded-r-md w-full flex justify-between items-center">
+                                                <span>Message Warning</span>
+                                                <i class="ri-arrow-right-s-line text-c-yellow right-arrow text-2xl"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#"
+                                                class="block py-2 px-8 rounded-r-md w-full flex justify-between items-center">
+                                                <span>Login Log</span>
+                                                <i class="ri-arrow-right-s-line text-c-yellow right-arrow text-2xl"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#"
+                                                class="block py-2 px-8 rounded-r-md w-full flex justify-between items-center">
+                                                <span>Operation Log</span>
+                                                <i class="ri-arrow-right-s-line text-c-yellow right-arrow text-2xl"></i>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li>
+                                <a class="w-full px-6 py-3 rounded-r-lg block flex justify-between items-center"
+                                    href="settings-server-scheduled-tasks.html">
+                                    <span>Scheduled Tasks</span>
+                                    <i class="ri-arrow-right-s-line text-c-yellow right-arrow text-2xl"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </aside>
@@ -106,26 +212,23 @@
         <!-- main content -->
         <div class="flex-grow border h-100 main">
             <div class="flex w-full h-full flex-col content">
-                <div class="p-6">
+                <div class="p-4">
                     <div class="flex items-center gap-4">
-                        <i class="fa fa-gear fa-lg"></i> <span class="text-lg">System Settings</span>
+                        <i class="ri-settings-3-fill text-2xl"></i> <span class="text-lg">System Settings</span>
                     </div>
                 </div>
 
                 <!-- top taskbar -->
-                <div class="taskbar flex items-center justify-between px-6 py-4">
-                    <div class="flex items-center gap-4">
+                <div class="taskbar flex items-center justify-between px-4 py-4">
+                    <div class="flex items-center gap-4 w-full md:w-1/2">
                         <div class="flex gap-2 items-center">
-                            <span>Server</span> <i class="fa-solid fa-arrow-right"></i><span
-                                class="font-semibold">Scheduled
-                                Tasks</span>
+                            <span class="font-semibold">Scheduled Tasks</span>
                         </div>
                     </div>
-                    <div>
-                        <div class="flex items-center gap-6">
-
+                    <div class="flex-grow md:w-1/2">
+                        <div class="flex items-center justify-end gap-2 md:gap-6">
                             <div class="relative aspect-square w-6 h-6">
-                                <button type="button" class="dropdown-btn rounded-md">
+                                <button type="button" class="has-tooltip rounded-md" onclick="showSuccessMessage('The scheduled task has restarted')">
                                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
                                         <path fill-rule="evenodd" clip-rule="evenodd"
@@ -134,15 +237,13 @@
                                     </svg>
                                 </button>
                                 <div
-                                    class="absolute w-40 text-xs dropdown-option -bottom-8 -left-8 z-10 min-w-full bg-white border rounded-md">
-                                    <button onclick="showSuccessMessage('The scheduled task has restarted')"
-                                        class="block hover-bg-c-yellow w-full px-2 py-1">Restart scheduled
-                                        tasks</button>
+                                    class="absolute w-40 text-xs tooltip -bottom-8 -left-8 px-2 py-1 text-center z-10 min-w-full bg-white border rounded-md">
+                                    Restart scheduled tasks
                                 </div>
                             </div>
 
                             <div class="relative aspect-square w-6 h-6">
-                                <button type="button" class="dropdown-btn rounded-md">
+                                <button type="button" class="has-tooltip rounded-md" onclick="openTaskManagerModal()">
                                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
                                         <path
@@ -151,16 +252,14 @@
                                     </svg>
                                 </button>
                                 <div
-                                    class="absolute w-24 text-xs dropdown-option -bottom-8 -left-8 z-10 min-w-full bg-white border rounded-md">
-                                    <button
-                                        class="block openTaskManagerModalButton hover-bg-c-yellow w-full px-2 py-1">Task
-                                        Manager</button>
+                                    class="absolute w-24 text-xs text-center tooltip -bottom-8 px-2 py-1 -left-8 z-10 min-w-full bg-white border rounded-md">
+                                    Task Manager
                                 </div>
                             </div>
                             <div>
                                 <button type="button"
-                                    class="bg-c-black text-c-yellow px-3 py-1 rounded-md openModalButton">
-                                    <i class="ri-add-circle-fill"></i> &nbsp; <span>Add</span>
+                                    class="bg-c-black text-c-yellow px-3 py-1 rounded-md" onclick="openModal('Add')">
+                                    <i class="ri-add-circle-fill"></i>&nbsp;<span>Add</span>
                                 </button>
                             </div>
                         </div>
@@ -170,8 +269,8 @@
 
                 <!-- info table -->
                 <div class="p-4 relative h-full flex flex-col">
-                    <div class="bg-white">
-                        <table class="table-auto w-full nx-table">
+                    <div class="bg-white nx-table-container rounded-md">
+                        <table class="table-auto w-full">
                             <thead>
                                 <tr class="bg-c-dark-gray">
                                     <th class="py-2 rounded-tl-md text-white text-left pl-3">Name</th>
@@ -180,7 +279,7 @@
                                     <th class="py-2 text-white text-left pl-3">Mission Details</th>
                                     <th class="py-2 text-white text-left pl-3">Last Execution</th>
                                     <th class="py-2 text-white text-left pl-3">Status</th>
-                                    <th class="py-2 rounded-tr-md text-white text-right pr-3">Action</th>
+                                    <th class="py-2 rounded-tr-md text-left text-white pl-3">Action</th>
                                 </tr>
                             </thead>
                             <tbody class="border">
@@ -194,27 +293,26 @@
                                         <label for="toggle" class="toggle-switch flex items-center cursor-pointer">
                                             <div class="relative">
                                                 <input type="checkbox" id="toggle" class="sr-only">
-                                                <div class="block toggle-bg w-14 h-7 rounded-full"></div>
+                                                <div class="block toggle-bg w-14 h-7 rounded-full border"></div>
                                                 <div
-                                                    class="dot absolute left-1 top-1 bg-white w-5 h-5 rounded-full transition">
+                                                    class="dot absolute left-0.5 top-0.5 bg-white w-6 h-6 rounded-full transition shadow-lg">
                                                 </div>
                                             </div>
                                         </label>
                                     </td>
-                                    <td class="py-2  text-right pr-3">
-                                        <div class="flex relative justify-end text-sm gap-3 ml-auto">
+                                    <td class="py-2 pl-3 pr-2">
+                                        <div class="flex relative text-sm gap-3">
                                             <div class="relative">
-                                                <button type="button" class="dropdown-btn">Action &nbsp; <i
-                                                        class="fa-solid fa-chevron-down fa-sm"></i> </button>
+                                                <button type="button" class="dropdown-btn">Action&nbsp;<i class="ri-arrow-down-s-line"></i></button>
                                                 <div
-                                                    class="absolute text-xs dropdown-option w-20 z-10 min-w-full bg-gray-100 border rounded-md">
+                                                    class="absolute text-xs dropdown-option w-20 z-10 min-w-full space-y-1 border rounded-md overflow-hidden">
                                                     <button
-                                                        class="block hover-bg-c-yellow w-full px-2 py-1 runTaskModalButton">Run</button>
+                                                        class="block hover-bg-c-yellow w-full px-2 py-1" onclick="showRunTaskModal()">Run</button>
                                                     <button
                                                         class="block hover-bg-c-yellow w-full px-2 py-1">Log</button>
                                                 </div>
                                             </div>
-                                            <button class="text-blue-500 openModalButton">Edit</button>
+                                            <button class="text-link-blue" onclick="openModal('Edit')">Edit</button>
                                         </div>
                                     </td>
                                 </tr>
@@ -228,27 +326,26 @@
                                         <label for="toggle-2" class="toggle-switch flex items-center cursor-pointer">
                                             <div class="relative">
                                                 <input type="checkbox" id="toggle-2" class="sr-only">
-                                                <div class="block toggle-bg w-14 h-7 rounded-full"></div>
+                                                <div class="block toggle-bg w-14 h-7 rounded-full border"></div>
                                                 <div
-                                                    class="dot absolute left-1 top-1 bg-white w-5 h-5 rounded-full transition">
+                                                    class="dot absolute left-0.5 top-0.5 bg-white w-6 h-6 rounded-full transition shadow-lg">
                                                 </div>
                                             </div>
                                         </label>
                                     </td>
-                                    <td class="py-2  text-right pr-3">
-                                        <div class="flex relative justify-end text-sm gap-3 ml-auto">
+                                    <td class="py-2 pl-3 pr-2">
+                                        <div class="flex relative text-sm gap-3">
                                             <div class="relative">
-                                                <button type="button" class="dropdown-btn">Action &nbsp; <i
-                                                        class="fa-solid fa-chevron-down fa-sm"></i> </button>
+                                                <button type="button" class="dropdown-btn">Action&nbsp;<i class="ri-arrow-down-s-line"></i></button>
                                                 <div
-                                                    class="absolute text-xs dropdown-option w-20 z-10 min-w-full bg-gray-100 border rounded-md">
+                                                    class="absolute text-xs dropdown-option w-20 z-10 min-w-full space-y-1 border rounded-md overflow-hidden">
                                                     <button
-                                                        class="block hover-bg-c-yellow w-full px-2 py-1 runTaskModalButton">Run</button>
+                                                        class="block hover-bg-c-yellow w-full px-2 py-1" onclick="showRunTaskModal()">Run</button>
                                                     <button
                                                         class="block hover-bg-c-yellow w-full px-2 py-1">Log</button>
                                                 </div>
                                             </div>
-                                            <button class="text-blue-500 openModalButton">Edit</button>
+                                            <button class="text-link-blue" onclick="openModal('Edit')">Edit</button>
                                         </div>
                                     </td>
                                 </tr>
@@ -263,31 +360,32 @@
         </div>
     </main>
 
-    <footer class="mt-auto w-screen">
-        <div class="flex justify-between w-full items center px-6 py-4 bg-white bg-opacity-50">
+    <footer class="w-screen">
+        <div class="flex justify-between w-full items center px-2 md:px-6 py-2 md:py-4 bg-white bg-opacity-50">
             <button type="button" class="bg-c-black text-white px-2 py-1 rounded-md">File</button>
             <img src="/images/logo.png" alt="Dots Logo" width="36" height="36">
         </div>
     </footer>
 
+
     <!-- edit/add modal -->
     <div id="modal" role="dialog" class="fixed hidden inset-0 flex items-center justify-center bg-black bg-opacity-50">
         <div class="bg-white rounded-xl overflow-hidden shadow-lg max-w-xl w-full modal-content">
             <div class="flex py-3 px-5 border-b border-gray-400 justify-between items-center">
-                <h2 class="text-lg font-medium">Edit</h2>
-                <button type="button" id="closeModalButton">
-                    <i class="fa-solid fa-circle-xmark fa-lg"></i>
+                <h2 class="text-lg font-medium" id="edit-modal-title">Edit</h2>
+                <button type="button" id="closeModalButton" class="hover-text-c-yellow" onclick="closeModal()">
+                    <i class="ri-close-circle-fill text-xl"></i>
                 </button>
             </div>
             <div class="p-5">
                 <form class="space-y-4 text-sm">
                     <div class="flex flex-wrap w-full gap-y-4 items-center">
-                        <label for="name" class="w-1/3">Name: <span class="text-red-500">*</span></label>
+                        <label for="name" class="w-1/3 font-semibold">Name: <span class="text-red-500">*</span></label>
                         <input type="text" required name="name" id="name"
                             class="bg-gray-50 ml-auto w-2/3 border border-gray-300 text-gray-900 text-sm rounded-xl block p-2 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
                             placeholder="Please enter a username" />
 
-                        <div class="w-1/3">Type: </div>
+                        <div class="w-1/3 font-semibold">Type: </div>
                         <div class="flex gap-2 ml-auto w-2/3">
                             <label for="url" class="cursor-pointer radio-button">
                                 <input type="radio" name="type" id="url" value="url" checked>
@@ -301,7 +399,7 @@
                     </div>
 
                     <div id="url-div" class="flex flex-wrap w-full gap-y-4 items-center">
-                        <label for="url_str" class="w-1/3">URL: <span class="text-red-500">*</span></label>
+                        <label for="url_str" class="w-1/3 font-semibold">URL: <span class="text-red-500">*</span></label>
                         <div class="w-2/3">
                             <input type="url" name="url" id="url_str"
                                 class="bg-gray-50 w-full ml-auto border border-gray-300 text-gray-900 text-sm rounded-xl block p-2 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
@@ -313,7 +411,7 @@
                     </div>
 
                     <div id="method-div" style="display: none;" class="flex-wrap w-full gap-y-4 items-center">
-                        <label for="method_str" class="w-1/3">Method name: <span class="text-red-500">*</span></label>
+                        <label for="method_str" class="w-1/3 font-semibold">Method name: <span class="text-red-500">*</span></label>
                         <div class="w-2/3">
                             <input type="text" name="url" id="method_str"
                                 class="bg-gray-50 w-full ml-auto border border-gray-300 text-gray-900 text-sm rounded-xl block p-2 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
@@ -327,7 +425,7 @@
                     <hr text-sm />
                     <div class="flex flex-wrap gap-y-4 items-center">
 
-                        <div class="w-1/3">Execution cycle: <span class="text-red-500">*</span></div>
+                        <div class="w-1/3 font-semibold">Execution cycle: <span class="text-red-500">*</span></div>
                         <div class="flex gap-2 ml-auto w-2/3">
 
                             <select name="cycle_frequncy" class="border text-sm rounded-md px-1 py-1"
@@ -337,25 +435,25 @@
                                 <option value="monthly">Monthly</option>
                             </select>
 
-                            <input type="time" name="cycle_time" class="border text-sm rounded-md px-1 py-1"
+                            <input type="datetime-local" name="cycle_time" class="border text-sm rounded-md px-1 py-1"
                                 id="cycle_time" />
 
                         </div>
 
 
-                        <label class="w-1/3" for="missing_details">Missing details: </label>
+                        <label class="w-1/3 font-semibold" for="missing_details">Missing details: </label>
                         <textarea name="missing_details" id="missing_details" rows="4"
-                            class="border rounded-md w-2/3"></textarea>
+                            class="border rounded-md p-2 w-2/3"></textarea>
                     </div>
                     <hr text-sm />
                     <div class="flex flex-wrap gap-y-4 items-center">
-                        <div class="w-1/3">Debug mode: </div>
+                        <div class="w-1/3 font-semibold">Debug mode: </div>
                         <div class="w-2/3">
                             <label for="toggle-debug" class="toggle-switch flex items-center cursor-pointer ml-auto">
                                 <div class="relative">
                                     <input type="checkbox" id="toggle-debug" class="sr-only">
-                                    <div class="block toggle-bg w-14 h-7 rounded-full"></div>
-                                    <div class="dot absolute left-1 top-1 bg-white w-5 h-5 rounded-full transition">
+                                    <div class="block toggle-bg w-14 h-7 rounded-full border"></div>
+                                    <div class="dot absolute left-0.5 top-0.5 bg-white w-6 h-6 rounded-full transition shadow-lg">
                                     </div>
                                 </div>
                             </label>
@@ -364,7 +462,7 @@
                     </div>
                     <div class="flex justify-end mt-3">
                         <button
-                            class="bg-gray-700 hover-bg-c-black text-white rounded-full px-4 py-2 text-sm">Save</button>
+                            class="bg-c-black hover-bg-c-black text-white rounded-full w-32 py-2 text-sm">Save</button>
                     </div>
                 </form>
             </div>
@@ -383,9 +481,9 @@
             </div>
             <div class="grid grid-cols-2 gap-4 my-3 px-5">
                 <button type="button" id="runTaskButton"
-                    class="bg-gray-800 hover-bg-c-black text-white rounded-full px-4 py-2 text-sm">Yes</button>
-                <button type="button" id="closeRunTaskModalButton"
-                    class="hover:bg-yellow-500 hover:text-white text-c-yellow border border-yellow-400 rounded-full px-4 py-2 text-sm">Cancel</button>
+                    class="bg-c-black text-white rounded-full px-4 py-2 text-sm">Yes</button>
+                <button type="button" id="closeRunTaskModalButton" onclick="hideRunTaskModal()"
+                    class="hover-bg-c-yellow hover:text-white text-c-yellow border border-c-yellow rounded-full px-4 py-2 text-sm">Cancel</button>
             </div>
         </div>
     </div>
@@ -396,8 +494,8 @@
         <div class="bg-white rounded-xl overflow-hidden shadow-lg max-w-md w-full modal-content">
             <div class="flex py-3 px-5 border-b border-gray-400 justify-between items-center">
                 <h2 class="text-lg font-medium">Task Manager</h2>
-                <button type="button" id="closeTaskManagerModalButton">
-                    <i class="fa-solid fa-circle-xmark fa-lg"></i>
+                <button type="button" id="closeTaskManagerModalButton" onclick="closeTaskManagerModal()" class="hover-text-c-yellow">
+                    <i class="ri-close-circle-fill text-xl"></i>
                 </button>
             </div>
             <div class="p-5 text-center">
@@ -414,7 +512,7 @@
         <div class="max-w-sm mx-auto">
             <div class="flex items-center border rounded-md bg-white">
                 <div class="bg-c-yellow py-2 px-3">
-                    <i class="fa-solid fa-check fa-lg text-black"></i>
+                    <i class="ri-check-line text-xl"></i>
                 </div>
                 <p id="run-success-message" class="px-3 text-center w-full text-gray-700 text-sm">The scheduled task has
                     restarted</p>
@@ -422,21 +520,19 @@
         </div>
     </div>
 
+    <script defer src="script/sidebar.js"></script>
+
     <script defer>
         // for handling edit/add modal
-        const openModalButtons = document.querySelectorAll('.openModalButton');
-        const closeModalButton = document.getElementById('closeModalButton');
         const modal = document.getElementById('modal');
 
-        openModalButtons.forEach(e => {
-            e.addEventListener('click', () => {
-                modal.classList.remove('hidden');
-            });
-        });
-
-        closeModalButton.addEventListener('click', () => {
+        function closeModal() {
             modal.classList.add('hidden');
-        });
+        }
+        function openModal(modalTitle) {
+            document.getElementById('edit-modal-title').innerHTML = modalTitle;
+            modal.classList.remove('hidden');
+        }
 
         window.addEventListener('click', (event) => {
             if (event.target == modal) {
@@ -462,19 +558,14 @@
 
 
         // for handling run task modal
-        const runTaskModalButtons = document.querySelectorAll('.runTaskModalButton');
-        const closeRunTaskModalButton = document.getElementById('closeRunTaskModalButton');
         const runTaskModal = document.getElementById('run-task-modal');
 
-        runTaskModalButtons.forEach(e => {
-            e.addEventListener('click', () => {
-                runTaskModal.classList.remove('hidden');
-            });
-        });
-
-        closeRunTaskModalButton.addEventListener('click', () => {
+        function showRunTaskModal(){
+            runTaskModal.classList.remove('hidden');
+        }
+        function hideRunTaskModal(){
             runTaskModal.classList.add('hidden');
-        });
+        }
 
         window.addEventListener('click', (event) => {
             if (event.target == runTaskModal) {
@@ -500,19 +591,16 @@
         }
 
         // for handling task manager modal
-        const openTaskManagerModalButtons = document.querySelectorAll('.openTaskManagerModalButton');
         const closeTaskManagerModalButton = document.getElementById('closeTaskManagerModalButton');
         const taskManagerModal = document.getElementById('task-manager-modal');
 
-        openTaskManagerModalButtons.forEach(e => {
-            e.addEventListener('click', () => {
-                taskManagerModal.classList.remove('hidden');
-            });
-        });
+        function openTaskManagerModal() {
+            taskManagerModal.classList.remove('hidden');
+        }
 
-        closeTaskManagerModalButton.addEventListener('click', () => {
+        function closeTaskManagerModal() {
             taskManagerModal.classList.add('hidden');
-        });
+        }
 
         window.addEventListener('click', (event) => {
             if (event.target == taskManagerModal) {
@@ -521,9 +609,6 @@
         });
 
     </script>
-
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
 </body>
 
 </html>

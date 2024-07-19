@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.2.13/dist/semantic.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.2.13/dist/semantic.min.css">
+    <link rel="stylesheet" href="root.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+        
+        <link rel="stylesheet" href="styles/nx.css">
+        <link rel="stylesheet" href="settings-storage-media-preview.css">
+
+    <title>Storage Settings - Media file preview & Video Transcoding</title>
+</head>
+
+<body class="nx">
+    <main class="flex w-full h-full flex">
+        <!-- sidebar -->
+        <aside class="h-full relative">
+            <input type="checkbox" class="hidden" id="sidebar-toggle"> 
+            <label for="sidebar-toggle" class="absolute lg:hidden top-2 -right-8 px-1">
+                <i class="ri-bar-chart-horizontal-line"></i>
+            </label>
+            <div class="h-full sidebar">
+                <div class="sidebar-container">
+                    <div class="p-6">
+                        <img src="/images/logo.png" alt="Dots Logo">
+                    </div>
+                    <div class="md:pt-6">
+                        <ul class="space-y-1">
+                            <li>
+                                <a class="w-full px-6 py-3 rounded-r-lg block flex justify-between items-center" href="overview.html">
+                                    <span> Overview </span>
+                                    <i class="ri-arrow-right-s-line text-c-yellow right-arrow text-2xl"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <div role="button" onclick="toggleDropMenu(this)" class="drop-menu cursor-pointer rounded-r-lg">
+                                    <div class="w-full px-6 py-3 flex justify-between items-center" href="#">
+                                        <span> System Settings </span>
+                                        <i class="ri-arrow-right-s-line text-c-yellow big-right-arrow text-2xl"></i>
+                                    </div>
+                                    <ul class="drop-list text-sm space-y-1">
+                                        <li>
+                                            <a href="system-settings-basic.html"
+                                                class="block py-2 px-8 rounded-r-md w-full flex justify-between items-center">
+                                                <span>Basic</span>
+                                                <i class="ri-arrow-right-s-line text-c-yellow right-arrow text-2xl"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#"
+                                                class="block py-2 px-8 rounded-r-md w-full flex justify-between items-center">
+                                                <span>Menu</span>
+                                                <i class="ri-arrow-right-s-line text-c-yellow right-arrow text-2xl"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#"
+                                                class="block py-2 px-8 rounded-r-md w-full flex justify-between items-center">
+                                                <span>Notice</span>
+                                                <i class="ri-arrow-right-s-line text-c-yellow right-arrow text-2xl"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#"
+                                                class="block py-2 px-8 rounded-r-md w-full flex justify-between items-center">
+                                                <span>Intranet Access</span>
+                                                <i class="ri-arrow-right-s-line text-c-yellow right-arrow text-2xl"></i>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li>
+                                <div role="button" onclick="toggleDropMenu(this)" class="drop-menu cursor-pointer rounded-r-lg">
+                                    <div class="w-full px-6 py-3 flex justify-between items-center" href="#">
+                                        <span> Users &amp; Groups </span>
+                                        <i class="ri-arrow-right-s-line text-c-yellow big-right-arrow text-2xl"></i>
+                                    </div>
+                                    <ul class="drop-list text-sm space-y-1">
+                                        <li>
+                                            <a href="#"
+                                                class="block py-2 px-8 rounded-r-md w-full flex justify-between items-center">
+                                                <span>Users &amp; Groups </span>
+                                                <i class="ri-arrow-right-s-line text-c-yellow right-arrow text-2xl"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#"
+                                                class="block py-2 px-8 rounded-r-md w-full flex justify-between items-center">
+                                                <span>Role</span>
+                                                <i class="ri-arrow-right-s-line text-c-yellow right-arrow text-2xl"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#"
+                                                class="block py-2 px-8 rounded-r-md w-full flex justify-between items-center">
+                                                <span>Document Permission</span>
+                                                <i class="ri-arrow-right-s-line text-c-yellow right-arrow text-2xl"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#"
+                                                class="block py-2 px-8 rounded-r-md w-full flex justify-between items-center">
+                                                <span>Intranet Access</span>
+                                                <i class="ri-arrow-right-s-line text-c-yellow right-arrow text-2xl"></i>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li>
+                                <div role="button" onclick="toggleDropMenu(this)" class="drop-menu cursor-pointer rounded-r-lg">
+                                    <div class="w-full px-6 py-3 flex justify-between items-center" href="#">
+                                        <span>Storage/file</span>
+                                        <i class="ri-arrow-right-s-line text-c-yellow big-right-arrow text-2xl"></i>
+                                    </div>
+                                    <ul class="drop-list text-sm space-y-1">
+                                        <li>
+                                            <a href="#"
+                                                class="block py-2 px-8 rounded-r-md w-full flex justify-between items-center">
+                                                <span>Storage</span>
+                                                <i class="ri-arrow-right-s-line text-c-yellow right-arrow text-2xl"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#"
+                                                class="block py-2 px-8 rounded-r-md w-full flex justify-between items-center">
+                                                <span>Backup</span>
+                                                <i class="ri-arrow-right-s-line text-c-yellow right-arrow text-2xl"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#"
+                                                class="block py-2 px-8 rounded-r-md w-full flex justify-between items-center">
+                                                <span>Share</span>
+                                                <i class="ri-arrow-right-s-line text-c-yellow right-arrow text-2xl"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="settings-storage-web-dav.html"
+                                                class="block py-2 px-8 rounded-r-md w-full flex justify-between items-center">
+                                                <span>webDAV Mount</span>
+                                                <i class="ri-arrow-right-s-line text-c-yellow right-arrow text-2xl"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="settings-storage-media-preview.html"
+                                                class="block py-2 px-8 rounded-r-md w-full flex justify-between items-center">
+                                                <span>Media file preview &amp; Video</span>
+                                                <i class="ri-arrow-right-s-line text-c-yellow right-arrow text-2xl"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#"
+                                                class="block py-2 px-8 rounded-r-md w-full flex justify-between items-center">
+                                                <span>Client and App</span>
+                                                <i class="ri-arrow-right-s-line text-c-yellow right-arrow text-2xl"></i>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li>
+                                <a class="w-full px-6 py-3 rounded-r-lg block flex justify-between items-center"
+                                    href="settings-plugin.html">
+                                    <span>Plugin Center</span>
+                                    <i class="ri-arrow-right-s-line text-c-yellow right-arrow text-2xl"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <div role="button" onclick="toggleDropMenu(this)" class="drop-menu cursor-pointer rounded-r-lg">
+                                    <div class="w-full px-6 py-3 flex justify-between items-center" href="#">
+                                        <span>Saftey Control</span>
+                                        <i class="ri-arrow-right-s-line text-c-yellow big-right-arrow text-2xl"></i>
+                                    </div>
+                                    <ul class="drop-list text-sm space-y-1">
+                                        <li>
+                                            <a href="#"
+                                                class="block py-2 px-8 rounded-r-md w-full flex justify-between items-center">
+                                                <span>Message Warning</span>
+                                                <i class="ri-arrow-right-s-line text-c-yellow right-arrow text-2xl"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#"
+                                                class="block py-2 px-8 rounded-r-md w-full flex justify-between items-center">
+                                                <span>Login Log</span>
+                                                <i class="ri-arrow-right-s-line text-c-yellow right-arrow text-2xl"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#"
+                                                class="block py-2 px-8 rounded-r-md w-full flex justify-between items-center">
+                                                <span>Operation Log</span>
+                                                <i class="ri-arrow-right-s-line text-c-yellow right-arrow text-2xl"></i>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li>
+                                <a class="w-full px-6 py-3 rounded-r-lg block flex justify-between items-center"
+                                    href="settings-server-scheduled-tasks.html">
+                                    <span>Scheduled Tasks</span>
+                                    <i class="ri-arrow-right-s-line text-c-yellow right-arrow text-2xl"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- main content -->
+        <div class="flex-grow border h-full main">
+            <div class="flex w-full h-full flex-col content">
+                <div class="p-6">
+                    <div class="flex items-center gap-4">
+                        <i class="ri-settings-3-fill text-2xl"></i> <span class="text-lg">System Settings</span>
+                    </div>
+                </div>
+
+                <!-- top taskbar -->
+                <div class="taskbar flex items-center justify-between px-6 py-4">
+                    <div class="flex items-center gap-4">
+                        <div class="flex gap-2 items-center">
+                            <span>Server</span> <i class="ri-arrow-right-line text-xl"></i><span class="font-semibold">Media
+                                file preview &amp; Video Transcoding</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- form tabs -->
+                <div class="p-6">
+                    <div class="flex gap-2">
+                        <button type="button" onclick="showTab(this)" class="tab-control styled px-1 active" data-tab="media-preview-main" data-control="mp-basic">Basic</button>
+                        <button type="button" onclick="showTab(this)" class="tab-control styled px-1" data-tab="media-preview-main" data-control="mp-vt">Video Transcoding</button>
+                        <button type="button" onclick="showTab(this)" class="tab-control styled px-1" data-tab="media-preview-main" data-control="mp-o">Others</button>
+                    </div>
+                    <div class="pt-6">
+                        <div class="tab-content media-preview-main active" id="mp-basic">
+                            <form action="#">
+                                <div class="flex flex-wrap w-full gap-y-4 items-center">
+                                    <label for="name" class="w-full md:w-1/6 font-semibold">Permission: <span
+                                            class="text-red-500">*</span></label>
+                                    <div class="flex-grow md:w-5/6">
+                                        <div class="flex gap-2 w-full max-w-md">
+                                            <input class="hidden" type="checkbox"
+                                                onchange="onPermissionChange(this)" name="permission" id="everyone"
+                                                value="everyone">
+                                            <label
+                                                class="flex-grow text-center text-sm py-2 rounded-md bg-c-light-white cursor-pointer"
+                                                for="everyone"><i
+                                                    class="mr-1 ri-check-double-line"></i>Everyone</label>
+
+                                            <input class="hidden pip-option" type="checkbox"
+                                                onchange="onPermissionChange(this)" name="permission" id="users"
+                                                value="users">
+                                            <label
+                                                class="flex-grow text-center text-sm py-2 rounded-md bg-c-light-white cursor-pointer"
+                                                for="users"><i class="mr-1 ri-user-add-line"></i> Users</label>
+
+                                            <input class="hidden pip-option" type="checkbox"
+                                                onchange="onPermissionChange(this)" name="permission" id="groups"
+                                                value="groups">
+                                            <label
+                                                class="flex-grow text-center text-sm py-2 rounded-md bg-c-light-white cursor-pointer"
+                                                for="groups"><i class="mr-1 ri-group-line"></i> Groups</label>
+
+                                            <input class="hidden pip-option" type="checkbox"
+                                                onchange="onPermissionChange(this)" name="permission" id="role"
+                                                value="role">
+                                            <label
+                                                class="flex-grow text-center text-sm py-2 rounded-md bg-c-light-white cursor-pointer"
+                                                for="role"><i class="mr-1 ri-copper-diamond-line"></i> Role</label>
+                                        </div>
+                                        <span class="text-xs block text-gray-500 mt-1">
+                                            Make everyone available, or specify users, groups and roles to use
+                                        </span>
+                                    </div>
+
+                                    <span class="block hidden md:block w-full md:w-1/6"></span>
+                                    <div class="space-y-2 flex-grow">
+                                        <div class="max-w-md hidden pip-select" id="users-pip">
+                                            <select multiple  class="label ui selection fluid dropdown w-full rounded-lg"
+                                                aria-placeholder="Please choose user" name="permission_users"
+                                                id="permission_users">
+                                                <option value="">Please choose user</option>
+                                                <option value="admin">Admin</option>
+                                                <option value="user">User</option>
+                                                <option value="guest">Guest</option>
+                                                <option value="other">Other</option>
+                                            </select>
+                                        </div>
+
+                                        <div class="max-w-md hidden pip-select" id="groups-pip">
+                                            <select multiple  class="label ui selection fluid dropdown w-full rounded-lg"
+                                                aria-placeholder="Please choose group" name="permission_group"
+                                                id="permission_group">
+                                                <option value="">Please choose group</option>
+                                                <option value="admin">Admin</option>
+                                                <option value="user">User</option>
+                                                <option value="guest">Guest</option>
+                                                <option value="other">Other</option>
+                                            </select>
+                                        </div>
+
+                                        <div class="max-w-md hidden pip-select" id="role-pip">
+                                            <select multiple  class="label ui selection fluid dropdown w-full rounded-lg"
+                                                aria-placeholder="Please choose role" name="permission_role"
+                                                id="permission_role">
+                                                <option value="">Please choose role</option>
+                                                <option value="admin">Admin</option>
+                                                <option value="user">User</option>
+                                                <option value="guest">Guest</option>
+                                                <option value="other">Other</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <br>
+                                <hr>
+                                <br>
+                                <div class="flex flex-wrap w-full gap-y-4 items-center">
+                                    <label for="imageMagicPath" class="w-full md:w-1/6 font-semibold">imageMagic Path: <span
+                                            class="text-red-500">*</span>
+                                    </label>
+                                    <div class="w-full md:w-5/6 flex gap-2 flex-wrap items-center">
+                                        <input type="text" required name="imageMagicPath" id="imageMagicPath"
+                                            class="bg-gray-50 border flex-grow max-w-md border-gray-300 text-gray-900 text-sm rounded-xl block p-2 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+                                            placeholder="convert" />
+                                        <span class="text-xs text-gray-500">
+                                            Make everyone available, or specify users, groups and roles to use
+                                        </span>
+                                    </div>
+
+                                    <label for="ffmpegBinPath" class="w-full md:w-1/6 font-semibold">ffmpegBin Path: <span
+                                            class="text-red-500">*</span>
+                                    </label>
+                                    <div class="w-full md:w-5/6 flex gap-2 flex-wrap items-center">
+                                        <input type="text" required name="ffmpegBinPath" id="ffmpegBinPath"
+                                            class="bg-gray-50 flex-grow max-w-md border border-gray-300 text-gray-900 text-sm rounded-xl block p-2 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+                                            placeholder="ffmpeg" />
+                                        <span class="text-xs text-gray-500">
+                                            Make everyone available, or specify users, groups and roles to use
+                                        </span>
+                                    </div>
+
+                                    <span class="hidden md:block w-1/6 block"></span>
+
+                                    <div class="flex flex-wrap gap-2 ml-auto items-center w-full md:w-5/6 ">
+                                        <label for="current" class="cursor-pointer radio-button">
+                                            <input type="radio" name="type" id="current" value="current" checked>
+                                            <span
+                                                class="block py-2 px-4 text-sm rounded-md text-center bg-gray-200">Current</span>
+                                        </label>
+                                        <label for="stop-all" class="cursor-pointer radio-button">
+                                            <input type="radio" name="type" id="stop-all" value="stop-all">
+                                            <span
+                                                class="block py-2 px-4 text-sm rounded-md text-center bg-gray-200">Stop
+                                                All</span>
+                                        </label>
+                                        <a href="#" class="text-sm">Service Deployment Manual</a>
+                                    </div>
+                                    <div class="flex mt-3 w-full">
+                                        <button type="submit"
+                                            class="bg-c-black ml-auto text-white rounded-full px-8 py-2 text-sm">Save</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="tab-content media-preview-main" id="mp-vt">
+                            <div class="py-3 border-b border-t">
+                                <p class="bg-light-pink text-xs rounded-lg py-2 px-3 border">Automatic Transcoding
+                                    when playing video
+                                </p>
+                            </div>
+                            <br>
+                            <form action="#" class="space-y-3">
+
+                                <div class="flex flex-wrap gap-2 items-center">
+                                    <label for="enable_video_transcoding" class="font-semibold w-full md:w-1/6">Enable Video
+                                        Transcoding: </label>
+                                    <label for="toggle-enable-transcoding"
+                                        class="toggle-switch flex items-center cursor-pointer">
+                                        <div class="relative">
+                                            <input onchange="onEnableTranscodingChange(this)" type="checkbox"
+                                                id="toggle-enable-transcoding" class="sr-only">
+                                            <div class="block toggle-bg w-14 h-7 rounded-full"></div>
+                                            <div
+                                                class="dot absolute left-1 top-1 bg-white w-5 h-5 rounded-full transition">
+                                            </div>
+                                        </div>
+                                    </label>
+                                    <span class="text-xs block text-gray-500 mt-1">
+                                        Automatic transcoding when playing video after opening
+                                    </span>
+                                </div>
+
+                                <div class="w-full space-y-3" style="visibility: hidden;" id="when-transcoding">
+                                    <div class="flex flex-wrap gap-2 items-center">
+                                        <label for="concurrency_limit" class="font-semibold w-full md:w-1/6">Concurrency
+                                            Limit:
+                                        </label>
+                                        <div class="flex flex-wrap gap-2 items-center flex-grow">
+                                            <div
+                                                class="flex w-full md:max-w-xs items-center p-0 bg-white border rounded-lg overflow-hidden">
+                                                <input class="flex-grow px-2 outline-none text-sm py-1"
+                                                    type="number" name="concurrency_limit" id="concurrency_limit">
+                                                <span
+                                                    class="text-xs text-c-black font-semibold px-2 bg-c-light-white py-2">MB</span>
+                                            </div>
+                                            <span class="text-xs text-gray-500 mt-1">
+                                                No transcoding if less than this value
+                                            </span>
+                                        </div>
+                                    </div>
+
+                                    <div class="flex flex-wrap gap-2 items-center">
+                                        <label for="maximum_transcoding_file" class="font-semibold w-full md:w-1/6">Maximum
+                                            transcoding file: </label>
+                                        <div class="flex flex-wrap gap-2 items-center flex-grow">
+                                            <div
+                                                class="flex w-full md:max-w-xs items-center p-0 bg-white border rounded-lg overflow-hidden">
+                                                <input class="flex-grow px-2 outline-none text-sm py-1"
+                                                    type="number" name="maximum_transcoding_file"
+                                                    id="maximum_transcoding_file">
+                                                <span
+                                                    class="text-xs text-c-black font-semibold px-2 bg-c-light-white py-2">GB</span>
+                                            </div>
+                                            <span class="text-xs text-gray-500 mt-1">
+                                                This value of the file will not be transcoded. If it is 0, there is
+                                                no
+                                                restriction
+                                            </span>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="flex flex-wrap gap-2 items-center">
+                                        <label for="maximum_transcoding_file2" class="font-semibold w-full md:w-1/6">Maximum
+                                            transcoding file: </label>
+                                        <div class="flex flex-wrap gap-2 items-center flex-grow">
+                                            <input type="number"
+                                                class="w-full px-2 outline-none text-sm md:max-w-xs items-center py-1.5 bg-white border rounded-lg"
+                                                name="maximum_transcoding_file2" id="maximum_transcoding_file2">
+                                            <span class="text-xs text-gray-500 mt-1">
+                                                Maximum number of transcoding tasks allowed at the same time
+                                            </span>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="flex flex-wrap w-full gap-2 items-center">
+                                        <label for="file_format" class="font-semibold w-full md:w-1/6">File
+                                            format:
+                                        </label>
+                                        <div class="flex flex-wrap gap-2 items-center flex-grow">
+                                            <select data-placeholder="Select content" multiple  class="label ui selection fluid dropdown w-full md:max-w-xs rounded-lg"
+                                                name="file_format">
+                                                <option value=""></option>
+                                                <option value="3gp">3gp</option>
+                                                <option value="3av">3av</option>
+                                                <option value="mop">mop</option>
+                                                <option value="mp4a">mp4a</option>
+                                            </select>
+                                            <span class="text-xs text-gray-500 mt-1">
+                                                Associate extension to the plugin
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <br>
+                                    <hr>
+                                    <br>
+
+                                    <div class="flex flex-wrap gap-2 items-center">
+                                        <label for="default_quality" class="font-semibold w-full md:w-1/6">Default Quality:
+                                        </label>
+                                        <div class="flex flex-wrap gap-2 items-center">
+                                            <div class="flex gap-2 items-center">
+                                                <label for="quality_normal" class="cursor-pointer radio-button">
+                                                    <input type="radio" name="default_quality" id="quality_normal"
+                                                        value="normal" checked>
+                                                    <span
+                                                        class="block py-2 px-4 text-sm rounded-md text-center bg-gray-200">Normal</span>
+                                                </label>
+                                                <label for="quality_original" class="cursor-pointer radio-button">
+                                                    <input type="radio" name="default_quality" id="quality_original"
+                                                        value="original">
+                                                    <span
+                                                        class="block py-2 px-4 text-sm rounded-md text-center bg-gray-200">Original</span>
+                                                </label>
+                                            </div>
+                                            <span class="text-xs text-gray-500 mt-1">
+                                                When Normal mode is selected, video transcoding must be completed
+                                            </span>
+                                        </div>
+                                    </div>
+
+                                    <div class="flex mt-3 w-full">
+                                        <button type="submit"
+                                            class="bg-c-black ml-auto text-white rounded-full px-8 py-2 text-sm">Save</button>
+                                    </div>
+                                </div>
+
+                            </form>
+
+                        </div>
+                        <div class="tab-content media-preview-main" id="mp-o">
+                            <form action="#" class="space-y-3">
+                                <div class="flex flex-wrap gap-2 items-center">
+                                    <label for="priority" class="font-semibold w-full md:w-1/6">Priority:
+                                    </label>
+                                    <div class="flex flex-wrap gap-2 items-center flex-grow">
+                                        <div
+                                            class="flex w-full md:max-w-xs items-center p-0 bg-white border rounded-lg overflow-hidden">
+                                            <input class="flex-grow px-2 outline-none text-sm py-2"
+                                                type="number" name="priority" id="priority">
+
+                                        </div>
+                                        <span class="text-xs text-gray-500 mt-1">
+                                            The higher the value, the higher the priority of opening
+                                        </span>
+                                    </div>
+                                </div>
+
+
+                                <div class="flex flex-wrap w-full gap-2 items-center">
+                                    <label for="others_formats" class="font-semibold w-full md:w-1/6">Formats:
+                                    </label>
+                                    <div class="flex flex-wrap gap-2 items-center flex-grow">
+                                        <select data-placeholder="Select content" multiple  class="label ui selection fluid dropdown w-full md:max-w-xs rounded-lg"
+                                           
+                                            name="others_formats">
+                                            <option value=""></option>
+                                            <option value="3gp">3gp</option>
+                                            <option value="3av">3av</option>
+                                            <option value="mop">mop</option>
+                                            <option value="mp4a">mp4a</option>
+                                        </select>
+                                        <span class="text-xs text-gray-500 mt-1">
+                                            Transcoding only when the file format is specified
+                                        </span>
+                                    </div>
+                                </div>
+
+
+                                <div class="flex flex-wrap w-full gap-2 items-center">
+                                    <label for="others_file_thumbnail" class="font-semibold w-full md:w-1/6">File
+                                        thumbnail:
+                                    </label>
+                                    <div class="flex flex-wrap gap-2 items-center flex-grow">
+                                        <select data-placeholder="Select content" multiple  class="label ui selection fluid dropdown w-full md:max-w-xs rounded-lg"
+                                            name="others_file_thumbnail">
+                                            <option value=""></option>
+                                            <option value="3gp">3gp</option>
+                                            <option value="3av">3av</option>
+                                            <option value="mop">mop</option>
+                                            <option value="mp4a">mp4a</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <br>
+                                <hr>
+                                <br>
+
+                                <div class="flex flex-wrap gap-2 items-center">
+                                    <label for="default_quality" class="font-semibold w-full md:w-1/6">Debug mode:
+                                    </label>
+                                    <label for="toggle-debug_mode"
+                                        class="toggle-switch flex items-center cursor-pointer">
+                                        <div class="relative">
+                                            <input type="checkbox" id="toggle-debug_mode" class="sr-only">
+                                            <div class="block toggle-bg w-14 h-7 rounded-full"></div>
+                                            <div
+                                                class="dot absolute left-1 top-1 bg-white w-5 h-5 rounded-full transition">
+                                            </div>
+                                        </div>
+                                    </label>
+                                    <button class="text-sm bg-c-light-white rounded-lg px-4 py-2 ml-5">View Log</button>
+                                </div>
+
+                                <div class="flex mt-3 w-full">
+                                    <button type="submit"
+                                        class="bg-c-black ml-auto text-white rounded-full px-8 py-2 text-sm">Save</button>
+                                </div>
+                        </form>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="w-screen">
+        <div class="flex justify-between w-full items center px-2 md:px-6 py-2 md:py-4 bg-white bg-opacity-50">
+            <button type="button" class="bg-c-black text-white px-2 py-1 rounded-md">File</button>
+            <img src="/images/logo.png" alt="Dots Logo" width="36" height="36">
+        </div>
+    </footer>
+
+    <!-- run task scheduled message -->
+    <div id="run-success" class="fixed z-10 w-full transition-all" style="top: -120px;">
+        <div class="max-w-sm mx-auto">
+            <div class="flex items-center border rounded-md bg-white">
+                <div class="bg-c-yellow py-2 px-3">
+                    <i class="fa-solid fa-check fa-lg text-black"></i>
+                </div>
+                <p id="run-success-message" class="px-3 text-center w-full text-gray-700 text-sm">The scheduled task has
+                    restarted</p>
+            </div>
+        </div>
+    </div>
+
+    <script defer src="script/sidebar.js"></script>
+    <script defer src="script/tabs.js"></script>
+    <script defer>
+        function onPermissionChange(target) {
+            const value = target.value;
+            const checked = target.checked;
+
+            if (value === "everyone") {
+                if (checked) {
+                    document.querySelectorAll('input.pip-option').forEach(e => {
+                        e.checked = false
+                    });
+                    document.querySelectorAll('.pip-select').forEach(e => {
+                        e.style.display = 'none'
+                    })
+                }
+                return;
+            }
+
+            if (checked) {
+                document.getElementById('everyone').checked = false;
+                document.getElementById(`${value}-pip`).style.display = 'block';
+            } else {
+                document.getElementById(`${value}-pip`).style.display = 'none';
+            }
+        }
+
+        function onEnableTranscodingChange(target) {
+            if (target.checked) {
+                document.getElementById('when-transcoding').style.visibility = 'visible';
+            } else {
+                document.getElementById('when-transcoding').style.visibility = 'hidden';
+            }
+        }
+
+    </script>
+    <script defer>
+        $('.label.ui.dropdown')
+            .dropdown();
+
+        $('.no.label.ui.dropdown')
+            .dropdown({
+                useLabels: false
+            });
+
+        $('.ui.button').on('click', function () {
+            $('.ui.dropdown')
+                .dropdown('restore defaults')
+        })
+
+    </script>
+
+    <script defer>
+        function showSuccessMessage(message) {
+            runSuccessMessage.innerText = message;
+            runSuccessModal.style.top = '20px';
+            setTimeout(() => {
+                runSuccessModal.style.top = '-120px';
+            }, 3000);
+        }
+    </script>
+</body>
+
+</html>

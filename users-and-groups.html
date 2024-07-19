@@ -9,24 +9,230 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="root.css">
     <link rel="stylesheet" href="./setting-admin-users.css">
-    
+    <link rel="stylesheet" href="/styles/nxvs.css">
+    <link rel="stylesheet" href="styles/custom-reusable-style.css">
+
 </head>
 
-<body>
-    <main class="bg-gray-100 pt-5">
-        <div class="flex items-center mb-4 ml-4 p-3">
-            <!-- Setting icon -->
-            <span class="text-gray-500 mr-3 text-2xl ">
-                <i class="fas fa-cog"></i>
-            </span>
-            <!-- Title -->
-            <span class="text-2xl">System Settings</span>
-        </div>
+<body class="h-screen w-full flex flex-col nx">
 
-        <div class="flex items-center justify-between bg-yellow-400 p-2 pl-8  mb-4">
+    <main class="flex w-full h-full ">
+        <!-- sidebar -->
+        <aside class="h-full relative">
+            <input type="checkbox" class="hidden" id="sidebar-toggle">
+            <label for="sidebar-toggle" class="absolute lg:hidden top-2 -right-8 px-1">
+                <i class="ri-bar-chart-horizontal-line"></i>
+            </label>
+            <div class="h-full sidebar">
+                <div class="sidebar-container">
+                    <div class="p-6">
+                        <img src="images/dots-logo.svg" alt="Dots Logo">
+                    </div>
+                    <div class="md:pt-6">
+                        <ul class="space-y-1">
+                            <li>
+                                <a class="w-full px-6 py-3 rounded-r-lg block flex justify-between items-center"
+                                    href="#" data-link="settings-overview">
+                                    <span> Overview </span>
+                                    <i class="ri-arrow-right-s-line text-c-yellow right-arrow"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <div role="button" onclick="toggleDropMenu(this)"
+                                    class="drop-menu cursor-pointer rounded-r-lg">
+                                    <div class="w-full px-6 py-3 flex justify-between items-center" href="#">
+                                        <span> System Settings </span>
+                                        <i class="ri-arrow-right-s-line text-c-yellow transition-all"></i>
+                                    </div>
+                                    <ul class="drop-list text-sm space-y-1">
+                                        <li>
+                                            <a href="#"
+                                                class="block py-2 px-8 rounded-r-md w-full flex justify-between items-center">
+                                                <span>Basic</span>
+                                                <i class="ri-arrow-right-s-line text-c-yellow right-arrow"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#"
+                                                class="block py-2 px-8 rounded-r-md w-full flex justify-between items-center">
+                                                <span>Menu</span>
+                                                <i class="ri-arrow-right-s-line text-c-yellow right-arrow"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#"
+                                                class="block py-2 px-8 rounded-r-md w-full flex justify-between items-center">
+                                                <span>Notice</span>
+                                                <i class="ri-arrow-right-s-line text-c-yellow right-arrow"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#"
+                                                class="block py-2 px-8 rounded-r-md w-full flex justify-between items-center">
+                                                <span>Intranet Access</span>
+                                                <i class="ri-arrow-right-s-line text-c-yellow right-arrow"></i>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li>
+                                <div role="button" onclick="toggleDropMenu(this)"
+                                    class="drop-menu cursor-pointer rounded-r-lg">
+                                    <div class="w-full px-6 py-3 flex justify-between items-center" href="#">
+                                        <span> Admin &amp; Users </span>
+                                        <i class="ri-arrow-right-s-line text-c-yellow transition-all"></i>
+                                    </div>
+                                    <ul class="drop-list text-sm space-y-1">
+                                        <li>
+                                            <a href="#"
+                                                class="block py-2 px-8 rounded-r-md w-full flex justify-between items-center">
+                                                <span>Users &amp; Groups </span>
+                                                <i class="ri-arrow-right-s-line text-c-yellow right-arrow"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#"
+                                                class="block py-2 px-8 rounded-r-md w-full flex justify-between items-center">
+                                                <span>Role</span>
+                                                <i class="ri-arrow-right-s-line text-c-yellow right-arrow"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#"
+                                                class="block py-2 px-8 rounded-r-md w-full flex justify-between items-center">
+                                                <span>Document Permission</span>
+                                                <i class="ri-arrow-right-s-line text-c-yellow right-arrow"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#"
+                                                class="block py-2 px-8 rounded-r-md w-full flex justify-between items-center">
+                                                <span>Intranet Access</span>
+                                                <i class="ri-arrow-right-s-line text-c-yellow right-arrow"></i>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li>
+                                <div role="button" onclick="toggleDropMenu(this)"
+                                    class="drop-menu cursor-pointer rounded-r-lg">
+                                    <div class="w-full px-6 py-3 flex justify-between items-center" href="#">
+                                        <span>Storage/file</span>
+                                        <i class="ri-arrow-right-s-line text-c-yellow transition-all"></i>
+                                    </div>
+                                    <ul class="drop-list text-sm space-y-1">
+                                        <li>
+                                            <a href="#"
+                                                class="block py-2 px-8 rounded-r-md w-full flex justify-between items-center">
+                                                <span>Storage</span>
+                                                <i class="ri-arrow-right-s-line text-c-yellow right-arrow"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#"
+                                                class="block py-2 px-8 rounded-r-md w-full flex justify-between items-center">
+                                                <span>Backup</span>
+                                                <i class="ri-arrow-right-s-line text-c-yellow right-arrow"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#"
+                                                class="block py-2 px-8 rounded-r-md w-full flex justify-between items-center">
+                                                <span>Share</span>
+                                                <i class="ri-arrow-right-s-line text-c-yellow right-arrow"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#"
+                                                class="block py-2 px-8 rounded-r-md w-full flex justify-between items-center">
+                                                <span>webDAV Mount</span>
+                                                <i class="ri-arrow-right-s-line text-c-yellow right-arrow"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="settings-storage-media-preview.html"
+                                                class="block py-2 px-8 rounded-r-md w-full flex justify-between items-center">
+                                                <span>Media file preview &amp; Video</span>
+                                                <i class="ri-arrow-right-s-line text-c-yellow right-arrow"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#"
+                                                class="block py-2 px-8 rounded-r-md w-full flex justify-between items-center">
+                                                <span>Client and App</span>
+                                                <i class="ri-arrow-right-s-line text-c-yellow right-arrow"></i>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li>
+                                <a class="w-full px-6 py-3 rounded-r-lg block flex justify-between items-center"
+                                    href="settings-plugin.html">
+                                    <span>Plugin Center</span>
+                                    <i class="ri-arrow-right-s-line text-c-yellow right-arrow"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <div role="button" onclick="toggleDropMenu(this)"
+                                    class="drop-menu cursor-pointer rounded-r-lg">
+                                    <div class="w-full px-6 py-3 flex justify-between items-center" href="#">
+                                        <span>Saftey Control</span>
+                                        <i class="ri-arrow-right-s-line text-c-yellow transition-all"></i>
+                                    </div>
+                                    <ul class="drop-list text-sm space-y-1">
+                                        <li>
+                                            <a href="#"
+                                                class="block py-2 px-8 rounded-r-md w-full flex justify-between items-center">
+                                                <span>Message Warning</span>
+                                                <i class="ri-arrow-right-s-line text-c-yellow right-arrow"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="safety-control-login.html"
+                                                class="block py-2 px-8 rounded-r-md w-full flex justify-between items-center">
+                                                <span>Login Log</span>
+                                                <i class="ri-arrow-right-s-line text-c-yellow right-arrow"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="safety-control-operational.html"
+                                                class="block py-2 px-8 rounded-r-md w-full flex justify-between items-center">
+                                                <span>Operation Log</span>
+                                                <i class="ri-arrow-right-s-line text-c-yellow right-arrow"></i>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li>
+                                <a class="w-full px-6 py-3 rounded-r-lg block flex justify-between items-center"
+                                    href="settings-server-scheduled-tasks.html">
+                                    <span>Scheduled Tasks</span>
+                                    <i class="ri-arrow-right-s-line text-c-yellow right-arrow"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </aside>
 
-            <div>
-                <h2 class="text">Admin & Users > <span class="font-semibold">Users and Groups</span></h2>
+        <div class="flex-grow border h-100 main">
+            <div class="p-6">
+                <div class="flex items-center gap-4">
+                    <i class="ri-settings-5-fill text-2xl"></i><span class="text-lg">System Settings</span>
+                </div>
+            </div>
+
+        <div class="taskbar flex items-center justify-between px-6 py-4 mb-4">
+            <div class="flex items-center gap-4">
+                <div class="flex gap-2 items-center">
+                    <span>Admin & Users</span> <i class="ri-arrow-right-line"></i></i><span
+                        class="font-semibold">Users and Groups</span>
+                </div>
             </div>
             <div class="flex items-center">
                 <!-- Search icon -->
@@ -49,11 +255,39 @@
         </div>
 
         <div class="users-admin-btn-grp pl-8 flex items-center relative justify-between">
+            
 
             <div class="flex items-center">
+                
                 <!-- Dropdown 1 -->
-
-                <div class="relative">
+                <div class="dropdown inline-block relative">
+                    <button class="flex items-center border rounded px-6 py-1 custom-outline">
+                        <span class="">New User</span>
+                        <span class=" pl-2">
+                            <i class="ri-arrow-down-s-fill"></i>
+                        </span>
+                    </button>
+                    <ul class="dropdown-menu absolute hidden text-gray-700 border border-gray-300 pt-2 shadow-md bg-custom-pure-white text-xs dropdown-options-custom-width rounded mt-1">
+                      <li>
+                        <a href="#" id="editDrop" class="block py-1 px-2 dropdown-item custom-bg-hover py-2 px-4 block whitespace-no-wrap px-4"
+                                onclick="setActive('editDrop'); togglePopup('editPopup');">Edit</a>
+                      </li>
+                      <li>
+                        <a href="#" id="setSpaceSizeBatch" class="block py-1 dropdown-item custom-bg-hover py-2 px-4 block whitespace-no-wrap px-4"
+                                onclick="setActive('setSpaceSizeBatch'); togglePopup('setSpaceSizePopup');">Set space
+                                size batches</a>
+                      </li>
+                      <li>
+                        <a href="#" id="addSubGroup" class="block dropdown-item custom-bg-hover py-2 px-4 block whitespace-no-wrap "
+                                onclick="setActive('addSubGroup')">Add sub-group</a>
+                      </li>
+                      <li>
+                        <a href="#" id="newUser" class="block dropdown-item custom-bg-hover py-2 px-4 block whitespace-no-wrap "
+                        onclick="setActive('newUser'); togglePopup('newUserPopup');">New user</a>
+                      </li>
+                    </ul>
+                </div>
+                <!-- <div class="relative">
                     <button onclick="toggleDropdown('dropdownOptions-1')"
                         class="flex items-center focus:border-yellow-500 dropdown-toggle border border-gray-300 rounded px-4 py-1 mr-2">
                         <span class="">Group 1</span>
@@ -67,22 +301,23 @@
                             <a href="#" id="editDrop" class="block py-1 px-2 dropdown-item"
                                 onclick="setActive('editDrop'); togglePopup('editPopup');">Edit</a>
                             <a href="#" id="setSpaceSizeBatch" class="block py-1 px-2 dropdown-item"
-                                onclick="setActive('setSpaceSizeBatch'); togglePopup('setSpaceSizePopup');">Set space size batches</a>
+                                onclick="setActive('setSpaceSizeBatch'); togglePopup('setSpaceSizePopup');">Set space
+                                size batches</a>
                             <a href="#" id="addSubGroup" class="block py-1 px-2 dropdown-item"
                                 onclick="setActive('addSubGroup')">Add sub-group</a>
                             <a href="#" id="newUser" class="block py-1 px-2 dropdown-item"
                                 onclick="setActive('newUser'); togglePopup('newUserPopup');">New user</a>
                         </div>
                     </div>
-                </div>
+                </div> -->
 
                 <!-- Dropdown 2 -->
                 <div class="relative">
                     <button onclick="toggleDropdown('dropdownOptions-2')"
                         class="flex items-center dropdown-toggle focus:border-yellow-500 border border-gray-300 rounded px-4 py-1 mr-2">
                         <span class="">New User</span>
-                        <span class="pb-1 pl-2">
-                            <i class="fas fa-sort-down"></i>
+                        <span class=" pl-2">
+                            <i class="ri-arrow-down-s-fill"></i>
                         </span>
                     </button>
                     <div id="dropdownOptions-2"
@@ -128,11 +363,13 @@
 
                 <!-- Disabled Button 3 -->
                 <button class="disabled-btn bg-gray-300 text-gray-600 px-4 py-2 rounded" disabled>Button 3</button>
+                
             </div>
             <div>
                 <p class="text-sm mr-6">ID: 1 Dep: 1</p>
             </div>
         </div>
+
 
         <div class="users-admin-content-wrapper pl-8  pr-3">
             <div class="container mx-auto mt-10">
@@ -186,8 +423,8 @@
                 </div>
                 <form>
                     <div class="mb-4 flex items-center">
-                        <label for="name"
-                            class="block text-gray-800 w-1/3 font-semibold">Name:<span class="text-red-600">*</span></label>
+                        <label for="name" class="block text-gray-800 w-1/3 font-semibold">Name:<span
+                                class="text-red-600">*</span></label>
                         <input type="text" id="name" class="border rounded-l w-2/3 p-2" placeholder="Enter nickname"
                             required>
                         <span class="border rounded-r bg-gray-200 p-2 px-4 text-green-300"><i
@@ -210,7 +447,8 @@
 
         <!-- User Space siza batches Popup    -->
 
-        <div id="setSpaceSizePopup" class="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-50 hidden">
+        <div id="setSpaceSizePopup"
+            class="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-50 hidden">
             <div class="bg-white rounded-lg shadow-lg p-6 w-full max-w-3xl">
                 <div class="flex justify-between items-center border-b pb-2 mb-4">
                     <h3 class="text-sm font-medium text-gray-500">Set space size batches</h3>
@@ -220,14 +458,15 @@
                 </div>
                 <form>
                     <div class="mb-2 flex items-center">
-                        <label for="name"
-                            class="block text-gray-800 w-1/3 font-semibold">Selected department:<span class="text-red-600">*</span></label>
+                        <label for="name" class="block text-gray-800 w-1/3 font-semibold">Selected department:<span
+                                class="text-red-600">*</span></label>
                         <input type="text" id="name" class="border rounded-l w-2/3 p-2" placeholder="Enter nickname"
                             required>
                         <span class="border rounded-r bg-gray-200 p-2 px-4 text-green-300"><i
                                 class="fas fa-folder"></i></span>
                     </div>
-                    <span class="block text-sm text-gray-400 text-center ml-20 mb-2">Multiple departments can be selected for batch setting</span>
+                    <span class="block text-sm text-gray-400 text-center ml-20 mb-2">Multiple departments can be
+                        selected for batch setting</span>
                     <div class="mb-4 flex items-center">
                         <label for="spaceSize" class="block text-gray-800 w-1/3 font-semibold">Space
                             size:<span class="text-red-600">*</span></label>
@@ -242,88 +481,175 @@
                 </form>
             </div>
         </div>
-        
-         <!-- New User -->
-         <div id="newUserPopup" class="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-50 hidden">
-            <div class="bg-white rounded-lg shadow-lg p-6 w-full max-w-3xl">
+
+        <!-- New User -->
+        <div id="newUserPopup" class="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-50 hidden ">
+            <div class="bg-white rounded-lg shadow-lg p-6 w-full max-w-3xl ">
                 <div class="flex justify-between items-center border-b pb-2 mb-4">
-                    <h2 class="text-xl font-semibold">User Info</h2>
+                    <h2 class="text-xl font-medium">User Info</h2>
                     <button onclick="togglePopup('newUserPopup')" class="text-gray-600 hover:text-gray-900">
-                        <i class="fas fa-times"></i>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
+                            <path d="M5.76 13.5L9 10.26L12.24 13.5L13.5 12.24L10.26 9L13.5 5.76L12.24 4.5L9 7.74L5.76 4.5L4.5 5.76L7.74 9L4.5 12.24L5.76 13.5ZM9 18C7.755 18 6.585 17.7636 5.49 17.2908C4.395 16.818 3.4425 16.1769 2.6325 15.3675C1.8225 14.5581 1.1814 13.6056 0.709201 12.51C0.237001 11.4144 0.000601139 10.2444 1.13924e-06 9C-0.00059886 7.7556 0.235801 6.5856 0.709201 5.49C1.1826 4.3944 1.8237 3.4419 2.6325 2.6325C3.4413 1.8231 4.3938 1.182 5.49 0.7092C6.5862 0.2364 7.7562 0 9 0C10.2438 0 11.4138 0.2364 12.51 0.7092C13.6062 1.182 14.5587 1.8231 15.3675 2.6325C16.1763 3.4419 16.8177 4.3944 17.2917 5.49C17.7657 6.5856 18.0018 7.7556 18 9C17.9982 10.2444 17.7618 11.4144 17.2908 12.51C16.8198 13.6056 16.1787 14.5581 15.3675 15.3675C14.5563 16.1769 13.6038 16.8183 12.51 17.2917C11.4162 17.7651 10.2462 18.0012 9 18Z" fill="#282828"/>
+                          </svg>
                     </button>
                 </div>
-                <form>
+                <form class="custom-popup-style">
                     <div class="mb-4 flex items-center">
-                        <label for="name"
-                            class="block text-gray-800 w-1/6 font-semibold">Name:<span class="text-red-600">*</span></label>
-                        <input type="text" id="name" class="border outline-none rounded-xl w-2/4 p-2" placeholder="Please enter an user name"
-                            required>
-                        
+                        <label for="name" class="block text-gray-800 w-1/6 font-semibold text-lg">Name:<span
+                                class="text-red-600">*</span></label>
+                        <input type="text" id="name" class="border outline-none rounded-xl w-2/4 custom-input-width p-2 custom-bg-light-gray"
+                            placeholder="Please enter an user name" required>
+
                     </div>
                     <div class="mb-4 flex items-center">
-                        <label for="nickname"
-                            class="block text-gray-800 w-1/6 font-semibold">Nickname:<span class="text-red-600">*</span></label>
-                        <input type="text" id="nickname" class="border rounded-xl w-2/4 p-2" placeholder="Please enter nickname"
-                            required>
+                        <label for="nickname" class="block text-gray-800 w-1/6 font-semibold text-lg">Nickname:<span
+                                class="text-red-600">*</span></label>
+                        <input type="text" id="nickname" class="border outline-none rounded-xl w-2/4 p-2 custom-input-width"
+                            placeholder="Please enter nickname" required>
                     </div>
                     <div class="mb-4 flex items-center">
-                        <label for="password"
-                            class="block text-gray-800 w-1/6 font-semibold">Password:<span class="text-red-600">*</span></label>
-                        <input type="text" id="password" class="border outline-none custom-input-start-radius w-2/4 p-2" placeholder="Please enter your password"
-                            required>
-                        <span class="border custom-input-end-radius bg-gray-200 p-2 px-4 text-green-300"><i class="fas fa-eye"></i></span>
+                        <label for="password" class="block text-gray-800 w-1/6 font-semibold text-lg">Password:<span
+                                class="text-red-600">*</span></label>
+                        <input type="text" id="password" class="border outline-none custom-input-start-radius w-2/4 p-2"
+                            placeholder="Please enter your password" required>
+                        <span class="border  custom-border-color custom-input-end-radius p-2 px-4  cursor-pointer"><svg xmlns="http://www.w3.org/2000/svg" width="21" height="24" viewBox="0 0 24 24" fill="none">
+                            <path d="M9.34303 18.782L7.41103 18.264L8.19803 15.325C7.02001 14.8905 5.92517 14.2573 4.96103 13.453L2.80803 15.607L1.39403 14.193L3.54703 12.039C2.3311 10.5827 1.51411 8.83575 1.17603 6.96899L3.14403 6.60999C3.52148 8.68379 4.6147 10.5594 6.23315 11.9099C7.85161 13.2603 9.89265 14 12.0005 14C14.1084 14 16.1494 13.2603 17.7679 11.9099C19.3863 10.5594 20.4796 8.68379 20.857 6.60999L22.825 6.96799C22.4868 8.83518 21.6694 10.5825 20.453 12.039L22.607 14.193L21.193 15.607L19.039 13.453C18.0749 14.2573 16.98 14.8905 15.802 15.325L16.59 18.265L14.658 18.782L13.87 15.842C12.6324 16.0541 11.3677 16.0541 10.13 15.842L9.34303 18.782Z" fill="#111111"/>
+                          </svg></i></span>
                     </div>
-                    <div class="mb-4 flex items-center">
-                        <label for="spaceSize" class="block text-gray-800 w-1/6 font-semibold">Space
+                    <div class="mb-4 flex items-center ">
+                        <label for="spaceSize" class="block text-gray-800 w-1/6 font-semibold text-lg">Space
                             size:<span class="text-red-600">*</span></label>
-                        <input type="text" id="spaceSize" class="border outline-none custom-input-start-radius p-2 w-2/4"
+                        <input type="number" id="spaceSize"
+                            class="border outline-none custom-input-start-radius p-2 w-2/4"
                             placeholder="Enter space size" required>
-                        <span class="border custom-input-end-radius bg-gray-200 p-2 px-4">GB</span>
+                        <span class="border custom-border-color custom-input-end-radius bg-gray-200 p-2 px-4">GB</span>
                         <span class="block text-sm text-gray-400 text-center ml-2">0 is Unlimited</span>
                     </div>
-                    <div class="mb-4 flex items-center">
-                        <label for="spaceSize" class="block text-gray-800 w-1/6 font-semibold">More</label>
-                        <button type="button" class="focus:outline-none text-white bg-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-8 py-2.5 me-2 mb-2 dark:focus:ring-yellow-900">Basic</button>
-                        <button type="button" class="py-2.5 px-5 me-2 mb-2 ml-4 text-sm font-medium text-gray-900 focus:outline-none bg-gray-400 rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">More Settings</button>
-                    </div>
-                    <div class="mb-4 flex items-center relative">
-                        <label for="role" class="block text-gray-800 w-1/6 font-semibold">Role</label>
-                        <div class="w-2/4 relative">
-                            <button id="customSelectButton" class="w-full text-gray-800 font-medium rounded-lg text-sm px-6 py-2.5 border-2 border-gray-300 flex items-center justify-between">
-                                <span id="selectedOption" class="flex items-center">
-                                    <span id="selectedColor" class="w-4 h-4 rounded-full mr-3"></span>
-                                    Select a role
-                                </span>
-                                <svg class=" h-5 text-gray-500 border-l-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    <div>
+                        <div class="mb-4 flex items-center gap-2">
+                            <label for="spaceSize" class="block text-gray-800 w-1/6 font-semibold text-lg ">More</label>
+                            <button class="basic-btn custom-bg-black  text-gray-900  py-2 px-12 rounded" id="basicBtn">
+                                Basic
                             </button>
-                            <div id="customSelect" class="custom-select mt-2 rounded-lg shadow-lg">
-                                <div class="custom-select-option" data-value="basic" data-color="bg-yellow-500">
-                                    <span class="w-4 h-4 bg-yellow-500 rounded-full mr-3"></span>
-                                    Ordinary user
-                                </div>
-                                <div class="custom-select-option" data-value="admin" data-color="bg-blue-500">
-                                    <span class="w-4 h-4 bg-blue-500 rounded-full mr-3"></span>
-                                    Admin
-                                </div>
-                                <div class="custom-select-option" data-value="superadmin" data-color="bg-green-500">
-                                    <span class="w-4 h-4 bg-green-500 rounded-full mr-3"></span>
-                                    Super Admin
-                                </div>
+                            <button class="more-settings-btn bg-black text-gray-900  py-2 px-6 rounded" id="moreSettingsBtn" >
+                                More Settings
+                            </button>
+                        </div> 
+                        <div id="moreSettings" class="hidden">
+                            <div class="flex items-center ps-3">
+                                <input id="vue-checkbox" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
+                                <label for="vue-checkbox" class="w-full py-3 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Vue JS</label>
                             </div>
                         </div>
                     </div>
-                    
+                    <div class="mb-4 flex items-center relative">
+                        <label for="role" class="block text-gray-800 w-1/6 font-semibold text-lg">Role</label>
+                        <div class=" w-2/4 relative dropdown">
+                            <button
+                                class="w-full  text-gray-800 font-medium rounded-lg text-sm px-6 py-2.5 border-2 border-gray-300 flex items-center justify-between focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                                <span class="flex items-center">
+                                    <span class="w-4 h-4 rounded-full mr-3"></span>
+                                    Select a role
+                                </span>
+                                <svg class="h-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M19 9l-7 7-7-7"></path>
+                                </svg>
+                            </button>
+                            <ul class="dropdown-menu absolute hidden text-gray-700 border border-gray-300 pt-2 shadow-md bg-custom-pure-white text-xs dropdown-options-custom-width rounded mt-1">
+                                <li>
+                                  <a href="#" id="editDrop" class="block py-1 px-2 dropdown-item custom-bg-hover py-2 px-4 block whitespace-no-wrap px-4"
+                                          onclick="setActive('editDrop'); togglePopup('editPopup');">Edit</a>
+                                </li>
+                                <li>
+                                  <a href="#" id="setSpaceSizeBatch" class="block py-1 dropdown-item custom-bg-hover py-2 px-4 block whitespace-no-wrap px-4"
+                                          onclick="setActive('setSpaceSizeBatch'); togglePopup('setSpaceSizePopup');">Set space
+                                          size batches</a>
+                                </li>
+                                <li>
+                                  <a href="#" id="addSubGroup" class="block dropdown-item custom-bg-hover py-2 px-4 block whitespace-no-wrap "
+                                          onclick="setActive('addSubGroup')">Add sub-group</a>
+                                </li>
+                                <li>
+                                  <a href="#" id="newUser" class="block dropdown-item custom-bg-hover py-2 px-4 block whitespace-no-wrap "
+                                  onclick="setActive('newUser'); togglePopup('newUserPopup');">New user</a>
+                                </li>
+                              </ul>
+                        </div>
+                    </div>
+
+                    <div class="mb-4 flex items-center w-full px-4">
+                        <label for="role" class="block text-gray-800 w-1/6 font-semibold text-lg">Group</label>
+                        <div class="relative overflow-x-auto shadow-md sm:rounded-lg w-full">
+                            <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                                <thead
+                                    class="text-xs text-gray-700 uppercase bg-gray-300 dark:bg-gray-700 dark:text-gray-400">
+                                    <tr>
+                                        <th scope="col" class="px-6 py-3">Product name</th>
+                                        <th scope="col" class="px-6 py-3">Parent</th>
+                                        <th scope="col" class="px-6 py-3">Permission</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                                        <th scope="row"
+                                            class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                            Group 1</th>
+                                        <td class="px-6 py-4" ></td>
+                                        <td class="px-6 py-4">
+                                            <div class="relative dropdown">
+                                                <button
+                                                    class="w-full text-gray-800 font-medium rounded-lg text-sm px-6 py-2.5 border-2 border-gray-300 flex items-center justify-between focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                                                    <span class="flex items-center">
+                                                        <span class="w-4 h-4 rounded-full mr-3"></span>
+                                                        Select a role
+                                                    </span>
+                                                    <svg class="h-5 text-gray-500" fill="none" stroke="currentColor"
+                                                        viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                                            stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                                    </svg>
+                                                </button>
+                                                <div
+                                                    class="custom-select absolute w-full bg-white mt-2 rounded-lg shadow-lg z-10">
+                                                    <div class="custom-select-option px-6 py-2 hover:bg-gray-100 cursor-pointer"
+                                                        data-value="basic" data-color="bg-yellow-500">
+                                                        <span class="w-4 h-4 bg-yellow-500 rounded-full mr-3"></span>
+                                                        Ordinary user
+                                                    </div>
+                                                    <div class="custom-select-option px-6 py-2 hover:bg-gray-100 cursor-pointer"
+                                                        data-value="admin" data-color="bg-blue-500">
+                                                        <span class="w-4 h-4 bg-blue-500 rounded-full mr-3"></span>
+                                                        Admin
+                                                    </div>
+                                                    <div class="custom-select-option px-6 py-2 hover:bg-gray-100 cursor-pointer"
+                                                        data-value="superadmin" data-color="bg-green-500">
+                                                        <span class="w-4 h-4 bg-green-500 rounded-full mr-3"></span>
+                                                        Super Admin
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <button type="button" class="focus:outline-none text-white bg-gray-400 hover:bg-yellow-500 font-medium rounded-lg text-sm px-8 py-2.5 m-4">
+                              Basic
+                           </button>
+                        </div>
+                        
+                    </div>
                     <div class="flex justify-end">
                         <button type="submit" class="bg-gray-700 text-white px-4 py-1 rounded-full">Save</button>
                     </div>
                 </form>
             </div>
         </div>
-
+</div>
     </main>
-
-   <script src="script/setting-admin-users.js"></script>
-
+    <script defer src="script/sidebar.js"></script>
+    <script src="script/setting-admin-users.js"></script>
 </body>
 
 </html>

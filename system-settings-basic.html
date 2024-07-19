@@ -1,0 +1,965 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="root.css">
+    <link rel="stylesheet" href="styles/nx.css">
+    <title>System Settings - Basic</title>
+</head>
+
+<body class="h-screen w-full flex flex-col nx">
+    <main class="flex w-full h-full flex">
+        <!-- sidebar -->
+        <aside class="h-full relative">
+            <input type="checkbox" class="hidden" id="sidebar-toggle">
+            <label for="sidebar-toggle" class="absolute lg:hidden top-2 -right-8 px-1">
+                <i class="ri-bar-chart-horizontal-line"></i>
+            </label>
+            <div class="h-full sidebar">
+                <div class="sidebar-container">
+                    <div class="p-6">
+                        <img src="/images/logo.png" alt="Dots Logo">
+                    </div>
+                    <div class="md:pt-6">
+                        <ul class="space-y-1">
+                            <li>
+                                <a class="w-full px-6 py-3 rounded-r-lg block flex justify-between items-center"
+                                    href="overview.html">
+                                    <span> Overview </span>
+                                    <i class="ri-arrow-right-s-line text-c-yellow right-arrow text-2xl"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <div role="button" onclick="toggleDropMenu(this)"
+                                    class="drop-menu cursor-pointer rounded-r-lg">
+                                    <div class="w-full px-6 py-3 flex justify-between items-center" href="#">
+                                        <span> System Settings </span>
+                                        <i class="ri-arrow-right-s-line text-c-yellow big-right-arrow text-2xl"></i>
+                                    </div>
+                                    <ul class="drop-list text-sm space-y-1">
+                                        <li>
+                                            <a href="system-settings-basic.html"
+                                                class="block py-2 px-8 rounded-r-md w-full flex justify-between items-center">
+                                                <span>Basic</span>
+                                                <i class="ri-arrow-right-s-line text-c-yellow right-arrow text-2xl"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#"
+                                                class="block py-2 px-8 rounded-r-md w-full flex justify-between items-center">
+                                                <span>Menu</span>
+                                                <i class="ri-arrow-right-s-line text-c-yellow right-arrow text-2xl"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#"
+                                                class="block py-2 px-8 rounded-r-md w-full flex justify-between items-center">
+                                                <span>Notice</span>
+                                                <i class="ri-arrow-right-s-line text-c-yellow right-arrow text-2xl"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#"
+                                                class="block py-2 px-8 rounded-r-md w-full flex justify-between items-center">
+                                                <span>Intranet Access</span>
+                                                <i class="ri-arrow-right-s-line text-c-yellow right-arrow text-2xl"></i>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li>
+                                <div role="button" onclick="toggleDropMenu(this)"
+                                    class="drop-menu cursor-pointer rounded-r-lg">
+                                    <div class="w-full px-6 py-3 flex justify-between items-center" href="#">
+                                        <span> Users &amp; Groups </span>
+                                        <i class="ri-arrow-right-s-line text-c-yellow big-right-arrow text-2xl"></i>
+                                    </div>
+                                    <ul class="drop-list text-sm space-y-1">
+                                        <li>
+                                            <a href="#"
+                                                class="block py-2 px-8 rounded-r-md w-full flex justify-between items-center">
+                                                <span>Users &amp; Groups </span>
+                                                <i class="ri-arrow-right-s-line text-c-yellow right-arrow text-2xl"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#"
+                                                class="block py-2 px-8 rounded-r-md w-full flex justify-between items-center">
+                                                <span>Role</span>
+                                                <i class="ri-arrow-right-s-line text-c-yellow right-arrow text-2xl"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#"
+                                                class="block py-2 px-8 rounded-r-md w-full flex justify-between items-center">
+                                                <span>Document Permission</span>
+                                                <i class="ri-arrow-right-s-line text-c-yellow right-arrow text-2xl"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#"
+                                                class="block py-2 px-8 rounded-r-md w-full flex justify-between items-center">
+                                                <span>Intranet Access</span>
+                                                <i class="ri-arrow-right-s-line text-c-yellow right-arrow text-2xl"></i>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li>
+                                <div role="button" onclick="toggleDropMenu(this)"
+                                    class="drop-menu cursor-pointer rounded-r-lg">
+                                    <div class="w-full px-6 py-3 flex justify-between items-center" href="#">
+                                        <span>Storage/file</span>
+                                        <i class="ri-arrow-right-s-line text-c-yellow big-right-arrow text-2xl"></i>
+                                    </div>
+                                    <ul class="drop-list text-sm space-y-1">
+                                        <li>
+                                            <a href="#"
+                                                class="block py-2 px-8 rounded-r-md w-full flex justify-between items-center">
+                                                <span>Storage</span>
+                                                <i class="ri-arrow-right-s-line text-c-yellow right-arrow text-2xl"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#"
+                                                class="block py-2 px-8 rounded-r-md w-full flex justify-between items-center">
+                                                <span>Backup</span>
+                                                <i class="ri-arrow-right-s-line text-c-yellow right-arrow text-2xl"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#"
+                                                class="block py-2 px-8 rounded-r-md w-full flex justify-between items-center">
+                                                <span>Share</span>
+                                                <i class="ri-arrow-right-s-line text-c-yellow right-arrow text-2xl"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="settings-storage-web-dav.html"
+                                                class="block py-2 px-8 rounded-r-md w-full flex justify-between items-center">
+                                                <span>webDAV Mount</span>
+                                                <i class="ri-arrow-right-s-line text-c-yellow right-arrow text-2xl"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="settings-storage-media-preview.html"
+                                                class="block py-2 px-8 rounded-r-md w-full flex justify-between items-center">
+                                                <span>Media file preview &amp; Video</span>
+                                                <i class="ri-arrow-right-s-line text-c-yellow right-arrow text-2xl"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#"
+                                                class="block py-2 px-8 rounded-r-md w-full flex justify-between items-center">
+                                                <span>Client and App</span>
+                                                <i class="ri-arrow-right-s-line text-c-yellow right-arrow text-2xl"></i>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li>
+                                <a class="w-full px-6 py-3 rounded-r-lg block flex justify-between items-center"
+                                    href="settings-plugin.html">
+                                    <span>Plugin Center</span>
+                                    <i class="ri-arrow-right-s-line text-c-yellow right-arrow text-2xl"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <div role="button" onclick="toggleDropMenu(this)"
+                                    class="drop-menu cursor-pointer rounded-r-lg">
+                                    <div class="w-full px-6 py-3 flex justify-between items-center" href="#">
+                                        <span>Saftey Control</span>
+                                        <i class="ri-arrow-right-s-line text-c-yellow big-right-arrow text-2xl"></i>
+                                    </div>
+                                    <ul class="drop-list text-sm space-y-1">
+                                        <li>
+                                            <a href="#"
+                                                class="block py-2 px-8 rounded-r-md w-full flex justify-between items-center">
+                                                <span>Message Warning</span>
+                                                <i class="ri-arrow-right-s-line text-c-yellow right-arrow text-2xl"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#"
+                                                class="block py-2 px-8 rounded-r-md w-full flex justify-between items-center">
+                                                <span>Login Log</span>
+                                                <i class="ri-arrow-right-s-line text-c-yellow right-arrow text-2xl"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#"
+                                                class="block py-2 px-8 rounded-r-md w-full flex justify-between items-center">
+                                                <span>Operation Log</span>
+                                                <i class="ri-arrow-right-s-line text-c-yellow right-arrow text-2xl"></i>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li>
+                                <a class="w-full px-6 py-3 rounded-r-lg block flex justify-between items-center"
+                                    href="settings-server-scheduled-tasks.html">
+                                    <span>Scheduled Tasks</span>
+                                    <i class="ri-arrow-right-s-line text-c-yellow right-arrow text-2xl"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- main content -->
+        <div class="flex-grow border h-100 main">
+            <div class="flex w-full h-full flex-col content">
+                <div class="p-6">
+                    <div class="flex items-center gap-4">
+                        <i class="ri-settings-3-fill text-2xl"></i> <span class="text-lg">System Settings</span>
+                    </div>
+                </div>
+
+                <!-- top taskbar -->
+                <div class="taskbar flex items-center justify-between px-6 py-4">
+                    <div class="flex items-center gap-4 w-full md:w-1/2">
+                        <div class="flex gap-2 items-center">
+                            <span>Saftey Control</span> <i class="ri-arrow-right-line text-xl"></i><span
+                                class="font-semibold">Basic</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- tabs and more -->
+                <div class="p-6">
+                    <div class="flex pb-4 gap-4 overflow-x-scroll hide-scrollbar">
+                        <button type="button" onclick="showTab(this)" class="tab-control styled text-sm px-1 pb-0.5"
+                            data-tab="ss-basics" data-control="basic">Basic</button>
+                        <button type="button" onclick="showTab(this)" class="tab-control styled text-sm px-1 pb-0.5"
+                            data-tab="ss-basics" data-control="security">Security</button>
+                        <button type="button" onclick="showTab(this)" class="tab-control styled text-sm px-1 pb-0.5 active"
+                            data-tab="ss-basics" data-control="registration">Registration</button>
+                        <button type="button" onclick="showTab(this)" class="tab-control styled text-sm px-1 pb-0.5"
+                            data-tab="ss-basics" data-control="upload-download">Upload Download</button>
+                        <button type="button" onclick="showTab(this)" class="tab-control styled text-sm px-1 pb-0.5"
+                            data-tab="ss-basics" data-control="email">Email</button>
+                        <button type="button" onclick="showTab(this)" class="tab-control styled text-sm px-1 pb-0.5"
+                            data-tab="ss-basics" data-control="others">Others</button>
+                    </div>
+                    <div>
+                        <div class="tab-content ss-basics" id="basic">
+                            <h3 class="font-semibold text-c-gray-2">Basic Information</h3>
+                            <hr>
+                            <form action="#" class="space-y-5 pt-4">
+                                <div class="flex flex-wrap gap-y-1">
+                                    <div class="w-full md:w-1/3 xl:w-1/6">
+                                        <label for="company-name" class="font-semibold text-sm">Company name:</label>
+                                    </div>
+                                    <div class="w-full flex gap-2 items-center md:w-2/3 xl:w-5/6">
+                                        <div
+                                            class="flex border flex-grow rounded-lg overflow-hidden bg-white items-center max-w-sm">
+                                            <input type="number" name="company-name" required
+                                                class="flex-grow text-sm px-2" id="company-name">
+                                        </div>
+                                        <div class="text-xs text-c-gray-2 mt-1">
+                                            For product logo title
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="flex flex-wrap gap-y-1">
+                                    <div class="w-full md:w-1/3 xl:w-1/6">
+                                        <label for="product-subtitle" class="font-semibold text-sm">Product
+                                            subtitle:</label>
+                                    </div>
+                                    <div class="w-full flex gap-2 items-center md:w-2/3 xl:w-5/6">
+                                        <div
+                                            class="flex border flex-grow rounded-lg overflow-hidden bg-white items-center max-w-sm">
+                                            <input type="number" name="product-subtitle" required
+                                                class="flex-grow text-sm px-2" id="product-subtitle">
+                                        </div>
+                                        <div class="text-xs text-c-gray-2 mt-1">
+                                            Product subtitle
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <hr>
+
+                                <div class="flex flex-wrap gap-y-1">
+                                    <div class="w-full md:w-1/3 xl:w-1/6">
+                                        <label for="directory-exclusion" class="font-semibold text-sm">Directory
+                                            exclusion:</label>
+                                    </div>
+                                    <div class="w-full flex gap-2 items-center md:w-2/3 xl:w-5/6">
+                                        <div
+                                            class="flex border flex-grow rounded-lg overflow-hidden bg-white items-center max-w-sm">
+                                            <input type="number" name="directory-exclusion" required
+                                                class="flex-grow text-sm px-2" id="directory-exclusion">
+                                        </div>
+                                        <div class="text-xs text-c-gray-2 mt-1">
+                                            Hidden files, separated by commas
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="flex flex-wrap gap-y-1">
+                                    <div class="w-full md:w-1/3 xl:w-1/6">
+                                        <label for="default-directories" class="font-semibold text-sm">Default
+                                            directories:</label>
+                                    </div>
+                                    <div class="w-full flex gap-2 items-center md:w-2/3 xl:w-5/6">
+                                        <div
+                                            class="flex border flex-grow rounded-lg overflow-hidden bg-white items-center max-w-sm">
+                                            <input type="number" name="default-directories" required
+                                                class="flex-grow text-sm px-2" id="default-directories">
+                                        </div>
+                                        <div class="text-xs text-c-gray-2 mt-1">
+                                            Separated by commas
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="flex flex-wrap gap-y-1">
+                                    <div class="w-full md:w-1/3 xl:w-1/6">
+                                        <label for="default-apps" class="font-semibold text-sm">Default apps:</label>
+                                    </div>
+                                    <div class="w-full flex gap-2 items-center md:w-2/3 xl:w-5/6">
+                                        <div
+                                            class="flex border flex-grow rounded-lg overflow-hidden bg-white items-center max-w-sm">
+                                            <input type="number" name="default-apps" required
+                                                class="flex-grow text-sm px-2" id="default-apps">
+                                        </div>
+                                        <div class="text-xs text-c-gray-2 mt-1">
+                                            Application centers applications, multiple separated by commas
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="flex flex-wrap gap-y-1">
+                                    <div class="w-full md:w-1/3 xl:w-1/6">
+                                        <label class="font-semibold text-sm">Automatic login:</label>
+                                    </div>
+                                    <div class="w-full  md:w-2/3 xl:w-5/6">
+                                        <div class="flex flex-wrap gap-2 items-center">
+                                            <label for="front-end-compression-download"
+                                                class="toggle-switch flex items-center cursor-pointer">
+                                                <div class="relative">
+                                                    <input type="checkbox" id="front-end-compression-download"
+                                                        class="sr-only">
+                                                    <div class="block toggle-bg w-14 h-7 rounded-full border"></div>
+                                                    <div
+                                                        class="dot absolute left-0.5 top-0.5 bg-white w-6 h-6 rounded-full transition shadow-lg">
+                                                    </div>
+                                                </div>
+                                            </label>
+                                            <div class="text-xs text-c-gray-2 mt-1">
+                                                The default login user is the guest/guest user; make sure this user
+                                                exists after opening
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="flex flex-wrap gap-y-1">
+                                    <div class="w-full md:w-1/3 xl:w-1/6">
+                                        <label class="font-semibold text-sm">Login to default:</label>
+                                    </div>
+                                    <div class="w-full flex gap-2 items-center md:w-2/3 xl:w-5/6">
+                                        <div class="flex items-center gap-4">
+                                            <label for="login-to-default-desktop" class="flex items-center gap-2">
+                                                <input type="checkbox" value="desktop" id="login-to-default-desktop"
+                                                    class="c-checkbox" checked
+                                                    />
+                                                <span class="text-c-gray-2">Desktop</span>
+                                            </label>
+
+                                            <label for="login-to-default-file" class="flex items-center gap-2">
+                                                <input type="checkbox" value="file" id="login-to-default-file"
+                                                    class="c-checkbox"
+                                                    />
+                                                <span class="text-c-gray-2">File</span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div class="flex">
+                                    <button type="submit"
+                                        class="bg-c-black ml-auto text-white rounded-full px-8 py-2">Save</button>
+                                </div>
+                            </form>
+                        </div>
+
+                        <div class="tab-content ss-basics" id="security"></div>
+
+                        <!-- registration tab -->
+                        <div class="tab-content ss-basics active" id="registration">
+                            <h3 class="font-semibold text-c-gray-2">Registration</h3>
+                            <hr>
+                            <form action="#" class="space-y-5 pt-4">
+                                <div class="flex flex-wrap gap-y-1">
+                                    <div class="w-full md:w-1/3 xl:w-1/6">
+                                        <label class="font-semibold text-sm">Third party login:</label>
+                                    </div>
+                                    <div class="w-full md:w-2/3 xl:w-5/6">
+                                        <div class="flex items-center gap-4">
+                                            <label for="tpl-qq" class="flex items-center gap-2">
+                                                <input type="checkbox" name="third-party-login" value="qq" id="tpl-qq"
+                                                    class="c-checkbox" checked
+                                                    />
+                                                <span class="text-c-gray-2">Desktop</span>
+                                            </label>
+
+                                            <label for="tpl-wechat" class="flex items-center gap-2">
+                                                <input type="checkbox" name="third-party-login" value="wechat" id="tpl-wechat"
+                                                    class="c-checkbox" checked
+                                                    />
+                                                <span class="text-c-gray-2">WeChat</span>
+                                            </label>
+
+                                            <label for="tpl-facebook" class="flex items-center gap-2">
+                                                <input type="checkbox" name="third-party-login" value="facebook" id="tpl-facebook"
+                                                    class="c-checkbox"
+                                                    />
+                                                <span class="text-c-gray-2">Facebook</span>
+                                            </label>
+
+                                            <label for="tpl-google" class="flex items-center gap-2">
+                                                <input type="checkbox" name="third-party-login" value="google" id="tpl-google"
+                                                    class="c-checkbox"
+                                                    />
+                                                <span class="text-c-gray-2">Google</span>
+                                            </label>
+
+                                            <label for="tpl-github" class="flex items-center gap-2">
+                                                <input type="checkbox" name="third-party-login" value="github" id="tpl-github"
+                                                    class="c-checkbox"
+                                                    />
+                                                <span class="text-c-gray-2">GitHub</span>
+                                            </label>
+                                        </div>
+                                        <div class="text-xs text-c-gray-2 mt-1">
+                                            Allow registration, binding and login through third-party accounts
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="flex flex-wrap gap-y-1">
+                                    <div class="w-full md:w-1/3 xl:w-1/6">
+                                        <label class="font-semibold text-sm">Enable registration:</label>
+                                    </div>
+                                    <div class="w-full  md:w-2/3 xl:w-5/6">
+                                        <div class="flex flex-wrap gap-2 items-center">
+                                            <label for="enable-registration"
+                                                class="toggle-switch flex items-center cursor-pointer">
+                                                <div class="relative">
+                                                    <input type="checkbox" name="enable-registration" onchange="toggleTab(this)" data-target="enable-registration-true" id="enable-registration"
+                                                        class="sr-only">
+                                                    <div class="block toggle-bg w-14 h-7 rounded-full border"></div>
+                                                    <div
+                                                        class="dot absolute left-0.5 top-0.5 bg-white w-6 h-6 rounded-full transition shadow-lg">
+                                                    </div>
+                                                </div>
+                                            </label>
+                                            <div class="text-xs text-c-gray-2 mt-1">
+                                                To avoid conflicts, third-party sync and registration cannot be enabled at the same time
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div id="enable-registration-true" class="space-y-5 tab-content active">
+                                    <div class="flex flex-wrap gap-y-1">
+                                        <div class="w-full md:w-1/3 xl:w-1/6">
+                                            <label class="font-semibold text-sm">Registration review:</label>
+                                        </div>
+                                        <div class="w-full  md:w-2/3 xl:w-5/6">
+                                            <div class="flex flex-wrap gap-2 items-center">
+                                                <label for="registration-review"
+                                                    class="toggle-switch flex items-center cursor-pointer">
+                                                    <div class="relative">
+                                                        <input type="checkbox" name="registration-review"  id="registration-review"
+                                                            class="sr-only">
+                                                        <div class="block toggle-bg w-14 h-7 rounded-full border"></div>
+                                                        <div
+                                                            class="dot absolute left-0.5 top-0.5 bg-white w-6 h-6 rounded-full transition shadow-lg">
+                                                        </div>
+                                                    </div>
+                                                </label>
+                                                <div class="text-xs text-c-gray-2 mt-1">
+                                                    The administrator needs to review and enable it in (Users & groups) for registered users to use normally
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="flex flex-wrap gap-y-1">
+                                        <div class="w-full md:w-1/3 xl:w-1/6">
+                                            <label for="space-size" class="font-semibold text-sm">Space
+                                                Size:</label>
+                                        </div>
+                                        <div class="w-full flex items-center gap-2 md:w-2/3 xl:w-5/6">
+                                            <div
+                                                class="flex w-full border border-gray-3 rounded-lg overflow-hidden bg-white items-center max-w-sm">
+                                                <input type="number" name="space-size" required
+                                                    class="flex-grow text-sm px-2" id="space-size">
+                                                <span class="block text-xs px-3 py-1.5 border-l border-gray-3">GB</span>
+                                            </div>
+                                            <div class="text-xs text-c-gray-2">
+                                                (GB) 0 is unlimited
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="flex flex-wrap gap-y-1">
+                                        <div class="w-full md:w-1/3 xl:w-1/6">
+                                            <label for="role" class="font-semibold text-sm">Role:</label>
+                                        </div>
+                                        <div class="w-full flex items-center gap-2 md:w-2/3 xl:w-5/6">
+                                            <div class="w-full border border-gray-3 rounded-lg bg-white max-w-sm ss-dropdown">
+                                                <button type="button" class="w-full flex items-center toggler">
+                                                    <span class="mx-2 flex-grow text-left text-sm selection" id="selected-role">Selected</span>
+                                                    <span class="block text-xs px-3 py-1.5 border-l border-gray-3"><i class="ri-arrow-down-s-line"></i></span>
+                                                </button>
+                                                <div class="ss-dropdown-options overflow-hidden border border-gray-3 text-xs flex flex-col rounded-md bg-white">
+                                                    <label class="px-2 py-1 hover-bg-c-yellow cursor-pointer"><input type="radio" onchange="singleSelectPut(this)" data-put="selected-role" class="hidden" name="role" value="ordinary">Ordinary</label>
+                                                    <label class="px-2 py-1 hover-bg-c-yellow cursor-pointer"><input type="radio" onchange="singleSelectPut(this)" data-put="selected-role" class="hidden" name="role" value="admin">Admin</label>
+                                                    <label class="px-2 py-1 hover-bg-c-yellow cursor-pointer"><input type="radio" onchange="singleSelectPut(this)" data-put="selected-role" class="hidden" name="role" value="department">Department</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+
+                        <!-- upload download tab -->
+                        <div class="tab-content ss-basics" id="upload-download">
+                            <hr>
+                            <form action="#" class="space-y-5 pt-4">
+                                <div class="flex flex-wrap gap-y-1">
+                                    <div class="w-full md:w-1/3 xl:w-1/6">
+                                        <label for="upload-shared-size" class="font-semibold text-sm">Upload Shared
+                                            Size:
+                                            <span class="text-red-500">*</span></label>
+                                    </div>
+                                    <div class="w-full md:w-2/3 xl:w-5/6">
+                                        <div
+                                            class="flex border rounded-lg overflow-hidden bg-white items-center max-w-sm">
+                                            <input type="number" name="upload-shared-size" required
+                                                class="flex-grow text-sm px-2" id="upload-shared-size">
+                                            <span class="block text-xs px-3 py-1.5 border-l border-gray-3">MB</span>
+                                        </div>
+                                        <div class="text-xs text-c-gray-2 mt-1">
+                                            When uploading a large file, it is cut into pieces for concurrent upload, so
+                                            as
+                                            to achieve acceleration and resume.
+                                            5M is recommended; this value must be less than the following configuration;
+                                            otherwise it will cause upload exception (upload failure, rollback)php.ini:
+                                            post_max_size, upload_max_filesize ==> 5M nginx: client_max_body_size ==>
+                                            5M;
+                                            <a href="#" class="text-link-blue">Learn more</a>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="flex flex-wrap gap-y-1">
+                                    <div class="w-full md:w-1/3 xl:w-1/6">
+                                        <label for="upload-concurrent-threads" class="font-semibold text-sm">Upload
+                                            concurent threads: <span class="text-red-500">*</span></label>
+                                    </div>
+                                    <div class="w-full md:w-2/3 xl:w-5/6">
+                                        <div
+                                            class="flex border rounded-lg overflow-hidden bg-white items-center max-w-sm">
+                                            <input type="number" name="upload-concurrent-threads" required
+                                                class="flex-grow text-sm px-2" id="upload-concurrent-threads">
+                                        </div>
+                                        <div class="text-xs text-c-gray-2 mt-1">
+                                            Recommended = 10; simultaneous uploads of files or shards
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="flex flex-wrap gap-y-1">
+                                    <div class="w-full md:w-1/3 xl:w-1/6">
+                                        <label for="retry-on-error" class="font-semibold text-sm">Retry on error: <span
+                                                class="text-red-500">*</span></label>
+                                    </div>
+                                    <div class="w-full md:w-2/3 xl:w-5/6">
+                                        <div
+                                            class="flex border rounded-lg overflow-hidden bg-white items-center max-w-sm">
+                                            <input type="number" name="retry-on-error"
+                                                class="flex-grow text-sm px-2" required id="retry-on-error">
+                                        </div>
+                                        <div class="text-xs text-c-gray-2 mt-1">
+                                            Recommendation = 5; number of retransmissions will be automatically
+                                            performed if
+                                            the upload fails, 0 means no automatic
+                                            retransmission
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="flex flex-wrap gap-y-1">
+                                    <div class="w-full md:w-1/3 xl:w-1/6">
+                                        <label for="upload-ignore-file" class="font-semibold text-sm">Upload ignore
+                                            file:</label>
+                                    </div>
+                                    <div class="w-full md:w-2/3 xl:w-5/6">
+                                        <div
+                                            class="flex border rounded-lg overflow-hidden bg-white items-center max-w-sm">
+                                            <input name="upload-ignore-file" class="flex-grow text-sm px-2"
+                                                id="upload-ignore-file">
+                                        </div>
+                                        <div class="text-xs text-c-gray-2 mt-1">
+                                            Upload filenames that are automatically ignored.Temporary files can be
+                                            excluded,
+                                            multiple separated by commas,
+                                            for example:.DS_store, thumb.db
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <hr>
+
+                                <div class="flex flex-wrap gap-y-1">
+                                    <div class="w-full md:w-1/3 xl:w-1/6">
+                                        <label class="font-semibold text-sm">Front end compression download:</label>
+                                    </div>
+                                    <div class="w-full  md:w-2/3 xl:w-5/6">
+                                        <div class="flex flex-wrap gap-2 items-center">
+                                            <label for="front-end-compression-download"
+                                                class="toggle-switch flex items-center cursor-pointer">
+                                                <div class="relative">
+                                                    <input type="checkbox" id="front-end-compression-download"
+                                                        class="sr-only">
+                                                    <div class="block toggle-bg w-14 h-7 rounded-full border"></div>
+                                                    <div
+                                                        class="dot absolute left-0.5 top-0.5 bg-white w-6 h-6 rounded-full transition shadow-lg">
+                                                    </div>
+                                                </div>
+                                            </label>
+                                            <div class="text-xs text-c-gray-2 mt-1">
+                                                Need to be able to link to the external network, or the site is https
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div class="flex flex-wrap gap-y-1">
+                                    <div class="w-full md:w-1/3 xl:w-1/6">
+                                        <label for="compressed-download-size-limit"
+                                            class="font-semibold text-sm">Compressed
+                                            download size limit:</label>
+                                    </div>
+                                    <div class="w-full md:w-2/3 xl:w-5/6">
+                                        <div
+                                            class="flex border rounded-lg overflow-hidden bg-white items-center max-w-sm">
+                                            <input name="compressed-download-size-limit"
+                                                class="flex-grow text-sm px-2"
+                                                id="compressed-download-size-limit">
+                                            <span class="block text-xs px-3 py-1.5 border-l border-gray-3">GB</span>
+                                        </div>
+                                        <div class="text-xs text-c-gray-2 mt-1">
+                                            0 means no limit; in order to avoid excessive server performance
+                                            consumption,
+                                            the package download is restricted when the
+                                            folder is too large, and it is prompted that the file can be downloaded
+                                            directly
+                                            through the PC client
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <hr>
+
+                                <div class="flex flex-wrap gap-y-1">
+                                    <div class="w-full md:w-1/3 xl:w-1/6">
+                                        <label class="font-semibold text-sm">Drag and drop to desktop to
+                                            download:</label>
+                                    </div>
+                                    <div class="w-full  md:w-2/3 xl:w-5/6">
+                                        <div class="flex flex-wrap gap-2 items-center">
+                                            <label for="drag-and-drop-to-desktop-to-download"
+                                                class="toggle-switch flex items-center cursor-pointer">
+                                                <div class="relative">
+                                                    <input type="checkbox" id="drag-and-drop-to-desktop-to-download"
+                                                        class="sr-only">
+                                                    <div class="block toggle-bg w-14 h-7 rounded-full border"></div>
+                                                    <div
+                                                        class="dot absolute left-0.5 top-0.5 bg-white w-6 h-6 rounded-full transition shadow-lg">
+                                                    </div>
+                                                </div>
+                                            </label>
+                                            <div class="text-xs text-c-gray-2 mt-1">
+                                                Only supported by the PC-side Chrome kernel browser (chrome edge 360
+                                                fast,etc.)
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="flex flex-wrap gap-y-1">
+                                    <div class="w-full md:w-1/3 xl:w-1/6">
+                                        <label class="font-semibold text-sm">Multi-select drag and drop compress
+                                            download:
+                                        </label>
+                                    </div>
+                                    <div class="w-full  md:w-2/3 xl:w-5/6">
+                                        <div class="flex flex-wrap gap-2 items-center">
+                                            <label for="multi-select-drag-and-drop-compress-download"
+                                                class="toggle-switch flex items-center cursor-pointer">
+                                                <div class="relative">
+                                                    <input type="checkbox"
+                                                        id="multi-select-drag-and-drop-compress-download"
+                                                        class="sr-only">
+                                                    <div class="block toggle-bg w-14 h-7 rounded-full border"></div>
+                                                    <div
+                                                        class="dot absolute left-0.5 top-0.5 bg-white w-6 h-6 rounded-full transition shadow-lg">
+                                                    </div>
+                                                </div>
+                                            </label>
+                                            <div class="text-xs text-c-gray-2 mt-1">
+                                                Multi-selection or folder drag and drop download support, must be
+                                                packaged and compressed on the server
+                                                before downloading
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="flex flex-wrap gap-y-1">
+                                    <div class="w-full md:w-1/3 xl:w-1/6">
+                                        <label for="drag-and-drop-content-size-limit" class="font-semibold text-sm">
+                                            Drag and drop content size limit:
+                                        </label>
+                                    </div>
+                                    <div class="w-full md:w-2/3 xl:w-5/6">
+                                        <div
+                                            class="flex border rounded-lg overflow-hidden bg-white items-center max-w-sm">
+                                            <input type="number" name="drag-and-drop-content-size-limit"
+                                                class="flex-grow text-sm px-2"
+                                                id="drag-and-drop-content-size-limit">
+                                            <span class="block text-xs px-3 py-1.5 border-l border-gray-3">MB</span>
+                                        </div>
+                                        <div class="text-xs text-c-gray-2 mt-1">
+                                            0 means no limit; the size of the dragged content will be subject to this
+                                            limit. Since there is no progress bar for Chrome
+                                            dragging and downloading at present, it cannot be canceled. It is
+                                            recommended to limit the size to 20M.
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <hr>
+
+                                <div class="flex flex-wrap gap-y-1">
+                                    <div class="w-full md:w-1/3 xl:w-1/6">
+                                        <label class="font-semibold text-sm">Download limit:
+                                        </label>
+                                    </div>
+                                    <div class="w-full md:w-2/3 xl:w-5/6">
+                                        <div class="flex flex-wrap gap-2 items-center">
+                                            <label for="download-limit-apply"
+                                                class="toggle-switch flex items-center cursor-pointer">
+                                                <div class="relative">
+                                                    <input type="checkbox" id="download-limit-apply" class="sr-only">
+                                                    <div class="block toggle-bg w-14 h-7 rounded-full border"></div>
+                                                    <div
+                                                        class="dot absolute left-0.5 top-0.5 bg-white w-6 h-6 rounded-full transition shadow-lg">
+                                                    </div>
+                                                </div>
+                                            </label>
+                                            <div class="text-xs text-c-gray-2 mt-1">
+                                                Limit download speeds and uniformly limit the speed of large concurrent
+                                                websites
+                                            </div>
+                                        </div>
+                                        <div class="mt-2">
+                                            <div
+                                                class="flex border rounded-lg overflow-hidden bg-white items-center max-w-sm">
+                                                <input type="number" name="download-limit-apply"
+                                                    class="flex-grow text-sm px-2" id="download-limit-apply">
+                                                <span class="block text-xs px-3 py-1.5 border-l border-gray-3">MB/s</span>
+                                            </div>
+                                            <div class="text-xs text-c-gray-2 mt-1">
+                                                Limit the download speed, and you can uniformly limit the speed of the
+                                                website with large concurrency.Note: The server speed is limited here.
+                                                The specific download speed is also affected by the server bandwidth and
+                                                user network.
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <hr>
+
+                                <div class="flex">
+                                    <button type="submit"
+                                        class="bg-c-black ml-auto text-white rounded-full px-8 py-2">Save</button>
+                                </div>
+                            </form>
+                        </div>
+
+                        <div class="tab-content ss-basics" id="email">
+                            <h3 class="font-semibold text-c-gray-2">Email</h3>
+                            <hr>
+                            <div class="bg-c-creame-yellow border rounded-lg text-sm py-2 px-4 mt-4">
+                                Mail server for user registration, password recovery
+                            </div>
+                            <form action="#" class="mt-4 space-y-5">
+                                <div class="flex flex-wrap gap-y-1">
+                                    <div class="w-full md:w-1/3 xl:w-1/6">
+                                        <label for="send-email" class="font-semibold text-sm">Send email:</label>
+                                    </div>
+                                    <div class="w-full flex gap-2 items-center md:w-2/3 xl:w-5/6">
+                                        <div class="flex gap-2">
+                                            <label for="system-default" class="cursor-pointer radio-button">
+                                                <input type="radio" name="send-email" id="system-default" onchange="toggleEmailConfig(this)" checked
+                                                    value="system-default">
+                                                <span
+                                                    class="block py-2 px-4 text-xs rounded-md text-center whitespace-nowrap bg-gray-200">System
+                                                    default</span>
+                                            </label>
+                                            <label for="customize" class="cursor-pointer radio-button">
+                                                <input type="radio" name="send-email" id="customize" value="customize" onchange="toggleEmailConfig(this)">
+                                                <span
+                                                    class="block py-2 px-4 text-xs rounded-md text-center bg-gray-200">Customize</span>
+                                            </label>
+                                        </div>
+                                        <div class="text-xs text-c-gray-2 mt-1">
+                                            System default; call to send cloud mail server to send; custom: configure
+                                            mail server by yourself
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="mt-4 space-y-5 hidden" id="custom-email-only">
+
+                                    <hr>
+
+                                    <div class="flex flex-wrap gap-y-1">
+                                        <div class="w-full md:w-1/3 xl:w-1/6">
+                                            <label for="mailbox-server" class="font-semibold text-sm">Mailbox
+                                                server:</label>
+                                        </div>
+                                        <div class="w-full md:w-2/3 xl:w-5/6">
+                                            <div
+                                                class="flex border rounded-lg overflow-hidden bg-white items-center max-w-sm">
+                                                <input name="mailbox-server"
+                                                    placeholder="Please enter the mail server address"
+                                                    class="flex-grow text-sm px-2" required id="mailbox-server">
+                                            </div>
+                                            <div class="text-xs text-c-gray-2 mt-1">
+                                                Mailbox server, such as: smtp.163.com, the port can be customized (the
+                                                default is 465)
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="flex flex-wrap gap-y-1">
+                                        <div class="w-full md:w-1/3 xl:w-1/6">
+                                            <label for="outbox" class="font-semibold text-sm">Outbox:</label>
+                                        </div>
+                                        <div class="w-full md:w-2/3 xl:w-5/6">
+                                            <div
+                                                class="flex border rounded-lg overflow-hidden bg-white items-center max-w-sm">
+                                                <input name="outbox" placeholder="Please enter the email address"
+                                                    class="flex-grow text-sm px-2" required id="outbox">
+                                            </div>
+                                            <div class="text-xs text-c-gray-2 mt-1">
+                                                System email address, POP3/SMTP service needs to be enabled
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="flex flex-wrap gap-y-1">
+                                        <div class="w-full md:w-1/3 xl:w-1/6">
+                                            <label class="font-semibold text-sm">Encryption:</label>
+                                        </div>
+                                        <div class="w-full flex gap-2 items-center md:w-2/3 xl:w-5/6">
+                                            <div class="flex gap-2">
+                                                <label for="no" class="cursor-pointer radio-button">
+                                                    <input type="radio" name="encryption" id="no" value="no" checked>
+                                                    <span
+                                                        class="block py-2 px-4 text-xs rounded-md text-center bg-gray-200">No</span>
+                                                </label>
+                                                <label for="ssl" class="cursor-pointer radio-button">
+                                                    <input type="radio" name="encryption" id="ssl" value="ssl">
+                                                    <span
+                                                        class="block py-2 px-4 text-xs rounded-md text-center bg-gray-200">SSL</span>
+                                                </label>
+                                                <label for="tls" class="cursor-pointer radio-button">
+                                                    <input type="radio" name="encryption" id="tls" value="tls">
+                                                    <span
+                                                        class="block py-2 px-4 text-xs rounded-md text-center bg-gray-200">TLS</span>
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="flex flex-wrap gap-y-1">
+                                        <div class="w-full md:w-1/3 xl:w-1/6">
+                                            <label for="authorization-password"
+                                                class="font-semibold text-sm">Authorization password:</label>
+                                        </div>
+                                        <div class="w-full md:w-2/3 xl:w-5/6">
+                                            <div class="flex gap-2">
+                                                <div
+                                                    class="flex w-full border border-gray-3 rounded-lg overflow-hidden bg-white items-center max-w-sm">
+                                                    <input name="authorization-password"
+                                                        placeholder="Please fill in the email authorization"
+                                                        class="flex-grow text-sm px-2" required
+                                                        id="authorization-password">
+                                                </div>
+                                                <button class="text-xs text-c-yellow mt-1">
+                                                    Send detection
+                                                </button>
+                                            </div>
+                                            <div class="text-xs text-c-gray-2 mt-1">
+                                                Please make sure the mail can be sent normally
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="flex">
+                                    <button type="submit"
+                                        class="bg-c-black ml-auto text-white rounded-full px-8 py-2">Save</button>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="tab-content ss-basics" id="others"></div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <script defer>
+        // to handle email config logic for system default and customize
+        function toggleEmailConfig(target) {
+            if(target.value === "system-default") {
+                document.getElementById('custom-email-only').style.display = 'none';
+            } else {
+                document.getElementById('custom-email-only').style.display = 'block';
+            }
+        }
+    </script>
+
+    <script defer src="script/sidebar.js"></script>
+    <script defer src="script/tabs.js"></script>
+    <script defer src="script/ss-dropdown.js">
+        
+    </script>
+
+</body>
+
+</html>

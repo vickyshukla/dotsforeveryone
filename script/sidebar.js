@@ -19,6 +19,7 @@ for (let i = 0; i < sidebarLinks.length; i++) {
 
 function toggleDropMenu(target) {
     target.classList.toggle('active')
+<<<<<<< HEAD
 }
 
 //sub dropdown toggle
@@ -27,4 +28,6 @@ function toggleSubDropMenu() {
     const arrow = document.querySelector("#starred-link .subdrop-right-arrow");
     subDrop.classList.toggle("hidden");
     arrow.classList.toggle("rotate");
+=======
+>>>>>>> daa8a0baff815aa8bd4eb9802c04d37dddc703fd
 }

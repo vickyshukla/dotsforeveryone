@@ -91,35 +91,53 @@ function togglePopup(popupId) {
     }
 }
 
+//Javscript function for dropdown 
+
 document.addEventListener('DOMContentLoaded', function () {
-const customSelectButton = document.getElementById('customSelectButton');
-const customSelect = document.getElementById('customSelect');
-const selectedOption = document.getElementById('selectedOption');
-const selectedColor = document.getElementById('selectedColor');
+    function initializeDropdown(dropdown) {
+        const button = dropdown.querySelector('button');
+        const customSelect = dropdown.querySelector('.custom-select');
+        const selectedOption = button.querySelector('span');
+        const selectedColor = selectedOption.querySelector('span');
 
-customSelectButton.addEventListener('click', function () {
-    customSelect.style.display = customSelect.style.display === 'block' ? 'none' : 'block';
-});
+        button.addEventListener('click', function (event) {
+            event.stopPropagation();
+            customSelect.style.display = customSelect.style.display === 'block' ? 'none' : 'block';
+        });
 
-document.querySelectorAll('.custom-select-option').forEach(option => {
-    option.addEventListener('click', function () {
-        const value = this.getAttribute('data-value');
-        const color = this.getAttribute('data-color');
-        const text = this.innerText.trim();
+        customSelect.querySelectorAll('.custom-select-option').forEach(option => {
+            option.addEventListener('click', function () {
+                const value = this.getAttribute('data-value');
+                const color = this.getAttribute('data-color');
+                const text = this.innerText.trim();
 
-        selectedOption.innerText = text;
-        selectedOption.prepend(selectedColor);
-        selectedColor.className = `w-4 h-4 rounded-full mr-3 ${color}`;
-        customSelectButton.setAttribute('data-value', value);
-        customSelect.style.display = 'none';
-    });
-});
+                selectedOption.childNodes[1].nodeValue = text; // Update the text
+                selectedColor.className = `w-4 h-4 rounded-full mr-3 ${color}`; // Update the color
+                button.setAttribute('data-value', value);
+                customSelect.style.display = 'none';
+            });
+        });
 
-document.addEventListener('click', function (event) {
-    if (!customSelectButton.contains(event.target) && !customSelect.contains(event.target)) {
-        customSelect.style.display = 'none';
+        document.addEventListener('click', function (event) {
+            if (!dropdown.contains(event.target)) {
+                customSelect.style.display = 'none';
+            }
+        });
     }
+
+    document.querySelectorAll('.dropdown').forEach(initializeDropdown);
 });
+ 
+
+document.getElementById('basicBtn').addEventListener('click', function() {
+    document.getElementById('moreSettings').classList.add('hidden');
+    this.classList.add('active');
+    document.getElementById('moreSettingsBtn').classList.remove('active');
 });
 
+document.getElementById('moreSettingsBtn').addEventListener('click', function() {
+    document.getElementById('moreSettings').classList.remove('hidden');
+    this.classList.add('active');
+    document.getElementById('basicBtn').classList.remove('active');
+});
 
