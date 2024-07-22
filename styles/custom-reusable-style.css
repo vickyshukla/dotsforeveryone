@@ -279,7 +279,6 @@ border-bottom: 2px solid var(--color-dark-yellow);
 }
 
 .active {
-  background-color: #fdcf01;
   color: black;
 }
 

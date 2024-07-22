@@ -4,14 +4,6 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Admin & Users- Users & Groups</title>
-        <link
-      href="https://unpkg.com/tailwindcss@^2.2.19/dist/tailwind.min.css"
-      rel="stylesheet"
-    />
-      <link
-      href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css"
-      rel="stylesheet"
-    />
     <link rel="stylesheet" href="styles/root.css" />
     <link rel="stylesheet" href="styles/as.css" />
   </head>
@@ -19,7 +11,7 @@
   <body class="h-screen w-full flex flex-col fm">
     <main class="flex w-full h-full flex">
       <!-- Sidebar -->
-    <aside class="h-full relative">
+     <aside class="h-full relative">
         <input type="checkbox" class="hidden" id="sidebar-toggle" />
         <label
           for="sidebar-toggle"
@@ -41,7 +33,7 @@
                   >
                     <span class="font-normal"> Overview </span>
                     <i
-                      class="ri-arrow-right-s-line text-c-yellow right-arrow text-2xl"
+                      class="ri-arrow-right-s-line text-c-yellow right-arrow text-2xl big-right-arrow"
                     ></i>
                   </a>
                 </li>
@@ -57,7 +49,7 @@
                     >
                       <span class="font-normal"> System Settings </span>
                       <i
-                        class="ri-arrow-right-s-line text-c-yellow transition-all text-2xl"
+                        class="ri-arrow-right-s-line text-c-yellow transition-all text-2xl big-right-arrow"
                       ></i>
                     </div>
                     <ul class="drop-list text-sm space-y-1">
@@ -120,7 +112,7 @@
                     >
                       <span class="font-normal"> Users &amp; Groups </span>
                       <i
-                        class="ri-arrow-right-s-line text-c-yellow transition-all text-2xl"
+                        class="ri-arrow-right-s-line text-c-yellow transition-all text-2xl big-right-arrow"
                       ></i>
                     </div>
                     <ul class="drop-list text-sm space-y-1">
@@ -183,7 +175,7 @@
                     >
                       <span class="font-normal">Storage/file</span>
                       <i
-                        class="ri-arrow-right-s-line text-c-yellow transition-all text-2xl"
+                        class="ri-arrow-right-s-line text-c-yellow transition-all text-2xl big-right-arrow"
                       ></i>
                     </div>
                     <ul class="drop-list text-sm space-y-1">
@@ -279,7 +271,7 @@
                     >
                       <span class="font-normal">Saftey Control</span>
                       <i
-                        class="ri-arrow-right-s-line text-c-yellow transition-all text-2xl"
+                        class="ri-arrow-right-s-line text-c-yellow transition-all text-2xl big-right-arrow"
                       ></i>
                     </div>
                     <ul class="drop-list text-sm space-y-1">
@@ -296,7 +288,7 @@
                       </li>
                       <li>
                         <a
-                          href="#"
+                          href="safety-control-login.html"
                           class="block py-2 px-8 rounded-r-md w-full flex justify-between items-center"
                         >
                           <span class="font-normal">Login Log</span>
@@ -307,7 +299,7 @@
                       </li>
                       <li>
                         <a
-                          href="#"
+                          href="safety-control-operational.html"
                           class="block py-2 px-8 rounded-r-md w-full flex justify-between items-center"
                         >
                           <span class="font-normal">Operation Log</span>
@@ -335,7 +327,6 @@
           </div>
         </div>
       </aside>
-
       <div class="flex-grow h-100 main">
         <div class="flex w-full h-full flex-col content">
           <div class="px-3 md:px-5 py-6">
@@ -346,7 +337,7 @@
           </div>
           <!-- topTaskbar in desktop -->
           <div
-            class="pl-4 md:pl-6 pt-3 pb-3 pr-4 md:pr-6 w-full flex flex-row justify-between items-center taskbar"
+            class="pl-4 md:pl-6 py-4 pr-4 md:pr-6 w-full flex flex-row justify-between items-center taskbar"
           >
             <div class="w-full md:w-6/12 xl:w-8/12">
               <div class="flex items-center gap-1 sm:gap-2">
