@@ -89,7 +89,8 @@ body.nx {
 
 @media (width > 768px){
   .nx .main {
-      max-height: calc(100vh - 66px);
+      /* max-height: calc(100vh - 66px); */
+       max-height: calc(100vh);
   }
 }
 

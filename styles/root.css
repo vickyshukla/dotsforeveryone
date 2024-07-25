@@ -95,15 +95,35 @@ body{
     background-size: cover;
     background-position: center;
     width: 0;
-    max-width: 290px;
-    transition: all 0.3s ease;
-    overflow-y: scroll;
+    max-width: 250px;
     overflow-x: hidden;
+    transition: all 0.3s ease;
     padding-bottom: 1rem;
 }
 
 .sidebar .sidebar-container {
-    min-width: 290px;
+    min-width: 260px;
+}
+
+.sidebar .sidebar-content{
+    font-size: 14px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    max-height: 630px;
+    
+}
+
+.sidebar-content::-webkit-scrollbar{
+    width: 4px;
+}
+
+.sidebar-content::-webkit-scrollbar-track{
+    background:transparent;
+}
+
+.sidebar-content::-webkit-scrollbar-thumb{
+    background-color: rgba(128, 128, 128, 0.54);
+    border-radius: 10px;
 }
 
 @media (width > 768px){
@@ -122,12 +142,12 @@ body{
 
 @media (width > 992px) {
     .sidebar {
-        min-width: min(290px, 45vw); 
+        min-width: min(260px, 45vw); 
     }
 }
 
 #sidebar-toggle:checked ~ .sidebar {
-    width: 290px;
+    width: 260px;
 }
 
 .sidebar::-webkit-scrollbar {
@@ -180,3 +200,4 @@ body{
 .sidebar li a.active .right-arrow {
     display: block;
 }
+

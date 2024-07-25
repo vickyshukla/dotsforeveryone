@@ -18,6 +18,10 @@
   background: var(--color-medium-white);
 }
 
+.bg-c-white-light-smoke{
+  background:var(--color-light-white-smoke);
+}
+
 .bg-c-dark-white{
   background: var(--color-dark-white);
 }
@@ -176,6 +180,19 @@ body.cs {
   background-size: cover;
   background-position: center;
   overflow: scroll;
+}
+
+.cs .scroll::-webkit-scrollbar {
+  width: 4px;
+}
+
+.cs .scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.cs .scroll::-webkit-scrollbar-thumb {
+  background-color: rgba(128, 128, 128, 0.54);
+  border-radius: 10px;
 }
 
 @media (width > 768px) {
@@ -592,4 +609,105 @@ body.cs {
     top: -3px;
     left: 1px;
   }
+}
+
+.cs .popupiframe {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  border: 1px solid #ccc;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  z-index: 9999;
+  width: 80%;
+  /* Adjust width as needed */
+  height: 80%;
+  /* Fixed height */
+  overflow: auto;
+  /* Enable scrolling if content overflows */
+}
+
+.cs .popupiframe-content {
+  padding: 10px;
+}
+
+.cs .popupiframe-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  background-color: #333;
+  color: white;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+.cs .popupiframe-header i {
+  cursor: pointer;
+}
+
+.cs .popupiframe iframe {
+  width: 100%;
+  height: 93.2%;
+  border: none;
+}
+
+/*  .triangle {*/
+/*  width: 0;*/
+/*  height: 0;*/
+/*  border-style: solid;*/
+/*}*/
+/*.triangle-up {/
+/*  border-width: 0 10px 17.32px 10px;*/
+/*  border-color: transparent transparent red transparent;*/
+/*}*/
+
+.cs .maximized {
+  width: 100% !important;
+  height: 100% !important;
+  top: 0 !important;
+  left: 0 !important;
+  transform: none !important;
+}
+
+.cs .triangle-btn {
+  width: 0;
+  height: 0;
+  border-top: 4px solid transparent;
+  border-bottom: 4px solid transparent;
+  border-left: 6px solid transparent;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transform: translateY(-50%);
+}
+
+.cs .desktopapp-clicked {
+  border-radius: 5px;
+  background: #fdfdfd3d;
+  backdrop-filter: blur(2px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-right-color: rgba(255, 255, 255, 0.1);
+  border-bottom-color: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 20px 30px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+  position: relative;
+  flex-direction: column;
+}
+
+.cs .taskbar-slide {
+  transition: top 0.4s ease-in-out;
+  top: -100%;
+  background: #fdfdfd3d;
+  backdrop-filter: blur(2px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-right-color: rgba(255, 255, 255, 0.1);
+  border-bottom-color: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 20px 30px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+}
+
+.cs .taskbar-slide.show {
+  top: 0;
 }
