@@ -26,6 +26,10 @@
   background: var(--color-dark-white);
 }
 
+.bg-c-gray-gradient {
+  background: var(--bg-gray-gradient);
+}
+
 .bg-c-gray-3 {
   background: var(--bg-light-gray);
 }

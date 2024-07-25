@@ -30,10 +30,22 @@
     -webkit-box-shadow: 0px 1px 18px -6px rgba(189, 170, 157, 0.7);
     -moz-box-shadow: 0px 1px 18px -6px rgba(189, 170, 157, 0.7);
     box-shadow: 0px 1px 18px -6px rgba(189, 170, 157, 0.7);
+   
 }
+
+  #box {
+
+      transition: 1s all;
+  }
+
+
+  .minimized {
+      transform: translate(-600px, -700px) scale(0) !important;
+  }
 
 .navbar #toolbar {
     overflow-x: scroll;
+   
 }
 
 #toolbar::-webkit-scrollbar {
@@ -41,24 +53,19 @@
 }
 
 .navbar img {
-    width: 35px;
-    height: 35px;
+    height: 30px;
     margin: 0 5px;
     cursor: pointer;
     transition: transform 0.3s;
 }
 
-.navbar img:hover {
-    transform: scale(1.1);
-}
 
-.moving-to-bottom {
-    animation: moveToBottom 1s forwards;
-}
 
 .moving-to-top {
-    animation: moveToTop 1s ease-in-out forwards;
+    animation: moveToTop 0.6s ease-in-out forwards;
 }
+
+
 
 @keyframes moveToTop {
     from {
@@ -66,33 +73,32 @@
     }
 
     to {
-        transform: translateY(-80vh) rotateY(360deg);
+        transform: translate(520px,-20vh) rotate(360deg);
     }
 }
 
-@keyframes moveToBottom {
-    0% {
-        transform: translateY(0);
-    }
+  @keyframes fallDown {
+      0% {
+          transform: translate(-50%, -150%) scale(0.3);
+          opacity: 0;
+      }
 
-    100% {
-        transform: translateY(50px);
-    }
-}
+      100% {
+          transform: translate(-50%, 10%) scale(0) rotate(360deg);
+          opacity: 1;
+      }
+  }
 
-@keyframes moveToUp {
-    0% {
-        transform: translateY(0);
-    }
+  .fall-down {
+      animation: fallDown 1s ease-out;
+  }
 
-    100% {
-        transform: translateY(-100vh);
-    }
-}
 
-.moving-to-up {
-    animation: moveToUp 1s forwards;
-}
+ .minimized {
+     display: none;
+ }
+
+
 
 /* Desktop apps */
 
@@ -1145,3 +1151,4 @@ input[type="search"]::-webkit-search-cancel-button {
         margin-left: 0;
     }
 }
+
