@@ -8,6 +8,9 @@
     <link rel="stylesheet" href="styles/root.css">
     <link rel="stylesheet" href="styles/cs.css">
 </head>
+<style>
+
+</style>
 <body class="w-full h-screen dashboard cs">
     <div class="w-full h-full">
 
@@ -432,8 +435,10 @@
           <div class="w-1/4">
             
           </div>
-            <div class="flex justify-center w-full" id="toolbar">
-              
+            <div class="flex justify-center w-full relative h-full" id="toolbar">
+              <div class="bg absolute w-full  bottom-0">
+                <img class="w-full" src="images/shelf.png" alt="">
+              </div>
             </div>
             <div class="flex items-center gap-8 w-1/4 justify-end pr-5">
                 <i id="search-icon" class="ri-search-line icon-color"></i>
@@ -623,14 +628,15 @@
         </div>
 
            <!--Iframe popup-->
-      <div
-        id="iframepopup{{ $iframe['filetype'] . $iframefile['filekey'] }}"
-        class="draggableelement popupiframe fixed inset-0 bg-black-900 bg-opacity-50 flex items-center justify-center hidden"
+
+        
+             <div id="box"
+        class="draggableelement popupiframe fixed inset-0 bg-black-900 bg-opacity-50 flex items-center justify-center rounded-lg hidden"
       >
         <div
-          class="draggable bg-black bg-opacity-70 rounded-lg shadow-lg w-full h-full relative"
+          class="draggable bg-opacity-70  shadow-lg w-full h-full relative"
         >
-          <div class="flex justify-between items-center p-1 pr-2 border-b">
+          <div class="flex justify-between items-center p-1 pr-2 border-b bg-c-gray-gradient">
             <span class="text-lg flex font-semibold"
               ><img
                 class="w-5 h-5 mt-1"
@@ -641,29 +647,18 @@
               </h2>
             </span>
             <div class="flex space-x-1">
-              <a
-                href="#"
-                class="maximizeiframe-btn"
-                data-iframe-id="{{ $iframe['filetype'] . $iframefile['filekey'] }}"
-                ><i class="ri-triangle-fill text-green-400 text-lg"></i
-              ></a>
-              <a
-                href="#"
-                class="minimizeiframe-btn"
-                data-iframe-id="{{ $iframe['filetype'] . $iframefile['filekey'] }}"
-                ><i class="ri-triangle-fill text-yellow-400 text-lg"></i
-              ></a>
+              <a href="#" id="minimizebtn" class="minimizeiframe-btn"
+                ><img src="images/minimize.svg"
+              /></a>
+              <a href="#" class="maximizeiframe-btn"
+                ><img src="images/maximize.svg"
+              /></a>
               <a
                 href="#"
                 class="closeiframe-btn"
-                data-filekey="{{ $iframefile['filekey'] }}"
-                data-iframefile-id="{{ $iframe['filetype'] . $iframefile['filekey'] }}"
-                data-appkey="{{ $iframe['appkey'] }}"
-                data-filetype="{{ $iframe['filetype'] }}"
-                data-isfile="{{ $iframe['isfile'] }}"
                 onclick="togglePane('.popupiframe')"
-                ><i class="ri-triangle-fill text-red-400 text-lg"></i
-              ></a>
+                ><img src="images/close.svg"
+              /></a>
             </div>
           </div>
           <!--comment section-->
@@ -885,6 +880,7 @@
           </div>
         </div>
       </div>
+     
     </div>
     
     <script>
@@ -977,7 +973,7 @@
                         <input type="checkbox" name="option">
                         <i class="ri-arrow-drop-down-fill ri-xl text-black"></i>
                     </div>  
-                    <div class="text-center flex flex-col items-center px-1 pt-5">
+                    <div class="text-center flex flex-col items-center px-1 pt-5" onclick="handleClick()">
                         <img class="w-16" src="${app.image}" alt="${app.name}">
                            <div class="input-wrapper w-16">
                               <input type="text" class="text-center text-white appinputtext" disabled value="${app.name}">
@@ -1118,6 +1114,7 @@
             clearTimeout(timeoutId);
             const appPropertiesDiv = appDiv.querySelector(".app-properties");
             appPropertiesDiv.classList.add("invisible");
+          
           });
 
           appDiv.addEventListener("contextmenu", (event) => {
@@ -1352,97 +1349,103 @@
 
 //functionality of animation of apps openining
 
-document.addEventListener('DOMContentLoaded', () => {
-    const downloadItems = document.querySelectorAll('.app');
-    const toolbar = document.getElementById('toolbar');
-    
+  document.addEventListener('DOMContentLoaded', () => {
+        const downloadItems = document.querySelectorAll('.app');
+        const toolbar = document.getElementById('toolbar');
+        const box = document.getElementById("box");
+        const minimizebtn = document.getElementById("minimizebtn");
+        let minimized = false;
 
-    downloadItems.forEach(item => {
-        item.addEventListener('click', () => {
-            const appId = item.getAttribute('data-app');
-            const existingIcon = toolbar.querySelector(`img[data-app="${appId}"]`);
+        downloadItems.forEach(item => {
+            item.addEventListener('click', () => {
+                const appId = item.getAttribute('data-app');
+                const existingIcon = toolbar.querySelector(`img[data-app="${appId}"]`);
 
-            if (!existingIcon) {
-                const originalIcon = item.querySelector('img');
-                const img = document.createElement('img');
-                img.src = originalIcon.src;
-                img.setAttribute('data-app', appId);
-                img.classList.add('app-icon');
-                animateIcon(img, originalIcon);
+                if (!existingIcon) {
+                    const originalIcon = item.querySelector('img');
+                    const img = document.createElement('img');
+                    img.src = originalIcon.src;
+                    img.setAttribute('data-app', appId);
+                    img.classList.add('app-icon');
+                    animateIcon(img, originalIcon);
+                }
+            });
+        });
+
+        toolbar.addEventListener('click', (event) => {
+            const targetIcon = event.target.closest('img[data-app]');
+            if (targetIcon) {
+                if (minimized) {
+                    box.classList.remove('hidden');
+                    box.classList.remove('minimized');
+                    box.classList.add('fall-down');
+                    minimized = false;
+
+                    // Remove the fall-down class after the animation ends to allow reusing the animation
+                    box.addEventListener('animationend', () => {
+                        box.classList.remove('fall-down');
+                    }, { once: true });
+                } else {
+                    animateIconDownward(targetIcon);
+                }
             }
         });
-    });
 
-      toolbar.addEventListener('click', (event) => {
-        const targetIcon = event.target.closest('img[data-app]');
-        if (targetIcon) {
-            animateIconDownward(targetIcon);
+        function animateIcon(icon, originalIcon) {
+            const rect = originalIcon.getBoundingClientRect();
+            const clone = originalIcon.cloneNode(true);
+            clone.style.position = 'fixed';
+            clone.style.left = `${rect.left}px`;
+            clone.style.top = `${rect.top}px`;
+            clone.style.width = `${rect.width}px`;
+            clone.style.height = `${rect.height}px`;
+            clone.classList.add('moving-to-top');
+            document.body.appendChild(clone);
+
+            clone.addEventListener('animationend', () => {
+                clone.remove();
+                toolbar.appendChild(icon);
+                animateIconToCenter(icon);
+            });
         }
-    });
-    
 
-    function animateIcon(icon, originalIcon) {
-        const rect = originalIcon.getBoundingClientRect();
-        const clone = originalIcon.cloneNode(true);
-        clone.style.position = 'fixed';
-        clone.style.left = `${rect.left}px`;
-        clone.style.top = `${rect.top}px`;
-        clone.style.width = `${rect.width}px`;
-        clone.style.height = `${rect.height}px`;
-        clone.classList.add('moving-to-top');
-        document.body.appendChild(clone);
+        function animateIconToCenter(icon) {
+            icon.style.opacity = 0;
+            setTimeout(() => {
+                icon.style.transition = 'opacity 0.5s, transform 0.5s';
+                icon.style.opacity = 1;
+                icon.style.transform = 'translateY(0)';
+            }, 10);
+        }
 
-        clone.addEventListener('animationend', () => {
-            clone.remove();
-            toolbar.appendChild(icon);
-            animateIconToCenter(icon);
-        });
-    }
+        function animateIconDownward(icon) {
+            icon.classList.add('moving-to-bottom');
+            icon.addEventListener('animationend', () => {
+                icon.remove();
+            });
+        }
 
-    function animateIconToCenter(icon) {
-        icon.style.opacity = 0;
-        setTimeout(() => {
-            icon.style.transition = 'opacity 0.5s, transform 0.5s';
-            icon.style.opacity = 1;
-            icon.style.transform = 'translateY(0)';
-             icon.onclick = () => {
-                animateIconDownward(icon);
-                togglePane(".popupiframe")
-            };
-        }, 10);
-    }
-
-    function animateIconDownward(icon) {
-        icon.classList.add('moving-to-bottom');
-        icon.addEventListener('animationend', () => {
-            icon.remove();
-        });
-    }
-
-      document.querySelectorAll('.minimizeiframe-btn').forEach(button => {
-        button.addEventListener('click', (event) => {
-            event.preventDefault();
-            const iframeId = button.getAttribute('data-iframe-id');
-            const iframePopup = document.getElementById(`iframepopup${iframeId}`);
-            if (iframePopup) {
-                iframePopup.classList.add('moving-to-up');
-                iframePopup.addEventListener('animationend', () => {
-                    iframePopup.classList.add('hidden');
-                    const appId = iframeId;  // Assuming appId matches iframeId
-                    const originalIcon = document.querySelector(`.app img[data-app="${appId}"]`);
-                    if (originalIcon) {
-                        const img = document.createElement('img');
-                        img.src = originalIcon.src;
-                        img.setAttribute('data-app', appId);
-                        img.classList.add('app-icon');
-                        toolbar.appendChild(img);
-                        animateIconToCenter(img);
-                    }
-                });
+        minimizebtn.addEventListener("click", function () {
+            if (!box.classList.contains("minimized")) {
+                box.classList.add("minimized");
+                minimized = true;
+                setTimeout(() => {
+                    box.classList.add('hidden');
+                }, 500);
             }
         });
+
+        const closeiframeBtns = document.querySelectorAll('.closeiframe-btn');
+        closeiframeBtns.forEach(btn => {
+            btn.addEventListener('click', function () {
+                const filekey = this.getAttribute('data-filekey');
+                const toolbarIcon = toolbar.querySelector(`img[data-app="${filekey}"]`);
+                if (toolbarIcon) {
+                    toolbarIcon.remove();
+                }
+            });
+        });
     });
-});
 
   /********** iframe js with comment section **********/
     const comment = document.querySelector(".commentssection");
@@ -1690,6 +1693,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
         return range;
     }
+
+    function handleClick(){
+      setTimeout(()=>{
+        togglePane('.popupiframe')
+      },1000)
+    }
+
     </script>
    
 </body>
