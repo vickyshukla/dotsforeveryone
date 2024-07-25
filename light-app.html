@@ -10,6 +10,20 @@
   </head>
   <body class="h-screen w-full cs lightapp">
     <main class="flex w-full h-full">
+         <!-- Taskbar -->
+    <div class="taskbar-slide h-14 flex items-center w-full absolute">
+          <div class="w-1/4">
+            
+          </div>
+            <div class="flex justify-center w-full" id="toolbar">
+              
+            </div>
+            <div class="flex items-center gap-8 w-1/4 justify-end pr-5">
+                <i id="search-icon" class="ri-search-line "></i>
+                <i id="notification-icon" class="ri-notification-3-line"></i>
+            </div>
+          
+    </div>
       <!-- Sidebar -->
       <aside class="h-full relative">
         <input type="checkbox" class="hidden" id="sidebar-toggle" />
@@ -704,6 +718,7 @@
      </div>
 
 
+    <script src="script/taskbar.js"></script>
     <script>
          // CraateModal Open Functionality
       const openModalButton = document.querySelectorAll(

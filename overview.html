@@ -11,7 +11,23 @@
 </head>
 
 <body class="h-screen w-full flex flex-col nx">
+       
     <main class="flex w-full h-full flex">
+      <!-- Taskbar -->
+    <div class="taskbar-slide h-14 flex items-center w-full absolute">
+          <div class="w-1/4">
+            
+          </div>
+            <div class="flex justify-center w-full" id="toolbar">
+              
+            </div>
+            <div class="flex items-center gap-8 w-1/4 justify-end pr-5">
+                <i id="search-icon" class="ri-search-line icon-color"></i>
+                <i id="notification-icon" class="ri-notification-3-line icon-color"></i>
+            </div>
+          
+    </div>
+    
         <!-- sidebar -->
       <aside class="h-full relative">
         <input type="checkbox" class="hidden" id="sidebar-toggle" />
@@ -24,9 +40,11 @@
         <div class="h-full sidebar">
           <div class="sidebar-container">
             <div class="p-6">
-              <img class="w-24" src="/images/logo.png" alt="Dots Logo" />
+              <a href="index.html">
+                <img class="w-20" src="/images/logo.png" alt="Dots Logo" />
+              </a>
             </div>
-            <div class="md:pt-4">
+            <div class=" sidebar-content">
               <ul class="space-y-1">
                 <li>
                   <a
@@ -333,7 +351,7 @@
         <!-- main content -->
         <div class="flex-grow border h-100 main">
             <div class="flex w-full h-full flex-col content">
-                <div class="px-5 py-6">
+                <div class="px-2 lg:px-5 py-6">
                     <div class="flex items-center gap-4">
                         <i class="ri-settings-3-fill ri-xl"></i>
                         <span class="text-lg text-color-nav-black">System settings</span>
@@ -358,7 +376,7 @@
                 </div>
 
                 <!-- overview content -->
-                <div class="p-4 space-y-2">
+                <div class="p-4 space-y-2 overflow-y-scroll scroll">
                     <!-- info cards -->
                     <div class="flex gap-2 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4">
                         <div class="bg-white border p-4 flex flex-col h-full rounded-md">
@@ -691,12 +709,6 @@
         </div>
     </main>
 
-    <footer class="w-screen">
-        <div class="flex justify-between w-full items center px-2 md:px-6 py-2 md:py-4 bg-white bg-opacity-50">
-            <button type="button" class="bg-c-black text-white px-2 py-1 rounded-md">File</button>
-            <img src="/images/logo.png" alt="Dots Logo" width="36" height="36">
-        </div>
-    </footer>
 
     <!-- run task scheduled message -->
     <div id="run-success" class="fixed z-10 w-full transition-all" style="top: -120px;">
@@ -722,7 +734,8 @@
                 runSuccessModal.style.top = '-120px';
             }, 3000);
         }
-    </script><script defer>
+    </script>
+    <script defer>
         // for doughnut 
         const ctx = document.getElementById('usage-ratio-donut');
 
@@ -855,7 +868,9 @@
             }
             }
         });
+
     </script>
+    <script src="script/taskbar.js"></script>
 </body>
 
 </html>

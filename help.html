@@ -11,6 +11,20 @@
 <body class="cs help">
    <div class="w-full h-screen flex flex-col">
     <div class="help-page flex-1 flex flex-col">
+           <!-- Taskbar -->
+    <div class="taskbar-slide h-14 flex items-center w-full absolute">
+          <div class="w-1/4">
+            
+          </div>
+            <div class="flex justify-center w-full" id="toolbar">
+              
+            </div>
+            <div class="flex items-center gap-8 w-1/4 justify-end pr-5">
+                <i id="search-icon" class="ri-search-line "></i>
+                <i id="notification-icon" class="ri-notification-3-line"></i>
+            </div>
+          
+    </div>
         <nav class="py-2 px-4 sm:px-10 flex justify-start">
             <img class="w-12 h-12" src="/images/logo.png" alt="Logo">
         </nav>
@@ -38,6 +52,7 @@
 </div>
 
 
+    <script src="script/taskbar.js"></script>
     <script>
        const textInput = document.getElementById('textInput');
         const charCounter = document.getElementById('charCounter');
