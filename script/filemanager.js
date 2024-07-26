@@ -1,4 +1,3 @@
-
 document.addEventListener("DOMContentLoaded", function () {
     // DOM Elements
     const draggable = document.getElementById("draggable");
@@ -20,34 +19,6 @@ document.addEventListener("DOMContentLoaded", function () {
     // Toggle a class on an element
     const toggleClass = (element, className) => {
         element.classList.toggle(className);
-    };
-
-    // Toggle visibility of a dropdown
-    const toggleDropdown = (id) => {
-        const dropdownOptions = document.getElementById(id);
-        const allDropdowns = document.querySelectorAll(".dropdown-options");
-
-        allDropdowns.forEach((dropdown) => {
-            if (dropdown.id !== id) dropdown.style.display = "none";
-        });
-
-        dropdownOptions.style.display =
-            dropdownOptions.style.display === "none" ||
-                dropdownOptions.style.display === ""
-                ? "block"
-                : "none";
-
-        const dropdownButton = document.querySelector(
-            `button[onclick="toggleDropdown('${id}')"]`
-        );
-        const allDropdownButtons = document.querySelectorAll(".dropdown-toggle");
-
-        allDropdownButtons.forEach((button) => {
-            if (button !== dropdownButton)
-                button.classList.remove("dropdown-button-active");
-        });
-
-        dropdownButton.classList.toggle("dropdown-button-active");
     };
 
     // Toggle visibility of a popup
@@ -162,7 +133,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Start resizing the sidebar
     const startResizing = (e) => {
-        const minWidth = 288;
+        const minWidth = 310;
         const maxWidth = 600;
         let newWidth = window.innerWidth - e.clientX;
         if (newWidth < minWidth) newWidth = minWidth;
@@ -222,6 +193,7 @@ document.addEventListener("DOMContentLoaded", function () {
         textInput.select();
         imageOverlay.classList.add("opacity-50");
         overlay.classList.add("overlay-height");
+        textDisplay.classList.add("h-10");
     });
 
     // Handle text input blur
@@ -246,256 +218,259 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
-    /********** iframe js with comment section **********/
-    const comment = document.querySelector(".commentssection");
-    const commentButton = document.querySelector(".commentbutton");
-    const frame = document.querySelector(".frame");
-    const commentResizer = document.querySelector(".commentresizer");
-    const mentionTextbox = document.querySelector(".mention-textbox");
-    const mentionList = document.querySelector(".mention-list");
-    const mentionListItems = document.querySelector(".list");
-    const commentList = document.querySelector(".comment-list");
-    const iframePopup = document.querySelector(".popupiframe iframe");
-    // Toggle visibility of the comments pane
-    function togglePane(id) {
-        let element = document.querySelector(id);
-        if (element) {
-            // Ensure the element exists
-            element.classList.toggle("hidden");
-            if (!element.classList.contains("hidden")) {
-                scrollToBottom();
-            }
-            updateFrameMargin();
-        } else {
-            console.error(`Element with selector ${id} not found.`);
-        }
-    }
-
-    // Scroll to the bottom of the comment list
-    function scrollToBottom() {
-        if (commentList) {
-            commentList.scrollTop = commentList.scrollHeight;
-        }
-    }
-
-    // Update the margin of the frame based on the comments pane width
-    function updateFrameMargin() {
-        if (window.innerWidth > 768 && comment) {
-            // Check if comment is not null
-            if (comment.classList.contains("hidden")) {
-                iframePopup.style.width = "100%";
-                iframePopup.style.marginLeft = "0";
-                commentButton.style.marginLeft = "0";
-            } else {
-                const commentsWidth = comment.offsetWidth;
-                iframePopup.style.width = `calc(100% - ${commentsWidth}px)`;
-                commentButton.style.marginLeft = `${comment.offsetWidth}px`;
-                iframePopup.style.marginLeft = `${comment.offsetWidth}px`;
-            }
-        }
-    }
-
-    let startX, startWidth;
-
-    // Initialize the resizing of the comment section
-    const initCommentResize = (e) => {
-        e.preventDefault();
-        startX = e.clientX;
-        startWidth = comment.offsetWidth;
-
-        window.addEventListener("mousemove", startCommentResizing);
-        window.addEventListener("mouseup", stopcommentResizing);
-    };
-
-    // Start resizing the comment section
-    const startCommentResizing = (e) => {
-        const minWidth = 250;
-        const maxWidth = 500;
-        let newWidth = startWidth + (e.clientX - startX);
-
-        if (newWidth < minWidth) newWidth = minWidth;
-        else if (newWidth > maxWidth) newWidth = maxWidth;
-
-        if (comment) {
-            comment.style.width = `${newWidth}px`;
-            updateFrameMargin();
-        }
-    };
-
-    // Stop resizing the comment section
-    const stopcommentResizing = () => {
-        window.removeEventListener("mousemove", startCommentResizing);
-        window.removeEventListener("mouseup", stopCommentResizing);
-    };
-
-    if (commentResizer) {
-        commentResizer.addEventListener("mousedown", initCommentResize);
-    }
-
-    // Update frame margin initially in case the comments section is not hidden
-    updateFrameMargin();
-
-    const users = ["alice", "bob", "charlie", "dave"]; // Example users for mention list
-    const placeholderText = "Type your comment here..."; // placeholder
-
-    // Initial setup for the mention textbox
-    mentionTextbox.textContent = placeholderText;
-
-    // Event listener to manage placeholder behavior
-    mentionTextbox.addEventListener("focus", function () {
-        if (this.textContent === placeholderText) {
-            this.textContent = "";
-        }
-    });
-
-    mentionTextbox.addEventListener("blur", function () {
-        if (this.textContent === "") {
-            this.textContent = placeholderText;
-        }
-    });
-
-    // Event listeners for handling input and keydown events
-    mentionTextbox.addEventListener("input", handleInput);
-    mentionTextbox.addEventListener("keydown", handleKeyDown);
-
-    // Function to handle input events
-    function handleInput(e) {
-        const text = mentionTextbox.innerText;
-        const cursorPos = getCaretPosition();
-        const textBeforeCursor = text.substring(0, cursorPos);
-        const atIndex = textBeforeCursor.lastIndexOf("@");
-
-        if (text.charAt(cursorPos - 1) === "@") {
-            showMentionList(atIndex);
-        } else {
-            hideMentionList();
-        }
-
-        applyMentionStyles();
-    }
-
-    // Function to handle keydown events
-    function handleKeyDown(e) {
-        if (e.key === "ArrowDown" && !mentionList.classList.contains("hidden")) {
-            mentionList.querySelector("li").focus();
-            e.preventDefault();
-        }
-    }
-
-    // Function to show the mention list
-    function showMentionList(atIndex) {
-        mentionListItems.innerHTML = users
-            .map(
-                (user) =>
-                    `<li tabindex="0" class="p-2 hover-bg-c-yellow cursor-pointer">${user}</li>`
-            )
-            .join("");
-        mentionList.classList.remove("hidden");
-
-        mentionListItems.querySelectorAll("li").forEach((item) => {
-            item.addEventListener("click", () => selectMention(item, atIndex));
-        });
-    }
-
-    // Function to hide the mention list
-    function hideMentionList() {
-        mentionList.classList.add("hidden");
-    }
-
-    // Function to select a mention from the list
-    function selectMention(item, atIndex) {
-        const mentionText = item.innerText; // Get the mention text
-        const text = mentionTextbox.innerText;
-        const cursorPos = getCaretPosition();
-        const textBeforeAt = text.substring(0, atIndex);
-        const textAfterAt = text.substring(cursorPos);
-
-        mentionTextbox.innerText =
-            textBeforeAt + "@" + mentionText + "&nbsp;" + textAfterAt; // Update text with mention
-        setCaretPosition(atIndex + mentionText.length + 2); // Adjust caret position
-
-        hideMentionList();
-        applyMentionStyles();
-    }
-
-    // Function to apply styles to mentions
-    function applyMentionStyles() {
-        const text = mentionTextbox.innerText;
-        const html = text.replace(
-            /(@\w+)/g,
-            '<span class="text-c-sky">$1</span>'
+    /********** iframe js for each comment section **********/
+    const commentssection = document.querySelectorAll(".commentssection");
+    commentssection.forEach((comment) => {
+        const commentButton = comment.parentElement.querySelector(".commentbutton");
+        const commentResizer = comment.querySelector(".commentresizer");
+        const mentionTextbox = comment.querySelector(".mention-textbox");
+        const mentionList = comment.querySelector(".mention-list");
+        const mentionListItems = comment.querySelector(".list");
+        const commentList = comment.querySelector(".comment-list");
+        const iframePopup = comment.parentElement.querySelector(
+            ".popupiframe iframe"
         );
-        mentionTextbox.innerHTML = html;
-        setCaretToEnd();
-    }
 
-    // Function to set the caret to the end
-    function setCaretToEnd() {
-        const range = document.createRange();
-        const sel = window.getSelection();
-        range.selectNodeContents(mentionTextbox);
-        range.collapse(false);
-        sel.removeAllRanges();
-        sel.addRange(range);
-    }
-
-    // Function to get the caret position
-    function getCaretPosition() {
-        const selection = window.getSelection();
-        const range = selection.getRangeAt(0);
-        const preCaretRange = range.cloneRange();
-        preCaretRange.selectNodeContents(mentionTextbox);
-        preCaretRange.setEnd(range.endContainer, range.endOffset);
-        return preCaretRange.toString().length;
-    }
-
-    // Function to set the caret position
-    function setCaretPosition(chars) {
-        if (chars >= 0) {
-            const selection = window.getSelection();
-            const range = createRange(mentionTextbox, { count: chars });
-            if (range) {
-                range.collapse(false);
-                selection.removeAllRanges();
-                selection.addRange(range);
+        // Toggle visibility of the comments pane
+        function togglePane(id) {
+            let element = document.querySelector(id);
+            if (element) {
+                // Ensure the element exists
+                element.classList.toggle("hidden");
+                if (!element.classList.contains("hidden")) {
+                    scrollToBottom();
+                }
+                if (iframePopup) updateFrameMargin();
+            } else {
+                console.error(`Element with selector ${id} not found.`);
             }
         }
-    }
 
-    // Function to create a range for caret position
-    function createRange(node, chars, range) {
-        if (!range) {
-            range = document.createRange();
-            range.selectNode(node);
-            range.setStart(node, 0);
+        // Scroll to the bottom of the comment list
+        function scrollToBottom() {
+            if (commentList) {
+                commentList.scrollTop = commentList.scrollHeight;
+            }
         }
 
-        if (chars.count === 0) {
-            range.setEnd(node, chars.count);
-        } else if (node && chars.count > 0) {
-            if (node.nodeType === Node.TEXT_NODE) {
-                if (node.textContent.length < chars.count) {
-                    chars.count -= node.textContent.length;
+        // Update the margin of the frame based on the comments pane width
+        function updateFrameMargin() {
+            if (window.innerWidth > 768 && comment) {
+                // Check if comment is not null
+                if (comment.classList.contains("hidden")) {
+                    iframePopup.style.width = "100%";
+                    iframePopup.style.marginLeft = "0";
+                    commentButton.style.marginLeft = "0";
                 } else {
-                    range.setEnd(node, chars.count);
-                    chars.count = 0;
+                    const commentsWidth = comment.offsetWidth;
+                    iframePopup.style.width = `calc(100% - ${commentsWidth}px)`;
+                    commentButton.style.marginLeft = `${comment.offsetWidth}px`;
+                    iframePopup.style.marginLeft = `${comment.offsetWidth}px`;
                 }
+            }
+        }
+
+        let startX, startWidth;
+
+        // Initialize the resizing of the comment section
+        const initCommentResize = (e) => {
+            e.preventDefault();
+            startX = e.clientX;
+            startWidth = comment.offsetWidth;
+
+            window.addEventListener("mousemove", startCommentResizing);
+            window.addEventListener("mouseup", stopcommentResizing);
+        };
+
+        // Start resizing the comment section
+        const startCommentResizing = (e) => {
+            const minWidth = 250;
+            const maxWidth = 500;
+            let newWidth = startWidth + (e.clientX - startX);
+
+            if (newWidth < minWidth) newWidth = minWidth;
+            else if (newWidth > maxWidth) newWidth = maxWidth;
+
+            if (comment) {
+                comment.style.width = `${newWidth}px`;
+                updateFrameMargin();
+            }
+        };
+
+        // Stop resizing the comment section
+        const stopcommentResizing = () => {
+            window.removeEventListener("mousemove", startCommentResizing);
+            window.removeEventListener("mouseup", stopCommentResizing);
+        };
+
+        if (commentResizer) {
+            commentResizer.addEventListener("mousedown", initCommentResize);
+        }
+
+        // Update frame margin initially in case the comments section is not hidden
+        if (iframePopup) updateFrameMargin();
+        scrollToBottom();
+
+        const users = ["alice", "bob", "charlie", "dave"]; // Example users for mention list
+        const placeholderText = "Type your comment here..."; // placeholder
+
+        // Initial setup for the mention textbox
+        mentionTextbox.textContent = placeholderText;
+
+        // Event listener to manage placeholder behavior
+        mentionTextbox.addEventListener("focus", function () {
+            if (this.textContent === placeholderText) {
+                this.textContent = "";
+            }
+        });
+
+        mentionTextbox.addEventListener("blur", function () {
+            if (this.textContent === "") {
+                this.textContent = placeholderText;
+            }
+        });
+
+        // Event listeners for handling input and keydown events
+        mentionTextbox.addEventListener("input", handleInput);
+        mentionTextbox.addEventListener("keydown", handleKeyDown);
+
+        // Function to handle input events
+        function handleInput(e) {
+            const text = mentionTextbox.innerText;
+            const cursorPos = getCaretPosition();
+            const textBeforeCursor = text.substring(0, cursorPos);
+            const atIndex = textBeforeCursor.lastIndexOf("@");
+
+            if (text.charAt(cursorPos - 1) === "@") {
+                showMentionList(atIndex);
             } else {
-                for (let i = 0; i < node.childNodes.length; i++) {
-                    range = createRange(node.childNodes[i], chars, range);
-                    if (chars.count === 0) {
-                        break;
+                hideMentionList();
+            }
+
+            applyMentionStyles();
+        }
+
+        // Function to handle keydown events
+        function handleKeyDown(e) {
+            if (e.key === "ArrowDown" && !mentionList.classList.contains("hidden")) {
+                mentionList.querySelector("li").focus();
+                e.preventDefault();
+            }
+        }
+
+        // Function to show the mention list
+        function showMentionList(atIndex) {
+            mentionListItems.innerHTML = users
+                .map(
+                    (user) =>
+                        `<li tabindex="0" class="p-2 hover-bg-c-yellow cursor-pointer">${user}</li>`
+                )
+                .join("");
+            mentionList.classList.remove("hidden");
+
+            mentionListItems.querySelectorAll("li").forEach((item) => {
+                item.addEventListener("click", () => selectMention(item, atIndex));
+            });
+        }
+
+        // Function to hide the mention list
+        function hideMentionList() {
+            mentionList.classList.add("hidden");
+        }
+
+        // Function to select a mention from the list
+        function selectMention(item, atIndex) {
+            const mentionText = item.innerText; // Get the mention text
+            const text = mentionTextbox.innerText;
+            const cursorPos = getCaretPosition();
+            const textBeforeAt = text.substring(0, atIndex);
+            const textAfterAt = text.substring(cursorPos);
+
+            mentionTextbox.innerText =
+                textBeforeAt + "@" + mentionText + "&nbsp;" + textAfterAt; // Update text with mention
+            setCaretPosition(atIndex + mentionText.length + 2); // Adjust caret position
+
+            hideMentionList();
+            applyMentionStyles();
+        }
+
+        // Function to apply styles to mentions
+        function applyMentionStyles() {
+            const text = mentionTextbox.innerText;
+            const html = text.replace(
+                /(@\w+)/g,
+                '<span class="text-c-sky">$1</span>'
+            );
+            mentionTextbox.innerHTML = html;
+            setCaretToEnd();
+        }
+
+        // Function to set the caret to the end
+        function setCaretToEnd() {
+            const range = document.createRange();
+            const sel = window.getSelection();
+            range.selectNodeContents(mentionTextbox);
+            range.collapse(false);
+            sel.removeAllRanges();
+            sel.addRange(range);
+        }
+
+        // Function to get the caret position
+        function getCaretPosition() {
+            const selection = window.getSelection();
+            const range = selection.getRangeAt(0);
+            const preCaretRange = range.cloneRange();
+            preCaretRange.selectNodeContents(mentionTextbox);
+            preCaretRange.setEnd(range.endContainer, range.endOffset);
+            return preCaretRange.toString().length;
+        }
+
+        // Function to set the caret position
+        function setCaretPosition(chars) {
+            if (chars >= 0) {
+                const selection = window.getSelection();
+                const range = createRange(mentionTextbox, { count: chars });
+                if (range) {
+                    range.collapse(false);
+                    selection.removeAllRanges();
+                    selection.addRange(range);
+                }
+            }
+        }
+
+        // Function to create a range for caret position
+        function createRange(node, chars, range) {
+            if (!range) {
+                range = document.createRange();
+                range.selectNode(node);
+                range.setStart(node, 0);
+            }
+
+            if (chars.count === 0) {
+                range.setEnd(node, chars.count);
+            } else if (node && chars.count > 0) {
+                if (node.nodeType === Node.TEXT_NODE) {
+                    if (node.textContent.length < chars.count) {
+                        chars.count -= node.textContent.length;
+                    } else {
+                        range.setEnd(node, chars.count);
+                        chars.count = 0;
+                    }
+                } else {
+                    for (let i = 0; i < node.childNodes.length; i++) {
+                        range = createRange(node.childNodes[i], chars, range);
+                        if (chars.count === 0) {
+                            break;
+                        }
                     }
                 }
             }
+
+            return range;
         }
-
-        return range;
-    }
-
-    window.togglePane = togglePane; // Expose togglePane globally
+        window.togglePane = togglePane; // Expose togglePane globally
+    });
     window.togglePanel = togglePanel;
     window.toggleView = toggleView;
     window.togglePopup = togglePopup;
-    window.toggleDropdown = toggleDropdown;
 });
