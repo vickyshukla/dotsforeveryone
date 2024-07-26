@@ -33,16 +33,6 @@
    
 }
 
-  #box {
-
-      transition: 1s all;
-  }
-
-
-  .minimized {
-      transform: translate(-600px, -700px) scale(0) !important;
-  }
-
 .navbar #toolbar {
     overflow-x: scroll;
    
@@ -53,18 +43,29 @@
 }
 
 .navbar img {
-    height: 30px;
+    height: 45px;
     margin: 0 5px;
     cursor: pointer;
     transition: transform 0.3s;
 }
 
+.navbar #shelf{
+    height: 25px;
+}
+
+#box {
+    transition: transform 0.6s ease, opacity 0.6s ease;
+}
+
+
+.minimized {
+    transform: translate(-50%, -100%) scale(0) !important;
+}
 
 
 .moving-to-top {
-    animation: moveToTop 0.6s ease-in-out forwards;
+    animation: moveToTop 0.5s ease-in-out forwards;
 }
-
 
 
 @keyframes moveToTop {
@@ -77,33 +78,28 @@
     }
 }
 
+  .fall-down {
+    animation: fallDown 0.5s ease-in-out forwards;
+  }
+
   @keyframes fallDown {
       0% {
-          transform: translate(-50%, -150%) scale(0.3);
-          opacity: 0;
+          transform: translate(-50%, -100%) scale(0);
       }
 
       100% {
-          transform: translate(-50%, 10%) scale(0) rotate(360deg);
-          opacity: 1;
+          transform: translate(-50%, -50%) scale(1);
       }
   }
-
-  .fall-down {
-      animation: fallDown 1s ease-out;
-  }
-
-
  .minimized {
      display: none;
  }
 
 
-
 /* Desktop apps */
 
 .desktopapps-div {
-    height: calc(100% - 48px);
+    height: calc(100% - 64px);
 }
 
 .app:hover {
