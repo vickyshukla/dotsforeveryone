@@ -1392,22 +1392,31 @@
         });
 
         function animateIcon(icon, originalIcon) {
-            const rect = originalIcon.getBoundingClientRect();
-            const clone = originalIcon.cloneNode(true);
-            clone.style.position = 'fixed';
-            clone.style.left = `${rect.left}px`;
-            clone.style.top = `${rect.top}px`;
-            clone.style.width = `${rect.width}px`;
-            clone.style.height = `${rect.height}px`;
-            clone.classList.add('moving-to-top');
-            document.body.appendChild(clone);
+        const rect = originalIcon.getBoundingClientRect();
+        const toolbarRect = toolbar.getBoundingClientRect();
+        const toolbarCenterX = toolbarRect.left + (toolbarRect.width / 2) - (rect.width / 2);
+        const toolbarCenterY = toolbarRect.top + (toolbarRect.height / 2) - (rect.height / 2);
 
-            clone.addEventListener('animationend', () => {
-                clone.remove();
-                toolbar.appendChild(icon);
-                animateIconToCenter(icon);
-            });
-        }
+        const moveX = toolbarCenterX - rect.left;
+        const moveY = toolbarCenterY - rect.top;
+
+        const clone = originalIcon.cloneNode(true);
+        clone.style.position = 'fixed';
+        clone.style.left = `${rect.left}px`;
+        clone.style.top = `${rect.top}px`;
+        clone.style.width = `${rect.width}px`;
+        clone.style.height = `${rect.height}px`;
+        clone.style.setProperty('--move-x', `${moveX}px`);
+        clone.style.setProperty('--move-y', `${moveY}px`);
+        clone.classList.add('moving-to-top');
+        document.body.appendChild(clone);
+
+        clone.addEventListener('animationend', () => {
+            clone.remove();
+            toolbar.appendChild(icon);
+            animateIconToCenter(icon);
+        });
+    }
 
         function animateIconToCenter(icon) {
             icon.style.opacity = 0;
