@@ -8,297 +8,421 @@
     <link rel="stylesheet" href="styles/root.css">
     <link rel="stylesheet" href="styles/cs.css">
 </head>
+<style>
+
+</style>
 <body class="w-full h-screen dashboard cs">
     <div class="w-full h-full">
 
-      <!-- Right click Menu -->
+     <!-- Right click Menu -->
       <div id="context-menu" class="context-menu hidden bg-c-white">
         <ul>
-          <li class="flex items-center justify-between px-2">
-            <a href="#">Refresh</a>
-            <p class="menu-sidename">F5</p>
-          </li>
-          <li class="border-b-2 px-2"><a href="#">Upload file</a></li>
-          <li class="px-2"><a href="#">New folder</a></li>
-          <li class="flex items-center justify-between px-2">
-            <a href="#">New file</a>
+          <a href="#">
+            <li class="flex items-center justify-between px-4 py-2">
+              <p class="text-c-black text-sm">Refresh</p>
+              <p class="menu-sidename">F5</p>
+            </li>
+          </a>
+          <a href="#">
+             <li class="border-b-2 px-4 py-2">
+              <p class="text-c-black text-sm">Upload file</p>
+            </li>
+          </a>
+          <a href="#">
+            <li class="px-4 py-2">
+              <p class="text-c-black text-sm">New folder</p>
+            </li>
+          </a>
+          <li class="flex items-center justify-between px-4 py-2">
+            <p class="text-c-black text-sm">New file</p>
             <i class="ri-arrow-right-s-line"></i>
             <ul class="submenu newfile-submenu absolute shadow-md rounded-md hidden">
-                <li class="flex items-center px-5">
-                  <img src="/images/txt-file.png" alt="text-file" />
-                  <a href="#">txt file</a>
+              <a href="#">
+                 <li class="flex items-center px-5 py-2 gap-2">
+                  <img class="w-4" src="/images/txt-file.png" alt="text-file" />
+                  <p class="text-c-black text-sm">txt file</p>
                 </li>
-                <li class="flex items-center px-5">
-                  <img src="/images/md-file.png" alt="md-file" />
-                  <a href="#">md file</a>
+              </a>
+               <a href="#">
+                 <li class="flex items-center px-5 py-2 gap-2">
+                  <img class="w-4" src="/images/md-file.png" alt="md-file" />
+                  <p class="text-c-black text-sm">md file</p>
                 </li>
-                <li class="flex items-center px-5 border-b-2">
-                  <img src="/images/html-file.png" alt="html file" />
-                  <a href="#">html file</a>
+              </a>
+               <a href="#">
+                 <li class="flex items-center px-5 py-2 gap-2 border-b-2">
+                  <img class="w-4" src="/images/html-file.png" alt="html-file" />
+                  <p class="text-c-black text-sm">html file</p>
                 </li>
-                <li class="flex items-center px-5">
-                  <img class="w-5 h-5" src="/images/docx.png" alt="word-file" />
-                  <a href="#">Word docx file</a>
+              </a>
+               <a href="#">
+                 <li class="flex items-center px-5 py-2 gap-2">
+                  <img  class="w-4" src="/images/docx.png" alt="word-file" />
+                  <p class="text-c-black text-sm">Word docx file</p>
                 </li>
-                <li class="flex items-center px-5">
-                  <img class="w-5 h-5" src="/images/xlsx.png" alt="excel-file" />
-                  <a href="#">Excel xlsx file</a>
+              </a>
+               <a href="#">
+                 <li class="flex items-center px-5 py-2 gap-2">
+                  <img class="w-4" src="/images/xlsx.png" alt="excel-file" />
+                  <p class="text-c-black text-sm">Excel xlsx file</p>
                 </li>
-                <li class="flex items-center px-5 border-b-2">
-                  <img
-                    class="w-5 h-5"
-                    src="/images/pptx.png"
-                    alt="powerpoint-file"
-                  />
-                  <a href="#">PowerPoint pptx</a>
+              </a>
+               <a href="#">
+                 <li class="flex items-center px-5 py-2 gap-2">
+                  <img class="w-4" src="/images/pptx.png" alt="powerpoint-file" />
+                  <p class="text-c-black text-sm">PowerPoint pptx</p>
                 </li>
-                <li class="flex items-center px-5 border-b-2">
-                  <img
-                    class="w-5 h-5"
-                    src="/images/MinderImg.png"
-                    alt="minder-img"
-                  />
-                  <a href="#">Minder diagram</a>
+              </a>
+               <a href="#">
+                 <li class="flex items-center px-5 py-2 gap-2 border-b-2 border-t-2">
+                  <img class="w-4" src="/images/MinderImg.png" alt="minder-img" />
+                  <p class="text-c-black text-sm">Minder diagram</p>
                 </li>
-                <li class="flex items-center px-5">
-                  <img
-                    class="w-5 h-5"
-                    src="/images/lightapp.png"
-                    alt="lightapp"
-                  />
-                  <a href="#">Light app</a>
+              </a>
+               <a href="#">
+                 <li class="flex items-center px-5 py-2 gap-2">
+                  <img class="w-4" src="/images/lightapp.png" alt="lightapp" />
+                  <p class="text-c-black text-sm">Light app</p>
                 </li>
-                <li class="flex items-center px-5">
-                  <img src="/images/chrome-img.png" alt="Chrome" />
-                  <a href="#">New URL</a>
+              </a>
+               <a href="#">
+                 <li class="flex items-center px-5 py-2 gap-2">
+                  <img class="w-4" src="/images/chrome-img.png" alt="chrome" />
+                  <p class="text-c-black text-sm">New URL</p>
                 </li>
-                <li class="flex items-center px-5">
-                  <img src="/images/sharedfolder-img.png" alt="file-shortcut" />
-                  <a href="#">File shortcut</a>
+              </a>
+               <a href="#">
+                 <li class="flex items-center px-5 py-2 gap-2">
+                  <img class="w-4" src="/images/sharedfolder-img.png" alt="file-shortcut" />
+                  <p class="text-c-black text-sm">File shortcut</p>
                 </li>
+              </a>
             </ul>
           </li>
-          <li class="flex items-center justify-between px-2">
-            <a href="#">Sort by</a>
+          <li class="flex items-center justify-between px-4 py-2">
+            <p class="text-c-black text-sm">Sort by</p>
             <i class="ri-arrow-right-s-line"></i>
-            <ul
-              class="submenu sortby-submenu absolute shadow-md rounded-md hidden"
-            >
-              <li class="flex items-center pl-4 gap-2">
-                <i class="ri-check-line"></i>
-                <a href="#">Name</a>
-              </li>
-              <li class="flex items-center pl-10"><a href="#">Type</a></li>
-              <li class="flex items-center pl-10"><a href="#">Size</a></li>
-              <li class="flex items-center pl-10 border-b-2"><a href="#">Modification</a></li>
-              <li class="flex items-center pl-4 gap-2">
-                 <i class="ri-check-line"></i>
-                <a href="#">Increasing</a>
-              </li>
-              <li class="flex items-center pl-10"><a href="#">Decrement</a></li>
+            <ul class="submenu sortby-submenu absolute shadow-md rounded-md hidden">
+              <a href="#">
+                <li class="flex items-center pl-4 gap-2 py-2">
+                  <i class="ri-check-line"></i>
+                  <p class="text-c-black text-sm">Name</p>
+                </li>
+              </a>
+              <a href="#">
+                <li class="flex items-center pl-10 py-2">
+                  <p class="text-c-black text-sm">Type</p>
+                </li>
+              </a>
+              <a href="#">
+                <li class="flex items-center pl-10 py-2">
+                  <p class="text-c-black text-sm">Size</p>
+                </li>
+              </a>
+              <a href="#">
+                <li class="flex items-center pl-10 py-2 border-b-2">
+                  <p class="text-c-black text-sm">Modification</p>
+                </li>
+              </a>
+              <a href="#">
+                <li class="flex items-center pl-4 gap-2 py-2">
+                  <i class="ri-check-line"></i>
+                  <p class="text-c-black text-sm">Increasing</p>
+                </li>
+              </a>
+              <a href="#">
+                <li class="flex items-center pl-10 py-2">
+                  <p class="text-c-black text-sm">Decrement</p>
+                </li>
+              </a>
             </ul>
           </li>
-          <li class="flex items-center justify-between px-2">
-            <a href="#">Icon size</a>
+          <li class="flex items-center justify-between px-4 py-2">
+            <p class="text-c-black text-sm">Icon size</p>
             <i class="ri-arrow-right-s-line"></i>
             <ul
               class="submenu iconsize-submenu absolute shadow-md rounded-md hidden"
             >
-              <li class="flex items-center px-5">
+            <a href="#">
+               <li class="flex items-center px-5 py-2 gap-2">
                 <i class="ri-function-add-line ri-xs"></i>
-                <a href="#">Tiny</a>
+                <p class="text-c-black text-sm">Tiny</p>
               </li>
-              <li class="flex items-center px-5">
+            </a>
+            <a href="#">
+              <li class="flex items-center px-5 py-2 gap-2">
                 <i class="ri-function-add-line ri-sm"></i>
-                <a href="#">Small icon</a>
+                <p class="text-c-black text-sm">Small icon</p>
               </li>
-              <li class="flex items-center px-5">
+            </a>
+            <a href="#">
+              <li class="flex items-center px-5 py-2 gap-2">
                 <i class="ri-function-add-line ri-1x"></i>
-                <a href="#">Medium icon</a>
+                <p class="text-c-black text-sm">Medium icon</p>
               </li>
-              <li class="flex items-center px-5">
+            </a>
+            <a href="#">
+              <li class="flex items-center px-5 py-2 gap-2">
                 <i class="ri-function-add-line ri-lg"></i>
-                <a href="#">Big icon</a>
+                <p class="text-c-black text-sm">Big icon</p>
               </li>
-              <li class="flex items-center px-5">
+            </a>
+            <a href="#">
+              <li class="flex items-center px-5 py-2 gap-2">
                 <i class="ri-function-add-line ri-xl"></i>
-                <a href="#">Oversized icon</a>
+                <p class="text-c-black text-sm">Oversized icon</p>
               </li>
-            </ul>
+            </a>
+          </ul>
           </li>
-          <li class="px-2"><a href="#">Attribute</a></li>
-          <li class="flex items-center justify-between px-2">
-            <a href="#">More</a>
+          <a href="#">
+            <li class="px-4 py-2">
+              <p class="text-c-black text-sm">Attribute</p>
+            </li>
+          </a>
+          <li class="flex items-center justify-between px-4 py-2">
+            <p class="text-c-black text-sm">More</p>
             <i class="ri-arrow-right-s-line"></i>
-            <ul
-              class="submenu more-submenu absolute shadow-md rounded-md hidden"
-            >
-              <li class="flex items-center border-b-2 px-5">
-                <i class="ri-equalizer-line"></i>
-                <a href="#">Show options</a>
-              </li>
-              <li class="flex items-center px-5">
-                <i class="ri-arrow-go-back-line"></i>
-                <a href="#">Revoke</a>
-              </li>
-              <li class="flex items-center px-5">
-                <i class="ri-arrow-go-forward-line"></i>
-                <a href="#">Anti-revocation</a>
-              </li>
+            <ul class="submenu more-submenu absolute shadow-md rounded-md hidden">
+              <a href="#"> 
+                <li class="flex items-center border-b-2 px-5 py-2 gap-2">
+                  <i class="ri-equalizer-line"></i>
+                  <p class="text-c-black text-sm">Show options</a>
+                </li>
+              </a>
+              <a href="#">
+                <li class="flex items-center px-5 py-2 gap-2">
+                  <i class="ri-arrow-go-back-line"></i>
+                  <p class="text-c-black text-sm">Revoke</a>
+                </li>
+              </a>
+              <a href="#">
+                <li class="flex items-center px-5 py-2 gap-2">
+                  <i class="ri-arrow-go-forward-line"></i>
+                  <p class="text-c-black text-sm">Anti-revocation</a>
+                </li>
+              </a>
             </ul>
           </li>
-          <li class="px-2"><a href="#">Light app</a></li>
-          <li class="flex items-center justify-between px-2">
-            <a href="#">Wallpaper</a>
-            <p class="menu-sidename">Alt+I</p>
-          </li>
-          <li class="px-2"><a href="#">Personal</a></li>
+          <a href="#">
+            <li class="px-4 py-2">
+              <p class="text-c-black text-sm">Light app</p>
+            </li>
+          </a>
+          <a href="#">
+            <li class="flex items-center justify-between px-4 py-2">
+              <p class="text-c-black text-sm">Wallpaper</p>
+              <p class="menu-sidename">Alt+I</p>
+            </li>
+          </a>
+          <a href="#">
+            <li class="px-4 py-2">
+              <p class="text-c-black text-sm">Personal</p>
+            </li>
+          </a>
         </ul>
       </div>
 
         <!-- Apps context-menu -->
       <div id="app-contextmenu" class="context-menu hidden bg-c-white">
         <ul>
-          <li class="flex items-center justify-between px-2">
-            <a href="#">Open</a>
-            <p class="menu-sidename">Enter</p>
-          </li>
-          <li class="border-b-2 flex items-center justify-between px-2">
-            <a href="#">Open with</a>
+          <a href="#">
+            <li class="flex items-center justify-between px-2 py-2">
+              <p class="text-c-black text-sm">Open</p>
+              <p class="menu-sidename">Enter</p>
+            </li>
+          </a>
+          <li class="border-b-2 flex items-center justify-between px-2 py-2">
+            <p class="text-c-black text-sm">Open with</p>
             <i class="ri-arrow-right-s-line"></i>
-            <ul
-              class="submenu open-submenu absolute shadow-md rounded-md hidden"
-            >
-              <li class="pl-5 flex items-center">
-                <i class="ri-settings-3-line"></i>
-                <a href="#">Open with default</a>
-              </li>
-              <li class="pl-5 flex items-center">
-                <img src="/images/online-editior.png" alt="online-editior" />
-                <a href="#">Only office online editior</a>
-              </li>
-              <li class="pl-5 flex items-center">
-                <img src="/images/google-docs.png" alt="google-docs" />
-                <a href="#">Google docs</a>
-              </li>
-              <li class="pl-5 flex items-center">
-                <img src="/images/chrome-img.png" alt="chrome" />
-                <a href="#">Open with browser</a>
-              </li>
+            <ul class="submenu open-submenu absolute shadow-md rounded-md hidden">
+              <a href="#">
+                <li class="px-5 flex items-center py-2 gap-2">
+                  <i class="ri-settings-3-line ri-lg"></i>
+                  <p class="text-c-black text-sm">Open with default</p>
+                </li>
+              </a>
+              <a href="#">
+                <li class="px-5 flex items-center py-2 gap-2">
+                  <img src="/images/online-editior.png" alt="online-editior" />
+                  <p class="text-c-black text-sm">Only office online editior</p>
+                </li>
+              </a>
+              <a href="#">
+                <li class="px-5 flex items-center py-2 gap-2">
+                 <img src="/images/google-docs.png" alt="google-docs" />
+                  <p class="text-c-black text-sm">Google docs</p>
+                </li>
+              </a>
+              <a href="#">
+                <li class="px-5 flex items-center py-2 gap-2">
+                 <img src="/images/chrome-img.png" alt="chrome" />
+                  <p class="text-c-black text-sm">Open with browser</p>
+                </li>
+              </a>
             </ul>
           </li>
-          <li class="flex items-center justify-between px-2">
-            <a href="#">Download</a>
-            <p class="menu-sidename">Shift+Enter</p>
-          </li>
-          <li class="flex items-center justify-between px-2">
-            <a href="#">Link sharing</a>
-          </li>
-          <li class="flex items-center justify-between px-2">
-            <a href="#">Copy</a>
-            <p class="menu-sidename">Ctrl+C</p>
-          </li>
-          <li class="flex items-center justify-between px-2">
-            <a href="#">Cut</a>
-            <p class="menu-sidename">Ctrl+X</p>
-          </li>
-          <li class="flex items-center justify-between px-2">
-            <a href="#">Rename</a>
-            <p class="menu-sidename">F2</p>
-          </li>
-          <li class="flex items-center justify-between px-2">
-            <a href="#">Delete</a>
-            <p class="menu-sidename">Del</p>
-          </li>
-          <li class="flex items-center justify-between px-2">
-            <a href="#">File tag</a>
+          <a href="#">
+            <li class="flex items-center justify-between px-2 py-2">
+              <p class="text-c-black text-sm">Download</p>
+              <p class="menu-sidename">Shift+Enter</p>
+            </li>
+          </a>
+          <a href="#">
+            <li class="flex items-center justify-between px-2 py-2 ">
+              <p class="text-c-black text-sm">Link sharing</p>
+            </li>
+          </a>
+          <a href="#">
+            <li class="flex items-center justify-between px-2 py-2">
+              <p class="text-c-black text-sm">Copy</p>
+              <p class="menu-sidename">Ctrl+C</p>
+            </li>
+          </a>
+          <a href="#">
+            <li class="flex items-center justify-between px-2 py-2">
+              <p class="text-c-black text-sm">Cut</p>
+              <p class="menu-sidename">Ctrl+X</p>
+            </li>
+          </a>
+          <a href="#">
+            <li class="flex items-center justify-between px-2 py-2">
+              <p class="text-c-black text-sm">Rename</p>
+              <p class="menu-sidename">F2</p>
+            </li>
+          </a>
+          <a href="#">
+            <li class="flex items-center justify-between px-2 py-2">
+              <p class="text-c-black text-sm">Delete</p>
+              <p class="menu-sidename">Del</p>
+            </li>
+          </a>
+          
+          <li class="flex items-center justify-between px-2 py-2">
+            <p class="text-c-black text-sm">File tag</p>
             <i class="ri-arrow-right-s-line"></i>
             <ul
               class="submenu filetag-submenu absolute shadow-md rounded-md hidden"
             >
-              <li class="pl-5 flex items-center">
+            <a href="#">
+              <li class="pl-5 flex items-center py-2 gap-2">
                 <div class="w-3 h-3 bg-blue-400 rounded-full"></div>
-                <a href="#">Study</a>
+                <p class="text-c-black text-sm">Study</p>
               </li>
-              <li class="pl-5 flex items-center">
+            </a>
+            <a href="#">
+              <li class="pl-5 flex items-center py-2 gap-2">
                 <div class="w-3 h-3 bg-purple-400 rounded-full"></div>
-                <a href="#">Test data</a>
+                <p class="text-c-black text-sm">Test data</p>
               </li>
-              <li class="pl-5 flex items-center">
+            </a>
+            <a href="#">
+              <li class="pl-5 flex items-center py-2 gap-2">
                 <div class="w-3 h-3 bg-blue-700 rounded-full"></div>
-                <a href="#">Contract</a>
+                <p class="text-c-black text-sm">Contract</p>
               </li>
-              <li class="pl-5 flex items-center">
+            </a>
+            <a href="#">
+              <li class="pl-5 flex items-center py-2 gap-2">
                 <div class="w-3 h-3 bg-red-500 rounded-full"></div>
-                <a href="#">2020</a>
+                <p class="text-c-black text-sm">2020</p>
               </li>
-              <li class="pl-5 flex items-center border-b-2">
+            </a>
+            <a href="#">
+              <li class="pl-5 flex items-center py-2 gap-2">
                 <div class="w-3 h-3 bg-purple-300 rounded-full"></div>
-                <a href="#">Test</a>
+                <p class="text-c-black text-sm">Test</p>
               </li>
-              <li class="pl-5 flex items-center border-b-2">
+            </a>
+            <a href="#">
+              <li class="pl-5 flex items-center py-2 border-b-2 gap-2">
                 <i class="ri-add-circle-line"></i>
-                <a href="#">Add</a>
+                <p class="text-c-black text-sm">Add</p>
               </li>
-              <li class="pl-5 flex items-center">
+            </a>
+            <a href="#">
+              <li class="pl-5 flex items-center py-2 gap-2">
                 <i class="ri-edit-box-line"></i>
-                <a href="#">Tag edit</a>
+                <p class="text-c-black text-sm">Tag edit</p>
               </li>
+            </a>
             </ul>
           </li>
-          <li class="flex items-center justify-between px-2">
-            <a href="#">Attribute</a>
-            <p class="menu-sidename">Alt+I</p>
+          <a href="#">
+            <li class="flex items-center justify-between px-2 py-2">
+              <p class="text-c-black text-sm">Attribute</p>
+              <p class="menu-sidename">Alt+I</p>
           </li>
-          <li class="flex items-center justify-between px-2">
-            <a href="#">More</a>
+          </a>
+         
+          <li class="flex items-center justify-between px-2 py-2">
+            <p class="text-c-black text-sm">More</p>
             <i class="ri-arrow-right-s-line"></i>
             <ul
               class="submenu appmore-submenu absolute shadow-md rounded-md hidden"
             >
-              <li class="pl-5 flex items-center">
-                <i class="ri-star-line"></i>
-                <a href="#">Star</a>
+            <a href="#">
+              <li class="pl-5 flex items-center py-2 gap-2">
+                  <i class="ri-star-line"></i>
+                  <p class="text-c-black text-sm">Star</p>
               </li>
-              <li class="pl-5 flex items-center">
-                <i class="ri-lock-2-line"></i>
-                <a href="#">Edit lock</a>
+            </a>
+            <a href="#">
+              <li class="pl-5 flex items-center py-2 gap-2">
+                  <i class="ri-lock-2-line"></i>
+                  <p class="text-c-black text-sm">Edit lock</p>
               </li>
-              <li class="pl-5 flex items-center">
-                <i class="ri-pushpin-2-line"></i>
-                <a href="#">Move top</a>
+            </a>
+            <a href="#">
+              <li class="pl-5 flex items-center py-2 gap-2">
+                  <i class="ri-pushpin-2-line"></i>
+                  <p class="text-c-black text-sm">Move top</p>
               </li>
-              <li class="pl-5 flex items-center">
-                <i class="ri-file-copy-2-line"></i>
-                <a href="#">Create a copy</a>
+            </a>
+            <a href="#">
+              <li class="pl-5 flex items-center py-2 gap-2">
+                  <i class="ri-file-copy-2-line"></i>
+                  <p class="text-c-black text-sm">Create a copy</p>
               </li>
-              <li class="pl-5 flex items-center">
-                <i class="ri-code-s-slash-line"></i>
-                <a href="#">Embedded file</a>
+            </a>
+            <a href="#">
+              <li class="pl-5 flex items-center py-2 gap-2">
+                  <i class="ri-code-s-slash-line"></i>
+                  <p class="text-c-black text-sm">Embedded file</p>
               </li>
-              <li class="pl-5 flex items-center">
-                <i class="ri-file-shred-line"></i>
-                <a href="#">Create shortcut</a>
+            </a>
+            <a href="#">
+              <li class="pl-5 flex items-center py-2 gap-2">
+                  <i class="ri-file-shred-line"></i>
+                  <p class="text-c-black text-sm">Create shortcut</p>
               </li>
-              <li class="pl-5 flex items-center">
+            </a>
+            
+              <li class="pl-5 flex items-center py-2 gap-2">
                 <i class="ri-file-zip-line"></i>
-                <a href="#">Compress</a>
+                <p class="text-c-black text-sm">Compress</p>
                 <i class="ri-arrow-right-s-line ml-10"></i>
                 <ul
                   class="submenu compress-submenu absolute shadow-md rounded-md hidden"
                 >
-                  <li class="pl-5 flex items-center">
+                <a href="#">
+                  <li class="pl-5 flex items-center py-2 gap-2">
                     <i class="ri-file-zip-line"></i>
-                    <a href="#">ZIP file</a>
+                    <p class="text-c-black text-sm">ZIP file</p>
                   </li>
-                  <li class="pl-5 flex items-center">
+                </a>
+                <a href="#">
+                  <li class="pl-5 flex items-center py-2 gap-2">
                     <i class="ri-file-zip-line"></i>
-                    <a href="#">TAR file</a>
+                    <p class="text-c-black text-sm">TAR file</p>
                   </li>
-                  <li class="pl-5 flex items-center">
+                </a>
+                <a href="#">
+                  <li class="pl-5 flex items-center py-2 gap-2">
                     <i class="ri-file-zip-line"></i>
-                    <a href="#">GZIP file</a>
+                    <p class="text-c-black text-sm">GZIP file</pp>
                   </li>
+                </a>
                 </ul>
               </li>
             </ul>
@@ -307,12 +431,20 @@
       </div>
 
       <!-- Navbar -->
-        <div class="navbar h-12 pr-8 flex items-center justify-end gap-8 ">
-            <i id="search-icon" class="ri-search-line icon-color"></i>
-            <i id="notification-icon" class="ri-notification-3-line icon-color"></i>
-            <i class="ri-wifi-line icon-color"></i>
-            <i class="ri-volume-up-fill icon-color"></i>
-            <i class="ri-battery-low-line icon-color"></i>
+        <div class="navbar h-12 flex items-center w-full">
+          <div class="w-1/4">
+            
+          </div>
+            <div class="flex justify-center w-full relative h-full" id="toolbar">
+              <div class="bg absolute w-full  bottom-0">
+                <img class="w-full" src="images/shelf.png" alt="">
+              </div>
+            </div>
+            <div class="flex items-center gap-8 w-1/4 justify-end pr-5">
+                <i id="search-icon" class="ri-search-line icon-color"></i>
+                <i id="notification-icon" class="ri-notification-3-line icon-color"></i>
+            </div>
+          
         </div>
 
       <!-- Desktop apps   -->
@@ -495,8 +627,262 @@
             />
         </div>
 
-    </div>
+           <!--Iframe popup-->
 
+        
+             <div id="box"
+        class="draggableelement popupiframe fixed inset-0 bg-black-900 bg-opacity-50 flex items-center justify-center rounded-lg hidden"
+      >
+        <div
+          class="draggable bg-opacity-70  shadow-lg w-full h-full relative"
+        >
+          <div class="flex justify-between items-center p-1 pr-2 border-b bg-c-gray-gradient">
+            <span class="text-lg flex font-semibold"
+              ><img
+                class="w-5 h-5 mt-1"
+                src="{{ asset($constants['APPFILEPATH'] . $iframe['appicon']) }}"
+              />
+              <h2 class="text-white ml-2 font-thin">
+                {{ $iframe['appname'] }}
+              </h2>
+            </span>
+            <div class="flex space-x-1">
+              <a href="#" id="minimizebtn" class="minimizeiframe-btn"
+                ><img src="images/minimize.svg"
+              /></a>
+              <a href="#" class="maximizeiframe-btn"
+                ><img src="images/maximize.svg"
+              /></a>
+              <a
+                href="#"
+                class="closeiframe-btn"
+                onclick="togglePane('.popupiframe')"
+                ><img src="images/close.svg"
+              /></a>
+            </div>
+          </div>
+          <!--comment section-->
+          <div
+            class="commentssection absolute bottom-0 top-9 flex h-11/12 flex-col border-r bg-c-lighten-gray hidden md:w-1/3 xl:w-1/5 font-size-14"
+          >
+            <div
+              class="commentresizer absolute top-0 right-0 w-1 h-full"
+              style="cursor: ew-resize; background-color: #d1d5db"
+            ></div>
+            <div
+              class="sticky top-0 z-10 flex items-center justify-between border-b px-4 py-2"
+            >
+              <h3 class="font-medium font-size-16">Comments</h3>
+              <div>
+                <button class="pr-2" onclick="togglePane('.addcomment')">
+                  <i class="ri-chat-new-line ri-lg"></i>
+                </button>
+                <button onclick="togglePane('.commentssection')">
+                  <i class="ri-close-fill ri-lg"></i>
+                </button>
+              </div>
+            </div>
+            <!--chat list-->
+            <div class="flex-1 overflow-auto comment-list">
+              <div class="space-y-4 p-4">
+                <div class="grid gap-2 border-b">
+                  <div class="flex items-start gap-3">
+                    <div class="h-8 w-8 rounded-full">
+                      <img
+                        src="images/profile.png"
+                        alt="Avatar"
+                        class="h-8 w-8 rounded-full"
+                      />
+                    </div>
+                    <div class="flex-1 space-y-1">
+                      <div class="flex items-center justify-between">
+                        <div class="font-medium">John Doe</div>
+                        <div class="text-xs">10-07-2024 10:45</div>
+                      </div>
+                      <p>
+                        This is a great document! I have a few suggestions...
+                      </p>
+                      <div class="flex items-center gap-2">
+                        <button class="p-2">
+                          <i class="ri-reply-line"></i>
+                        </button>
+                        <button class="p-2">
+                          <i class="ri-delete-bin-line"></i>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="ml-11 grid gap-2">
+                    <div class="flex items-start gap-3">
+                      <div class="h-8 w-8 rounded-full">
+                        <img
+                          src="images/profile.png"
+                          alt="Avatar"
+                          class="h-8 w-8 rounded-full"
+                        />
+                      </div>
+                      <div class="flex-1 space-y-1">
+                        <div class="flex items-center justify-between">
+                          <div class="font-medium">Sarah Anderson</div>
+                          <div class="text-xs">1 hour ago</div>
+                        </div>
+                        <p>
+                          I agree, those are great suggestions. Let me add a few
+                          more...
+                        </p>
+                        <div class="flex items-center gap-2">
+                          <button class="p-2">
+                            <i class="ri-reply-line"></i>
+                          </button>
+                          <button class="p-2">
+                            <i class="ri-delete-bin-line"></i>
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="ml-11 grid gap-2">
+                    <div class="flex items-start gap-3">
+                      <div class="h-8 w-8 rounded-full">
+                        <img
+                          src="images/profile.png"
+                          alt="Avatar"
+                          class="h-8 w-8 rounded-full"
+                        />
+                      </div>
+                      <div class="flex-1 space-y-1">
+                        <div class="flex items-center justify-between">
+                          <div class="font-medium">Sarah Anderson</div>
+                          <div class="text-xs">1 hour ago</div>
+                        </div>
+                        <p>
+                          I agree, those are great suggestions. Let me add a few
+                          more...
+                        </p>
+                        <div class="flex items-center gap-2">
+                          <button class="p-2">
+                            <i class="ri-reply-line"></i>
+                          </button>
+                          <button class="p-2">
+                            <i class="ri-delete-bin-line"></i>
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="grid gap-2">
+                  <div class="flex items-start gap-3">
+                    <div class="h-8 w-8 rounded-full">
+                      <img
+                        src="images/profile.png"
+                        alt="Avatar"
+                        class="h-8 w-8 rounded-full"
+                      />
+                    </div>
+                    <div class="flex-1 space-y-1">
+                      <div class="flex items-center justify-between">
+                        <div class="font-medium">John Doe</div>
+                        <div class="text-xs">10-07-2024 10:45</div>
+                      </div>
+                      <p>
+                        This is a great document! I have a few suggestions...
+                      </p>
+                      <div class="flex items-center gap-2">
+                        <button class="p-2">
+                          <i class="ri-reply-line"></i>
+                        </button>
+                        <button class="p-2">
+                          <i class="ri-delete-bin-line"></i>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="ml-11 grid gap-2">
+                    <div class="flex items-start gap-3">
+                      <div class="h-8 w-8 rounded-full">
+                        <img
+                          src="images/profile.png"
+                          alt="Avatar"
+                          class="h-8 w-8 rounded-full"
+                        />
+                      </div>
+                      <div class="flex-1 space-y-1">
+                        <div class="flex items-center justify-between">
+                          <div class="font-medium">Sarah Anderson</div>
+                          <div class="text-xs">1 hour ago</div>
+                        </div>
+                        <p>
+                          I agree, those are great suggestions. Let me add a few
+                          more...
+                        </p>
+                        <div class="flex items-center gap-2">
+                          <button class="p-2">
+                            <i class="ri-reply-line"></i>
+                          </button>
+                          <button class="p-2">
+                            <i class="ri-delete-bin-line"></i>
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!--Add comment-->
+            <div
+              class="addcomment flex items-center gap-x-2 sticky bottom-0 z-10 border-t px-4 py-2 hidden bg-c-lighten-gray relative"
+            >
+              <div class="w-3/4">
+                <div
+                  class="mention-container w-full relative bg-c-white border border-gray-3 p-2 rounded-lg"
+                >
+                  <div
+                    contenteditable="true"
+                    class="mention-textbox w-full h-20 overflow-auto focus:outline-none"
+                    placeholder="Type your message here..."
+                  ></div>
+                  <!-- Mention list -->
+                  <div
+                    class="mention-list absolute bottom-full h-28 overflow-y-auto mb-2 left-0 w-full bg-c-white border border-gray-3 rounded-lg shadow-lg mt-1 hidden"
+                  >
+                    <ul class="list list-none">
+                      <!-- Mention list items will be injected here -->
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <button
+                class="border px-3 hover-bg-c-black hover-text-c-yellow text-sm py-1 rounded border-gray-600 bg-c-yellow"
+              >
+                Post
+              </button>
+            </div>
+          </div>
+          <!--Iframe-->
+          <iframe
+            id="iframe{{ $iframe['filetype'] . $iframefile['filekey'] }}"
+            src="https://desktop2.sizaf.com/filemanager/Desktop"
+            class="w-full h-full frame"
+          ></iframe>
+          <!--chat button-->
+          <div
+            class="absolute bottom-5 left-5 bg-gray-300 rounded-full px-2 py-1 commentbutton"
+          >
+            <button
+              class="comment"
+              data-filekey="{{ $iframe['filetype'] . $iframefile['filekey'] }}"
+              onclick="togglePane('.commentssection')"
+            >
+              <i class="ri-chat-4-line ri-lg"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+     
+    </div>
+    
     <script>
 
       // Dynamically adding Desktop apps
@@ -580,13 +966,14 @@
 
       Desktopapps.forEach((app) => {
         const appDiv = document.createElement("div");
+        appDiv.setAttribute("data-app", app.id);
         appDiv.className = "app w-20 h-32 cursor-pointer relative";
         appDiv.innerHTML = `
                     <div class="app-tools absolute top-0 left-1 flex items-center justify-between gap-8 py-0.5 px-1 invisible">
                         <input type="checkbox" name="option">
                         <i class="ri-arrow-drop-down-fill ri-xl text-black"></i>
                     </div>  
-                    <div class="text-center flex flex-col items-center px-1 pt-5">
+                    <div class="text-center flex flex-col items-center px-1 pt-5" onclick="handleClick()">
                         <img class="w-16" src="${app.image}" alt="${app.name}">
                            <div class="input-wrapper w-16">
                               <input type="text" class="text-center text-white appinputtext" disabled value="${app.name}">
@@ -727,6 +1114,7 @@
             clearTimeout(timeoutId);
             const appPropertiesDiv = appDiv.querySelector(".app-properties");
             appPropertiesDiv.classList.add("invisible");
+          
           });
 
           appDiv.addEventListener("contextmenu", (event) => {
@@ -918,6 +1306,410 @@
         document.onmousemove = null;
       }
     }
+
+    //functionality of hidden container when outside click
+
+     document.addEventListener("DOMContentLoaded", function () {
+  const containers = {
+    notification: document.getElementById("notification"),
+    search: document.getElementById("search"),
+    administrator: document.getElementById("administrator")
+  };
+
+  function closeAllContainers() {
+    for (let key in containers) {
+      containers[key].classList.add("hidden");
+    }
+  }
+
+  document.getElementById("notification-icon").addEventListener("click", function (event) {
+    event.stopPropagation();
+    closeAllContainers();
+    containers.notification.classList.toggle("hidden");
+  });
+
+  document.getElementById("search-icon").addEventListener("click", function (event) {
+    event.stopPropagation();
+    closeAllContainers();
+    containers.search.classList.toggle("hidden");
+  });
+
+  document.getElementById("footer-logo").addEventListener("click", function (event) {
+    event.stopPropagation();
+    closeAllContainers();
+    containers.administrator.classList.toggle("hidden");
+  });
+
+  document.addEventListener("click", function (event) {
+    if (!event.target.closest("#notification") && !event.target.closest("#search") && !event.target.closest("#administrator")) {
+      closeAllContainers();
+    }
+  });
+})
+
+//functionality of animation of apps openining
+
+  document.addEventListener('DOMContentLoaded', () => {
+        const downloadItems = document.querySelectorAll('.app');
+        const toolbar = document.getElementById('toolbar');
+        const box = document.getElementById("box");
+        const minimizebtn = document.getElementById("minimizebtn");
+        let minimized = false;
+
+        downloadItems.forEach(item => {
+            item.addEventListener('click', () => {
+                const appId = item.getAttribute('data-app');
+                const existingIcon = toolbar.querySelector(`img[data-app="${appId}"]`);
+
+                if (!existingIcon) {
+                    const originalIcon = item.querySelector('img');
+                    const img = document.createElement('img');
+                    img.src = originalIcon.src;
+                    img.setAttribute('data-app', appId);
+                    img.classList.add('app-icon');
+                    animateIcon(img, originalIcon);
+                }
+            });
+        });
+
+        toolbar.addEventListener('click', (event) => {
+            const targetIcon = event.target.closest('img[data-app]');
+            if (targetIcon) {
+                if (minimized) {
+                    box.classList.remove('hidden');
+                    box.classList.remove('minimized');
+                    box.classList.add('fall-down');
+                    minimized = false;
+
+                    // Remove the fall-down class after the animation ends to allow reusing the animation
+                    box.addEventListener('animationend', () => {
+                        box.classList.remove('fall-down');
+                    }, { once: true });
+                } else {
+                    animateIconDownward(targetIcon);
+                }
+            }
+        });
+
+        function animateIcon(icon, originalIcon) {
+        const rect = originalIcon.getBoundingClientRect();
+        const toolbarRect = toolbar.getBoundingClientRect();
+        const toolbarCenterX = toolbarRect.left + (toolbarRect.width / 2) - (rect.width / 2);
+        const toolbarCenterY = toolbarRect.top + (toolbarRect.height / 2) - (rect.height / 2);
+
+        const moveX = toolbarCenterX - rect.left;
+        const moveY = toolbarCenterY - rect.top;
+
+        const clone = originalIcon.cloneNode(true);
+        clone.style.position = 'fixed';
+        clone.style.left = `${rect.left}px`;
+        clone.style.top = `${rect.top}px`;
+        clone.style.width = `${rect.width}px`;
+        clone.style.height = `${rect.height}px`;
+        clone.style.setProperty('--move-x', `${moveX}px`);
+        clone.style.setProperty('--move-y', `${moveY}px`);
+        clone.classList.add('moving-to-top');
+        document.body.appendChild(clone);
+
+        clone.addEventListener('animationend', () => {
+            clone.remove();
+            toolbar.appendChild(icon);
+            animateIconToCenter(icon);
+        });
+    }
+
+        function animateIconToCenter(icon) {
+            icon.style.opacity = 0;
+            setTimeout(() => {
+                icon.style.transition = 'opacity 0.5s, transform 0.5s';
+                icon.style.opacity = 1;
+                icon.style.transform = 'translateY(0)';
+            }, 10);
+        }
+
+        function animateIconDownward(icon) {
+            icon.classList.add('moving-to-bottom');
+            icon.addEventListener('animationend', () => {
+                icon.remove();
+            });
+        }
+
+        minimizebtn.addEventListener("click", function () {
+            if (!box.classList.contains("minimized")) {
+                box.classList.add("minimized");
+                minimized = true;
+                setTimeout(() => {
+                    box.classList.add('hidden');
+                }, 500);
+            }
+        });
+
+        const closeiframeBtns = document.querySelectorAll('.closeiframe-btn');
+        closeiframeBtns.forEach(btn => {
+            btn.addEventListener('click', function () {
+                const filekey = this.getAttribute('data-filekey');
+                const toolbarIcon = toolbar.querySelector(`img[data-app="${filekey}"]`);
+                if (toolbarIcon) {
+                    toolbarIcon.remove();
+                }
+            });
+        });
+    });
+
+  /********** iframe js with comment section **********/
+    const comment = document.querySelector(".commentssection");
+    const commentButton = document.querySelector(".commentbutton");
+    const frame = document.querySelector(".frame");
+    const commentResizer = document.querySelector(".commentresizer");
+    const mentionTextbox = document.querySelector(".mention-textbox");
+    const mentionList = document.querySelector(".mention-list");
+    const mentionListItems = document.querySelector(".list");
+    const commentList = document.querySelector(".comment-list");
+    const iframePopup = document.querySelector(".popupiframe iframe");
+    // Toggle visibility of the comments pane
+    function togglePane(id) {
+        let element = document.querySelector(id);
+        if (element) {
+            // Ensure the element exists
+            element.classList.toggle("hidden");
+            if (!element.classList.contains("hidden")) {
+                scrollToBottom();
+            }
+            updateFrameMargin();
+        } else {
+            console.error(`Element with selector ${id} not found.`);
+        }
+    }
+
+    // Scroll to the bottom of the comment list
+    function scrollToBottom() {
+        if (commentList) {
+            commentList.scrollTop = commentList.scrollHeight;
+        }
+    }
+
+    // Update the margin of the frame based on the comments pane width
+    function updateFrameMargin() {
+        if (window.innerWidth > 768 && comment) {
+            // Check if comment is not null
+            if (comment.classList.contains("hidden")) {
+                iframePopup.style.width = "100%";
+                iframePopup.style.marginLeft = "0";
+                commentButton.style.marginLeft = "0";
+            } else {
+                const commentsWidth = comment.offsetWidth;
+                iframePopup.style.width = `calc(100% - ${commentsWidth}px)`;
+                commentButton.style.marginLeft = `${comment.offsetWidth}px`;
+                iframePopup.style.marginLeft = `${comment.offsetWidth}px`;
+            }
+        }
+    }
+
+    let startX, startWidth;
+
+    // Initialize the resizing of the comment section
+    const initCommentResize = (e) => {
+        e.preventDefault();
+        startX = e.clientX;
+        startWidth = comment.offsetWidth;
+
+        window.addEventListener("mousemove", startCommentResizing);
+        window.addEventListener("mouseup", stopcommentResizing);
+    };
+
+    // Start resizing the comment section
+    const startCommentResizing = (e) => {
+        const minWidth = 250;
+        const maxWidth = 500;
+        let newWidth = startWidth + (e.clientX - startX);
+
+        if (newWidth < minWidth) newWidth = minWidth;
+        else if (newWidth > maxWidth) newWidth = maxWidth;
+
+        if (comment) {
+            comment.style.width = `${newWidth}px`;
+            updateFrameMargin();
+        }
+    };
+
+    // Stop resizing the comment section
+    const stopcommentResizing = () => {
+        window.removeEventListener("mousemove", startCommentResizing);
+        window.removeEventListener("mouseup", stopCommentResizing);
+    };
+
+    if (commentResizer) {
+        commentResizer.addEventListener("mousedown", initCommentResize);
+    }
+
+    // Update frame margin initially in case the comments section is not hidden
+    updateFrameMargin();
+
+    const users = ["alice", "bob", "charlie", "dave"]; // Example users for mention list
+    const placeholderText = "Type your comment here..."; // placeholder
+
+    // Initial setup for the mention textbox
+    mentionTextbox.textContent = placeholderText;
+
+    // Event listener to manage placeholder behavior
+    mentionTextbox.addEventListener("focus", function () {
+        if (this.textContent === placeholderText) {
+            this.textContent = "";
+        }
+    });
+
+    mentionTextbox.addEventListener("blur", function () {
+        if (this.textContent === "") {
+            this.textContent = placeholderText;
+        }
+    });
+
+    // Event listeners for handling input and keydown events
+    mentionTextbox.addEventListener("input", handleInput);
+    mentionTextbox.addEventListener("keydown", handleKeyDown);
+
+    // Function to handle input events
+    function handleInput(e) {
+        const text = mentionTextbox.innerText;
+        const cursorPos = getCaretPosition();
+        const textBeforeCursor = text.substring(0, cursorPos);
+        const atIndex = textBeforeCursor.lastIndexOf("@");
+
+        if (text.charAt(cursorPos - 1) === "@") {
+            showMentionList(atIndex);
+        } else {
+            hideMentionList();
+        }
+
+        applyMentionStyles();
+    }
+
+    // Function to handle keydown events
+    function handleKeyDown(e) {
+        if (e.key === "ArrowDown" && !mentionList.classList.contains("hidden")) {
+            mentionList.querySelector("li").focus();
+            e.preventDefault();
+        }
+    }
+
+    // Function to show the mention list
+    function showMentionList(atIndex) {
+        mentionListItems.innerHTML = users
+            .map(
+                (user) =>
+                    `<li tabindex="0" class="p-2 hover-bg-c-yellow cursor-pointer">${user}</li>`
+            )
+            .join("");
+        mentionList.classList.remove("hidden");
+
+        mentionListItems.querySelectorAll("li").forEach((item) => {
+            item.addEventListener("click", () => selectMention(item, atIndex));
+        });
+    }
+
+    // Function to hide the mention list
+    function hideMentionList() {
+        mentionList.classList.add("hidden");
+    }
+
+    // Function to select a mention from the list
+    function selectMention(item, atIndex) {
+        const mentionText = item.innerText; // Get the mention text
+        const text = mentionTextbox.innerText;
+        const cursorPos = getCaretPosition();
+        const textBeforeAt = text.substring(0, atIndex);
+        const textAfterAt = text.substring(cursorPos);
+
+        mentionTextbox.innerText =
+            textBeforeAt + "@" + mentionText + "&nbsp;" + textAfterAt; // Update text with mention
+        setCaretPosition(atIndex + mentionText.length + 2); // Adjust caret position
+
+        hideMentionList();
+        applyMentionStyles();
+    }
+
+    // Function to apply styles to mentions
+    function applyMentionStyles() {
+        const text = mentionTextbox.innerText;
+        const html = text.replace(
+            /(@\w+)/g,
+            '<span class="text-c-sky">$1</span>'
+        );
+        mentionTextbox.innerHTML = html;
+        setCaretToEnd();
+    }
+
+    // Function to set the caret to the end
+    function setCaretToEnd() {
+        const range = document.createRange();
+        const sel = window.getSelection();
+        range.selectNodeContents(mentionTextbox);
+        range.collapse(false);
+        sel.removeAllRanges();
+        sel.addRange(range);
+    }
+
+    // Function to get the caret position
+    function getCaretPosition() {
+        const selection = window.getSelection();
+        const range = selection.getRangeAt(0);
+        const preCaretRange = range.cloneRange();
+        preCaretRange.selectNodeContents(mentionTextbox);
+        preCaretRange.setEnd(range.endContainer, range.endOffset);
+        return preCaretRange.toString().length;
+    }
+
+    // Function to set the caret position
+    function setCaretPosition(chars) {
+        if (chars >= 0) {
+            const selection = window.getSelection();
+            const range = createRange(mentionTextbox, { count: chars });
+            if (range) {
+                range.collapse(false);
+                selection.removeAllRanges();
+                selection.addRange(range);
+            }
+        }
+    }
+
+    // Function to create a range for caret position
+    function createRange(node, chars, range) {
+        if (!range) {
+            range = document.createRange();
+            range.selectNode(node);
+            range.setStart(node, 0);
+        }
+
+        if (chars.count === 0) {
+            range.setEnd(node, chars.count);
+        } else if (node && chars.count > 0) {
+            if (node.nodeType === Node.TEXT_NODE) {
+                if (node.textContent.length < chars.count) {
+                    chars.count -= node.textContent.length;
+                } else {
+                    range.setEnd(node, chars.count);
+                    chars.count = 0;
+                }
+            } else {
+                for (let i = 0; i < node.childNodes.length; i++) {
+                    range = createRange(node.childNodes[i], chars, range);
+                    if (chars.count === 0) {
+                        break;
+                    }
+                }
+            }
+        }
+
+        return range;
+    }
+
+    function handleClick(){
+      setTimeout(()=>{
+        togglePane('.popupiframe')
+      },1000)
+    }
+
     </script>
+   
 </body>
 </html>

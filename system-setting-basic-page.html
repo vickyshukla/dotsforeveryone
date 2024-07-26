@@ -15,6 +15,20 @@
 
 <body class="h-screen w-full flex flex-col nx overflow-hidden cs">
     <main class="flex w-full h-full flex">
+        <!-- Taskbar -->
+        <div class="taskbar-slide h-14 flex items-center w-full absolute">
+            <div class="w-1/4">
+                
+            </div>
+            <div class="flex justify-center w-full" id="toolbar">
+                
+            </div>
+            <div class="flex items-center gap-8 w-1/4 justify-end pr-5">
+                    <i id="search-icon" class="ri-search-line"></i>
+                    <i id="notification-icon" class="ri-notification-3-line"></i>
+            </div>
+        </div>
+
         <!-- sidebar -->
       <aside class="h-full relative">
         <input type="checkbox" class="hidden" id="sidebar-toggle" />
@@ -27,9 +41,11 @@
         <div class="h-full sidebar">
           <div class="sidebar-container">
             <div class="p-6">
-              <img class="w-24" src="/images/logo.png" alt="Dots Logo" />
+              <a href="index.html">
+                <img class="w-20" src="/images/logo.png" alt="Dots Logo" />
+              </a>
             </div>
-            <div class="md:pt-4">
+            <div class="sidebar-content">
               <ul class="space-y-1">
                 <li>
                   <a
@@ -338,7 +354,7 @@
             <div class="flex w-full h-full flex-col content">
 
                 <!-- Nav bar -->
-                <div class="px-5 py-6">
+                <div class="px-2 lg:px-5 py-6">
                     <div class="flex items-center gap-4">
                         <i class="ri-settings-3-fill ri-xl"></i>
                         <span class="text-lg text-color-nav-black">System settings</span>
@@ -356,7 +372,7 @@
                 </div>
 
                 <!-- tabs and more -->
-                <div class="p-6">
+                <div class="p-6 scroll overflow-y-scroll">
                     <div class="flex pb-4 gap-4 overflow-x-auto">
                         <button type="button" onclick="showTab(this)" class="tab-control styled text-base px-1 pb-0.5 active"
                             data-tab="ss-basics" data-control="basic">Basic</button>
@@ -1405,6 +1421,7 @@
 
         </div>
     </main>
+    <script src="script/taskbar.js"></script>
     <script defer src="script/sidebar.js"></script>
     <script defer>
 

@@ -10,8 +10,23 @@
 </head>
 <body class="w-full h-screen cs backup">
     <main class="w-full h-full flex">
+
+      <!-- Taskbar -->
+        <div class="taskbar-slide h-14 flex items-center w-full absolute">
+            <div class="w-1/4">
+                
+            </div>
+            <div class="flex justify-center w-full" id="toolbar">
+                
+            </div>
+            <div class="flex items-center gap-8 w-1/4 justify-end pr-5">
+                    <i id="search-icon" class="ri-search-line"></i>
+                    <i id="notification-icon" class="ri-notification-3-line"></i>
+            </div>
+        </div>
+
           <!-- Sidebar -->
-       <aside class="h-full relative">
+        <aside class="h-full relative">
         <input type="checkbox" class="hidden" id="sidebar-toggle" />
         <label
           for="sidebar-toggle"
@@ -22,9 +37,11 @@
         <div class="h-full sidebar">
           <div class="sidebar-container">
             <div class="p-6">
-              <img class="w-24" src="/images/logo.png" alt="Dots Logo" />
+              <a href="index.html">
+                <img class="w-20" src="/images/logo.png" alt="Dots Logo" />
+              </a>
             </div>
-            <div class="md:pt-4">
+            <div class="sidebar-content">
               <ul class="space-y-1">
                 <li>
                   <a
@@ -348,7 +365,7 @@
                     </div>
                 </div>
 
-                <div class="p-4 h-full flex flex-col">
+                <div class="p-4 h-full flex flex-col scroll overflow-y-scroll">
                     <!-- info cards -->
                     <div class="flex flex-col sm:flex-row gap-4">
                         <div class="w-full bg-c-medium-white border border-c-lightgray h-full sm:w-1/2 xl:w-3/5 rounded p-4">
@@ -745,6 +762,7 @@
 
 
       <script defer src="script/sidebar.js"></script>
+      <script src="script/taskbar.js"></script>
       <script>
     // DeletetModal Open Functionality
       const deleteModal = document.getElementById('delete-modal');

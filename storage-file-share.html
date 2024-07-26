@@ -10,8 +10,23 @@
 
   <body class="h-screen w-full flex flex-col fm">
     <main class="flex w-full h-full flex">
+
+      <!-- Taskbar -->
+        <div class="taskbar-slide h-14 flex items-center w-full absolute">
+            <div class="w-1/4">
+                
+            </div>
+            <div class="flex justify-center w-full" id="toolbar">
+                
+            </div>
+            <div class="flex items-center gap-8 w-1/4 justify-end pr-5">
+                    <i id="search-icon" class="ri-search-line"></i>
+                    <i id="notification-icon" class="ri-notification-3-line"></i>
+            </div>
+        </div>
+
       <!-- Sidebar -->
-        <aside class="h-full relative">
+         <aside class="h-full relative">
         <input type="checkbox" class="hidden" id="sidebar-toggle" />
         <label
           for="sidebar-toggle"
@@ -22,9 +37,11 @@
         <div class="h-full sidebar">
           <div class="sidebar-container">
             <div class="p-6">
-              <img class="w-24" src="/images/logo.png" alt="Dots Logo" />
+              <a href="index.html">
+                <img class="w-20" src="/images/logo.png" alt="Dots Logo" />
+              </a>
             </div>
-            <div class="md:pt-4">
+            <div class="sidebar-content">
               <ul class="space-y-1">
                 <li>
                   <a
@@ -411,7 +428,7 @@
           </div>
 
           <!--Main content -->
-          <div class="relative h-full overflow-y-auto">
+          <div class="relative h-full scroll overflow-y-scroll">
             <!-- Share and reporting tab -->
             <div class="max-w-full mx-auto rounded-lg">
               <!-- Tabs Navigation -->
@@ -615,6 +632,7 @@
       </div>
     </main>
     <script src="script/sidebar.js"></script>
+    <script src="script/taskbar.js"></script>
     <script>
       // toggle between tabs
       document
