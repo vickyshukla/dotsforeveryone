@@ -8,11 +8,25 @@
     <link rel="stylesheet" href="styles/root.css">
     <link rel="stylesheet" href="styles/cs.css">
 </head>
-<style>
 
-</style>
-<body class="w-full h-screen dashboard cs">
-    <div class="w-full h-full">
+<body class="w-full h-screen">
+    <!-- Taskbar -->
+        <div class="navbar h-16 flex items-center w-full absolute top-0 z-10">
+        
+            <div class="flex justify-center ml-10 w-full relative h-full" id="toolbar">
+              <div class="bg absolute w-full  bottom-0">
+                <img id="shelf" class="w-full" src="images/shelf.png" alt="">
+              </div>
+            </div>
+            <div class="flex items-center gap-8 w-48 justify-end pr-5">
+                <i id="search-icon" class="ri-search-line icon-color"></i>
+                <i id="notification-icon" class="ri-notification-3-line icon-color"></i>
+            </div>
+          
+        </div>
+  
+
+    <div class="w-full h-full dashboard cs pt-20">
 
      <!-- Right click Menu -->
       <div id="context-menu" class="context-menu hidden bg-c-white">
@@ -430,20 +444,7 @@
         </ul>
       </div>
 
-      <!-- Navbar -->
-        <div class="navbar h-16 flex items-center w-full">
-        
-            <div class="flex justify-center ml-10 w-full relative h-full" id="toolbar">
-              <div class="bg absolute w-full  bottom-0">
-                <img id="shelf" class="w-full" src="images/shelf.png" alt="">
-              </div>
-            </div>
-            <div class="flex items-center gap-8 w-48 justify-end pr-5">
-                <i id="search-icon" class="ri-search-line icon-color"></i>
-                <i id="notification-icon" class="ri-notification-3-line icon-color"></i>
-            </div>
-          
-        </div>
+    
 
       <!-- Desktop apps   -->
         <div class="desktopapps-div w-full overflow-x-auto">
@@ -625,7 +626,11 @@
             />
         </div>
 
-           <!--Iframe popup-->
+     
+     
+    </div>
+
+          <!--Iframe popup-->
 
         
              <div id="box" data-app-id="2"
@@ -878,9 +883,9 @@
           </div>
         </div>
       </div>
-     
-    </div>
     
+    <script src="script/animation.js"></script>
+    <script src="script/taskbar.js"></script>
     <script>
 
       // Dynamically adding Desktop apps
@@ -1594,122 +1599,7 @@
     }
 
 
-    //functionality of animation of apps openining
-
-function handleClick() {
-  setTimeout(() => {
-    const iframe = document.querySelector('#box');
-    togglePane('.popupiframe');
-     iframe.classList.add('show');
-  }, 1000);
-}
-
-  document.addEventListener('DOMContentLoaded', () => {
-    const downloadItems = document.querySelectorAll('.app');
-    const toolbar = document.getElementById('toolbar');
-    const box = document.getElementById("box");
-    const minimizebtn = document.getElementById("minimizebtn");
-    let minimized = false;
-
-    downloadItems.forEach(item => {
-        item.addEventListener('click', () => {
-            const appId = item.getAttribute('data-app-id');
-            console.log(appId);
-            const existingIcon = toolbar.querySelector(`img[data-app-id="${appId}"]`);
-
-            if (!existingIcon) {
-                const originalIcon = item.querySelector('img');
-                const img = document.createElement('img');
-                img.src = originalIcon.src;
-                img.setAttribute('data-app-id', appId);
-                img.classList.add('app-icon');
-                animateIcon(img, originalIcon);
-            }
-        });
-    });
-
-    toolbar.addEventListener('click', (event) => {
-        const targetIcon = event.target.closest('img[data-app-id]');
-        if (targetIcon) {
-            if (minimized) {
-                box.classList.remove('hidden');
-                box.classList.remove('minimized');
-                box.classList.add('fall-down');
-                minimized = false;
-
-                box.addEventListener('animationend', () => {
-                    box.classList.remove('fall-down');
-                }, { once: true });
-            } else {
-                animateIconDownward(targetIcon);
-            }
-        }
-    });
-
-    function animateIcon(icon, originalIcon) {
-        const rect = originalIcon.getBoundingClientRect();
-        const toolbarRect = toolbar.getBoundingClientRect();
-        const toolbarCenterX = toolbarRect.left + (toolbarRect.width / 2) - (rect.width / 2);
-        const toolbarCenterY = toolbarRect.top + (toolbarRect.height / 2) - (rect.height / 2);
-
-        const moveX = toolbarCenterX - rect.left;
-        const moveY = toolbarCenterY - rect.top;
-
-        const clone = originalIcon.cloneNode(true);
-        clone.style.position = 'fixed';
-        clone.style.left = `${rect.left}px`;
-        clone.style.top = `${rect.top}px`;
-        clone.style.width = `${rect.width}px`;
-        clone.style.height = `${rect.height}px`;
-        clone.style.setProperty('--move-x', `${moveX}px`);
-        clone.style.setProperty('--move-y', `${moveY}px`);
-        clone.classList.add('moving-to-top');
-        document.body.appendChild(clone);
-
-        clone.addEventListener('animationend', () => {
-            clone.remove();
-            toolbar.appendChild(icon);
-            animateIconToCenter(icon);
-        });
-    }
-
    
-    function animateIconToCenter(icon) {
-        icon.style.opacity = 0;
-        setTimeout(() => {
-            icon.style.transition = 'opacity 0.5s, transform 0.5s';
-            icon.style.opacity = 1;
-            icon.style.transform = 'translateY(0)';
-        }, 10);
-    }
-
-
-    minimizebtn.addEventListener("click", function () {
-        const appId = box.getAttribute('data-app-id');
-        const targetIcon = toolbar.querySelector(`img[data-app-id="${appId}"]`);
-        
-        if (targetIcon) {
-            if (!box.classList.contains("minimized")) {
-                box.classList.add("minimized");
-                minimized = true;
-                setTimeout(() => {
-                    box.classList.add('hidden');
-                }, 600); 
-            }
-        }
-    });
-
-    const closeiframeBtns = document.querySelectorAll('.closeiframe-btn');
-    closeiframeBtns.forEach(btn => {
-        btn.addEventListener('click', function () {
-            const filekey = this.getAttribute('data-app-id');
-            const toolbarIcon = toolbar.querySelector(`img[data-app-id="${filekey}"]`);
-            if (toolbarIcon) {
-                toolbarIcon.remove();
-            }
-        });
-    });
-});
 
     </script>
    

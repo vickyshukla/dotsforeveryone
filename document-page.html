@@ -6,6 +6,7 @@
     <title>Document</title>
     <link rel="stylesheet" href="styles/root.css">
     <link rel="stylesheet" href="styles/cs.css">
+    <link rel="stylesheet" href="styles/custom.css">
     <style>
     @media (min-width: 1024px) {
             .slide {
@@ -21,6 +22,20 @@
     </style>
 </head>
 <body class="w-full h-screen">
+      <!-- Taskbar -->
+        <div class="taskbar-slide h-16 flex items-center w-full absolute">
+        
+            <div class="flex justify-center ml-10 w-full relative h-full" id="toolbar">
+              <div class="bg absolute w-full  bottom-0">
+                <img id="shelf" class="w-full" src="images/shelf.png" alt="">
+              </div>
+            </div>
+            <div class="flex items-center gap-8 w-48 justify-end pr-5">
+                <i id="search-icon" class="ri-search-line "></i>
+                <i id="notification-icon" class="ri-notification-3-line "></i>
+            </div>
+          
+        </div>
     <main class="w-full h-full bg-c-gray-5">
         <nav class="bg-c-white h-10 flex items-center justify-end">
             <div class="flex items-center justify-center cursor-pointer">
@@ -72,6 +87,7 @@
         </footer>
     </main>
 
+    <script src="script/taskbar.js"></script>
     <script>
         const slider = document.querySelector(".slide");
         const openSlideIcon = document.querySelector(".open");

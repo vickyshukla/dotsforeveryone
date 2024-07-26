@@ -5,28 +5,30 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="styles/root.css">
+    <link rel="stylesheet" href="styles/custom.css">
     <link rel="stylesheet" href="styles/nx.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <title>Overview</title>
 </head>
 
-<body class="h-screen w-full flex flex-col nx">
-       
-    <main class="flex w-full h-full flex">
-      <!-- Taskbar -->
-    <div class="taskbar-slide h-14 flex items-center w-full absolute">
-          <div class="w-1/4">
-            
-          </div>
-            <div class="flex justify-center w-full" id="toolbar">
-              
+<body class="h-screen w-full">
+   <!-- Taskbar -->
+        <div class="taskbar-slide h-16 flex items-center w-full absolute">
+        
+            <div class="flex justify-center ml-10 w-full relative h-full" id="toolbar">
+              <div class="bg absolute w-full  bottom-0">
+                <img id="shelf" class="w-full" src="images/shelf.png" alt="">
+              </div>
             </div>
-            <div class="flex items-center gap-8 w-1/4 justify-end pr-5">
-                <i id="search-icon" class="ri-search-line icon-color"></i>
-                <i id="notification-icon" class="ri-notification-3-line icon-color"></i>
+            <div class="flex items-center gap-8 w-48 justify-end pr-5">
+                <i id="search-icon" class="ri-search-line "></i>
+                <i id="notification-icon" class="ri-notification-3-line "></i>
             </div>
           
-    </div>
+        </div>
+       
+    <main class="flex w-full h-full flex nx">
+
     
         <!-- sidebar -->
       <aside class="h-full relative">
@@ -723,6 +725,7 @@
         </div>
     </div>
 
+    <script src="script/animation.js"></script>
     <script defer src="script/sidebar.js"></script>
     <script defer src="script/tabs.js"></script>
 

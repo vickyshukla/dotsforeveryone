@@ -6,24 +6,26 @@
     <title>Storage File Share</title>
     <link rel="stylesheet" href="styles/root.css" />
     <link rel="stylesheet" href="styles/as.css" />
+    <link rel="stylesheet" href="styles/custom.css">
   </head>
 
-  <body class="h-screen w-full flex flex-col fm">
-    <main class="flex w-full h-full flex">
-
-      <!-- Taskbar -->
-        <div class="taskbar-slide h-14 flex items-center w-full absolute">
-            <div class="w-1/4">
-                
+  <body class="h-screen w-full">
+       <!-- Taskbar -->
+        <div class="taskbar-slide h-16 flex items-center w-full absolute">
+        
+            <div class="flex justify-center ml-10 w-full relative h-full" id="toolbar">
+              <div class="bg absolute w-full  bottom-0">
+                <img id="shelf" class="w-full" src="images/shelf.png" alt="">
+              </div>
             </div>
-            <div class="flex justify-center w-full" id="toolbar">
-                
+            <div class="flex items-center gap-8 w-48 justify-end pr-5">
+                <i id="search-icon" class="ri-search-line "></i>
+                <i id="notification-icon" class="ri-notification-3-line "></i>
             </div>
-            <div class="flex items-center gap-8 w-1/4 justify-end pr-5">
-                    <i id="search-icon" class="ri-search-line"></i>
-                    <i id="notification-icon" class="ri-notification-3-line"></i>
-            </div>
+          
         </div>
+    <main class="flex w-full h-full flex fm">
+
 
       <!-- Sidebar -->
          <aside class="h-full relative">
