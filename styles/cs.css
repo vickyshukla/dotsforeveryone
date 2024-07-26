@@ -619,7 +619,7 @@ body.cs {
   position: fixed;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -100%) scale(0);
   background-color: white;
   border: 1px solid #ccc;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
@@ -629,7 +629,17 @@ body.cs {
   height: 80%;
   /* Fixed height */
   overflow: auto;
+  transition: transform 0.5s ease-in-out;
+  transform-origin: center;
   /* Enable scrolling if content overflows */
+}
+
+.cs .popupiframe.show {
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.cs .popupiframe.hidden {
+  display: none;
 }
 
 .cs .popupiframe-content {
