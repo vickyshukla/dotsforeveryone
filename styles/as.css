@@ -306,7 +306,6 @@ body.fm {
 
 .fm div[role="dialog"] .modal-content {
     max-height: 90vh;
-    overflow: scroll;
 }
 
 .fm div[role="dialog"] .modal-content::-webkit-scrollbar,
