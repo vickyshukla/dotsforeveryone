@@ -306,7 +306,6 @@ body.fm {
 
 .fm div[role="dialog"] .modal-content {
     max-height: 90vh;
-    overflow: scroll;
 }
 
 .fm div[role="dialog"] .modal-content::-webkit-scrollbar,
@@ -726,20 +725,4 @@ body.fm {
     /* IE and Edge */
     scrollbar-width: none;
     /* Firefox */
-}
-
-.fm .taskbar-slide {
-    transition: top 0.4s ease-in-out;
-    top: -100%;
-    background: #fdfdfd3d;
-    backdrop-filter: blur(2px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    border-right-color: rgba(255, 255, 255, 0.1);
-    border-bottom-color: rgba(255, 255, 255, 0.1);
-    box-shadow: 0 20px 30px rgba(0, 0, 0, 0.1);
-    z-index: 10;
-}
-
-.fm .taskbar-slide.show {
-    top: 0;
 }

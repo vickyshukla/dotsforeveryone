@@ -95,9 +95,10 @@ body.nx {
 }
 
 .nx .taskbar {
-  background: url('/images/taskbar-bg.svg');
-  background-size: cover;
-  background-position: center;
+  background: radial-gradient(circle,
+        rgba(255, 228, 63, 1) 0%,
+        rgba(253, 224, 50, 1) 35%,
+        rgba(246, 190, 49, 1) 80%);
 }
 
 .nx footer {

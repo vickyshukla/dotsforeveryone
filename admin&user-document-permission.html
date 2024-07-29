@@ -693,9 +693,8 @@
           </div>
         </div>
       </div>
-    </main>
 
-    <!-- add or edit modal -->
+       <!-- add or edit modal -->
     <div
       id="modal"
       role="dialog"
@@ -717,7 +716,7 @@
             <i class="ri-close-circle-fill text-black ri-lg"></i>
           </button>
         </div>
-        <div class="p-5">
+        <div class="p-5 overflow-y-auto scroll" style="max-height: calc(100vh - 8rem)">
           <form class="space-y-4 text-sm">
             <div class="flex flex-wrap w-full gap-y-4 items-center">
               <label for="title" class="title font-bold text-c-black"
@@ -918,6 +917,9 @@
         </div>
       </div>
     </div>
+    </main>
+
+   
 
     <script defer src="script/sidebar.js"></script>
     <script src="script/taskbar.js"></script>
