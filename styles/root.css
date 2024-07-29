@@ -208,3 +208,16 @@ body{
     display: block;
 }
 
+
+.scroll::-webkit-scrollbar {
+    width: 4px;
+}
+
+.scroll::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.scroll::-webkit-scrollbar-thumb {
+    background-color: rgba(128, 128, 128, 0.54);
+    border-radius: 10px;
+}
