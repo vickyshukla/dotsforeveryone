@@ -82,7 +82,7 @@
       class="fixed hidden inset-0 flex items-center justify-center bg-black bg-opacity-50 z-10"
     >
       <div
-        class="bg-white rounded-2xl overflow-hidden shadow-lg max-w-2xl w-full bg-c-lighten-gray modal-content"
+        class="bg-white rounded-2xl overflow-hidden shadow-lg max-w-md w-full bg-c-lighten-gray modal-content"
       >
         <!-- Sticky header -->
         <div
@@ -102,9 +102,9 @@
         <div class="overflow-y-auto max-h-full scroll bg-white">
           <div class="container-fluid">
             <div
-              class="col-11 col-sm-10 col-md-10 col-lg-6 col-xl-5 text-center p-0 mt-3 mb-2"
+              class="col-11 col-sm-10 col-md-10 col-lg-6 col-xl-5 text-center p-0 mt-3"
             >
-              <div class="card mb-3">
+              <div class="card">
                 <form id="msform">
                   <!-- progressbar -->
                   <ul id="progressbar">
@@ -118,7 +118,7 @@
                   <fieldset>
                     <div class="form-card">
                       <div
-                        class="w-1/2 relative flex items-end mx-auto space-x-2"
+                        class="w-7/12 relative flex items-end mx-5 space-x-4"
                       >
                         <!-- add autoplay muted playsinline for iOS -->
                         <video
@@ -130,12 +130,12 @@
                         >
                           Not available
                         </video>
-                        <canvas id="canvas" style="display: none"></canvas>
+                        <canvas id="canvas" class="hidden"></canvas>
                         <img
                           id="photo"
                           alt="The screen capture will appear in this box."
                           style="display: none"
-                          class="w-5/12 rounded-lg"
+                          class="w-6/12 rounded-lg"
                         />
                         <div
                           class="panel absolute flex bottom-0 top-0 left-0 right-0 my-auto space-x-4 p-4 items-end justify-center"
@@ -166,7 +166,7 @@
                     <input
                       type="button"
                       name="next"
-                      class="next bg-c-black hover-bg-c-black text-white rounded-full w-3/12 md:w-2/12 py-2 text-sm m-3 cursor-pointer"
+                      class="next bg-c-black hover-bg-c-black text-white rounded-full w-3/12 py-2 text-sm mt-5 cursor-pointer"
                       value="Next"
                     />
                   </fieldset>
@@ -187,13 +187,13 @@
                     <input
                       type="button"
                       name="previous"
-                      class="previous bg-c-black hover-bg-c-black text-white rounded-full w-3/12 md:w-2/12 py-2 text-sm m-3 cursor-pointer"
+                      class="previous bg-c-black hover-bg-c-black text-white rounded-full w-3/12 py-2 text-sm mt-5 mr-5 cursor-pointer"
                       value="Previous"
                     />
                     <input
                       type="button"
                       name="next"
-                      class="next bg-c-black hover-bg-c-black text-white rounded-full w-3/12 md:w-2/12 py-2 text-sm m-3 cursor-pointer"
+                      class="next bg-c-black hover-bg-c-black text-white rounded-full w-3/12 py-2 text-sm mt-5 cursor-pointer"
                       value="Submit"
                     />
                   </fieldset>
