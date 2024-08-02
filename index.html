@@ -1100,6 +1100,14 @@
               submenu.style.display = "none";
             }
           });
+
+            item.addEventListener("click", function () {
+            appContextMenu.classList.add("hidden");
+            dashboardContextMenu.classList.add("hidden");
+            appContextMenu.style.display = "none";
+            dashboardContextMenu.style.display = "none";
+        });
+        
         });
 
         // Right-click on App Div to show App Context Menu
