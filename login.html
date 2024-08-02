@@ -5,13 +5,15 @@
     <meta name="viewport" content="initial-scale=1, width=device-width" />
     <link rel="stylesheet" href="styles/root.css" />
     <link rel="stylesheet" href="styles/custom.css" />
-    <link rel="stylesheet" href="styles/cs.css">
+    <link rel="stylesheet" href="styles/cs.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
   </head>
   <body class="login">
-    <div class="login-screen w-full h-screen flex items-center justify-center gap-2 relative cs">
+    <div
+      class="login-screen w-full h-screen flex items-center justify-center gap-2 relative cs"
+    >
       <div class="left-background w-1/2 h-full bg-no-repeat bg-cover bg-center">
-        <div class="blur-container">
-        </div>
+        <div class="blur-container"></div>
       </div>
       <div
         class="right-background w-1/2 h-full bg-no-repeat bg-cover bg-center"
@@ -36,23 +38,466 @@
             <div class="right-container w-3/5 px-5 py-0">
               <h1 class="mb-8 text-2xl font-normal">Welcome back...</h1>
               <form>
-                <input class="userinput" type="text" placeholder="Username" required/>
-                <input class="userinput" type="password" placeholder="Password" required />
-                <div class="login-remember px-2 flex items-center justify-between w-72">
+                <input
+                  class="userinput"
+                  type="text"
+                  placeholder="Username"
+                  required
+                />
+                <input
+                  class="userinput"
+                  type="password"
+                  placeholder="Password"
+                  required
+                />
+                <div
+                  class="login-remember px-2 flex items-center justify-between w-72"
+                >
                   <div class="flex items-center gap-2">
-                    <input type="checkbox" class="border border-yellow-300"/>
+                    <input type="checkbox" class="border border-yellow-300" />
                     <p class="text-xs font-normal">Remember me</p>
                   </div>
                   <div class="flex items-center">
-                   <a href="forget-password.html" class="hover:text-blue-500 text-xs font-normal text-c-black">Forget Password ?</a>
+                    <a
+                      href="forget-password.html"
+                      class="hover:text-blue-500 text-xs font-normal text-c-black"
+                      >Forget Password ?</a
+                    >
                   </div>
                 </div>
                 <button class="userinput" id="login-btn">Login</button>
               </form>
+              <button class="userinput" onclick="showModal(event)">
+                Login with voice or camera
+              </button>
             </div>
           </div>
         </div>
       </div>
     </div>
+    <!-- voice and camera popup -->
+    <div
+      id="modal"
+      role="dialog"
+      class="fixed hidden inset-0 flex items-center justify-center bg-black bg-opacity-50 z-10"
+    >
+      <div
+        class="bg-white rounded-2xl overflow-hidden shadow-lg max-w-md w-full bg-c-lighten-gray modal-content"
+      >
+        <!-- Sticky header -->
+        <div
+          class="sticky top-0 flex py-2 px-5 justify-between items-center border-b border-gray-3 bg-white z-10 text-c-black"
+        >
+          <div class="text-lg font-normal">Login</div>
+          <button
+            type="button"
+            id="closeModalButton"
+            class="py-1.5 rounded-md"
+            onclick="event.stopPropagation();hideModal(event);"
+          >
+            <i class="ri-close-circle-fill text-black ri-lg"></i>
+          </button>
+        </div>
+        <!-- Scrollable content -->
+        <div class="overflow-y-auto max-h-full scroll bg-white">
+          <div class="container-fluid">
+            <div
+              class="col-11 col-sm-10 col-md-10 col-lg-6 col-xl-5 text-center p-0 mt-3"
+            >
+              <div class="card">
+                <form id="msform">
+                  <!-- progressbar -->
+                  <ul id="progressbar">
+                    <li class="active" id="camera">
+                      <strong>Camera</strong>
+                    </li>
+                    <li id="voice"><strong>Voice</strong></li>
+                    <li id="confirm"><strong>Finish</strong></li>
+                  </ul>
+                  <!-- fieldsets -->
+                  <fieldset>
+                    <div class="form-card">
+                      <div
+                        class="w-7/12 relative flex items-end mx-5 space-x-4"
+                      >
+                        <!-- add autoplay muted playsinline for iOS -->
+                        <video
+                          id="cam"
+                          autoplay
+                          muted
+                          playsinline
+                          class="rounded-lg"
+                        >
+                          Not available
+                        </video>
+                        <canvas id="canvas" class="hidden"></canvas>
+                        <img
+                          id="photo"
+                          alt="The screen capture will appear in this box."
+                          style="display: none"
+                          class="w-6/12 rounded-lg"
+                        />
+                        <div
+                          class="panel absolute flex bottom-0 top-0 left-0 right-0 my-auto space-x-4 p-4 items-end justify-center"
+                        >
+                          <button
+                            id="switchFrontBtn"
+                            class="flex items-center justify-center w-8 h-8 md:w-12 md:h-12 bg-blue-500 text-white rounded-full hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400"
+                          >
+                            <i
+                              class="ri-camera-switch-fill text-sm md:text-xl"
+                            ></i>
+                          </button>
+                          <!--<button
+                            id="switchBackBtn"
+                            class="flex items-center justify-center w-12 h-12 bg-green-500 text-white rounded-full hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-400"
+                          >
+                            <i class="ri-camera-reverse-fill text-xl"></i>
+                          </button>-->
+                          <button
+                            id="snapBtn"
+                            class="flex items-center justify-center w-8 h-8 md:w-12 md:h-12 bg-red-500 text-white rounded-full hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-400"
+                          >
+                            <i class="ri-camera-3-fill text-sm md:text-xl"></i>
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                    <input
+                      type="button"
+                      name="next"
+                      class="next bg-c-black hover-bg-c-black text-white rounded-full w-3/12 py-2 text-sm mt-5 cursor-pointer"
+                      value="Next"
+                    />
+                  </fieldset>
+                  <fieldset>
+                    <div class="form-card">
+                      <div
+                        class="container flex flex-col justify-center items-center space-y-4"
+                      >
+                        <div class="mic-container">
+                          <div class="circle cursor-pointer" id="start">
+                            <i class="ri-mic-line"></i>
+                          </div>
+                        </div>
+                        <audio id="recorder" muted hidden></audio>
+                        <audio id="player" controls></audio>
+                      </div>
+                    </div>
+                    <input
+                      type="button"
+                      name="previous"
+                      class="previous bg-c-black hover-bg-c-black text-white rounded-full w-3/12 py-2 text-sm mt-5 mr-5 cursor-pointer"
+                      value="Previous"
+                    />
+                    <input
+                      type="button"
+                      name="next"
+                      class="next bg-c-black hover-bg-c-black text-white rounded-full w-3/12 py-2 text-sm mt-5 cursor-pointer"
+                      value="Submit"
+                    />
+                  </fieldset>
+                  <fieldset>
+                    <div
+                      class="form-card flex justify-center items-center flex-col space-y-2"
+                    >
+                      <h2 class="text-center text-green-300">
+                        <strong>SUCCESS !</strong>
+                      </h2>
+                      <div>
+                        <i class="ri-checkbox-circle-fill ri-xl"></i>
+                      </div>
+                      <div>
+                        <h5 class="text-center text-green-300">
+                          You Have Successfully Logged in
+                        </h5>
+                      </div>
+                    </div>
+                  </fieldset>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script defer>
+      // hide and show camera or voice popup
+      const Modal = document.getElementById("modal");
+
+      function showModal(event) {
+        Modal.classList.remove("hidden");
+        switchCamera("user");
+      }
+
+      function hideModal(event) {
+        Modal.classList.add("hidden");
+      }
+      // step form
+      $(document).ready(function () {
+        var current_fs, next_fs, previous_fs; // fieldsets
+        var opacity;
+        var current = 1;
+        var steps = $("fieldset").length;
+
+        setProgressBar(current);
+
+        $(".next").click(function () {
+          current_fs = $(this).parent();
+          next_fs = $(this).parent().next();
+
+          // Add Class Active
+          $("#progressbar li")
+            .eq($("fieldset").index(next_fs))
+            .addClass("active");
+
+          // Show the next fieldset
+          next_fs.show();
+          // Hide the current fieldset with style
+          current_fs.animate(
+            { opacity: 0 },
+            {
+              step: function (now) {
+                opacity = 1 - now;
+                current_fs.css({
+                  display: "none",
+                  position: "relative",
+                });
+                next_fs.css({ opacity: opacity });
+              },
+              duration: 500,
+            }
+          );
+          setProgressBar(++current);
+        });
+
+        $(".previous").click(function () {
+          current_fs = $(this).parent();
+          previous_fs = $(this).parent().prev();
+
+          // Remove class active
+          $("#progressbar li")
+            .eq($("fieldset").index(current_fs))
+            .removeClass("active");
+
+          // Show the previous fieldset
+          previous_fs.show();
+
+          // Hide the current fieldset with style
+          current_fs.animate(
+            { opacity: 0 },
+            {
+              step: function (now) {
+                opacity = 1 - now;
+                current_fs.css({
+                  display: "none",
+                  position: "relative",
+                });
+                previous_fs.css({ opacity: opacity });
+              },
+              duration: 500,
+            }
+          );
+          setProgressBar(--current);
+        });
+
+        function setProgressBar(curStep) {
+          var percent = parseFloat(100 / steps) * curStep;
+          percent = percent.toFixed();
+          $(".progress-bar").css("width", percent + "%");
+        }
+
+        $(".submit").click(function () {
+          return false;
+        });
+      });
+      /*** camera functionality ***/
+      // Media Stream Handling
+      var mediaStream = null;
+      var constraints = {
+        audio: false,
+        video: {
+          width: { ideal: 640 },
+          height: { ideal: 480 },
+          facingMode: "environment",
+        },
+      };
+
+      async function getMediaStream(constraints) {
+        try {
+          mediaStream = await navigator.mediaDevices.getUserMedia(constraints);
+          let video = document.getElementById("cam");
+          video.srcObject = mediaStream;
+          video.onloadedmetadata = (event) => {
+            video.play();
+          };
+        } catch (err) {
+          console.error(err.message);
+        }
+      }
+
+      async function switchCamera(cameraMode) {
+        try {
+          if (mediaStream != null && mediaStream.active) {
+            var tracks = mediaStream.getVideoTracks();
+            tracks.forEach((track) => {
+              track.stop();
+            });
+          }
+
+          document.getElementById("cam").srcObject = null;
+
+          constraints.video.facingMode = cameraMode;
+
+          await getMediaStream(constraints);
+        } catch (err) {
+          console.error(err.message);
+          alert(err.message);
+        }
+      }
+
+      function takePicture() {
+        let canvas = document.getElementById("canvas");
+        let video = document.getElementById("cam");
+        let photo = document.getElementById("photo");
+        let context = canvas.getContext("2d");
+
+        const height = video.videoHeight;
+        const width = video.videoWidth;
+
+        if (width && height) {
+          canvas.width = width;
+          canvas.height = height;
+          context.drawImage(video, 0, 0, width, height);
+          var data = canvas.toDataURL("image/png");
+          photo.setAttribute("src", data);
+          photo.setAttribute("style", "display:block");
+        } else {
+          clearPhoto();
+        }
+      }
+
+      function clearPhoto() {
+        let canvas = document.getElementById("canvas");
+        let photo = document.getElementById("photo");
+        let context = canvas.getContext("2d");
+
+        context.fillStyle = "#AAA";
+        context.fillRect(0, 0, canvas.width, canvas.height);
+        var data = canvas.toDataURL("image/png");
+        photo.setAttribute("src", data);
+      }
+
+      document.getElementById("switchFrontBtn").onclick = (event) => {
+        event.preventDefault();
+        switchCamera("user");
+      };
+
+      //document.getElementById("switchBackBtn").onclick = (event) => {
+      //  event.preventDefault();
+      //  switchCamera("environment");
+      //};
+
+      document.getElementById("snapBtn").onclick = (event) => {
+        takePicture();
+        event.preventDefault();
+      };
+
+      clearPhoto();
+
+      /*** audio functionality ***/
+
+      class VoiceRecorder {
+        constructor() {
+          if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+            console.log("getUserMedia supported");
+          } else {
+            console.log("getUserMedia is not supported on your browser!");
+          }
+
+          this.mediaRecorder;
+          this.stream;
+          this.chunks = [];
+          this.isRecording = false;
+
+          this.recorderRef = document.querySelector("#recorder");
+          this.playerRef = document.querySelector("#player");
+          this.startRef = document.querySelector("#start");
+          this.stopRef = document.querySelector("#stop");
+
+          this.startRef.onclick = (event) => {
+            event.preventDefault();
+            if (this.isRecording) {
+              this.stopRecording();
+            } else {
+              this.startRecording();
+            }
+          };
+
+          this.constraints = {
+            audio: true,
+            video: false,
+          };
+        }
+
+        handleSuccess(stream) {
+          this.stream = stream;
+          this.stream.oninactive = () => {
+            console.log("Stream ended!");
+          };
+          this.recorderRef.srcObject = this.stream;
+          this.mediaRecorder = new MediaRecorder(this.stream);
+          console.log(this.mediaRecorder);
+          this.mediaRecorder.ondataavailable =
+            this.onMediaRecorderDataAvailable.bind(this);
+          this.mediaRecorder.onstop = this.onMediaRecorderStop.bind(this);
+          this.recorderRef.play();
+          this.mediaRecorder.start();
+        }
+
+        handleError(error) {
+          console.log("navigator.getUserMedia error: ", error);
+        }
+
+        onMediaRecorderDataAvailable(e) {
+          this.chunks.push(e.data);
+        }
+
+        onMediaRecorderStop(e) {
+          const blob = new Blob(this.chunks, {
+            type: "audio/ogg; codecs=opus",
+          });
+          const audioURL = window.URL.createObjectURL(blob);
+          this.playerRef.src = audioURL;
+          this.chunks = [];
+          this.stream.getAudioTracks().forEach((track) => track.stop());
+          this.stream = null;
+        }
+
+        startRecording() {
+          const micContainer = document.getElementsByClassName("circle")[0];
+          if (this.isRecording) return;
+          this.isRecording = true;
+          this.playerRef.src = "";
+          navigator.mediaDevices
+            .getUserMedia(this.constraints)
+            .then(this.handleSuccess.bind(this))
+            .catch(this.handleError.bind(this));
+          micContainer.classList.toggle("active");
+        }
+
+        stopRecording() {
+          const micContainer = document.getElementsByClassName("circle")[0];
+          micContainer.classList.toggle("active");
+          if (!this.isRecording) return;
+          this.isRecording = false;
+          this.recorderRef.pause();
+          this.mediaRecorder.stop();
+        }
+      }
+
+      window.voiceRecorder = new VoiceRecorder();
+    </script>
   </body>
 </html>
