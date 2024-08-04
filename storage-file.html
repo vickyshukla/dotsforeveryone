@@ -448,6 +448,7 @@
                     </div>
                 </div>
               </div>
+              
               </div>
             </div>
         </div>
@@ -551,34 +552,48 @@
     <script src="script/select-dropdown.js"></script>
     <script src="script/taskbar.js"></script>
     <script>
-     const container = document.querySelector(".plugin-content");
-     const dropdownButton = document.querySelector(".dropdown-button");
-     const dropdownMenu = document.querySelector(".dropdown-menu");
+     const dropdownButtons = document.querySelectorAll(".dropdown-button");
+     const dropdownMenus = document.querySelectorAll(".dropdown-menu");
+     const dropdownTitles = document.querySelectorAll(".title");
      const dropdownItems = document.querySelectorAll(".dropdown-item");
-     const title = document.querySelector(".title");
 
-    // Open/Close Dropdown on Button Click
-    dropdownButton.addEventListener("click", function (event) {
-      event.stopPropagation(); // Prevent click from bubbling up to the document
-      dropdownMenu.classList.toggle("hidden");
-    });
-
-    // Handle Clicks on Dropdown Items
-    dropdownItems.forEach((dropdownItem) => {
-      dropdownItem.addEventListener("click", function (event) {
+// Iterate over each button to add event listeners
+dropdownButtons.forEach((button, index) => {
+    const menu = dropdownMenus[index];
+    
+    const title = dropdownTitles[index];
+    button.addEventListener("click", function (event) {
         event.stopPropagation();
-        title.innerHTML = this.textContent ;
-        dropdownMenu.classList.add("hidden");
-      });
+
+        // Close any other open dropdown menus
+        dropdownMenus.forEach((otherMenu, otherIndex) => {
+            if (otherIndex !== index) {
+                otherMenu.classList.add("hidden");
+            }
+        });
+
+        // Toggle the current menu
+        menu.classList.toggle("hidden");
     });
 
-    // Hide Dropdown on Click Outside
-    document.addEventListener("click", function (event) {
-      const targetedDiv = document.querySelector('.plugin-content');
-      if (!container.contains(event.target) || targetedDiv.contains(event.target)) {
-        dropdownMenu.classList.add("hidden");
-      }
+    // Iterate over each dropdown item to update the title text
+    menu.querySelectorAll(".dropdown-item").forEach((dropdownItem) => {
+        dropdownItem.addEventListener("click", function (event) {
+            event.stopPropagation();
+            title.innerHTML = this.textContent;
+            menu.classList.add("hidden");
+        });
     });
+});
+
+// Close the dropdown if clicked outside
+document.addEventListener("click", function () {
+    dropdownMenus.forEach(menu => {
+        if (!menu.classList.contains("hidden")) {
+            menu.classList.add("hidden");
+        }
+    });
+});
 
     // handling the add modal
       const Modal = document.getElementById('modal');

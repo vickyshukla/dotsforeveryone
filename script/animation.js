@@ -13,7 +13,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const toolbar = document.getElementById('toolbar');
     const box = document.getElementById("box");
     const minimizebtn = document.getElementById("minimizebtn");
-    let minimized = false;
+    let isDragging = false;
+    let dragStartX, initialLeft;
+
 
     downloadItems.forEach(item => {
         item.addEventListener('click', () => {
@@ -26,6 +28,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 img.src = originalIcon.src;
                 img.setAttribute('data-app-id', appId);
                 img.classList.add('app-icon');
+                img.style.width = '50px'; 
+                img.draggable = false;
+                enableDrag(img);
                 animateIcon(img, originalIcon);
             }
         });
@@ -38,7 +43,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 box.classList.remove('hidden');
                 box.classList.remove('minimized');
                 box.classList.add('fall-down');
-                minimized = false;
 
                 box.addEventListener('animationend', () => {
                     box.classList.remove('fall-down');
@@ -101,6 +105,63 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
     });
+
+    function enableDrag(icon) {
+        icon.addEventListener('mousedown', (e) => {
+            isDragging = true;
+            dragStartX = e.clientX;
+            initialLeft = icon.offsetLeft;
+
+            document.addEventListener('mousemove', onMouseMove);
+            document.addEventListener('mouseup', onMouseUp);
+        });
+
+        function onMouseMove(e) {
+            if (isDragging) {
+                const moveX = e.clientX - dragStartX;
+                icon.style.position = 'absolute';
+                icon.style.left = `${initialLeft + moveX}px`;
+            }
+        }
+
+        function onMouseUp() {
+            if (isDragging) {
+                adjustIconPosition(icon);
+            }
+            isDragging = false;
+            document.removeEventListener('mousemove', onMouseMove);
+            document.removeEventListener('mouseup', onMouseUp);
+        }
+    }
+
+    function adjustIconPosition(draggedIcon) {
+        const icons = Array.from(toolbar.querySelectorAll('img.app-icon'));
+        const draggedIconRect = draggedIcon.getBoundingClientRect();
+
+        icons.splice(icons.indexOf(draggedIcon), 1);
+
+        let insertIndex = icons.findIndex(icon => {
+            const iconRect = icon.getBoundingClientRect();
+            return draggedIconRect.left < iconRect.left;
+        });
+
+        if (insertIndex === -1) {
+            insertIndex = icons.length;
+        }
+
+        icons.splice(insertIndex, 0, draggedIcon);
+
+        const totalWidth = icons.reduce((sum, icon) => sum + icon.getBoundingClientRect().width + 10, 0);
+
+        const toolbarCenter = (toolbar.clientWidth - totalWidth) / 2;
+
+        icons.forEach((icon, index) => {
+            const iconWidth = icon.getBoundingClientRect().width;
+            icon.style.position = 'absolute';
+            icon.style.left = `${toolbarCenter + index * (iconWidth + 10)}px`;
+        });
+    }
+
 
     const closeiframeBtns = document.querySelectorAll('.closeiframe-btn');
     closeiframeBtns.forEach(btn => {
