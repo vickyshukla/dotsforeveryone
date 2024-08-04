@@ -12,6 +12,7 @@
     <div
       class="login-screen w-full h-screen flex items-center justify-center gap-2 relative cs"
     >
+      <!-- main content -->
       <div class="left-background w-1/2 h-full bg-no-repeat bg-cover bg-center">
         <div class="blur-container"></div>
       </div>
@@ -19,202 +20,189 @@
         class="right-background w-1/2 h-full bg-no-repeat bg-cover bg-center"
       >
         <div class="login-container">
-          <div class="logo flex items-center justify-center mt-10">
-            <img class="w-20 h-20" src="/images/logo.png" alt="Logo" />
-          </div>
-          <div class="user-login flex items-center justify-center mt-16 pl-10">
-            <div class="left-container w-2/5 flex items-center justify-center">
-              <img
-                class="vector-img w-60 h-60"
-                src="/images/profileloginvector.png"
-                alt="background"
-              />
-              <img
-                class="profile-img w-24 h-24 ml-5 mb-2"
-                src="/images/profile.png"
-                alt="profile"
-              />
-            </div>
-            <div class="right-container w-3/5 px-5 py-0">
-              <h1 class="mb-8 text-2xl font-normal">Welcome back...</h1>
-              <form>
-                <input
-                  class="userinput"
-                  type="text"
-                  placeholder="Username"
-                  required
-                />
-                <input
-                  class="userinput"
-                  type="password"
-                  placeholder="Password"
-                  required
-                />
-                <div
-                  class="login-remember px-2 flex items-center justify-between w-72"
-                >
-                  <div class="flex items-center gap-2">
-                    <input type="checkbox" class="border border-yellow-300" />
-                    <p class="text-xs font-normal">Remember me</p>
-                  </div>
-                  <div class="flex items-center">
-                    <a
-                      href="forget-password.html"
-                      class="hover:text-blue-500 text-xs font-normal text-c-black"
-                      >Forget Password ?</a
-                    >
-                  </div>
-                </div>
-                <button class="userinput" id="login-btn">Login</button>
-              </form>
-              <button class="userinput" onclick="showModal(event)">
-                Login with voice or camera
-              </button>
-            </div>
+          <div
+            class="user-login flex flex-col items-center justify-center w-full h-full gap-3"
+          >
+            <h1 class="text-2xl font-normal">Welcome To Dots !!!</h1>
+            <button
+              onclick="showModal(event)"
+              class="transform transition duration-500 hover:scale-110"
+            >
+              <img class="h-32" src="/images/logo.png" alt="Logo" />
+            </button>
           </div>
         </div>
       </div>
-    </div>
-    <!-- voice and camera popup -->
-    <div
-      id="modal"
-      role="dialog"
-      class="fixed hidden inset-0 flex items-center justify-center bg-black bg-opacity-50 z-10"
-    >
+
+      <!-- voice and camera popup -->
       <div
-        class="bg-white rounded-2xl overflow-hidden shadow-lg max-w-md w-full bg-c-lighten-gray modal-content"
+        id="modal"
+        role="dialog"
+        class="fixed hidden inset-0 flex items-center justify-center bg-black bg-opacity-50 z-10"
       >
-        <!-- Sticky header -->
         <div
-          class="sticky top-0 flex py-2 px-5 justify-between items-center border-b border-gray-3 bg-white z-10 text-c-black"
+          class="bg-white rounded-2xl overflow-hidden shadow-lg max-w-md w-full bg-c-lighten-gray modal-content"
         >
-          <div class="text-lg font-normal">Login</div>
-          <button
-            type="button"
-            id="closeModalButton"
-            class="py-1.5 rounded-md"
-            onclick="event.stopPropagation();hideModal(event);"
+          <!-- Sticky header -->
+          <div
+            class="sticky top-0 flex py-2 px-5 justify-between items-center border-b border-gray-3 bg-white z-10 text-c-black"
           >
-            <i class="ri-close-circle-fill text-black ri-lg"></i>
-          </button>
-        </div>
-        <!-- Scrollable content -->
-        <div class="overflow-y-auto max-h-full scroll bg-white">
-          <div class="container-fluid">
-            <div
-              class="col-11 col-sm-10 col-md-10 col-lg-6 col-xl-5 text-center p-0 mt-3"
+            <div class="text-lg font-normal">Login</div>
+            <button
+              type="button"
+              id="closeModalButton"
+              class="py-1.5 rounded-md"
+              onclick="event.stopPropagation();hideModal(event);"
             >
-              <div class="card">
-                <form id="msform">
-                  <!-- progressbar -->
-                  <ul id="progressbar">
-                    <li class="active" id="camera">
-                      <strong>Camera</strong>
-                    </li>
-                    <li id="voice"><strong>Voice</strong></li>
-                    <li id="confirm"><strong>Finish</strong></li>
-                  </ul>
-                  <!-- fieldsets -->
-                  <fieldset>
-                    <div class="form-card">
-                      <div
-                        class="w-7/12 relative flex items-end mx-5 space-x-4"
-                      >
-                        <!-- add autoplay muted playsinline for iOS -->
-                        <video
-                          id="cam"
-                          autoplay
-                          muted
-                          playsinline
-                          class="rounded-lg"
-                        >
-                          Not available
-                        </video>
-                        <canvas id="canvas" class="hidden"></canvas>
-                        <img
-                          id="photo"
-                          alt="The screen capture will appear in this box."
-                          style="display: none"
-                          class="w-6/12 rounded-lg"
-                        />
+              <i class="ri-close-circle-fill text-black ri-lg"></i>
+            </button>
+          </div>
+          <!-- Scrollable content -->
+          <div class="overflow-y-auto max-h-full scroll bg-white">
+            <div class="container-fluid">
+              <div
+                class="col-11 col-sm-10 col-md-10 col-lg-6 col-xl-5 text-center p-0 mt-3"
+              >
+                <div class="card">
+                  <form id="msform">
+                    <!-- First Step: Camera -->
+                    <fieldset>
+                      <div class="form-card space-y-3">
                         <div
-                          class="panel absolute flex bottom-0 top-0 left-0 right-0 my-auto space-x-4 p-4 items-end justify-center"
+                          id="camera-error"
+                          class="flex gap-2 text-red-600 justify-center items-center hidden"
                         >
-                          <button
-                            id="switchFrontBtn"
-                            class="flex items-center justify-center w-8 h-8 md:w-12 md:h-12 bg-blue-500 text-white rounded-full hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400"
-                          >
-                            <i
-                              class="ri-camera-switch-fill text-sm md:text-xl"
-                            ></i>
-                          </button>
-                          <!--<button
-                            id="switchBackBtn"
-                            class="flex items-center justify-center w-12 h-12 bg-green-500 text-white rounded-full hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-400"
-                          >
-                            <i class="ri-camera-reverse-fill text-xl"></i>
-                          </button>-->
-                          <button
-                            id="snapBtn"
-                            class="flex items-center justify-center w-8 h-8 md:w-12 md:h-12 bg-red-500 text-white rounded-full hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-400"
-                          >
-                            <i class="ri-camera-3-fill text-sm md:text-xl"></i>
-                          </button>
+                          <i class="ri-error-warning-fill ri-xl"></i>
+                          <p>Failed to capture photo</p>
                         </div>
-                      </div>
-                    </div>
-                    <input
-                      type="button"
-                      name="next"
-                      class="next bg-c-black hover-bg-c-black text-white rounded-full w-3/12 py-2 text-sm mt-5 cursor-pointer"
-                      value="Next"
-                    />
-                  </fieldset>
-                  <fieldset>
-                    <div class="form-card">
-                      <div
-                        class="container flex flex-col justify-center items-center space-y-4"
-                      >
-                        <div class="mic-container">
-                          <div class="circle cursor-pointer" id="start">
-                            <i class="ri-mic-line"></i>
+                        <div
+                          class="relative flex justify-center items-center mx-auto w-8/12"
+                        >
+                          <video
+                            id="cam"
+                            autoplay
+                            muted
+                            playsinline
+                            class="rounded-lg"
+                          >
+                            Not available
+                          </video>
+                          <!-- Countdown Overlay -->
+                          <div
+                            id="countdown-overlay"
+                            class="absolute w-full h-full flex items-center justify-center bg-black bg-opacity-50 hidden right-0 rounded-lg"
+                          >
+                            <span
+                              id="countdown-text"
+                              class="text-c-white text-4xl font-bold"
+                            ></span>
                           </div>
+                          <canvas id="canvas" class="hidden"></canvas>
+                          <img
+                            id="photo"
+                            alt="The screen capture will appear in this box."
+                            class="rounded-lg absolute right-0 hidden"
+                          />
                         </div>
-                        <audio id="recorder" muted hidden></audio>
-                        <audio id="player" controls></audio>
                       </div>
-                    </div>
-                    <input
-                      type="button"
-                      name="previous"
-                      class="previous bg-c-black hover-bg-c-black text-white rounded-full w-3/12 py-2 text-sm mt-5 mr-5 cursor-pointer"
-                      value="Previous"
-                    />
-                    <input
-                      type="button"
-                      name="next"
-                      class="next bg-c-black hover-bg-c-black text-white rounded-full w-3/12 py-2 text-sm mt-5 cursor-pointer"
-                      value="Submit"
-                    />
-                  </fieldset>
-                  <fieldset>
-                    <div
-                      class="form-card flex justify-center items-center flex-col space-y-2"
-                    >
-                      <h2 class="text-center text-green-300">
-                        <strong>SUCCESS !</strong>
-                      </h2>
-                      <div>
-                        <i class="ri-checkbox-circle-fill ri-xl"></i>
+                      <input
+                        id="retake"
+                        type="button"
+                        class="bg-c-black hover-bg-c-black text-c-white rounded-full w-3/12 py-2 text-sm cursor-pointer hidden mt-5 mr-3"
+                        value="Retry"
+                      />
+                      <input
+                        id="next-voice"
+                        type="button"
+                        name="next"
+                        class="next bg-c-black hover-bg-c-black text-c-white rounded-full w-4/12 py-2 text-sm cursor-pointer mt-5 hidden"
+                        value="Login with voice"
+                      />
+                    </fieldset>
+
+                    <!-- Second Step: Voice -->
+                    <fieldset>
+                      <div class="form-card space-y-5">
+                        <div
+                          id="voice-error"
+                          class="flex gap-2 text-red-600 justify-center items-center hidden"
+                        >
+                          <i class="ri-error-warning-fill ri-xl"></i>
+                          <p>Failed to record voice</p>
+                        </div>
+                        <div
+                          class="container flex flex-col justify-center items-center space-y-5"
+                        >
+                          <div class="mic-container relative">
+                            <div
+                              class="circle cursor-pointer has-tooltip"
+                              id="start"
+                            >
+                              <i class="ri-mic-line mic"></i>
+                            </div>
+                            <div
+                              id="voice-retake"
+                              class="absolute border tooltip border-c-yellow z-20 top-0 left-12 bg-white px-3 py-1 text-xs rounded-md"
+                            >
+                              Record
+                            </div>
+                          </div>
+                          <audio id="recorder" muted hidden></audio>
+                          <audio id="player" controls></audio>
+                        </div>
                       </div>
-                      <div>
-                        <h5 class="text-center text-green-300">
-                          You Have Successfully Logged in
-                        </h5>
+                      <input
+                        id="next-login"
+                        type="button"
+                        name="next"
+                        class="next bg-c-black hover-bg-c-black text-white rounded-full py-2 px-5 text-sm mt-5 cursor-pointer hidden"
+                        value="Login with user credentials"
+                      />
+                    </fieldset>
+
+                    <!-- Third Step: User Credentials -->
+                    <fieldset>
+                      <div class="form-card">
+                        <div
+                          class="right-container flex flex-col justify-center items-center gap-7"
+                        >
+                          <input
+                            class="userinput"
+                            type="text"
+                            placeholder="Username"
+                            required
+                          />
+                          <input
+                            class="userinput"
+                            type="password"
+                            placeholder="Password"
+                            required
+                          />
+                          <button
+                            class="next userinput"
+                            id="login-btn"
+                            name="next"
+                          >
+                            Login
+                          </button>
+                        </div>
                       </div>
-                    </div>
-                  </fieldset>
-                </form>
+                    </fieldset>
+
+                    <!-- Fourth Step: Confirmation -->
+                    <fieldset>
+                      <div
+                        class="flex flex-col items-center justify-center gap-3"
+                      >
+                        <h1 class="text-c-green text-xl">Hi John</h1>
+                        <img src="/images/profile.png" alt="Logo" />
+                        <h1 class="text-c-green text-xl">
+                          Welcome To Dots !!!
+                        </h1>
+                      </div>
+                    </fieldset>
+                  </form>
+                </div>
               </div>
             </div>
           </div>
@@ -223,99 +211,52 @@
     </div>
 
     <script defer>
-      // hide and show camera or voice popup
-      const Modal = document.getElementById("modal");
-
-      function showModal(event) {
-        Modal.classList.remove("hidden");
+      // showModal
+      function showModal() {
+        $("#modal").removeClass("hidden");
+        $("#photo").addClass("hidden");
         switchCamera("user");
       }
 
-      function hideModal(event) {
-        Modal.classList.add("hidden");
+      // hideModal
+      function hideModal() {
+        $("#modal").addClass("hidden");
       }
-      // step form
-      $(document).ready(function () {
-        var current_fs, next_fs, previous_fs; // fieldsets
-        var opacity;
-        var current = 1;
-        var steps = $("fieldset").length;
 
-        setProgressBar(current);
+      /*** step form ***/
+      let current_fs, next_fs, previous_fs; // Fieldsets
+      let current = 1;
+      const steps = $("fieldset").length;
 
-        $(".next").click(function () {
-          current_fs = $(this).parent();
-          next_fs = $(this).parent().next();
+      $(".next").click(function () {
+        current_fs = $(this).closest("fieldset");
+        next_fs = $(this).closest("fieldset").next();
 
-          // Add Class Active
-          $("#progressbar li")
-            .eq($("fieldset").index(next_fs))
-            .addClass("active");
+        // Show the next fieldset
+        next_fs.show();
 
-          // Show the next fieldset
-          next_fs.show();
-          // Hide the current fieldset with style
-          current_fs.animate(
-            { opacity: 0 },
-            {
-              step: function (now) {
-                opacity = 1 - now;
-                current_fs.css({
-                  display: "none",
-                  position: "relative",
-                });
-                next_fs.css({ opacity: opacity });
-              },
-              duration: 500,
-            }
-          );
-          setProgressBar(++current);
-        });
-
-        $(".previous").click(function () {
-          current_fs = $(this).parent();
-          previous_fs = $(this).parent().prev();
-
-          // Remove class active
-          $("#progressbar li")
-            .eq($("fieldset").index(current_fs))
-            .removeClass("active");
-
-          // Show the previous fieldset
-          previous_fs.show();
-
-          // Hide the current fieldset with style
-          current_fs.animate(
-            { opacity: 0 },
-            {
-              step: function (now) {
-                opacity = 1 - now;
-                current_fs.css({
-                  display: "none",
-                  position: "relative",
-                });
-                previous_fs.css({ opacity: opacity });
-              },
-              duration: 500,
-            }
-          );
-          setProgressBar(--current);
-        });
-
-        function setProgressBar(curStep) {
-          var percent = parseFloat(100 / steps) * curStep;
-          percent = percent.toFixed();
-          $(".progress-bar").css("width", percent + "%");
-        }
-
-        $(".submit").click(function () {
-          return false;
-        });
+        // Hide the current fieldset with style
+        current_fs.animate(
+          { opacity: 0 },
+          {
+            step: function (now) {
+              const opacity = 1 - now;
+              current_fs.css({
+                display: "none",
+                position: "relative",
+              });
+              next_fs.css({ opacity: opacity });
+            },
+            duration: 500,
+          }
+        );
       });
+
       /*** camera functionality ***/
+
       // Media Stream Handling
-      var mediaStream = null;
-      var constraints = {
+      let mediaStream = null;
+      const constraints = {
         audio: false,
         video: {
           width: { ideal: 640 },
@@ -324,30 +265,70 @@
         },
       };
 
+      // Lazy loading logic
+      let observer = new IntersectionObserver(handleIntersection, {
+        root: null,
+        threshold: 0.1,
+      });
+
+      // Attach the observer to the camera element
+      observer.observe(document.getElementById("cam"));
+
+      // Intersection handler function
+      function handleIntersection(entries, observer) {
+        entries.forEach(async (entry) => {
+          if (entry.isIntersecting) {
+            await getMediaStream(constraints);
+          } else {
+            if (mediaStream && mediaStream.active) {
+              const tracks = mediaStream.getVideoTracks();
+              tracks.forEach((track) => track.stop());
+            }
+          }
+        });
+      }
+
       async function getMediaStream(constraints) {
         try {
+          if (mediaStream && mediaStream.active) {
+            const tracks = mediaStream.getVideoTracks();
+            tracks.forEach((track) => track.stop());
+          }
           mediaStream = await navigator.mediaDevices.getUserMedia(constraints);
-          let video = document.getElementById("cam");
-          video.srcObject = mediaStream;
-          video.onloadedmetadata = (event) => {
-            video.play();
-          };
+          $("#cam").prop("srcObject", mediaStream);
+          $("#cam").on("loadedmetadata", function () {
+            this.play();
+          });
+          startCountdown(); // Start the countdown when the modal is shown
         } catch (err) {
           console.error(err.message);
         }
       }
 
+      // Function to start countdown
+      function startCountdown() {
+        let countdown = 5;
+        $("#countdown-overlay").removeClass("hidden");
+        $("#countdown-text").text(countdown);
+
+        const countdownInterval = setInterval(() => {
+          countdown--;
+          $("#countdown-text").text(countdown);
+
+          if (countdown === 0) {
+            clearInterval(countdownInterval);
+            $("#countdown-overlay").addClass("hidden");
+            takePicture(); // Automatically take picture after countdown
+            $("#retake").removeClass("hidden");
+            $("#next-voice").removeClass("hidden");
+            $("#camera-error").removeClass("hidden");
+          }
+        }, 1000);
+      }
+
       async function switchCamera(cameraMode) {
         try {
-          if (mediaStream != null && mediaStream.active) {
-            var tracks = mediaStream.getVideoTracks();
-            tracks.forEach((track) => {
-              track.stop();
-            });
-          }
-
-          document.getElementById("cam").srcObject = null;
-
+          $("#cam").prop("srcObject", null);
           constraints.video.facingMode = cameraMode;
 
           await getMediaStream(constraints);
@@ -358,51 +339,34 @@
       }
 
       function takePicture() {
-        let canvas = document.getElementById("canvas");
-        let video = document.getElementById("cam");
-        let photo = document.getElementById("photo");
-        let context = canvas.getContext("2d");
+        const context = $("#canvas")[0].getContext("2d");
 
-        const height = video.videoHeight;
-        const width = video.videoWidth;
+        const height = $("#cam")[0].videoHeight;
+        const width = $("#cam")[0].videoWidth;
 
         if (width && height) {
-          canvas.width = width;
-          canvas.height = height;
-          context.drawImage(video, 0, 0, width, height);
-          var data = canvas.toDataURL("image/png");
-          photo.setAttribute("src", data);
-          photo.setAttribute("style", "display:block");
+          $("#canvas").attr({ width, height });
+          context.drawImage($("#cam")[0], 0, 0, width, height);
+          const data = $("#canvas")[0].toDataURL("image/png");
+          $("#photo").attr("src", data).removeClass("hidden");
         } else {
           clearPhoto();
         }
       }
 
       function clearPhoto() {
-        let canvas = document.getElementById("canvas");
-        let photo = document.getElementById("photo");
-        let context = canvas.getContext("2d");
-
+        const context = $("#canvas")[0].getContext("2d");
         context.fillStyle = "#AAA";
-        context.fillRect(0, 0, canvas.width, canvas.height);
-        var data = canvas.toDataURL("image/png");
-        photo.setAttribute("src", data);
+        context.fillRect(0, 0, $("#canvas").width(), $("#canvas").height());
+        const data = $("#canvas")[0].toDataURL("image/png");
+        $("#photo").attr("src", data);
       }
 
-      document.getElementById("switchFrontBtn").onclick = (event) => {
+      $("#retake").click((event) => {
         event.preventDefault();
+        $("#photo").addClass("hidden");
         switchCamera("user");
-      };
-
-      //document.getElementById("switchBackBtn").onclick = (event) => {
-      //  event.preventDefault();
-      //  switchCamera("environment");
-      //};
-
-      document.getElementById("snapBtn").onclick = (event) => {
-        takePicture();
-        event.preventDefault();
-      };
+      });
 
       clearPhoto();
 
@@ -416,24 +380,24 @@
             console.log("getUserMedia is not supported on your browser!");
           }
 
-          this.mediaRecorder;
-          this.stream;
+          this.mediaRecorder = null;
+          this.stream = null;
           this.chunks = [];
           this.isRecording = false;
 
-          this.recorderRef = document.querySelector("#recorder");
-          this.playerRef = document.querySelector("#player");
-          this.startRef = document.querySelector("#start");
-          this.stopRef = document.querySelector("#stop");
+          this.recorderRef = $("#recorder")[0];
+          this.playerRef = $("#player")[0];
 
-          this.startRef.onclick = (event) => {
+          $("#start").click((event) => {
             event.preventDefault();
             if (this.isRecording) {
               this.stopRecording();
+              $("#voice-error").removeClass("hidden");
+              $("#next-login").removeClass("hidden");
             } else {
               this.startRecording();
             }
-          };
+          });
 
           this.constraints = {
             audio: true,
@@ -464,7 +428,7 @@
           this.chunks.push(e.data);
         }
 
-        onMediaRecorderStop(e) {
+        onMediaRecorderStop() {
           const blob = new Blob(this.chunks, {
             type: "audio/ogg; codecs=opus",
           });
@@ -476,7 +440,7 @@
         }
 
         startRecording() {
-          const micContainer = document.getElementsByClassName("circle")[0];
+          const micContainer = $(".circle").first();
           if (this.isRecording) return;
           this.isRecording = true;
           this.playerRef.src = "";
@@ -484,16 +448,26 @@
             .getUserMedia(this.constraints)
             .then(this.handleSuccess.bind(this))
             .catch(this.handleError.bind(this));
-          micContainer.classList.toggle("active");
+          micContainer.toggleClass("active");
+          $(".mic")
+            .addClass("ri-voiceprint-line")
+            .removeClass("ri-user-voice-fill")
+            .removeClass("ri-mic-line");
+          $("#voice-retake").html("Recording");
         }
 
         stopRecording() {
-          const micContainer = document.getElementsByClassName("circle")[0];
-          micContainer.classList.toggle("active");
+          const micContainer = $(".circle").first();
+          micContainer.toggleClass("active");
           if (!this.isRecording) return;
           this.isRecording = false;
           this.recorderRef.pause();
           this.mediaRecorder.stop();
+          $(".mic")
+            .removeClass("ri-mic-line")
+            .addClass("ri-user-voice-fill")
+            .removeClass("ri-voiceprint-line");
+          $("#voice-retake").html("Retry");
         }
       }
 
