@@ -115,7 +115,7 @@
                         id="next-voice"
                         type="button"
                         name="next"
-                        class="next bg-c-black hover-bg-c-black text-c-white rounded-full w-4/12 py-2 text-sm cursor-pointer mt-5 hidden"
+                        class="next bg-c-black hover-bg-c-black text-c-white rounded-full w-5/12 sm:w-4/12 py-2 text-sm cursor-pointer mt-5 hidden"
                         value="Login with voice"
                       />
                     </fieldset>
@@ -164,8 +164,25 @@
                     <fieldset>
                       <div class="form-card">
                         <div
-                          class="right-container flex flex-col justify-center items-center gap-7"
+                          class="blur-popup-container flex flex-col justify-center items-center gap-7 p-5 w-3/4 h-96 mx-auto relative"
+                        ></div>
+                        <div
+                          class="right-container flex flex-col justify-center items-center gap-7 p-5 w-3/4 h-full w-full absolute -top-4"
                         >
+                          <div
+                            class="w-full flex items-center justify-center relative"
+                          >
+                            <img
+                              class="vector-img w-40 h-40"
+                              src="/images/profileloginvector.png"
+                              alt="background"
+                            />
+                            <img
+                              class="profile-img w-24 h-24 ml-5 mb-2 absolute"
+                              src="/images/profile.png"
+                              alt="profile"
+                            />
+                          </div>
                           <input
                             class="userinput"
                             type="text"
