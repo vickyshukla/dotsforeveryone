@@ -19,21 +19,21 @@
 
 /* Taskbar and iFrame */
 
-#box {
-  background-color: red;
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  background-color: white;
-  border: 1px solid #ccc;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-  z-index: 9999;
-  width: 80%;
-  /* Adjust width as needed */
-  height: 80%;
-  overflow: auto;
-  transition: transform 0.5s ease-in-out;
-  transform-origin: center;
+#box{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    background-color: white;
+        border: 1px solid #ccc;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        z-index: 9999;
+        width: 80%;
+        /* Adjust width as needed */
+        height: 80%;
+        overflow: auto;
+            transition: transform 0.5s ease-in-out;
+            transform-origin: center;
+    
 }
 
 .popupiframe {
@@ -196,16 +196,30 @@ background: #fdfdfd3d;
   100% {
     transform: translate(-50%, -50%) scale(1);
   }
-}
-.minimized {
-  display: none;
+
 }
 
 /* Desktop apps */
 
 .desktopapps-div {
   height: calc(100% - 64px);
+  overflow-x: auto;
 }
+
+.desktopapps-div::-webkit-scrollbar {
+  height: 5px;
+}
+
+.desktopapps-div::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.desktopapps-div::-webkit-scrollbar-thumb {
+  background-color: rgba(128, 128, 128, 0.54);
+  border-radius: 10px;
+}
+
+
 
 .app:hover {
   border-radius: 5px;
@@ -290,6 +304,7 @@ background: #fdfdfd3d;
   top: 20%;
   left: 50%;
   transform: translate(-50%, -50%);
+  cursor: move;
 }
 
 /* Search Input */
