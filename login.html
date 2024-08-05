@@ -23,12 +23,17 @@
           <div
             class="user-login flex flex-col items-center justify-center w-full h-full gap-3"
           >
-            <h1 class="text-2xl font-normal">Welcome To Dots !!!</h1>
+            <h1 class="text-2xl font-normal">Welcome To Dots</h1>
             <button
               onclick="showModal(event)"
-              class="transform transition duration-500 hover:scale-110"
+              class="transform transition duration-500 hover:scale-110 relative"
             >
-              <img class="h-32" src="/images/logo.png" alt="Logo" />
+              <img class="h-32 has-tooltip" src="/images/logo.png" alt="Logo" />
+              <div
+                class="absolute border tooltip border-c-yellow z-20 top-0 -right-12 bg-white px-3 py-1 text-xs rounded-md"
+              >
+                Login
+              </div>
             </button>
           </div>
         </div>
@@ -133,7 +138,8 @@
                         <div
                           class="container flex flex-col justify-center items-center space-y-5"
                         >
-                          <div class="mic-container relative">
+                          <p>Example: My Name is John</p>
+                          <div class="mic-container relative flex gap-3">
                             <div
                               class="circle cursor-pointer has-tooltip"
                               id="start"
@@ -167,7 +173,7 @@
                           class="blur-popup-container flex flex-col justify-center items-center gap-7 p-5 w-3/4 h-96 mx-auto relative"
                         ></div>
                         <div
-                          class="right-container flex flex-col justify-center items-center gap-7 p-5 w-3/4 h-full w-full absolute -top-4"
+                          class="right-container flex flex-col justify-center items-center gap-5 p-5 w-3/4 h-full w-full absolute -top-4"
                         >
                           <div
                             class="w-full flex items-center justify-center relative"
@@ -178,25 +184,34 @@
                               alt="background"
                             />
                             <img
-                              class="profile-img w-24 h-24 ml-5 mb-2 absolute"
-                              src="/images/profile.png"
+                              class="profile-img w-20 h-20 ml-5 mb-2 absolute"
+                              src="/images/logo.png"
                               alt="profile"
                             />
                           </div>
+                          <p class="text-lg">Welcome To Dots</p>
                           <input
                             class="userinput"
                             type="text"
                             placeholder="Username"
                             required
                           />
-                          <input
-                            class="userinput"
-                            type="password"
-                            placeholder="Password"
-                            required
-                          />
+                          <div class="relative">
+                            <input
+                              id="password-input"
+                              class="userinput"
+                              type="password"
+                              placeholder="Password"
+                              required
+                            />
+                            <span
+                              class="absolute inset-y-0 right-3 flex items-center cursor-pointer text-gray-500 hover:text-gray-700 toggle-password"
+                            >
+                              <i class="ri-eye-line"></i>
+                            </span>
+                          </div>
                           <button
-                            class="next userinput"
+                            class="userinput next"
                             id="login-btn"
                             name="next"
                           >
@@ -205,7 +220,6 @@
                         </div>
                       </div>
                     </fieldset>
-
                     <!-- Fourth Step: Confirmation -->
                     <fieldset>
                       <div
@@ -213,9 +227,7 @@
                       >
                         <h1 class="text-c-green text-xl">Hi John</h1>
                         <img src="/images/profile.png" alt="Logo" />
-                        <h1 class="text-c-green text-xl">
-                          Welcome To Dots !!!
-                        </h1>
+                        <h1 class="text-c-green text-xl">Welcome To Dots</h1>
                       </div>
                     </fieldset>
                   </form>
@@ -239,6 +251,21 @@
       function hideModal() {
         $("#modal").addClass("hidden");
       }
+
+      // Password eye toggle
+      $(".toggle-password").on("click", function () {
+        const passwordInput = $("#password-input");
+        const icon = $(this).find("i");
+
+        // Toggle the type attribute
+        if (passwordInput.attr("type") === "password") {
+          passwordInput.attr("type", "text");
+          icon.removeClass("ri-eye-line").addClass("ri-eye-off-line");
+        } else {
+          passwordInput.attr("type", "password");
+          icon.removeClass("ri-eye-off-line").addClass("ri-eye-line");
+        }
+      });
 
       /*** step form ***/
       let current_fs, next_fs, previous_fs; // Fieldsets
@@ -401,6 +428,7 @@
           this.stream = null;
           this.chunks = [];
           this.isRecording = false;
+          this.recordingTimeout = null; // Timer for stopping recording
 
           this.recorderRef = $("#recorder")[0];
           this.playerRef = $("#player")[0];
@@ -435,6 +463,15 @@
           this.mediaRecorder.onstop = this.onMediaRecorderStop.bind(this);
           this.recorderRef.play();
           this.mediaRecorder.start();
+
+          // Activate the mic container only after permission is granted
+          const micContainer = $(".circle").first();
+          micContainer.addClass("active");
+          $(".mic")
+            .addClass("ri-voiceprint-line")
+            .removeClass("ri-user-voice-fill")
+            .removeClass("ri-mic-line");
+          $("#voice-retake").html("Recording");
         }
 
         handleError(error) {
@@ -457,7 +494,6 @@
         }
 
         startRecording() {
-          const micContainer = $(".circle").first();
           if (this.isRecording) return;
           this.isRecording = true;
           this.playerRef.src = "";
@@ -465,21 +501,24 @@
             .getUserMedia(this.constraints)
             .then(this.handleSuccess.bind(this))
             .catch(this.handleError.bind(this));
-          micContainer.toggleClass("active");
-          $(".mic")
-            .addClass("ri-voiceprint-line")
-            .removeClass("ri-user-voice-fill")
-            .removeClass("ri-mic-line");
-          $("#voice-retake").html("Recording");
+
+          // Start timer for auto-stopping the recording after 15 seconds
+          this.recordingTimeout = setTimeout(() => {
+            this.stopRecording();
+          }, 15000); // 15000 milliseconds = 15 seconds
         }
 
         stopRecording() {
           const micContainer = $(".circle").first();
-          micContainer.toggleClass("active");
+          micContainer.removeClass("active");
           if (!this.isRecording) return;
           this.isRecording = false;
           this.recorderRef.pause();
           this.mediaRecorder.stop();
+
+          // Clear the recording timeout if the recording is stopped manually
+          clearTimeout(this.recordingTimeout);
+
           $(".mic")
             .removeClass("ri-mic-line")
             .addClass("ri-user-voice-fill")
