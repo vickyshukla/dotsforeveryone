@@ -21,20 +21,30 @@
       >
         <div class="login-container">
           <div
-            class="user-login flex flex-col items-center justify-center w-full h-full gap-3"
+            class="user-login flex flex-col items-center justify-center w-full h-full gap-5"
           >
-            <h1 class="text-2xl font-normal">Welcome To Dots</h1>
             <button
-              onclick="showModal(event)"
               class="transform transition duration-500 hover:scale-110 relative"
             >
-              <img class="h-32 has-tooltip" src="/images/logo.png" alt="Logo" />
-              <div
-                class="absolute border tooltip border-c-yellow z-20 top-0 -right-12 bg-white px-3 py-1 text-xs rounded-md"
-              >
-                Login
-              </div>
+              <img class="h-24 has-tooltip" src="/images/logo.png" alt="Logo" />
             </button>
+            <h1 class="text-2xl font-normal">Welcome to Dots</h1>
+            <div class="right-container flex flex-col gap-7">
+              <input
+                class="userinput"
+                type="text"
+                placeholder="Username"
+                required
+              /><button
+                class="rounded-full"
+                id="login-btn"
+                name="next"
+                onclick="showModal(event)"
+                style="padding: 7px 0px"
+              >
+                Submit
+              </button>
+            </div>
           </div>
         </div>
       </div>
