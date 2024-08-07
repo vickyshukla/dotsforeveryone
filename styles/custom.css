@@ -132,15 +132,6 @@
   top: 0;
 }
 
-/* .taskbar-slide {
-background: #fdfdfd3d;
-    backdrop-filter: blur(2px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    border-right-color: rgba(255, 255, 255, 0.1);
-    border-bottom-color: rgba(255, 255, 255, 0.1);
-    box-shadow: 0 20px 30px rgba(0, 0, 0, 0.1);
-   
-} */
 
 .taskbar-slide img {
   height: 45px;
@@ -201,22 +192,50 @@ background: #fdfdfd3d;
 
 .desktopapps-div {
   height: calc(100% - 64px);
+  width: calc(100% - 470px);
+}
+
+.desktopapps-div .desktop-apps {
   overflow-x: auto;
 }
 
-.desktopapps-div::-webkit-scrollbar {
+
+.desktop-apps::-webkit-scrollbar {
   height: 5px;
 }
 
-.desktopapps-div::-webkit-scrollbar-track {
+.desktop-apps::-webkit-scrollbar-track {
   background: transparent;
 }
 
-.desktopapps-div::-webkit-scrollbar-thumb {
-  background-color: rgba(128, 128, 128, 0.54);
+.desktop-apps::-webkit-scrollbar-thumb {
+  background-color: rgba(128, 128, 128, 0.76);
   border-radius: 10px;
 }
 
+@media (max-width:1280px) {
+  .desktopapps-div {
+    width: calc(100% - 120px);
+  }
+}
+
+@media (max-width:1024px) {
+  .desktopapps-div {
+    width: calc(100% - 145px);
+  }
+}
+
+@media (max-width:768px) {
+  .desktopapps-div {
+    width: calc(100% - 200px);
+  }
+}
+
+@media (max-width:480px) {
+  .desktopapps-div {
+    width: 100%;
+  }
+}
 .app:hover {
   border-radius: 5px;
   background: #fdfdfd3d;
