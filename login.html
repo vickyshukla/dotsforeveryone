@@ -7,6 +7,11 @@
     <link rel="stylesheet" href="styles/custom.css" />
     <link rel="stylesheet" href="styles/cs.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+    <style>
+      .photos {
+        width: 5.5rem;
+      }
+    </style>
   </head>
   <body class="login">
     <div
@@ -25,6 +30,7 @@
           >
             <button
               class="transform transition duration-500 hover:scale-110 relative"
+              onclick="showModal('#register')"
             >
               <img class="h-24 has-tooltip" src="/images/logo.png" alt="Logo" />
             </button>
@@ -39,7 +45,7 @@
                 class="rounded-full"
                 id="login-btn"
                 name="next"
-                onclick="showModal(event)"
+                onclick="showModal('#login')"
                 style="padding: 7px 0px"
               >
                 Submit
@@ -49,9 +55,9 @@
         </div>
       </div>
 
-      <!-- voice and camera popup -->
+      <!-- register voice and camera popup -->
       <div
-        id="modal"
+        id="register"
         role="dialog"
         class="fixed hidden inset-0 flex items-center justify-center bg-black bg-opacity-50 z-10"
       >
@@ -62,17 +68,210 @@
           <div
             class="sticky top-0 flex py-2 px-5 justify-between items-center border-b border-gray-3 bg-white z-10 text-c-black"
           >
+            <div class="text-lg font-normal">Register</div>
+            <button
+              type="button"
+              id="closeModalButton"
+              class="py-1.5 rounded-md"
+              onclick="event.stopPropagation();hideModal('#register');stopCamera();"
+            >
+              <i class="ri-close-circle-fill text-black ri-lg"></i>
+            </button>
+          </div>
+          <div class="bg-white">
+            <div class="container-fluid">
+              <div
+                class="col-11 col-sm-10 col-md-10 col-lg-6 col-xl-5 text-center p-0 mt-3"
+              >
+                <div class="card">
+                  <form id="msform">
+                    <div class="sticky top-0 bg-white z-20">
+                      <ul id="progressbar" class="flex justify-between">
+                        <li class="active" id="camera">
+                          <strong>Camera</strong>
+                        </li>
+                        <li id="voice"><strong>Voice</strong></li>
+                        <li id="confirm"><strong>Finish</strong></li>
+                      </ul>
+                    </div>
+                    <div
+                      class="relative overflow-y-auto scroll"
+                      style="max-height: 24rem"
+                    >
+                      <!-- First Step: Camera -->
+                      <fieldset>
+                        <div
+                          id="camera-error"
+                          class="flex gap-2 mb-4 text-red-600 justify-center items-center hidden"
+                        >
+                          <i class="ri-error-warning-fill ri-xl"></i>
+                          <p>Failed to capture photo</p>
+                        </div>
+                        <div
+                          class="form-card flex flex-col sm:flex-row mx-auto space-x-4 gap-2 sm:gap-0"
+                        >
+                          <div
+                            class="relative w-11/12 sm:w-8/12 mx-auto sm:mx-0 sm:ml-6"
+                          >
+                            <video
+                              id="cam"
+                              autoplay
+                              muted
+                              playsinline
+                              class="rounded-lg"
+                            >
+                              Not available
+                            </video>
+                            <div
+                              class="panel absolute flex bottom-0 top-0 left-0 right-0 my-auto space-x-4 p-4 items-end justify-center hidden"
+                            >
+                              <button
+                                id="retake"
+                                class="flex items-center justify-center w-9 h-9 md:w-12 md:h-12 bg-red-500 text-white rounded-full hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-400"
+                                onclick="clickphoto('#register')"
+                              >
+                                <i
+                                  class="ri-camera-3-fill text-sm md:text-xl"
+                                ></i>
+                              </button>
+                            </div>
+                          </div>
+                          <canvas id="canvas" class="hidden"></canvas>
+                          <div
+                            class="photos-container flex justify-center items-center sm:items-start sm:justify-start flex-row sm:flex-col space-y-0 gap-1 sm:gap-0 sm:space-y-3"
+                          >
+                            <img
+                              id="photo1"
+                              alt="Photo 1"
+                              class="photos rounded-lg hidden"
+                            />
+                            <img
+                              id="photo2"
+                              alt="Photo 2"
+                              class="photos rounded-lg hidden"
+                            />
+                            <img
+                              id="photo3"
+                              alt="Photo 3"
+                              class="photos rounded-lg hidden"
+                            />
+                          </div>
+                        </div>
+                        <input
+                          type="button"
+                          name="next"
+                          id="nextButton"
+                          class="next bg-c-black hover-bg-c-black text-white rounded-full w-3/12 py-2 text-sm mt-5 cursor-pointer hidden"
+                          value="Next"
+                          onclick="stopCamera()"
+                        />
+                      </fieldset>
+                      <!-- Second Step: Voice -->
+                      <fieldset>
+                        <div class="form-card voice1 space-y-5">
+                          <div
+                            id="voice-error"
+                            class="flex gap-2 text-red-600 justify-center items-center hidden"
+                          >
+                            <i class="ri-error-warning-fill ri-xl"></i>
+                            <p>Failed to record voice</p>
+                          </div>
+                          <div
+                            class="container flex flex-col justify-center items-center space-y-5"
+                          >
+                            <p>Example: My Name is John</p>
+                            <div
+                              class="mic-container mic-wrapper1 relative flex gap-3"
+                            >
+                              <button
+                                class="circle cursor-pointer has-tooltip"
+                                id="recordButton1"
+                              >
+                                <i class="ri-mic-line mic"></i>
+                              </button>
+                              <div
+                                id="voice-retake"
+                                class="absolute border tooltip border-c-yellow z-20 top-0 left-12 bg-white px-3 py-1 text-xs rounded-md"
+                              >
+                                Record
+                              </div>
+                            </div>
+                            <div
+                              id="previewContainer1"
+                              class="audio-preview space-y-3"
+                            ></div>
+                          </div>
+                        </div>
+
+                        <input
+                          type="button"
+                          name="previous"
+                          class="previous bg-c-black hover-bg-c-black text-white rounded-full w-3/12 py-2 text-sm mt-5 mr-5 cursor-pointer"
+                          value="Previous"
+                        />
+                        <input
+                          type="button"
+                          name="next"
+                          class="next bg-c-black hover-bg-c-black text-white rounded-full w-3/12 py-2 text-sm mt-5 cursor-pointer"
+                          value="Submit"
+                        />
+                      </fieldset>
+                      <fieldset>
+                        <div
+                          class="flex flex-col items-center justify-center gap-3"
+                        >
+                          <h1 class="text-c-green text-base sm:text-xl">
+                            You have successfully registered.
+                          </h1>
+                          <img src="/images/profile.png" alt="Logo" />
+                          <h1 class="text-c-green text-base sm:text-xl">
+                            Welcome To Dots
+                          </h1>
+                        </div>
+                        <input
+                          type="button"
+                          name="previous"
+                          class="previous bg-c-black hover-bg-c-black text-white rounded-full w-3/12 py-2 text-sm mt-5 mr-5 cursor-pointer"
+                          value="Retry"
+                        />
+                        <input
+                          type="button"
+                          name="next"
+                          class="bg-c-black hover-bg-c-black text-white rounded-full w-5/12 sm:w-4/12 py-2 text-sm mt-5 cursor-pointer"
+                          value="Go to Dashboard"
+                        />
+                      </fieldset>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- login voice and camera popup -->
+      <div
+        id="login"
+        role="dialog"
+        class="fixed hidden inset-0 flex items-center justify-center bg-black bg-opacity-50 z-10"
+      >
+        <div
+          class="bg-white rounded-2xl overflow-hidden shadow-lg max-w-md w-full bg-c-lighten-gray modal-content"
+        >
+          <div
+            class="sticky top-0 flex py-2 px-5 justify-between items-center border-b border-gray-3 bg-white z-10 text-c-black"
+          >
             <div class="text-lg font-normal">Login</div>
             <button
               type="button"
               id="closeModalButton"
               class="py-1.5 rounded-md"
-              onclick="event.stopPropagation();hideModal(event);"
+              onclick="event.stopPropagation();hideModal('#login');stopCamera();"
             >
               <i class="ri-close-circle-fill text-black ri-lg"></i>
             </button>
           </div>
-          <!-- Scrollable content -->
           <div class="overflow-y-auto max-h-full scroll bg-white">
             <div class="container-fluid">
               <div
@@ -102,7 +301,6 @@
                           >
                             Not available
                           </video>
-                          <!-- Countdown Overlay -->
                           <div
                             id="countdown-overlay"
                             class="absolute w-full h-full flex items-center justify-center bg-black bg-opacity-50 hidden right-0 rounded-lg"
@@ -114,7 +312,7 @@
                           </div>
                           <canvas id="canvas" class="hidden"></canvas>
                           <img
-                            id="photo"
+                            id="photo1"
                             alt="The screen capture will appear in this box."
                             class="rounded-lg absolute right-0 hidden"
                           />
@@ -124,6 +322,7 @@
                         id="retake"
                         type="button"
                         class="bg-c-black hover-bg-c-black text-c-white rounded-full w-3/12 py-2 text-sm cursor-pointer hidden mt-5 mr-3"
+                        onclick="retry('#login')"
                         value="Retry"
                       />
                       <input
@@ -132,11 +331,12 @@
                         name="next"
                         class="next bg-c-black hover-bg-c-black text-c-white rounded-full w-5/12 sm:w-4/12 py-2 text-sm cursor-pointer mt-5 hidden"
                         value="Login with voice"
+                        onclick="stopCamera()"
                       />
                     </fieldset>
 
                     <!-- Second Step: Voice -->
-                    <fieldset>
+                    <fieldset class="voice2">
                       <div class="form-card space-y-5">
                         <div
                           id="voice-error"
@@ -149,13 +349,15 @@
                           class="container flex flex-col justify-center items-center space-y-5"
                         >
                           <p>Example: My Name is John</p>
-                          <div class="mic-container relative flex gap-3">
-                            <div
+                          <div
+                            class="mic-container mic-wrapper2 relative flex gap-3"
+                          >
+                            <button
                               class="circle cursor-pointer has-tooltip"
-                              id="start"
+                              id="recordButton2"
                             >
                               <i class="ri-mic-line mic"></i>
-                            </div>
+                            </button>
                             <div
                               id="voice-retake"
                               class="absolute border tooltip border-c-yellow z-20 top-0 left-12 bg-white px-3 py-1 text-xs rounded-md"
@@ -163,8 +365,10 @@
                               Record
                             </div>
                           </div>
-                          <audio id="recorder" muted hidden></audio>
-                          <audio id="player" controls></audio>
+                          <div
+                            id="previewContainer2"
+                            class="audio-preview"
+                          ></div>
                         </div>
                       </div>
                       <input
@@ -206,16 +410,16 @@
                             placeholder="Username"
                             required
                           />
-                          <div class="relative">
+                          <div class="relative w-full md:w-3/4">
                             <input
                               id="password-input"
-                              class="userinput"
+                              class="userinput md:ml-2"
                               type="password"
                               placeholder="Password"
                               required
                             />
                             <span
-                              class="absolute inset-y-0 right-3 flex items-center cursor-pointer text-gray-500 hover:text-gray-700 toggle-password"
+                              class="absolute inset-y-0 right-3 md:right-5 flex items-center cursor-pointer text-gray-500 hover:text-gray-700 toggle-password"
                             >
                               <i class="ri-eye-line"></i>
                             </span>
@@ -235,9 +439,13 @@
                       <div
                         class="flex flex-col items-center justify-center gap-3"
                       >
-                        <h1 class="text-c-green text-xl">Hi John</h1>
+                        <h1 class="text-c-green text-base sm:text-xl">
+                          Hi John
+                        </h1>
                         <img src="/images/profile.png" alt="Logo" />
-                        <h1 class="text-c-green text-xl">Welcome To Dots</h1>
+                        <h1 class="text-c-green text-base sm:text-xl">
+                          Welcome To Dots
+                        </h1>
                       </div>
                     </fieldset>
                   </form>
@@ -250,24 +458,24 @@
     </div>
 
     <script defer>
-      // showModal
-      function showModal() {
-        $("#modal").removeClass("hidden");
-        $("#photo").addClass("hidden");
-        switchCamera("user");
+      // showModal - Show the modal by removing the hidden class and switch to user camera if the modal is login
+      function showModal(id) {
+        $(id).removeClass("hidden");
+        id == "#login" && $(id).find("#photo1").addClass("hidden");
+        switchCamera("user", id);
       }
 
-      // hideModal
-      function hideModal() {
-        $("#modal").addClass("hidden");
+      // hideModal - Hide the modal by adding the hidden class
+      function hideModal(id) {
+        $(id).addClass("hidden");
       }
 
-      // Password eye toggle
+      // Password eye toggle - Toggle password visibility and icon for the input
       $(".toggle-password").on("click", function () {
         const passwordInput = $("#password-input");
         const icon = $(this).find("i");
 
-        // Toggle the type attribute
+        // Toggle the type attribute between password and text
         if (passwordInput.attr("type") === "password") {
           passwordInput.attr("type", "text");
           icon.removeClass("ri-eye-line").addClass("ri-eye-off-line");
@@ -277,19 +485,24 @@
         }
       });
 
-      /*** step form ***/
-      let current_fs, next_fs, previous_fs; // Fieldsets
-      let current = 1;
-      const steps = $("fieldset").length;
+      /*** Step Form ***/
+      let current_fs, next_fs, previous_fs; // Variables for fieldsets
+      let current = 1; // Current step in the form
+      const steps = $("fieldset").length; // Total number of steps
 
+      // Next button click event - Move to the next step
       $(".next").click(function () {
         current_fs = $(this).closest("fieldset");
         next_fs = $(this).closest("fieldset").next();
 
-        // Show the next fieldset
-        next_fs.show();
+        // Add active class to progress bar step
+        $("#progressbar li")
+          .eq($("fieldset").index(next_fs))
+          .addClass("active");
 
-        // Hide the current fieldset with style
+        next_fs.show(); // Show the next fieldset
+
+        // Animate the transition
         current_fs.animate(
           { opacity: 0 },
           {
@@ -301,243 +514,291 @@
               });
               next_fs.css({ opacity: opacity });
             },
-            duration: 500,
+            duration: 500, // Animation duration
           }
         );
+        setProgressBar(++current); // Update the progress bar
       });
 
-      /*** camera functionality ***/
+      // Previous button click event - Move to the previous step
+      $(".previous").click(function () {
+        current_fs = $(this).closest("fieldset");
+        previous_fs = $(this).closest("fieldset").prev();
 
-      // Media Stream Handling
-      let mediaStream = null;
+        // Remove active class from progress bar step
+        $("#progressbar li")
+          .eq($("fieldset").index(current_fs))
+          .removeClass("active");
+
+        previous_fs.show(); // Show the previous fieldset
+
+        // Animate the transition
+        current_fs.animate(
+          { opacity: 0 },
+          {
+            step: function (now) {
+              opacity = 1 - now;
+              current_fs.css({
+                display: "none",
+                position: "relative",
+              });
+              previous_fs.css({ opacity: opacity });
+            },
+            duration: 500, // Animation duration
+          }
+        );
+        setProgressBar(--current); // Update the progress bar
+      });
+
+      // Set the progress bar percentage
+      function setProgressBar(curStep) {
+        var percent = parseFloat(100 / steps) * curStep;
+        percent = percent.toFixed();
+        $(".progress-bar").css("width", percent + "%");
+      }
+
+      // Prevent form submission on submit button click
+      $(".submit").click(function () {
+        return false;
+      });
+
+      /*** Camera Functionality ***/
+
+      let mediaStream = null; // Store the media stream
+      let photoCount = 0; // Photo counter for register mode
       const constraints = {
         audio: false,
         video: {
           width: { ideal: 640 },
           height: { ideal: 480 },
-          facingMode: "environment",
+          facingMode: "environment", // Default camera mode
         },
       };
 
-      // Lazy loading logic
-      let observer = new IntersectionObserver(handleIntersection, {
-        root: null,
-        threshold: 0.1,
-      });
-
-      // Attach the observer to the camera element
-      observer.observe(document.getElementById("cam"));
-
-      // Intersection handler function
-      function handleIntersection(entries, observer) {
-        entries.forEach(async (entry) => {
-          if (entry.isIntersecting) {
-            await getMediaStream(constraints);
-          } else {
-            if (mediaStream && mediaStream.active) {
-              const tracks = mediaStream.getVideoTracks();
-              tracks.forEach((track) => track.stop());
-            }
-          }
-        });
-      }
-
-      async function getMediaStream(constraints) {
+      // Get media stream with specified constraints
+      async function getMediaStream(constraints, id) {
         try {
+          // Stop existing tracks if already active
           if (mediaStream && mediaStream.active) {
             const tracks = mediaStream.getVideoTracks();
             tracks.forEach((track) => track.stop());
           }
           mediaStream = await navigator.mediaDevices.getUserMedia(constraints);
-          $("#cam").prop("srcObject", mediaStream);
-          $("#cam").on("loadedmetadata", function () {
-            this.play();
-          });
-          startCountdown(); // Start the countdown when the modal is shown
+          $(id).find("#cam").prop("srcObject", mediaStream);
+          $(id)
+            .find("#cam")
+            .on("loadedmetadata", function () {
+              this.play(); // Start playing video
+            });
+          id == "#login"
+            ? startCountdown(id) // Start countdown for login
+            : $(id).find(".panel").removeClass("hidden"); // Show panel for register
         } catch (err) {
           console.error(err.message);
         }
       }
 
-      // Function to start countdown
-      function startCountdown() {
-        let countdown = 5;
-        $("#countdown-overlay").removeClass("hidden");
-        $("#countdown-text").text(countdown);
+      // Function to start countdown for taking picture
+      function startCountdown(id) {
+        let countdown = 5; // Countdown timer
+        $(id).find("#countdown-overlay").removeClass("hidden");
+        $(id).find("#countdown-text").text(countdown);
 
         const countdownInterval = setInterval(() => {
           countdown--;
-          $("#countdown-text").text(countdown);
+          $(id).find("#countdown-text").text(countdown);
 
           if (countdown === 0) {
             clearInterval(countdownInterval);
-            $("#countdown-overlay").addClass("hidden");
-            takePicture(); // Automatically take picture after countdown
-            $("#retake").removeClass("hidden");
-            $("#next-voice").removeClass("hidden");
-            $("#camera-error").removeClass("hidden");
+            $(id).find("#countdown-overlay").addClass("hidden");
+            takePicture(id); // Take picture when countdown ends
+            $(id).find("#retake").removeClass("hidden");
+            $(id).find("#next-voice").removeClass("hidden");
+            $(id).find("#camera-error").removeClass("hidden");
           }
-        }, 1000);
+        }, 1000); // Interval duration in milliseconds
       }
 
-      async function switchCamera(cameraMode) {
+      // Switch camera facing mode and get media stream
+      async function switchCamera(cameraMode, id) {
         try {
-          $("#cam").prop("srcObject", null);
+          $(id).find("#cam").prop("srcObject", null);
           constraints.video.facingMode = cameraMode;
 
-          await getMediaStream(constraints);
+          await getMediaStream(constraints, id);
         } catch (err) {
           console.error(err.message);
           alert(err.message);
         }
       }
 
-      function takePicture() {
-        const context = $("#canvas")[0].getContext("2d");
+      // Take a picture and display it
+      function takePicture(id) {
+        const context = $(id).find("#canvas")[0].getContext("2d");
 
-        const height = $("#cam")[0].videoHeight;
-        const width = $("#cam")[0].videoWidth;
+        const height = $(id).find("#cam")[0].videoHeight;
+        const width = $(id).find("#cam")[0].videoWidth;
 
         if (width && height) {
-          $("#canvas").attr({ width, height });
-          context.drawImage($("#cam")[0], 0, 0, width, height);
-          const data = $("#canvas")[0].toDataURL("image/png");
-          $("#photo").attr("src", data).removeClass("hidden");
+          $(id).find("#canvas").attr({ width, height });
+          context.drawImage($(id).find("#cam")[0], 0, 0, width, height);
+          const data = $(id).find("#canvas")[0].toDataURL("image/png");
+
+          // Increment photo count for register, set to 1 for login
+          id == "#register" ? (photoCount += 1) : (photoCount = 1);
+          $(id)
+            .find(`#photo${photoCount}`)
+            .attr("src", data)
+            .removeClass("hidden");
+
+          // Handle when photo count reaches 3
+          if (photoCount === 3) {
+            $(id).find("#retake").addClass("hidden");
+            $(id).find("#nextButton").removeClass("hidden");
+            $(id).find("#camera-error").removeClass("hidden");
+          }
         } else {
           clearPhoto();
         }
       }
 
-      function clearPhoto() {
-        const context = $("#canvas")[0].getContext("2d");
-        context.fillStyle = "#AAA";
-        context.fillRect(0, 0, $("#canvas").width(), $("#canvas").height());
-        const data = $("#canvas")[0].toDataURL("image/png");
-        $("#photo").attr("src", data);
+      // Stop the camera by stopping all media stream tracks
+      function stopCamera() {
+        if (mediaStream && mediaStream.active) {
+          const tracks = mediaStream.getTracks();
+          tracks.forEach((track) => track.stop());
+          mediaStream = null;
+        }
       }
 
-      $("#retake").click((event) => {
+      // Click to take a photo with max 3 attempts
+      function clickphoto(id) {
         event.preventDefault();
-        $("#photo").addClass("hidden");
-        switchCamera("user");
+        if (photoCount < 3) {
+          takePicture(id);
+        }
+        if (photoCount === 3) {
+          $(id).find("#retake").addClass("hidden");
+          $(id).find("#nextButton").removeClass("hidden");
+        }
+      }
+
+      // Retry taking a photo by resetting and switching the camera
+      function retry(id) {
+        event.preventDefault();
+        $(id).find("#photo1").addClass("hidden");
+        switchCamera("user", id);
+      }
+
+      /*** Audio Functionality ***/
+
+      // Recorders object to store recorder instances and streams
+      var recorders = {
+        1: { recorder: null, stream: null, count: 0 }, // Recorder 1
+        2: { recorder: null, stream: null }, // Recorder 2
+      };
+
+      // Event listener for record button 1
+      $("#recordButton1").click(function () {
+        event.preventDefault();
+        toggleRecording(1);
       });
 
-      clearPhoto();
+      // Event listener for record button 2
+      $("#recordButton2").click(function () {
+        event.preventDefault();
+        toggleRecording(2);
+      });
 
-      /*** audio functionality ***/
+      // Toggle recording state for a given recorder number
+      function toggleRecording(recorderNumber) {
+        var currentRecorder = recorders[recorderNumber].recorder;
+        var currentStream = recorders[recorderNumber].stream;
 
-      class VoiceRecorder {
-        constructor() {
-          if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
-            console.log("getUserMedia supported");
-          } else {
-            console.log("getUserMedia is not supported on your browser!");
-          }
-
-          this.mediaRecorder = null;
-          this.stream = null;
-          this.chunks = [];
-          this.isRecording = false;
-          this.recordingTimeout = null; // Timer for stopping recording
-
-          this.recorderRef = $("#recorder")[0];
-          this.playerRef = $("#player")[0];
-
-          $("#start").click((event) => {
-            event.preventDefault();
-            if (this.isRecording) {
-              this.stopRecording();
-              $("#voice-error").removeClass("hidden");
-              $("#next-login").removeClass("hidden");
-            } else {
-              this.startRecording();
-            }
-          });
-
-          this.constraints = {
-            audio: true,
-            video: false,
-          };
-        }
-
-        handleSuccess(stream) {
-          this.stream = stream;
-          this.stream.oninactive = () => {
-            console.log("Stream ended!");
-          };
-          this.recorderRef.srcObject = this.stream;
-          this.mediaRecorder = new MediaRecorder(this.stream);
-          console.log(this.mediaRecorder);
-          this.mediaRecorder.ondataavailable =
-            this.onMediaRecorderDataAvailable.bind(this);
-          this.mediaRecorder.onstop = this.onMediaRecorderStop.bind(this);
-          this.recorderRef.play();
-          this.mediaRecorder.start();
-
-          // Activate the mic container only after permission is granted
-          const micContainer = $(".circle").first();
-          micContainer.addClass("active");
-          $(".mic")
-            .addClass("ri-voiceprint-line")
-            .removeClass("ri-user-voice-fill")
-            .removeClass("ri-mic-line");
-          $("#voice-retake").html("Recording");
-        }
-
-        handleError(error) {
-          console.log("navigator.getUserMedia error: ", error);
-        }
-
-        onMediaRecorderDataAvailable(e) {
-          this.chunks.push(e.data);
-        }
-
-        onMediaRecorderStop() {
-          const blob = new Blob(this.chunks, {
-            type: "audio/ogg; codecs=opus",
-          });
-          const audioURL = window.URL.createObjectURL(blob);
-          this.playerRef.src = audioURL;
-          this.chunks = [];
-          this.stream.getAudioTracks().forEach((track) => track.stop());
-          this.stream = null;
-        }
-
-        startRecording() {
-          if (this.isRecording) return;
-          this.isRecording = true;
-          this.playerRef.src = "";
-          navigator.mediaDevices
-            .getUserMedia(this.constraints)
-            .then(this.handleSuccess.bind(this))
-            .catch(this.handleError.bind(this));
-
-          // Start timer for auto-stopping the recording after 15 seconds
-          this.recordingTimeout = setTimeout(() => {
-            this.stopRecording();
-          }, 15000); // 15000 milliseconds = 15 seconds
-        }
-
-        stopRecording() {
-          const micContainer = $(".circle").first();
-          micContainer.removeClass("active");
-          if (!this.isRecording) return;
-          this.isRecording = false;
-          this.recorderRef.pause();
-          this.mediaRecorder.stop();
-
-          // Clear the recording timeout if the recording is stopped manually
-          clearTimeout(this.recordingTimeout);
-
-          $(".mic")
-            .removeClass("ri-mic-line")
-            .addClass("ri-user-voice-fill")
-            .removeClass("ri-voiceprint-line");
-          $("#voice-retake").html("Retry");
+        if (currentRecorder && currentRecorder.state === "recording") {
+          stopRecording(currentRecorder, currentStream, recorderNumber);
+        } else {
+          startRecording(recorderNumber);
         }
       }
 
-      window.voiceRecorder = new VoiceRecorder();
+      // Start recording for a given recorder number
+      function startRecording(recorderNumber) {
+        navigator.mediaDevices
+          .getUserMedia({ audio: true })
+          .then(function (stream) {
+            var newRecorder = new MediaRecorder(stream);
+
+            recorders[recorderNumber].recorder = newRecorder;
+            recorders[recorderNumber].stream = stream;
+            const micContainer = $(`.mic-wrapper${recorderNumber}`)
+              .find(".circle")
+              .first();
+            micContainer.addClass("active");
+            $(`.mic-wrapper${recorderNumber}`)
+              .find(".mic")
+              .addClass("ri-voiceprint-line")
+              .removeClass("ri-user-voice-fill")
+              .removeClass("ri-mic-line");
+            $(`.mic-wrapper${recorderNumber}`)
+              .find("#voice-retake")
+              .html("Recording");
+
+            // Handle data available event to create audio preview
+            newRecorder.ondataavailable = function (e) {
+              var url = URL.createObjectURL(e.data);
+              var preview = $("<audio controls></audio>").attr("src", url);
+
+              if (recorderNumber === 1) {
+                $("#previewContainer1").append(preview);
+                recorders[1].count++;
+                if (recorders[1].count >= 3) {
+                  $("#recordButton1").prop("disabled", true);
+                  $(`.voice${recorderNumber}`)
+                    .find("#voice-error")
+                    .removeClass("hidden");
+                  $(`.mic-wrapper${recorderNumber}`)
+                    .find(".circle")
+                    .removeClass("has-tooltip")
+                    .removeClass("cursor-pointer");
+                  $(`.mic-wrapper${recorderNumber}`)
+                    .find(".mic")
+                    .removeClass("ri-mic-line")
+                    .removeClass("ri-user-voice-fill")
+                    .removeClass("ri-voiceprint-line")
+                    .addClass("ri-mic-off-line");
+                }
+              } else if (recorderNumber === 2) {
+                // Replace the previous audio with the new one
+                $("#previewContainer2").empty().append(preview);
+              }
+            };
+
+            newRecorder.start(); // Start recording
+          })
+          .catch(function (err) {
+            console.error("Error accessing audio stream: ", err);
+          });
+      }
+
+      // Stop recording and reset recorder and stream for a given recorder number
+      function stopRecording(currentRecorder, currentStream, recorderNumber) {
+        currentRecorder.stop();
+        currentStream.getAudioTracks()[0].stop();
+        recorders[recorderNumber].recorder = null;
+        recorders[recorderNumber].stream = null;
+        const micContainer = $(`.mic-wrapper${recorderNumber}`)
+          .find(".circle")
+          .first();
+        micContainer.removeClass("active");
+        $(`.mic-wrapper${recorderNumber}`)
+          .find(".mic")
+          .removeClass("ri-mic-line")
+          .addClass("ri-user-voice-fill")
+          .removeClass("ri-voiceprint-line");
+        $(`.mic-wrapper${recorderNumber}`).find("#voice-retake").html("Retry");
+        $(`.voice${recorderNumber}`).find("#next-login").removeClass("hidden");
+      }
     </script>
   </body>
 </html>
