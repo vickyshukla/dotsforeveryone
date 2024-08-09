@@ -9,7 +9,7 @@
     display: none;
     z-index: 99;
     border-radius: 7px;
-    box-shadow: rgba(33, 33, 33, 0.505) 0 0 1px 2px, rgba(33, 33, 33, .8) 0 0 0 1000vh;
+    box-shadow: rgba(20, 20, 21, 0.84) 0px 0px 1px 2px, rgb(20 20 21 / 0%) 0px 0px 0px 1000vh;
     border: 1px solid rgba(193, 192, 232, .5);
     top: 50vh;
     left: 50vw;
@@ -146,12 +146,20 @@
 
 .tg-dialog .tg-dialog-footer button.tg-dialog-btn {
     padding: 5px 10px;
-    border: 1px solid #cbcfd5;
-    color: #282828;
     border-radius: 4px;
     font-weight: 500;
     font-size: .82rem;
     white-space: nowrap
+}
+
+.tg-dialog .tg-dialog-footer button#tg-dialog-prev-btn{
+    color: #fdcf01;
+    border: 1px solid #fdcf01;
+}
+
+.tg-dialog .tg-dialog-footer button#tg-dialog-next-btn {
+    color: #282828;
+    border: 1px solid #282828;
 }
 
 .tg-dialog .tg-dialog-footer button.tg-dialog-btn+button {
@@ -160,7 +168,9 @@
 
 .tg-dialog .tg-dialog-footer button.tg-dialog-btn.disabled {
     pointer-events: none;
-    opacity: .6
+    opacity: .6;
+    color:#282828 !important;
+    border: 1px solid #b5b7c2 !important;
 }
 
 .tg-dialog .tg-dialog-footer button.tg-dialog-btn:hover {
