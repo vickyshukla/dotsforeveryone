@@ -132,7 +132,6 @@
   top: 0;
 }
 
-
 .taskbar-slide img {
   height: 45px;
   margin: 0 5px;
@@ -199,7 +198,6 @@
   overflow-x: auto;
 }
 
-
 .desktop-apps::-webkit-scrollbar {
   height: 5px;
 }
@@ -213,25 +211,25 @@
   border-radius: 10px;
 }
 
-@media (max-width:1280px) {
+@media (max-width: 1280px) {
   .desktopapps-div {
     width: calc(100% - 120px);
   }
 }
 
-@media (max-width:1024px) {
+@media (max-width: 1024px) {
   .desktopapps-div {
     width: calc(100% - 145px);
   }
 }
 
-@media (max-width:768px) {
+@media (max-width: 768px) {
   .desktopapps-div {
     width: calc(100% - 200px);
   }
 }
 
-@media (max-width:480px) {
+@media (max-width: 480px) {
   .desktopapps-div {
     width: 100%;
   }
@@ -1219,19 +1217,19 @@ input[type="search"]::-webkit-search-cancel-button {
 
 /* *********************** Step form used in login page *************************** */
 
-#heading {
+.login #heading {
   text-transform: uppercase;
   color: #673ab7;
   font-weight: normal;
 }
 
-#msform {
+.login .msform {
   text-align: center;
   position: relative;
   margin-top: 20px;
 }
 
-#msform fieldset {
+.login .msform fieldset {
   border: 0 none;
   border-radius: 0.5rem;
   box-sizing: border-box;
@@ -1241,21 +1239,25 @@ input[type="search"]::-webkit-search-cancel-button {
   position: relative;
 }
 
-.form-card {
+.login .form-card {
   text-align: left;
 }
 
-#msform fieldset:not(:first-of-type) {
+.login .msform fieldset:not(:first-of-type) {
   display: none;
 }
 
-.card {
+.login .card {
   z-index: 0;
   border: none;
   position: relative;
 }
 
-.steps {
+.login .photos {
+  width: 5.5rem;
+}
+
+.login .steps {
   font-size: 25px;
   color: gray;
   margin-bottom: 10px;
@@ -1263,17 +1265,17 @@ input[type="search"]::-webkit-search-cancel-button {
   text-align: right;
 }
 
-#progressbar {
+.login #progressbar {
   margin-bottom: 30px;
   overflow: hidden;
   color: lightgrey;
 }
 
-#progressbar .active {
+.login #progressbar .active {
   color: var(--color-dark-yellow);
 }
 
-#progressbar li {
+.login #progressbar li {
   list-style-type: none;
   font-size: 15px;
   width: 33.333333%;
@@ -1282,21 +1284,21 @@ input[type="search"]::-webkit-search-cancel-button {
   font-weight: 400;
 }
 
-#progressbar #camera:before {
+.login #progressbar #camera:before {
   content: "1";
 }
 
-#progressbar #voice:before {
+.login #progressbar #voice:before {
   font-family: FontAwesome;
   content: "2";
 }
 
-#progressbar #confirm:before {
+.login #progressbar #confirm:before {
   font-family: FontAwesome;
   content: "3";
 }
 
-#progressbar li:before {
+.login #progressbar li:before {
   width: 30px;
   height: 30px;
   display: block;
@@ -1307,7 +1309,7 @@ input[type="search"]::-webkit-search-cancel-button {
   margin: 11px auto 10px auto;
 }
 
-#progressbar li:after {
+.login #progressbar li:after {
   content: "";
   width: 100%;
   height: 2px;
@@ -1318,39 +1320,39 @@ input[type="search"]::-webkit-search-cancel-button {
   z-index: -1;
 }
 
-#progressbar li.active:before,
-#progressbar li.active:after {
+.login #progressbar li.active:before,
+.login #progressbar li.active:after {
   background: var(--color-dark-yellow);
 }
 
-.progress {
+.login .progress {
   height: 20px;
 }
 
-.progress-bar {
+.login .progress-bar {
   background-color: #673ab7;
 }
 
-.fit-image {
+.login .fit-image {
   width: 100%;
   object-fit: cover;
 }
 /* scroll-x for every page */
-.scroll::-webkit-scrollbar {
+.login .scroll::-webkit-scrollbar {
   width: 4px;
 }
 
-.scroll::-webkit-scrollbar-track {
+.login .scroll::-webkit-scrollbar-track {
   background: transparent;
 }
 
-.scroll::-webkit-scrollbar-thumb {
+.login .scroll::-webkit-scrollbar-thumb {
   background-color: rgba(128, 128, 128, 0.54);
   border-radius: 10px;
 }
 /* *********************** audio button animation used in login page *************************** */
 
-.mic-container {
+.login .mic-container {
   display: flex;
   align-items: center;
   justify-content: center;
