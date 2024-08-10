@@ -6,7 +6,7 @@
     <title>Plugin</title>
     <link rel="stylesheet" href="styles/custom.css">
     <link rel="stylesheet" href="styles/root.css" />
-    <link rel="stylesheet" href="styles/cs.css">
+    <link rel="stylesheet" href="styles/common.css">
   </head>
   <body class="h-screen w-full">
        <!-- Taskbar -->
@@ -23,7 +23,7 @@
             </div>
           
         </div>
-    <main class="w-full h-full flex cs plugin">
+    <main class="w-full h-full flex cm plugin">
 
       <!-- sidebar -->
       <aside class="h-full relative">
@@ -126,7 +126,7 @@
       </aside>
 
       <!-- main content -->
-      <div class="flex-grow border bg-red-500 h-100 main">
+      <div class="flex-grow border h-100 main">
         <div class="flex w-full h-full flex-col content">
           <div class="px-9 py-6 lg:p-6">
             <div class="flex items-center gap-4">
@@ -169,7 +169,7 @@
                 <h1 class="font-medium text-lg text-c-black">Office</h1>
                 <div> 
                     <button id="dropdownDefaultButton1" class="dropdown-button flex items-center justify-between w-36 sm:w-40 text-c-yellow rounded-md text-lg overflow-hidden border border-c-light-gray" type="button">
-                      <span class="title flex items-center justify-center w-full text-base sm:text-lg">
+                      <span class="div-title flex items-center justify-center w-full text-base sm:text-lg">
                          Enable
                       </span>
                        <span class="bg-white py-1 px-2">
@@ -205,7 +205,7 @@
                 <h1 class="font-medium text-lg text-c-black">WebDAV Mount</h1>
                 <div> 
                    <button id="dropdownDefaultButton2" class="dropdown-button flex items-center justify-between w-36 sm:w-40 text-c-yellow rounded-md text-lg overflow-hidden border border-c-light-gray" type="button">
-                      <span class="title flex items-center justify-center w-full text-base sm:text-lg">
+                      <span class="div-title flex items-center justify-center w-full text-base sm:text-lg">
                          Enable
                       </span>
                        <span class="bg-white py-1 px-2">
@@ -241,7 +241,7 @@
                 <h1 class="font-medium text-lg text-c-black">Internet access</h1>
                 <div> 
                     <button id="dropdownDefaultButton3" class="dropdown-button flex items-center justify-between w-36 sm:w-40 text-c-yellow rounded-md text-lg overflow-hidden border border-c-light-gray" type="button">
-                      <span class="title flex items-center justify-center w-full text-base sm:text-lg">
+                      <span class="div-title flex items-center justify-center w-full text-base sm:text-lg">
                          Enable
                       </span>
                        <span class="bg-white py-1 px-2">
@@ -277,7 +277,7 @@
                 <h1 class="font-medium text-lg text-c-black">Picasa Viewer</h1>
                 <div> 
                     <button id="dropdownDefaultButton4" class="dropdown-button flex items-center justify-between w-36 sm:w-40 text-c-yellow rounded-md text-lg overflow-hidden border border-c-light-gray" type="button">
-                      <span class="title flex items-center justify-center w-full text-base sm:text-lg">
+                      <span class="div-title flex items-center justify-center w-full text-base sm:text-lg">
                          Enable
                       </span>
                        <span class="bg-white py-1 px-2">
@@ -313,7 +313,7 @@
                 <h1 class="font-medium text-lg text-c-black">Minder Diagram</h1>
                 <div> 
                    <button id="dropdownDefaultButton5" class="dropdown-button flex items-center justify-between w-36 sm:w-40 text-c-yellow rounded-md text-lg overflow-hidden border border-c-light-gray" type="button">
-                      <span class="title flex items-center justify-center w-full text-base sm:text-lg">
+                      <span class="div-title flex items-center justify-center w-full text-base sm:text-lg">
                          Enable
                       </span>
                        <span class="bg-white py-1 px-2">
@@ -438,7 +438,7 @@
      const dropdownButton = document.querySelector(".dropdown-button");
      const dropdownMenu = document.querySelector(".dropdown-menu");
      const dropdownItems = document.querySelectorAll(".dropdown-item");
-     const title = document.querySelector(".title");
+     const title = document.querySelector(".div-title");
 
     // Open/Close Dropdown on Button Click
     dropdownButton.addEventListener("click", function (event) {

@@ -6,7 +6,7 @@
     <title>Storage file</title>
     <link rel="stylesheet" href="styles/custom.css" />
     <link rel="stylesheet" href="styles/root.css" />
-    <link rel="stylesheet" href="styles/cs.css">
+    <link rel="stylesheet" href="styles/common.css">
   </head>
   <body class="h-screen w-full">
        <!-- Taskbar -->
@@ -23,7 +23,7 @@
             </div>
           
         </div>
-      <main class="flex w-full h-full cs plugin">
+      <main class="flex w-full h-full cm plugin">
 
         <!-- Sidebar -->
           <aside class="h-full relative">
@@ -383,7 +383,7 @@
                 <h1 class="font-medium text-lg text-c-black">Office</h1>
                 <div> 
                     <button id="dropdownDefaultButton1" class="dropdown-button flex items-center justify-between w-36 sm:w-40 text-c-yellow rounded-md text-lg overflow-hidden border border-c-light-gray" type="button">
-                      <span class="title flex items-center justify-center w-full text-base sm:text-lg">
+                      <span class="div-title flex items-center justify-center w-full text-base sm:text-lg">
                          Enable
                       </span>
                        <span class="bg-white py-1 px-2">
@@ -419,7 +419,7 @@
                 <h1 class="font-medium text-lg text-c-black">WebDAV Mount</h1>
                 <div> 
                    <button id="dropdownDefaultButton2" class="dropdown-button flex items-center justify-between w-36 sm:w-40 text-c-yellow rounded-md text-lg overflow-hidden border border-c-light-gray" type="button">
-                      <span class="title flex items-center justify-center w-full text-base sm:text-lg">
+                      <span class="div-title flex items-center justify-center w-full text-base sm:text-lg">
                          Enable
                       </span>
                        <span class="bg-white py-1 px-2">
@@ -554,7 +554,7 @@
     <script>
      const dropdownButtons = document.querySelectorAll(".dropdown-button");
      const dropdownMenus = document.querySelectorAll(".dropdown-menu");
-     const dropdownTitles = document.querySelectorAll(".title");
+     const dropdownTitles = document.querySelectorAll(".div-title");
      const dropdownItems = document.querySelectorAll(".dropdown-item");
 
 // Iterate over each button to add event listeners

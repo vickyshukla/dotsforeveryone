@@ -433,9 +433,7 @@ background: radial-gradient(circle,
   border: 2px solid var(--color-dark-yellow);
   border-radius: 2px;
 }
-/* .cs input[type="checkbox"].c-checkbox:checked{
-    background-color: var(--color-dark-yellow);
-} */
+
 .cs input[type="checkbox"].c-checkbox:checked::after {
   content: "✔";
   font-size: 12px;
