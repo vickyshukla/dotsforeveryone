@@ -1415,3 +1415,12 @@ input[type="search"]::-webkit-search-cancel-button {
     transform: scale(1.3);
   }
 }
+
+/********* Remove highlight color when click on any button in project ********/
+button {
+  -webkit-tap-highlight-color: transparent; /* Remove tap highlight color */
+}
+button:focus {
+  outline: none; /* Remove the focus outline */
+  background-color: transparent; /* Remove background color */
+}
