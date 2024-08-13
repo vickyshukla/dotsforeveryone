@@ -2377,7 +2377,7 @@
             backdropClass: "",
             backdropColor: "rgba(20,20,21,50%)",
             backdropAnimate: !0,
-            targetPadding: 30,
+            targetPadding: 0,
             completeOnFinish: !0,
             showStepDots: !0,
             stepDotsPlacement: "footer",
