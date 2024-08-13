@@ -4,8 +4,9 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="styles/root.css" />
+    <link rel="stylesheet" href="styles/as.css" />
     <link rel="stylesheet" href="styles/custom.css" />
-    <link rel="stylesheet" href="styles/common.css">
+    <link rel="stylesheet" href="styles/tour.min.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   </head>
 
@@ -23,9 +24,11 @@
       <div class="flex items-center gap-8 w-48 justify-end pr-5">
         <i id="search-icon" class="ri-search-line"></i>
         <i id="notification-icon" class="ri-notification-3-line"></i>
+        <i id="pinned" class="ri-pushpin-line"></i>
+        <i onclick="startGuide()" class="ri-question-line cursor-pointer"></i>
       </div>
     </div>
-    <main class="flex w-full h-full flex cm size">
+    <main class="flex w-full h-full flex fm">
       <!-- Sidebar -->
       <aside class="h-full relative">
         <input type="checkbox" class="hidden" id="sidebar-toggle" />
@@ -44,7 +47,7 @@
             </div>
             <div class="sidebar-content">
               <ul class="space-y-1">
-                <li>
+                <li class="position">
                   <div
                     role="button"
                     onclick="toggleDropMenu(this)"
@@ -60,7 +63,7 @@
                       ></i>
                     </a>
                     <ul class="drop-list text-sm space-y-1">
-                      <li>
+                      <li class="starred">
                         <a
                           id="starred-link"
                           class="block py-1 px-8 rounded-r-md w-full flex justify-between items-center subdrop"
@@ -301,7 +304,7 @@
           </div>
 
           <!-- topTaskbar in mobile -->
-          <div class="md:hidden w-full relative">
+          <div class="md:hidden w-full relative" id="taskbar">
             <div
               class="flex items-center justify-between overflow-hidden flex-shrink-0 bg-transparent h-8 w-11/12 ml-5 sm:ml-7 mb-3 mr-6 cursor-pointer flex-grow"
             >
@@ -334,15 +337,16 @@
                   class="pr-2 pt-3 pb-3 flex items-center justify-center"
                   onclick="toggleView();"
                 >
-                  <i class="ri-gallery-view-2"></i>
+                  <i class="ri-gallery-view-2" id="view-button"></i>
                 </button>
                 <button
                   class="pt-3 pb-3 flex items-center justify-center dropdown-btn"
                 >
-                  <i class="ri-more-fill"></i>
+                  <i class="ri-more-fill" id="more-button"></i>
                 </button>
                 <div
                   class="dropdown-option absolute z-10 right-4 top-8 bg-c-white border border-c-medium-gray rounded-lg shadow-md hidden w-10"
+                  id="more-dropdown"
                 >
                   <div class="hover-bg-c-yellow rounded-t-lg">
                     <a
@@ -365,7 +369,10 @@
               </div>
             </div>
 
-            <div class="py-4 w-full flex flex-col items-center gap-2 taskbar">
+            <div
+              class="py-4 w-full flex flex-col items-center gap-2 taskbar"
+              id="search"
+            >
               <div
                 class="flex items-center rounded-md overflow-hidden flex-shrink-0 flex-grow bg-c-white h-8 ml-7 mr-6 w-11/12 md:w-2/12"
               >
@@ -383,10 +390,10 @@
 
           <!-- actionbar -->
           <div
-            class="border-b border-c-light-gray1 flex justify-between items-center hidden md:flex text-c-black"
+            class="border-b border-c-light-gray1 flex justify-between items-center hidden md:flex text-c-black actionbar"
           >
             <div class="flex ml-6 gap-x-5 lg:gap-x-4 xl:gap-x-6 my-2">
-              <div class="relative flex items-center">
+              <div class="relative flex items-center new">
                 <button class="flex gap-x-2">
                   <i class="ri-add-circle-fill ri-xl mt-1"></i><span>New</span>
                 </button>
@@ -394,6 +401,7 @@
                   <i class="ri-arrow-drop-down-line ri-lg"></i>
                 </button>
                 <div
+                  id="new-dropdown"
                   class="dropdown-option absolute mt-2 z-10 bg-c-white border border-c-medium-gray rounded-lg shadow-md hidden w-52 top-full"
                 >
                   <div class="hover-bg-c-yellow rounded-t-lg">
@@ -468,7 +476,7 @@
                   </div>
                 </div>
               </div>
-              <div class="relative flex items-center">
+              <div class="relative flex items-center upload">
                 <button
                   class="flex gap-x-2"
                   onclick="togglePopup('uploadPopup');"
@@ -480,6 +488,7 @@
                   <i class="ri-arrow-drop-down-line ri-lg"></i>
                 </button>
                 <div
+                  id="upload-dropdown"
                   class="dropdown-option absolute mt-2 z-10 bg-c-white border border-c-medium-gray rounded-lg shadow-md hidden md:w-40 lg:w-52 xl:w-68 top-full"
                 >
                   <div class="hover-bg-c-yellow rounded-t-lg">
@@ -499,25 +508,25 @@
                 </div>
               </div>
 
-              <button>
+              <button class="scissor">
                 <i class="ri-scissors-2-fill ri-lg"></i>
               </button>
-              <button>
+              <button class="copy">
                 <i class="ri-file-copy-line ri-lg"></i>
               </button>
-              <button>
+              <button class="paste">
                 <i class="ri-clipboard-line ri-lg"></i>
               </button>
-              <button>
+              <button class="edit">
                 <i class="ri-edit-line ri-lg"></i>
               </button>
-              <button onclick="togglePopup('sharePopup');">
+              <button class="share" onclick="togglePopup('sharePopup');">
                 <i class="ri-share-fill ri-lg"></i>
               </button>
-              <button>
+              <button class="delete">
                 <i class="ri-delete-bin-line ri-lg"></i>
               </button>
-              <div class="relative flex items-center">
+              <div class="relative flex items-center sort">
                 <button class="flex gap-x-2">
                   <i class="ri-arrow-up-down-line ri-lg mt-1"></i>
                   <span>Sort</span>
@@ -526,6 +535,7 @@
                   <i class="ri-arrow-drop-down-line ri-lg"></i>
                 </button>
                 <div
+                  id="sort-dropdown"
                   class="dropdown-option absolute top-full mt-2 z-10 bg-c-white border border-c-medium-gray rounded-lg shadow-md hidden md:w-40 lg:w-44 xl:w-68"
                 >
                   <div class="hover-bg-c-yellow rounded-t-lg">
@@ -560,7 +570,7 @@
                   </div>
                 </div>
               </div>
-              <div class="relative flex items-center">
+              <div class="relative flex items-center view">
                 <button class="flex gap-x-2" onclick="toggleView()">
                   <i class="ri-gallery-view-2 ri-lg mt-1"></i>
                   <span>View</span>
@@ -569,6 +579,7 @@
                   <i class="ri-arrow-drop-down-line ri-lg"></i>
                 </button>
                 <div
+                  id="view-dropdown"
                   class="dropdown-option absolute top-full mt-2 z-10 bg-c-white border border-c-medium-gray rounded-lg shadow-md hidden md:w-44 xl:w-68"
                 >
                   <div class="hover-bg-c-yellow rounded-t-lg">
@@ -1411,7 +1422,7 @@
             class="fixed inset-0 flex z-20 items-center justify-center bg-gray-800 bg-opacity-50 hidden"
           >
             <div
-              class="bg-c-white rounded-2xl shadow-lg md:w-9/12 lg:w-7/12 xl:w-6/12 2xl:w-2/5 max-w-7xl max-h-screen overflow-y-auto"
+              class="uploadPopup bg-c-white rounded-2xl shadow-lg md:w-9/12 lg:w-7/12 xl:w-6/12 2xl:w-2/5 max-w-7xl max-h-screen overflow-y-auto"
             >
               <div
                 class="flex justify-between items-center border-b border-gray-3 px-6 p-4"
@@ -1522,7 +1533,7 @@
             class="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-50 hidden"
           >
             <div
-              class="bg-c-white rounded-xl shadow-lg w-11/12 md:w-3/4 lg:w-7/12 xl:w-1/2 2xl:w-2/5 max-w-7xl max-h-screen modal-content overflow-y-auto"
+              class="sharePopup bg-c-white rounded-xl shadow-lg w-11/12 md:w-3/4 lg:w-7/12 xl:w-1/2 2xl:w-2/5 max-w-7xl max-h-screen modal-content overflow-y-auto"
             >
               <div
                 class="sticky z-10 bg-c-white top-0 flex justify-between items-center gap-2 border-b border-gray-3 p-4 px-6 w-full"
@@ -1962,10 +1973,11 @@
       </div>
     </main>
 
-    <script src="script/animation.js"></script>
     <script src="script/sidebar.js"></script>
     <script src="script/taskbar.js"></script>
     <script src="script/tabs.js"></script>
     <script src="script/filemanager.js"></script>
+    <script src="script/tour.js"></script>
+    <script src="script/filemanager-tour.js"></script>
   </body>
 </html>
