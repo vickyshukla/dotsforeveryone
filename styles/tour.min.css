@@ -116,7 +116,7 @@
 }
 
 .tg-dialog .tg-dialog-dots {
-    display: flex;
+    display: none;
     align-items: center;
     justify-content: center;
     padding: 15px 0;
@@ -206,7 +206,7 @@
     margin: 0 auto;
     opacity: .4;
     letter-spacing: 1px;
-    display: none;
+    display: block;
 }
 
 .tg-dialog .tg-dialog-footer .tg-dialog-footer-sup .tg-dialog-dots {
@@ -222,7 +222,6 @@
 }
 
 .tg-dialog .tg-dialog-footer .tg-dialog-footer-sup .tg-dialog-dots+.tg-step-progress {
-    margin-top: 10px;
     font-size: .68rem
 }
 
