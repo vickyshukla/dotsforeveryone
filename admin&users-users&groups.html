@@ -4,29 +4,31 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Admin & Users- Users & Groups</title>
+    <link rel="stylesheet" href="styles/custom.css" />
     <link rel="stylesheet" href="styles/root.css" />
-    <link rel="stylesheet" href="styles/custom.css">
-    <link rel="stylesheet" href="styles/common.css">
+    <link rel="stylesheet" href="styles/common.css" />
+    <link rel="stylesheet" href="styles/tour.min.css" />
   </head>
 
   <body class="h-screen w-full">
-        <!-- Taskbar -->
-        <div class="taskbar-slide h-16 flex items-center w-full absolute">
-        
-            <div class="flex justify-center ml-10 w-full relative h-full" id="toolbar">
-              <div class="bg absolute w-full  bottom-0">
-                <img id="shelf" class="w-full" src="images/shelf.png" alt="">
-              </div>
-            </div>
-            <div class="flex items-center gap-8 w-48 justify-end pr-5">
-                <i id="search-icon" class="ri-search-line "></i>
-                <i id="notification-icon" class="ri-notification-3-line "></i>
-                <i id="pinned" class="ri-pushpin-line"></i>
-            </div>
-          
+    <!-- Taskbar -->
+    <div class="taskbar-slide h-16 flex items-center w-full absolute">
+      <div
+        class="flex justify-center ml-10 w-full relative h-full"
+        id="toolbar"
+      >
+        <div class="bg absolute w-full bottom-0">
+          <img id="shelf" class="w-full" src="images/shelf.png" alt="" />
         </div>
+      </div>
+      <div class="flex items-center gap-8 w-48 justify-end pr-5">
+        <i id="search-icon" class="ri-search-line"></i>
+        <i id="notification-icon" class="ri-notification-3-line"></i>
+        <i id="pinned" class="ri-pushpin-line"></i>
+        <i onclick="startGuide()" class="ri-question-line cursor-pointer"></i>
+      </div>
+    </div>
     <main class="flex w-full h-full flex cm">
-
       <!-- Sidebar -->
       <aside class="h-full relative">
         <input type="checkbox" class="hidden" id="sidebar-toggle" />
@@ -77,7 +79,7 @@
                           href="system-setting-basic-page.html"
                           class="block py-2 px-8 rounded-r-md w-full flex justify-between items-center"
                         >
-                          <span  class="font-normal">Basic</span>
+                          <span class="font-normal">Basic</span>
                           <i
                             class="ri-arrow-right-s-line text-c-yellow right-arrow text-2xl"
                           ></i>
@@ -139,6 +141,7 @@
                         <a
                           href="admin&users-users&groups.html"
                           class="block py-2 px-8 rounded-r-md w-full flex justify-between items-center"
+                          id="users-group"
                         >
                           <span class="font-normal">Users &amp; Groups </span>
                           <i
@@ -247,7 +250,9 @@
                           href="settings-storage-media-preview.html"
                           class="block py-2 px-8 rounded-r-md w-full flex justify-between items-center"
                         >
-                          <span class="font-normal">Media file preview &amp; Video</span>
+                          <span class="font-normal"
+                            >Media file preview &amp; Video</span
+                          >
                           <i
                             class="ri-arrow-right-s-line text-c-yellow right-arrow text-2xl"
                           ></i>
@@ -351,7 +356,9 @@
           <div class="px-2 lg:px-5 py-6">
             <div class="flex items-center gap-4">
               <i class="ri-settings-3-fill ri-xl"></i>
-              <span class="text-lg text-c-black font-normal">System settings</span>
+              <span class="text-lg text-c-black font-normal"
+                >System settings</span
+              >
             </div>
           </div>
           <!-- topTaskbar in desktop -->
@@ -360,7 +367,9 @@
           >
             <div class="w-full md:w-6/12 xl:w-8/12">
               <div class="flex items-center gap-1 sm:gap-2">
-                <span class="text-c-light-black text-base whitespace-nowrap font-normal">
+                <span
+                  class="text-c-light-black text-base whitespace-nowrap font-normal"
+                >
                   Admin &amp; Users
                 </span>
                 <i class="ri-arrow-right-line ri-lg text-c-light-black"></i>
@@ -384,10 +393,10 @@
                 <div
                   class="searchicon pt-3 pb-3 pr-4 flex items-center justify-center"
                 >
-                 <i class="ri-search-line"></i>
+                  <i class="ri-search-line"></i>
                 </div>
               </div>
-              <button class="has-tooltip">
+              <button id="add-user" class="has-tooltip">
                 <i
                   class="ri-add-circle-fill ri-xl"
                   onclick="toggleModal('newUserModal')"
@@ -420,10 +429,10 @@
                   placeholder="Search users, groups..."
                 />
                 <div class="pt-3 pb-3 pr-4 flex items-center justify-center">
-                 <i class="ri-search-line"></i>
+                  <i class="ri-search-line"></i>
                 </div>
               </div>
-              <button class="px-2 has-tooltip">
+              <button class="px-2 has-tooltip" id="add-user-mobile">
                 <i
                   class="ri-add-circle-fill ri-xl"
                   onclick="toggleModal('newUserModal')"
@@ -441,23 +450,26 @@
           </div>
 
           <!--Main content -->
-          <div class="p-4 relative h-full flex flex-col main-content overflow-y-scroll scroll">
+          <div
+            class="p-4 relative h-full flex flex-col main-content overflow-y-scroll scroll"
+          >
             <div
               class="users-admin-btn-grp flex items-center relative justify-between flex-wrap"
             >
               <div class="flex items-center gap-2 flex-wrap">
                 <div class="dropdown inline-block relative">
                   <button
-                    class="border rounded px-6 py-1 custom-safety-btn custom-outline hover:border-yellow-300"
+                    class="group border rounded px-6 py-1 custom-safety-btn custom-outline hover:border-yellow-300"
                   >
                     <span class="mr-1">Groups</span>
                     <i class="ri-arrow-down-s-fill"></i>
                   </button>
                   <ul
+                    id="group-dropdown"
                     class="dropdown-menu custom-dropdown-menu absolute hidden text-gray-700 shadow bg-custom-pure-white text-xs z-0"
                     style="width: 8.1rem"
                   >
-                    <li>
+                    <li id="edit-group">
                       <a
                         class="rounded-t custom-bg-hover py-2 px-4 block whitespace-no-wrap px-4 flex justify-between font-normal"
                         href="#"
@@ -483,6 +495,7 @@
                     </li>
                     <li>
                       <a
+                        id="add-group"
                         class="rounded-b custom-bg-hover py-2 px-4 block whitespace-no-wrap px-4 flex justify-between font-normal"
                         href="#"
                         onclick="toggleModal('editModal')"
@@ -496,15 +509,14 @@
                   </ul>
                 </div>
                 <button
+                  id="delete"
                   class="text-c-light-black bg-c-light-black1 rounded px-6 py-1 mr-1"
                 >
                   Delete
                 </button>
               </div>
             </div>
-            <div
-              class="bg-white cm-table-container border border-gray-3 rounded-md mt-5"
-            >
+            <div class="bg-white cm-table-container border rounded-md mt-5">
               <table class="table-auto w-full">
                 <thead class="h-14">
                   <tr class="bg-c-dark-gray">
@@ -531,13 +543,18 @@
                       </button>
                     </th>
                     <th
-                      class="text-c-white font-medium text-left text-base pl-3 rounded-tr-md pr-3 md:pr-0"
+                      class="text-c-white font-medium text-left text-base pl-3 pr-3 md:pr-0"
                     >
                       Group
                     </th>
+                    <th
+                      class="rounded-tr-md text-c-white font-medium text-left pl-3"
+                    >
+                      Action
+                    </th>
                   </tr>
                 </thead>
-                <tbody>
+                <tbody class="font-size-14">
                   <tr class="h-16 border-b">
                     <td class="pl-3 px-2 flex items-center justify-center mt-6">
                       <input
@@ -571,6 +588,17 @@
                       class="font-normal text-c-black text-left pl-3 whitespace-nowrap pr-3 md:pr-0"
                     >
                       Group 1
+                    </td>
+                    <td
+                      class="font-normal text-c-black text-left pl-3 whitespace-nowrap pr-3 md:pr-0"
+                    >
+                      <button
+                        class="text-c-sky"
+                        onclick="toggleModal('newUserModal')"
+                        id="edit"
+                      >
+                        Edit
+                      </button>
                     </td>
                   </tr>
                   <tr class="h-16">
@@ -607,12 +635,23 @@
                     >
                       Group 1
                     </td>
+                    <td
+                      class="font-normal text-c-black text-left pl-3 whitespace-nowrap pr-3 md:pr-0"
+                    >
+                      <button
+                        class="text-c-sky"
+                        onclick="toggleModal('newUserModal')"
+                      >
+                        Edit
+                      </button>
+                    </td>
                   </tr>
                 </tbody>
               </table>
             </div>
             <div class="mt-auto flex justify-end pt-3 font-normal">
-              Total 1 page &nbsp; <span class="text-c-yellow font-normal">(2 records)</span>
+              Total 1 page &nbsp;
+              <span class="text-c-yellow font-normal">(2 records)</span>
             </div>
           </div>
         </div>
@@ -625,7 +664,7 @@
         class="fixed hidden inset-0 flex items-center justify-center bg-black bg-opacity-50 z-10"
       >
         <div
-          class="bg-white rounded-2xl overflow-hidden shadow-lg max-w-xl w-full bg-c-lighten-gray modal-content"
+          class="bg-white rounded-2xl overflow-hidden shadow-lg max-w-xl w-full bg-c-lighten-gray modal-content editModal"
         >
           <div
             class="flex py-2 px-5 justify-between items-center border-b border-gray-3 text-c-black"
@@ -702,7 +741,7 @@
         class="fixed hidden inset-0 flex items-center justify-center bg-black bg-opacity-50 z-10"
       >
         <div
-          class="bg-white rounded-2xl overflow-hidden shadow-lg max-w-2xl w-full bg-c-lighten-gray modal-content"
+          class="bg-white rounded-2xl overflow-hidden shadow-lg max-w-2xl w-full bg-c-lighten-gray modal-content newUserModal"
         >
           <!-- Sticky header -->
           <div
@@ -719,7 +758,7 @@
             </button>
           </div>
           <!-- Scrollable content -->
-          <div class="p-5 overflow-y-scroll scroll" style="max-height: calc(100vh - 8rem)">
+          <div class="p-5 overflow-y-auto max-h-[calc(100vh-6rem)] scroll">
             <form class="space-y-4 text-sm">
               <div class="grid grid-cols-1 md:grid-cols-12 gap-4">
                 <div class="md:col-span-2 flex items-center">
@@ -844,7 +883,9 @@
                         name="gender"
                         value="female"
                       />
-                      <span class="text-c-black mt-0.5 font-normal">Female</span>
+                      <span class="text-c-black mt-0.5 font-normal"
+                        >Female</span
+                      >
                     </div>
                     <div
                       class="flex items-start justify-start gap-1 sm:gap-3 ml-3"
@@ -1081,7 +1122,7 @@
                         <div
                           class="searchicon pt-3 pb-3 pr-4 flex items-center justify-center"
                         >
-                         <i class="ri-search-line"></i>
+                          <i class="ri-search-line"></i>
                         </div>
                       </div>
 
@@ -1114,6 +1155,8 @@
     </main>
     <script src="script/sidebar.js"></script>
     <script src="script/taskbar.js"></script>
+    <script src="script/tour.js"></script>
+    <script src="script/users&group-tour.js"></script>
     <script defer>
       // for handling add or edit modal
       const basicButton = document.getElementById("basicButton");
