@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="styles/nx.css">
     <link rel="stylesheet" href="styles/common.css">
     <link rel="stylesheet" href="styles/custom.css">
+    <link rel="stylesheet" href="styles/tour.min.css">
     <title>Server Settings - Scheduled Tasks</title>
 </head>
 
@@ -23,6 +24,8 @@
             <div class="flex items-center gap-8 w-48 justify-end pr-5">
                 <i id="search-icon" class="ri-search-line "></i>
                 <i id="notification-icon" class="ri-notification-3-line "></i>
+                 <i id="pinned" class="ri-pushpin-line"></i>
+                <i onclick="startGuide()" class="ri-question-line"></i>
             </div>
           
         </div>
@@ -335,6 +338,7 @@
                   <a
                     class="w-full px-6 py-3 rounded-r-lg block flex justify-between items-center"
                     href="settings-server-scheduled-tasks.html"
+                    id="scheduled"
                   >
                     <span class="font-normal">Scheduled Tasks</span>
                     <i
@@ -367,7 +371,7 @@
                     <div class="flex-grow md:w-1/2">
                         <div class="flex items-center justify-end gap-2 md:gap-6">
                             <div class="relative aspect-square w-6 h-6">
-                                <button type="button" class="has-tooltip rounded-md" onclick="showSuccessMessage('The scheduled task has restarted')">
+                                <button id="restart-btn" type="button" class="has-tooltip rounded-md" onclick="showSuccessMessage('The scheduled task has restarted')">
                                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
                                         <path fill-rule="evenodd" clip-rule="evenodd"
@@ -382,7 +386,7 @@
                             </div>
 
                             <div class="relative aspect-square w-6 h-6">
-                                <button type="button" class="has-tooltip rounded-md" onclick="openTaskManagerModal()">
+                                <button id="taskmanager-btn" type="button" class="has-tooltip rounded-md" onclick="openTaskManagerModal()">
                                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
                                         <path
@@ -396,7 +400,7 @@
                                 </div>
                             </div>
                             <div>
-                                <button type="button"
+                                <button id="add-btn" type="button"
                                     class="bg-c-black text-c-yellow px-3 py-1 rounded-md" onclick="openModal('Add')">
                                     <i class="ri-add-circle-fill"></i>&nbsp;<span>Add</span>
                                 </button>
@@ -419,7 +423,7 @@
                 </div>
               </div>
               <button
-                  class="text-c-light-black bg-c-gray-4 rounded px-6 py-1 mr-1"
+                  class="text-c-light-black bg-c-gray-4 rounded px-6 py-1 mr-1 delete-btn"
                 >
                   Delete
                 </button>
@@ -522,7 +526,7 @@
 
             <!-- edit/add modal -->
     <div id="modal" role="dialog" class="fixed hidden inset-0 flex items-center justify-center bg-black bg-opacity-50">
-        <div class="bg-white rounded-xl overflow-hidden shadow-lg max-w-xl w-full modal-content">
+        <div id="add-modal" class="bg-white rounded-xl overflow-hidden shadow-lg max-w-xl w-full modal-content">
             <div class="flex py-3 px-5 border-b border-gray-400 justify-between items-center">
                 <h2 class="text-lg font-medium" id="edit-modal-title">Edit</h2>
                 <button type="button" id="closeModalButton" class="hover-text-c-yellow" onclick="closeModal()">
@@ -643,7 +647,7 @@
     <!-- task manager modal -->
     <div id="task-manager-modal" role="dialog"
         class="fixed hidden inset-0 flex items-center justify-center bg-black bg-opacity-50">
-        <div class="bg-white rounded-xl overflow-hidden shadow-lg max-w-md w-full modal-content">
+        <div id="task-manager" class="bg-white rounded-xl overflow-hidden shadow-lg max-w-md w-full modal-content">
             <div class="flex py-3 px-5 border-b border-gray-400 justify-between items-center">
                 <h2 class="text-lg font-medium">Task Manager</h2>
                 <button type="button" id="closeTaskManagerModalButton" onclick="closeTaskManagerModal()" class="hover-text-c-yellow">
@@ -679,6 +683,8 @@
 
     <script defer src="script/sidebar.js"></script>
     <script src="script/taskbar.js"></script>
+    <script src="script/tour.js"></script>
+    <script src="script/scheduled-tour.js"></script>
 
     <script defer>
         // for handling edit/add modal
