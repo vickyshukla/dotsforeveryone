@@ -1422,5 +1422,4 @@ button {
 }
 button:focus {
   outline: none; /* Remove the focus outline */
-  background-color: transparent; /* Remove background color */
 }
