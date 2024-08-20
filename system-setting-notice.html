@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="styles/common.css" />
     <link rel="stylesheet" href="styles/root.css" />
     <link rel="stylesheet" href="styles/custom.css">
+    <link rel="stylesheet" href="styles/tour.min.css">
   </head>
   <body class="w-full h-screen">
        <!-- Taskbar -->
@@ -23,6 +24,8 @@
             <div class="flex items-center gap-8 w-48 justify-end pr-5">
                 <i id="search-icon" class="ri-search-line "></i>
                 <i id="notification-icon" class="ri-notification-3-line "></i>
+                 <i id="pinned" class="ri-pushpin-line"></i>
+                <i onclick="startGuide()" class="ri-question-line"></i>
             </div>
           
         </div>
@@ -99,6 +102,7 @@
                         <a
                           href="system-setting-notice.html"
                           class="block py-2 px-8 rounded-r-md w-full flex justify-between items-center"
+                          id="notice"
                         >
                           <span class="font-normal">Notice</span>
                           <i
@@ -371,7 +375,7 @@
             <div class="flex-grow md:w-1/2">
               <div class="flex items-center justify-end">
                 <div>
-                  <button
+                  <button id="add-btn"
                     class="flex items-center justify-center gap-2 bg-c-black text-c-yellow px-3 sm:px-4 py-1 sm:py-1.5 rounded-md" onclick="showModal()"
                   >
                     <i class="ri-add-circle-fill"></i
@@ -382,19 +386,19 @@
             </div>
           </div>
           <div class="mt-3 flex items-center justify-end px-4 gap-2">
-            <div
+            <div id="search-bar"
                 class="flex items-center rounded overflow-hidden bg-c-white h-8"
               >
                 <input
-                  type="text"
-                  class="pl-4 pt-2.5 pb-2.5 flex-shrink flex-grow border-none text-c-black outline-none"
+                  type="search"
+                  class="pl-4  border-none text-c-black outline-none"
                   placeholder="Search users, groups..."
                 />
-                <div class="pt-3 pb-3 pr-4 flex items-center justify-center">
+                <div class="pr-4 flex items-center justify-center">
                  <i class="ri-search-line"></i>
                 </div>
               </div>
-              <button
+              <button id="delete-btn"
                   class="text-c-light-black bg-c-gray-4 rounded px-6 py-1 mr-1"
                 >
                   Delete
@@ -451,8 +455,8 @@
                                                         class="block hover-bg-c-yellow w-full px-2 py-1">Log</button>
                                                 </div>
                                             </div>
-                                            <button class="text-c-sky" onclick="showModal()">Edit</button>
-                                               <button class="text-c-sky" onclick="showPreviewModal()">Preview</button>
+                                            <button class="text-c-sky edit-btn" onclick="showModal()">Edit</button>
+                                               <button class="text-c-sky preview-btn" onclick="showPreviewModal()">Preview</button>
                                         </div>
                       </td>
                     </tr>
@@ -639,6 +643,8 @@
     <script defer src="script/sidebar.js"></script>
     <script src="script/taskbar.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/habibmhamadi/multi-select-tag@3.0.1/dist/js/multi-select-tag.js"></script>
+    <script src="script/tour.js"></script>
+    <script src="script/notice-tour.js"></script>
 
     <script defer>
 
