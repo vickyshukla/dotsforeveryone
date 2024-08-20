@@ -5,30 +5,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Storage File Share</title>
     <link rel="stylesheet" href="styles/root.css" />
-    <link rel="stylesheet" href="styles/custom.css">
-    <link rel="stylesheet" href="styles/common.css">
+    <link rel="stylesheet" href="styles/custom.css" />
+    <link rel="stylesheet" href="styles/common.css" />
+    <link rel="stylesheet" href="styles/tour.min.css" />
   </head>
 
   <body class="h-screen w-full">
-       <!-- Taskbar -->
-        <div class="taskbar-slide h-16 flex items-center w-full absolute">
-        
-            <div class="flex justify-center ml-10 w-full relative h-full" id="toolbar">
-              <div class="bg absolute w-full  bottom-0">
-                <img id="shelf" class="w-full" src="images/shelf.png" alt="">
-              </div>
-            </div>
-            <div class="flex items-center gap-8 w-48 justify-end pr-5">
-                <i id="search-icon" class="ri-search-line "></i>
-                <i id="notification-icon" class="ri-notification-3-line "></i>
-            </div>
-          
+    <!-- Taskbar -->
+    <div class="taskbar-slide h-16 flex items-center w-full absolute">
+      <div
+        class="flex justify-center ml-10 w-full relative h-full"
+        id="toolbar"
+      >
+        <div class="bg absolute w-full bottom-0">
+          <img id="shelf" class="w-full" src="images/shelf.png" alt="" />
         </div>
+      </div>
+      <div class="flex items-center gap-8 w-48 justify-end pr-5">
+        <i id="search-icon" class="ri-search-line"></i>
+        <i id="notification-icon" class="ri-notification-3-line"></i>
+        <i id="pinned" class="ri-pushpin-line"></i>
+        <i onclick="startGuide()" class="ri-question-line cursor-pointer"></i>
+      </div>
+    </div>
     <main class="flex w-full h-full flex cm">
-
-
       <!-- Sidebar -->
-         <aside class="h-full relative">
+      <aside class="h-full relative">
         <input type="checkbox" class="hidden" id="sidebar-toggle" />
         <label
           for="sidebar-toggle"
@@ -77,7 +79,7 @@
                           href="system-setting-basic-page.html"
                           class="block py-2 px-8 rounded-r-md w-full flex justify-between items-center"
                         >
-                          <span  class="font-normal">Basic</span>
+                          <span class="font-normal">Basic</span>
                           <i
                             class="ri-arrow-right-s-line text-c-yellow right-arrow text-2xl"
                           ></i>
@@ -222,6 +224,7 @@
                       </li>
                       <li>
                         <a
+                          id="share-menu"
                           href="storage-file-share.html"
                           class="block py-2 px-8 rounded-r-md w-full flex justify-between items-center"
                         >
@@ -247,7 +250,9 @@
                           href="settings-storage-media-preview.html"
                           class="block py-2 px-8 rounded-r-md w-full flex justify-between items-center"
                         >
-                          <span class="font-normal">Media file preview &amp; Video</span>
+                          <span class="font-normal"
+                            >Media file preview &amp; Video</span
+                          >
                           <i
                             class="ri-arrow-right-s-line text-c-yellow right-arrow text-2xl"
                           ></i>
@@ -351,7 +356,9 @@
           <div class="px-3 md:px-5 py-6">
             <div class="flex items-center gap-4">
               <i class="ri-settings-3-fill ri-xl"></i>
-              <span class="text-lg text-c-black font-normal">System settings</span>
+              <span class="text-lg text-c-black font-normal"
+                >System settings</span
+              >
             </div>
           </div>
           <!-- topTaskbar in desktop -->
@@ -376,13 +383,11 @@
               >
                 <input
                   type="text"
-                  class="search pl-4 pt-2.5 pb-2.5 flex-shrink flex-grow border-none outline-none font-size-14 w-3/12"
+                  class="search pl-4 flex-shrink flex-grow border-none outline-none font-size-14 w-3/12"
                   placeholder="Please enter the string"
                 />
-                <div
-                  class="searchicon pt-3 pb-3 pr-4 flex items-center justify-center"
-                >
-                 <i class="ri-search-line"></i>
+                <div class="searchicon pr-4 flex items-center justify-center">
+                  <i class="ri-search-line"></i>
                 </div>
               </div>
               <button
@@ -394,7 +399,7 @@
                 <span class="pl-1">Sharing</span>
               </button>
               <button
-                class="flex items-center border px-3 hover-bg-c-black hover-text-c-yellow text-sm py-1 rounded border-gray-600"
+                class="flex items-center border px-3 hover-bg-c-black hover-text-c-yellow text-sm py-1 rounded border-gray-600 export"
               >
                 <i class="ri-download-line"></i>
                 <span class="pl-1">Export</span>
@@ -408,6 +413,7 @@
           >
             <div class="w-full flex flex-row items-center justify-end gap-2">
               <div
+                id="mobilesearchbutton"
                 class="flex items-center rounded overflow-hidden flex-shrink-0 flex-grow bg-c-white h-8 w-1/12"
               >
                 <input
@@ -416,10 +422,11 @@
                   placeholder="Please enter the string"
                 />
                 <div class="pt-3 pb-3 pr-4 flex items-center justify-center">
-                <i class="ri-search-line"></i>
+                  <i class="ri-search-line"></i>
                 </div>
               </div>
               <button
+                id="mobilecancelbutton"
                 class="flex items-center border px-1 hover-bg-c-black hover-text-c-yellow py-2 rounded border-gray-600"
               >
                 <i class="ri-close-circle-fill"></i>
@@ -440,14 +447,14 @@
                 ></div>
                 <button
                   id="tab-sharing"
-                  class="text-center text-lg relative z-10"
+                  class="text-center relative z-10"
                   onclick="setActiveTab('tab-sharing')"
                 >
                   Sharing
                 </button>
                 <button
                   id="tab-sharing-report"
-                  class="text-center text-lg relative z-10"
+                  class="text-center relative z-10"
                   onclick="setActiveTab('tab-sharing-report')"
                 >
                   Sharing report
@@ -462,7 +469,7 @@
                 <div
                   class="users-admin-btn-grp flex items-center relative justify-between flex-wrap"
                 >
-                  <div class="flex items-center gap-2 flex-wrap">
+                  <div class="flex items-center gap-2 flex-wrap sharing-filter">
                     <button class="custom-safety-btn rounded px-6 py-1 mr-1">
                       Today
                     </button>
@@ -481,7 +488,7 @@
                       <span class="mr-1">Select User</span>
                       <i class="ri-arrow-down-s-fill"></i></button
                     ><button
-                      class="border rounded px-6 py-1 mr-1 custom-safety-btn custom-outline"
+                      class="border rounded px-6 py-1 custom-safety-btn custom-outline"
                     >
                       <span class="mr-1">Type</span>
                       <i class="ri-arrow-down-s-fill"></i>
@@ -489,7 +496,9 @@
                   </div>
                 </div>
                 <div class="mt-6 overflow-x-auto rounded-lg">
-                  <table class="min-w-full bg-c-white rounded-lg shadow-lg">
+                  <table
+                    class="min-w-full bg-c-white rounded-lg shadow-lg sharing-table"
+                  >
                     <thead class="bg-c-dark-gray rounded-lg">
                       <tr
                         class="text-left font-medium border-none rounded-lg text-c-white text-base"
@@ -521,7 +530,11 @@
                 <div
                   class="flex flex-col justify-center items-center flex-grow nodata"
                 >
-                  <img src="images/no-data-found.png" width="201" height="125" />
+                  <img
+                    src="images/no-data-found.png"
+                    width="201"
+                    height="125"
+                  />
                   <span class="font-size-18">No Data Found</span>
                 </div>
               </div>
@@ -533,7 +546,7 @@
                 <div
                   class="users-admin-btn-grp flex items-center relative justify-between flex-wrap"
                 >
-                  <div class="flex items-center gap-2 flex-wrap">
+                  <div class="flex items-center gap-2 flex-wrap report-filter">
                     <button class="custom-safety-btn rounded px-6 py-1 mr-1">
                       Today
                     </button>
@@ -593,7 +606,9 @@
                   </div>
                 </div>
                 <div class="mt-6 overflow-x-auto rounded-lg">
-                  <table class="min-w-full bg-c-white rounded-lg shadow-lg">
+                  <table
+                    class="min-w-full bg-c-white rounded-lg shadow-lg report-table"
+                  >
                     <thead class="bg-c-dark-gray rounded-lg">
                       <tr
                         class="text-left font-medium border-none rounded-lg text-c-white text-base"
@@ -635,6 +650,8 @@
     </main>
     <script src="script/sidebar.js"></script>
     <script src="script/taskbar.js"></script>
+    <script src="script/tour.js"></script>
+    <script src="script/fileshare-tour.js"></script>
     <script>
       // toggle between tabs
       document
