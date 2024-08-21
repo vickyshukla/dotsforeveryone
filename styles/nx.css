@@ -82,31 +82,30 @@ body.nx {
     border-color: var(--color-gray-3);
 }
 
-body.nx {
-    overflow-x: hidden;
-}
 
 .nx .main {
     background: url('/images/main-bg.png');
     background-size: cover;
     background-position: center;
-    overflow: scroll;
+    
 }
-
-@media (width > 768px) {
+@media (min-width: 768px) {
     .nx .main {
-        /* max-height: calc(100vh - 60px); */
-        max-height: calc(100vh);
+        min-height: calc(100vh - 16px);
+        /* Ensure main content takes up full height minus the taskbar */
+        overflow-y: auto;
+        /* Allows scrolling */
     }
 }
 
-@media (width < 767.98px) {
+@media (max-width: 767.98px) {
     .nx .main {
-        /* max-height: calc(100vh - 45px); */
-        max-height: calc(100vh);
+        min-height: calc(100vh - 16px);
+        /* Ensure main content takes up full height minus the taskbar */
+        overflow-y: auto;
+        /* Allows scrolling */
     }
 }
-
 .nx .taskbar {
     background: radial-gradient(circle,
                 rgba(255, 228, 63, 1) 0%,
