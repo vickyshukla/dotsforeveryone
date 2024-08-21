@@ -4,40 +4,40 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="styles/root.css" />
-    <link rel="stylesheet" href="styles/custom.css">
-    <link rel="stylesheet" href="styles/common.css">
+    <link rel="stylesheet" href="styles/custom.css" />
+    <link rel="stylesheet" href="styles/common.css" />
+    <link rel="stylesheet" href="styles/tour.min.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   </head>
 
   <body class="h-screen w-full">
-      <!-- Taskbar -->
-        <div class="taskbar-slide h-16 flex items-center w-full absolute">
-        
-            <div class="flex justify-center ml-10 w-full relative h-full" id="toolbar">
-              <div class="bg absolute w-full  bottom-0">
-                <img id="shelf" class="w-full" src="images/shelf.png" alt="">
-              </div>
-            </div>
-            <div class="flex items-center gap-8 w-48 justify-end pr-5">
-                <i id="search-icon" class="ri-search-line "></i>
-                <i id="notification-icon" class="ri-notification-3-line "></i>
-            </div>
-          
+    <!-- Taskbar -->
+    <div class="taskbar-slide h-16 flex items-center w-full absolute">
+      <div
+        class="flex justify-center ml-10 w-full relative h-full"
+        id="toolbar"
+      >
+        <div class="bg absolute w-full bottom-0">
+          <img id="shelf" class="w-full" src="images/shelf.png" alt="" />
         </div>
+      </div>
+      <div class="flex items-center gap-8 w-48 justify-end pr-5">
+        <i id="search-icon" class="ri-search-line"></i>
+        <i id="notification-icon" class="ri-notification-3-line"></i>
+        <i id="pinned" class="ri-pushpin-line"></i>
+        <i onclick="startGuide()" class="ri-question-line cursor-pointer"></i>
+      </div>
+    </div>
     <main class="flex w-full h-full flex cm size">
-       <!-- Taskbar -->
-        <div class="taskbar-slide h-14 flex items-center w-full absolute">
-            <div class="w-1/4">
-                
-            </div>
-            <div class="flex justify-center w-full" id="toolbar">
-                
-            </div>
-            <div class="flex items-center gap-8 w-1/4 justify-end pr-5">
-                    <i id="search-icon" class="ri-search-line"></i>
-                    <i id="notification-icon" class="ri-notification-3-line"></i>
-            </div>
+      <!-- Taskbar -->
+      <div class="taskbar-slide h-14 flex items-center w-full absolute">
+        <div class="w-1/4"></div>
+        <div class="flex justify-center w-full" id="toolbar"></div>
+        <div class="flex items-center gap-8 w-1/4 justify-end pr-5">
+          <i id="search-icon" class="ri-search-line"></i>
+          <i id="notification-icon" class="ri-notification-3-line"></i>
         </div>
+      </div>
       <!-- Sidebar -->
       <aside class="h-full relative">
         <input type="checkbox" class="hidden" id="sidebar-toggle" />
@@ -165,6 +165,7 @@
                     <ul class="drop-list text-sm space-y-1">
                       <li>
                         <a
+                          id="sharing"
                           href="filemanager-linkshare.html"
                           class="block py-1 px-8 rounded-r-md w-full flex justify-between items-center"
                         >
@@ -415,7 +416,7 @@
           <div class="relative h-full overflow-y-auto scroll">
             <div class="w-full mx-auto rounded">
               <!--personal space-->
-              <div class="transition">
+              <div class="transition personal">
                 <!-- header -->
                 <div
                   class="accordion-header cursor-pointer transition flex justify-between px-6 items-center h-8 hover-bg-c-yellow border-b"
@@ -427,7 +428,6 @@
                 <div class="accordion-content pt-0 overflow-hidden max-h-0">
                   <!--grid container -->
                   <div
-                    id="gridContainer"
                     class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8 xl:grid-cols-10 2xl:grid-cols-12 gap-4 transition-all duration-300 p-4 overflow-y-auto"
                   >
                     <div class="relative group w-full md:w-full max-w-sm">
@@ -519,7 +519,7 @@
                 </div>
               </div>
 
-              <div class="transition">
+              <div class="transition departmental">
                 <!-- header -->
                 <div
                   class="accordion-header cursor-pointer transition flex justify-between px-6 items-center h-8 hover-bg-c-yellow border-b"
@@ -531,7 +531,6 @@
                 <div class="accordion-content pt-0 overflow-hidden max-h-0">
                   <!--grid container -->
                   <div
-                    id="gridContainer"
                     class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8 xl:grid-cols-10 2xl:grid-cols-12 gap-4 transition-all duration-300 p-4 overflow-y-auto"
                   >
                     <div class="relative group w-full md:w-full max-w-sm">
@@ -653,5 +652,7 @@
         });
       });
     </script>
+    <script src="script/tour.js"></script>
+    <script src="script/filemanager-linksharing-tour.js"></script>
   </body>
 </html>
