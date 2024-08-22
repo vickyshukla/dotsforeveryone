@@ -3,9 +3,9 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="initial-scale=1, width=device-width" />
-    <link rel="stylesheet" href="styles/root.css" />
+    <link rel="stylesheet" href="root.css" />
     <link rel="stylesheet" href="styles/custom.css" />
-    <link rel="stylesheet" href="styles/common.css">
+    <link rel="stylesheet" href="styles/common.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
   </head>
   <body class="login">
@@ -57,7 +57,7 @@
         class="fixed hidden inset-0 flex items-center justify-center bg-black bg-opacity-50 z-10"
       >
         <div
-          class="bg-white rounded-2xl overflow-hidden shadow-lg max-w-md w-full bg-c-lighten-gray modal-content"
+          class="bg-white rounded-2xl overflow-hidden shadow-lg max-w-md w-full modal-content"
         >
           <!-- Sticky header -->
           <div
@@ -106,14 +106,14 @@
                           class="form-card flex flex-col sm:flex-row mx-auto space-x-4 gap-2 sm:gap-0"
                         >
                           <div
-                            class="relative w-11/12 sm:w-8/12 mx-auto sm:mx-0 sm:ml-6"
+                            class="relative w-8/12 sm:w-8/12 h-48 sm:h-56 mx-auto sm:mx-0 sm:ml-6"
                           >
                             <video
                               id="cam"
                               autoplay
                               muted
                               playsinline
-                              class="rounded-lg"
+                              class="rounded-lg w-full h-full object-cover"
                             >
                               Not available
                             </video>
@@ -121,7 +121,7 @@
                               class="panel absolute flex bottom-0 top-0 left-0 right-0 my-auto space-x-4 p-4 items-end justify-center hidden"
                             >
                               <button
-                                class="flex items-center justify-center w-9 h-9 md:w-12 md:h-12 bg-red-500 text-white rounded-full hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-400"
+                                class="flex items-center justify-center w-10 h-10 md:w-12 md:h-12 bg-red-500 text-white rounded-full hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-400"
                                 onclick="clickphoto('#register')"
                               >
                                 <i
@@ -137,17 +137,17 @@
                             <img
                               id="photo1"
                               alt="Photo 1"
-                              class="photos rounded-lg hidden"
+                              class="photos rounded-lg hidden object-cover mt-0 sm:mt-1 h-16"
                             />
                             <img
                               id="photo2"
                               alt="Photo 2"
-                              class="photos rounded-lg hidden"
+                              class="photos rounded-lg object-cover hidden h-16"
                             />
                             <img
                               id="photo3"
                               alt="Photo 3"
-                              class="photos rounded-lg hidden"
+                              class="photos rounded-lg object-cover hidden h-16"
                             />
                           </div>
                         </div>
@@ -155,7 +155,7 @@
                           type="button"
                           name="next"
                           id="nextButton"
-                          class="next bg-c-black hover-bg-c-black text-white rounded-full w-3/12 py-2 text-sm mt-5 cursor-pointer hidden"
+                          class="next bg-c-black hover-bg-c-black text-white rounded-full w-3/12 py-2 text-sm mt-3 sm:mt-5 cursor-pointer hidden"
                           value="Next"
                           onclick="stopCamera()"
                         />
@@ -214,13 +214,11 @@
                         <div
                           class="flex flex-col items-center justify-center gap-3"
                         >
-                          <h1 class="text-c-green text-base sm:text-xl">
+                          <h1 class="text-c-green">
                             You have successfully registered.
                           </h1>
                           <img src="/images/profile.png" alt="Logo" />
-                          <h1 class="text-c-green text-base sm:text-xl">
-                            Welcome To Dots
-                          </h1>
+                          <h1 class="text-c-green">Welcome To Dots</h1>
                         </div>
                         <input
                           type="button"
@@ -284,14 +282,14 @@
                           <p>Failed to capture photo</p>
                         </div>
                         <div
-                          class="relative flex justify-center items-center mx-auto w-8/12"
+                          class="relative flex justify-center items-center mx-auto w-9/12 h-80 sm:w-8/12 sm:h-56"
                         >
                           <video
                             id="cam"
                             autoplay
                             muted
                             playsinline
-                            class="rounded-lg"
+                            class="rounded-lg w-full h-full object-cover"
                           >
                             Not available
                           </video>
@@ -308,7 +306,7 @@
                           <img
                             id="photo1"
                             alt="The screen capture will appear in this box."
-                            class="rounded-lg absolute right-0 hidden"
+                            class="rounded-lg absolute right-0 hidden h-full w-full object-fit"
                           />
                         </div>
                       </div>
@@ -433,13 +431,9 @@
                       <div
                         class="flex flex-col items-center justify-center gap-3"
                       >
-                        <h1 class="text-c-green text-base sm:text-xl">
-                          Hi John
-                        </h1>
+                        <h1 class="text-c-green">Hi John</h1>
                         <img src="/images/profile.png" alt="Logo" />
-                        <h1 class="text-c-green text-base sm:text-xl">
-                          Welcome To Dots
-                        </h1>
+                        <h1 class="text-c-green">Welcome To Dots</h1>
                       </div>
                     </fieldset>
                   </form>
