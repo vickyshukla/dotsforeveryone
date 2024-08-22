@@ -32,16 +32,15 @@
             <h1 class="text-2xl font-normal">Welcome to Dots</h1>
             <div class="right-container flex flex-col gap-7">
               <input
-                class="userinput"
+                class="userinput rounded-full px-16 py-2"
                 type="text"
                 placeholder="Username"
                 required
               /><button
-                class="rounded-full"
-                id="login-btn"
+                class="rounded-full bg-c-black text-white px-24 py-2"
                 name="next"
                 onclick="showModal('#login')"
-                style="padding: 7px 0px"
+                style="padding: 8px 0px"
               >
                 Submit
               </button>
@@ -54,7 +53,7 @@
       <div
         id="register"
         role="dialog"
-        class="fixed hidden inset-0 flex items-center justify-center bg-black bg-opacity-50 z-10"
+        class="fixed hidden inset-0 flex items-center justify-center bg-black bg-opacity-60 z-10"
       >
         <div
           class="bg-white rounded-2xl overflow-hidden shadow-lg max-w-md w-full modal-content"
@@ -82,11 +81,9 @@
                   <form class="msform">
                     <div class="sticky top-0 bg-white z-20">
                       <ul id="progressbar" class="flex justify-between">
-                        <li class="active" id="camera">
-                          <strong>Camera</strong>
-                        </li>
-                        <li id="voice"><strong>Voice</strong></li>
-                        <li id="confirm"><strong>Finish</strong></li>
+                        <li class="active" id="camera">Camera</li>
+                        <li id="voice">Voice</li>
+                        <li id="confirm">Finish</li>
                       </ul>
                     </div>
                     <div
@@ -97,16 +94,16 @@
                       <fieldset>
                         <div
                           id="camera-error"
-                          class="flex gap-2 mb-4 text-red-600 justify-center items-center hidden"
+                          class="flex gap-2 mb-4 mt-5 text-red-600 justify-center items-center hidden"
                         >
                           <i class="ri-error-warning-fill ri-xl"></i>
                           <p>Failed to capture photo</p>
                         </div>
                         <div
-                          class="form-card flex flex-col sm:flex-row mx-auto space-x-4 gap-2 sm:gap-0"
+                          class="form-card flex flex-col sm:space-x-4 sm:flex-row mx-auto gap-2 sm:gap-0 mt-5"
                         >
                           <div
-                            class="relative w-8/12 sm:w-8/12 h-48 sm:h-56 mx-auto sm:mx-0 sm:ml-6"
+                            class="relative w-8/12 h-48 sm:h-56 mx-auto sm:mx-0 sm:ml-6"
                           >
                             <video
                               id="cam"
@@ -132,7 +129,7 @@
                           </div>
                           <canvas id="canvas" class="hidden"></canvas>
                           <div
-                            class="photos-container flex justify-center items-center sm:items-start sm:justify-start flex-row sm:flex-col space-y-0 gap-1 sm:gap-0 sm:space-y-3"
+                            class="photos-container flex justify-center items-center sm:items-start sm:justify-start flex-row sm:flex-col space-y-0 gap-2 sm:gap-0 sm:space-y-3"
                           >
                             <img
                               id="photo1"
@@ -165,7 +162,7 @@
                         <div class="form-card voice1 space-y-5">
                           <div
                             id="voice-error"
-                            class="flex gap-2 text-red-600 justify-center items-center hidden"
+                            class="flex gap-2 text-red-600 justify-center items-center hidden mt-5"
                           >
                             <i class="ri-error-warning-fill ri-xl"></i>
                             <p>Failed to record voice</p>
@@ -200,37 +197,40 @@
                         <input
                           type="button"
                           name="previous"
-                          class="previous bg-c-black hover-bg-c-black text-white rounded-full w-3/12 py-2 text-sm mt-5 mr-5 cursor-pointer"
+                          class="previous bg-white text-c-yellow border border-c-yellow rounded-full w-3/12 py-2 text-sm mt-5 mr-5 cursor-pointer"
                           value="Previous"
                         />
                         <input
                           type="button"
                           name="next"
-                          class="next bg-c-black hover-bg-c-black text-white rounded-full w-3/12 py-2 text-sm mt-5 cursor-pointer"
+                          class="next bg-c-black hover-bg-c-black text-white rounded-full w-3/12 py-2 text-sm mt-5 cursor-pointer voicesubmit"
                           value="Submit"
                         />
                       </fieldset>
                       <fieldset>
                         <div
-                          class="flex flex-col items-center justify-center gap-3"
+                          class="flex flex-col items-center justify-center mt-3"
                         >
-                          <h1 class="text-c-green">
+                          <h1 class="text-c-green font-size-24">
+                            Congratulations!<i
+                              class="ri-checkbox-circle-fill text-c-green"
+                            ></i>
+                          </h1>
+
+                          <h1 class="text-c-green font-size-20">
                             You have successfully registered.
                           </h1>
-                          <img src="/images/profile.png" alt="Logo" />
-                          <h1 class="text-c-green">Welcome To Dots</h1>
+                          <img
+                            src="/images/profile.png"
+                            alt="Profile"
+                            class="w-20 h-20 mt-5 rounded-full object-cover"
+                          />
                         </div>
-                        <input
-                          type="button"
-                          name="previous"
-                          class="previous bg-c-black hover-bg-c-black text-white rounded-full w-3/12 py-2 text-sm mt-5 mr-5 cursor-pointer"
-                          value="Retry"
-                        />
                         <input
                           type="button"
                           name="next"
                           class="bg-c-black hover-bg-c-black text-white rounded-full w-5/12 sm:w-4/12 py-2 text-sm mt-5 cursor-pointer"
-                          value="Go to Dashboard"
+                          value="Get Started >>"
                         />
                       </fieldset>
                     </div>
@@ -246,7 +246,7 @@
       <div
         id="login"
         role="dialog"
-        class="fixed hidden inset-0 flex items-center justify-center bg-black bg-opacity-50 z-10"
+        class="fixed hidden inset-0 flex items-center justify-center bg-black bg-opacity-60 z-10"
       >
         <div
           class="bg-white rounded-2xl overflow-hidden shadow-lg max-w-md w-full bg-c-lighten-gray modal-content"
@@ -282,7 +282,7 @@
                           <p>Failed to capture photo</p>
                         </div>
                         <div
-                          class="relative flex justify-center items-center mx-auto w-9/12 h-80 sm:w-8/12 sm:h-56"
+                          class="relative flex justify-center items-center mx-auto w-10/12 h-56 sm:w-8/12"
                         >
                           <video
                             id="cam"
@@ -431,9 +431,19 @@
                       <div
                         class="flex flex-col items-center justify-center gap-3"
                       >
-                        <h1 class="text-c-green">Hi John</h1>
+                        <h1 class="font-size-20">Hi John</h1>
                         <img src="/images/profile.png" alt="Logo" />
-                        <h1 class="text-c-green">Welcome To Dots</h1>
+                        <div
+                          class="flex items-center justify-center gap-1 font-semibold font-size-24"
+                        >
+                          <p>Welcome to</p>
+                          <div class="flex flex-col mt-0.5">
+                            <p>Dots</p>
+                            <hr
+                              class="border-t-4 -mt-1 border-c-yellow rounded-full"
+                            />
+                          </div>
+                        </div>
                       </div>
                     </fieldset>
                   </form>
@@ -557,8 +567,6 @@
       const constraints = {
         audio: false,
         video: {
-          width: { ideal: 640 },
-          height: { ideal: 480 },
           facingMode: "environment", // Default camera mode
         },
       };
@@ -626,7 +634,7 @@
 
         const height = $(id).find("#cam")[0].videoHeight;
         const width = $(id).find("#cam")[0].videoWidth;
-
+        console.log(height, width);
         if (width && height) {
           $(id).find("#canvas").attr({ width, height });
           context.drawImage($(id).find("#cam")[0], 0, 0, width, height);
@@ -788,6 +796,36 @@
         $(`.voice${recorderNumber}`).find("#next-login").removeClass("hidden");
         $(`.voice${recorderNumber}`).find("#voice-error").removeClass("hidden");
       }
+    </script>
+    <script type="module">
+      import confetti from "https://cdn.skypack.dev/canvas-confetti@1.3.2";
+
+      // Trigger confetti when the voice record submission button is clicked
+      const voiceSubmitButton = document.querySelector(".voicesubmit"); // Update with your specific selector if needed
+      voiceSubmitButton.addEventListener("click", () => {
+        // Trigger confetti from both edges
+        var duration = 3 * 1000; // 3 seconds duration for confetti
+        var end = Date.now() + duration;
+
+        (function frame() {
+          confetti({
+            particleCount: 7,
+            angle: 60,
+            spread: 55,
+            origin: { x: 0 },
+          });
+          confetti({
+            particleCount: 7,
+            angle: 120,
+            spread: 55,
+            origin: { x: 1 },
+          });
+
+          if (Date.now() < end) {
+            requestAnimationFrame(frame);
+          }
+        })();
+      });
     </script>
   </body>
 </html>
