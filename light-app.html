@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="styles/custom.css" />
     <link rel="stylesheet" href="styles/root.css" />
     <link rel="stylesheet" href="styles/common.css">
+    <link rel="stylesheet" href="styles/tour.min.css">
   </head>
   <body class="h-screen w-full">
        <!-- Taskbar -->
@@ -20,6 +21,8 @@
             <div class="flex items-center gap-8 w-48 justify-end pr-5">
                 <i id="search-icon" class="ri-search-line "></i>
                 <i id="notification-icon" class="ri-notification-3-line "></i>
+                <i id="pinned" class="ri-pushpin-line"></i>
+                <i onclick="startGuide()" class="ri-question-line cursor-pointer"></i>
             </div>
           
         </div>
@@ -127,6 +130,7 @@
               <div class="flex items-center justify-end ">
                 <div>
                   <button
+                  id="create-btn"
                     type="button"
                     class="bg-c-black text-c-yellow px-5 py-1.5 sm:px-8 sm:py-2 rounded openCreateModalButton"
                   >
@@ -140,7 +144,7 @@
           <!-- content -->
           <div class="lightapp-content relative h-full overflow-y-auto">
             <div class="flex flex-wrap flex-row justify-center sm:justify-start gap-7 md:gap-5 py-3 px-2 md:px-4 lg:px-6">
-              <div class= "small-container flex flex-col items-center justify-center gap-5 relative">
+              <div id="ppt-container" class= "small-container flex flex-col items-center justify-center gap-5 relative">
                   <div class="img-container rounded-xl bg-white shadow-black flex items-center justify-center">
                     <img class="w-14 h-14" src="images/pptx.png" alt="pptx Image">
                 </div>
@@ -290,7 +294,7 @@
       class="fixed hidden inset-0 flex items-center justify-center bg-black bg-opacity-50 overflow-y-scroll"
     >
       <div class="relative p-4 w-full max-w-2xl max-h-full">
-        <div class="relative bg-white rounded-xl shadow dark:bg-gray-700">
+        <div id="createapp-modal" class="relative bg-white rounded-xl shadow dark:bg-gray-700">
           <div
             class="flex items-start justify-between p-4 md:p-5 border-b rounded-t border-zinc-700"
           >
@@ -534,7 +538,7 @@
     >
       <div class="delete-modal relative">
         <div class="relative">
-          <div class="p-4 md:p-5 text-center">
+          <div id="deleteapp-modal" class="p-4 md:p-5 text-center">
             <div class="delete-header flex items-center gap-4 mb-1 py-1">
               <i class="ri-delete-bin-6-line ri-xl text-c-yellow"></i>
               <h1 class="text-lg font-medium">Delete File</h1>
@@ -566,7 +570,7 @@
     <!-- Edit Button Modal -->
      <div id="Edit-modal" role="dialog" tabindex="-1" aria-hidden="true" class="fixed hidden inset-0 flex items-center justify-center bg-black bg-opacity-50 overflow-y-scroll">
                         <div class="relative p-4 w-full max-w-2xl max-h-full">
-                            <div class="relative bg-white rounded-xl shadow dark:bg-gray-700">
+                            <div id="editapp-modal" class="relative bg-white rounded-xl shadow dark:bg-gray-700">
                                 <div class="flex items-start justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
                                   <div class="flex items-center gap-4">
                                       <div class="img-container shadow-black flex items-center justify-center">
@@ -723,6 +727,8 @@
 
 
     <script src="script/taskbar.js"></script>
+    <script src="script/tour.js"></script>
+    <script src="script/lightapp-tour.js"></script>
     <script>
          // CraateModal Open Functionality
       const openModalButton = document.querySelectorAll(

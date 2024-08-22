@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="styles/custom.css">
     <link rel="stylesheet" href="styles/root.css" />
     <link rel="stylesheet" href="styles/common.css">
+    <link rel="stylesheet" href="styles/tour.min.css">
   </head>
   <body class="h-screen w-full">
        <!-- Taskbar -->
@@ -20,6 +21,8 @@
             <div class="flex items-center gap-8 w-48 justify-end pr-5">
                 <i id="search-icon" class="ri-search-line "></i>
                 <i id="notification-icon" class="ri-notification-3-line "></i>
+                <i id="pinned" class="ri-pushpin-line"></i>
+                <i onclick="startGuide()" class="ri-question-line cursor-pointer"></i>
             </div>
           
         </div>
@@ -144,7 +147,7 @@
 
             <div class="flex-grow md:w-1/2">
               <div class="flex items-center justify-end gap-2 md:gap-6">
-                <div class="relative">
+                <div id="search-bar" class="relative">
                   <input
                     class="py-1.5 sm:w-64 px-4 focus:outline-none outline-none rounded border-none"
                     type="search"
@@ -162,7 +165,7 @@
           <!-- content -->
             <div class="plugin-content relative h-full overflow-y-auto">
               <div class="flex flex-wrap flex-row justify-center sm:justify-start gap-7 md:gap-5 py-3 px-2 md:px-3 lg:px-6">
-                <div class="small-container flex flex-col items-center justify-center gap-5 relative openModal">
+                <div id="office-container" class="small-container flex flex-col items-center justify-center gap-5 relative openModal">
                 <div class="img-container rounded-xl bg-white shadow-black flex items-center justify-center">
                     <img class="w-10 h-10" src="images/OfficeImg.png" alt="Office Image">
                 </div>
@@ -432,6 +435,8 @@
   
 
     <script src="script/taskbar.js"></script>
+    <script src="script/tour.js"></script>
+    <script src="script/plugin-tour.js"></script>
     <script>
 
      const container = document.querySelector(".plugin-content");

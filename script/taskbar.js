@@ -25,12 +25,17 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     function handleMouseMove(event) {
-        if (event.clientY <= 50) {
+        const taskbarHeight = taskbar.offsetHeight;
+
+        // Show the taskbar when the cursor is at the very top of the screen (y = 0)
+        if (event.clientY === 0) {
             taskbar.classList.add('show');
-        } else {
+        }
+
+        // Hide the taskbar when the cursor moves out of the taskbar's height
+        if (event.clientY > taskbarHeight) {
             taskbar.classList.remove('show');
         }
     }
-
     document.addEventListener('mousemove', handleMouseMove);
 });
