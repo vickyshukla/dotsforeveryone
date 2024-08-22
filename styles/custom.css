@@ -498,7 +498,6 @@ input[type="search"]::-webkit-search-cancel-button {
 }
 
 @media (max-width: 900px) {
-
   .clock .date {
     font-size: 1.5vw;
   }
@@ -526,8 +525,6 @@ input[type="search"]::-webkit-search-cancel-button {
   .dashboard .Search {
     background: var(--color-lighten-gray);
   }
-
- 
 
   .clock .date {
     font-size: 2.5vw;
@@ -588,7 +585,7 @@ input[type="search"]::-webkit-search-cancel-button {
   backdrop-filter: blur(2px);
   box-shadow: var(--box-shadow) inset;
 }
-.userinput::placeholder {
+.login .userinput::placeholder {
   font-weight: 400 !important;
   color: #646464 !important;
 }
@@ -619,10 +616,6 @@ input[type="search"]::-webkit-search-cancel-button {
   color: var(--color-white);
 }
 
-.cs .userinput::placeholder {
-  color: var(--color-pure-black);
-}
-
 @media (max-width: 768px) {
   .login .blur-container,
   .login .blur-popup-container,
@@ -649,7 +642,6 @@ input[type="search"]::-webkit-search-cancel-button {
   }
 
   .login .right-container {
-    width: 100%;
     padding: 10px;
   }
 
@@ -671,10 +663,6 @@ input[type="search"]::-webkit-search-cancel-button {
 
   .login .left-container {
     margin-bottom: 20px;
-  }
-
-  .login .right-container .userinput {
-    height: 40px;
   }
 }
 
@@ -1241,13 +1229,13 @@ input[type="search"]::-webkit-search-cancel-button {
 }
 
 .login #progressbar {
-  margin-bottom: 30px;
   overflow: hidden;
   color: lightgrey;
 }
 
 .login #progressbar .active {
   color: var(--color-dark-yellow);
+  font-weight: 600;
 }
 
 .login #progressbar li {
@@ -1264,12 +1252,10 @@ input[type="search"]::-webkit-search-cancel-button {
 }
 
 .login #progressbar #voice:before {
-  font-family: FontAwesome;
   content: "2";
 }
 
 .login #progressbar #confirm:before {
-  font-family: FontAwesome;
   content: "3";
 }
 
@@ -1312,6 +1298,7 @@ input[type="search"]::-webkit-search-cancel-button {
   width: 100%;
   object-fit: cover;
 }
+
 /* scroll-x for every page */
 .login .scroll::-webkit-scrollbar {
   width: 4px;
@@ -1392,9 +1379,12 @@ input[type="search"]::-webkit-search-cancel-button {
 }
 
 /********* Remove highlight color when click on any button in project ********/
-button {
+button,
+input[type="button"] {
   -webkit-tap-highlight-color: transparent; /* Remove tap highlight color */
 }
-button:focus {
+
+button:focus,
+input[type="button"]:focus {
   outline: none; /* Remove the focus outline */
 }
