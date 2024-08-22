@@ -411,7 +411,7 @@ body .cm {
 
 /* tab css used in storage-file page */
 .cm .tab-control {
-  border-top: 2px solid transparent;
+  border-bottom: 2px solid transparent;
 }
 
 .cm .tab-control.active {
