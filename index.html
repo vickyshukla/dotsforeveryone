@@ -455,9 +455,7 @@
             </div>
         </div>
 
-        <!-- Clock -->
-       <div class="clock flex flex-col items-center gap-2" id="clock"></div>
-
+       
         <!-- Notification -->
         <div id="notification" class="Notification h-80 absolute right-5 sm:right-20 top-16 hidden overflow-hidden">
           <div class="h-16 border-b-2 border-c-gray py-4 px-4 flex items-center justify-between">
@@ -507,7 +505,7 @@
           </div>
             <div id="suggestions" class="searchdata hidden px-3 py-3 max-h-96">
               <div class="test-file p-3">
-                <ul>
+                <ul class="cursor-pointer">
                   <li class="flex items-center gap-4">
                     <img class="w-8 h-8" src="/images/Docs.png" alt="" />
                     <p>Test File</p>
@@ -528,7 +526,7 @@
               </div>
               <div class="image-file border-t border-c-dark-gray mt-1 p-3">
                 <h1 class="text-xl font-medium mb-2">Images</h1>
-                <ul>
+                <ul class="cursor-pointer">
                   <li class="flex items-center gap-4">
                     <img class="w-8 h-8" src="/images/imageviewer.png" alt="" />
                     <p>Image File</p>
@@ -619,13 +617,17 @@
         </div>
 
          <!-- Footer -->
-        <div class="absolute bottom-4 right-4 px-5 has-tooltip">
+        <div class="absolute flex justify-center items-center bottom-4 right-4 px-5 has-tooltip gap-4">
+              <!-- Clock -->
+       <div class="clock flex flex-col items-center gap-1" id="clock"></div>
             <img
               id="footer-logo"
               class="w-10 h-10"
               src="/images/logo.png"
               alt="Logo"
             />
+         
+
         </div>
          <div
                 class="absolute py-1 px-2 text-start text-xs tooltip bottom-2 right-20 z-10 bg-white border rounded-md border-c-yellow font-normal"
@@ -640,7 +642,7 @@
           <!--Iframe popup-->
 
         
-             <div id="box" data-app-id="2"
+             <div id="box" data-app-id="1"
         class="draggableelement popupiframe fixed inset-0 bg-black-900 bg-opacity-50 flex items-center justify-center rounded-lg hidden"
       >
         <div
@@ -1197,13 +1199,13 @@
         const minutes = String(now.getMinutes()).padStart(2, "0");
 
         const days = [
-          "Sunday",
-          "Monday",
-          "Tuesday",
-          "Wednesday",
-          "Thursday",
-          "Friday",
-          "Saturday",
+          "Sun",
+          "Mon",
+          "Tue",
+          "Wed",
+          "Thu",
+          "Fri",
+          "Sat",
         ];
         const months = [
           "January",
@@ -1226,7 +1228,7 @@
         const timeString = `${hours}:${minutes}`;
         const dateString = `${day}, ${month} ${date}`;
 
-        clock.innerHTML = `<div class="time text-c-white text-5xl font-normal">${timeString}</div><div class="date text-sm flex font-normal">${dateString}</div>`;
+        clock.innerHTML = `<div class="time text-c-white text-2xl font-normal">${timeString}</div><div class="date text-xs flex font-normal">${dateString}</div>`;
       }
 
       updateClock();
