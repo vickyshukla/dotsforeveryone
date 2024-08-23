@@ -1,63 +1,77 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Admin Wallpaper Page</title>
-    <link rel="stylesheet" href="styles/custom.css">
+    <link rel="stylesheet" href="styles/custom.css" />
     <link rel="stylesheet" href="styles/root.css" />
-    <link rel="stylesheet" href="styles/common.css">
-</head>
-<body class="w-full h-screen">
-     <!-- Taskbar -->
-        <div class="taskbar-slide h-16 flex items-center w-full absolute">
-        
-            <div class="flex justify-center ml-10 w-full relative h-full" id="toolbar">
-              <div class="bg absolute w-full  bottom-0">
-                <img id="shelf" class="w-full" src="images/shelf.png" alt="">
-              </div>
-            </div>
-            <div class="flex items-center gap-8 w-48 justify-end pr-5">
-                <i id="search-icon" class="ri-search-line "></i>
-                <i id="notification-icon" class="ri-notification-3-line "></i>
-            </div>
-          
+    <link rel="stylesheet" href="styles/common.css" />
+    <link rel="stylesheet" href="styles/tour.min.css" />
+  </head>
+  <body class="w-full h-screen">
+    <!-- Taskbar -->
+    <div class="taskbar-slide h-16 flex items-center w-full absolute">
+      <div
+        class="flex justify-center ml-10 w-full relative h-full"
+        id="toolbar"
+      >
+        <div class="bg absolute w-full bottom-0">
+          <img id="shelf" class="w-full" src="images/shelf.png" alt="" />
         </div>
-    <main class="w-full h-full flex cm  account">
-
-    <!-- Sidebar -->
+      </div>
+      <div class="flex items-center gap-8 w-48 justify-end pr-5">
+        <i id="search-icon" class="ri-search-line"></i>
+        <i id="notification-icon" class="ri-notification-3-line"></i>
+        <i id="pinned" class="ri-pushpin-line"></i>
+        <i onclick="startGuide()" class="ri-question-line cursor-pointer"></i>
+      </div>
+    </div>
+    <main class="w-full h-full flex cm account">
+      <!-- Sidebar -->
       <aside class="h-full relative">
         <input type="checkbox" class="hidden" id="sidebar-toggle" />
         <label
           for="sidebar-toggle"
           class="absolute lg:hidden top-7 -right-8 px-1"
         >
-             <i class="ri-bar-chart-horizontal-line"></i>
+          <i class="ri-bar-chart-horizontal-line"></i>
         </label>
         <div class="h-full sidebar">
           <div class="sidebar-container">
             <div class="p-4">
               <img class="w-20" src="/images/logo.png" alt="Dots Logo" />
             </div>
-            <div class=" py-4 flex flex-col items-center justify-center">
-                <img class="w-24" src="/images/profile.png" alt="Profile image">
-                <div class="flex flex-col justify-center items-center pt-3">
-                    <h1 class="text-2xl font-normal">Administrator</h1>
-                    <p class="font-light text-2xl">Admin</p>
-                </div>
+            <div class="py-4 flex flex-col items-center justify-center">
+              <img class="w-24" src="/images/profile.png" alt="Profile image" />
+              <div class="flex flex-col justify-center items-center pt-3">
+                <h1 class="text-2xl font-normal">Administrator</h1>
+                <p class="font-light text-2xl">Admin</p>
+              </div>
             </div>
             <div class="md:pt-6">
               <ul class="space-y-1">
                 <li>
-                     <a class="w-full px-6 py-3 rounded-r-lg block flex justify-between items-center" href="admin-account-page.html">
-                       <span> Account </span>
-                       <i class="ri-arrow-right-s-line text-c-yellow transition-all text-2xl"></i>
-                      </a>
+                  <a
+                    class="w-full px-6 py-3 rounded-r-lg block flex justify-between items-center"
+                    href="admin-account-page.html"
+                  >
+                    <span> Account </span>
+                    <i
+                      class="ri-arrow-right-s-line text-c-yellow transition-all text-2xl"
+                    ></i>
+                  </a>
                 </li>
                 <li>
-                  <a class="w-full px-6 py-3 rounded-r-lg block flex justify-between items-center" href="admin-wallpaper-page.html">
-                       <span> Wallpaper </span>
-                       <i class="ri-arrow-right-s-line text-c-yellow transition-all text-2xl"></i>
+                  <a
+                    id="wallpaper"
+                    class="w-full px-6 py-3 rounded-r-lg block flex justify-between items-center"
+                    href="admin-wallpaper-page.html"
+                  >
+                    <span> Wallpaper </span>
+                    <i
+                      class="ri-arrow-right-s-line text-c-yellow transition-all text-2xl"
+                    ></i>
                   </a>
                 </li>
               </ul>
@@ -67,90 +81,167 @@
       </aside>
 
       <!-- Main content -->
-       <div class="flex-grow border h-100 main">
-          <div class="flex flex-col w-full h-full content">
-             <div class=" px-9 lg:px-5 py-4">
-               <div class="flex items-center gap-4">
-                <img class="w-12" src="images/profile.png" alt="profile img">
-                <span class="text-lg font-normal text-c-black">Administrator</span>
+      <div class="flex-grow border h-100 main">
+        <div class="flex flex-col w-full h-full content">
+          <div class="px-9 lg:px-5 py-4">
+            <div class="flex items-center gap-4">
+              <img class="w-12" src="images/profile.png" alt="profile img" />
+              <span class="text-lg font-normal text-c-black"
+                >Administrator</span
+              >
+            </div>
+          </div>
+
+          <!-- top taskbar -->
+          <div
+            class="taskbar bg-no-repeat bg-cover bg-center flex items-center justify-between px-5 md:px-5 lg:px-7 py-4"
+          >
+            <div class="flex items-center gap-4 w-full md:w-1/2">
+              <div class="flex gap-1 sm:gap-2 items-center">
+                <span class="text-c-black font-medium">Wallpaper</span>
               </div>
             </div>
-
-              <!-- top taskbar -->
-            <div class="taskbar bg-no-repeat bg-cover bg-center flex items-center justify-between px-5 md:px-5 lg:px-7 py-4">
-               <div class="flex items-center gap-4 w-full md:w-1/2">
-                        <div class="flex gap-1 sm:gap-2 items-center">
-                            <span class="text-c-black font-medium">Wallpaper</span>
-                        </div>
-               </div>
-            </div>
-
-            <!-- Content -->
-             <div class="w-full h-full px-5 md:px-5 lg:px-7">         
-                    <div class="py-5 flex items-center gap-4 sm:gap-6 border-b border-gray">
-                        <label for="themes" class="cursor-pointer radio-border">
-                            <input type="radio" name="type" id="themes" value="themes">
-                            <span class="text-c-black font-normal text-xs md:text-base">Themes</span>
-                            <div></div>
-                        </label>
-                        <label for="desktop-wallpaper" class="cursor-pointer radio-border">
-                            <input type="radio" name="type" id="desktop-wallpaper" value="desktop-wallpaper" checked>
-                            <span class="text-c-black font-normal text-xs md:text-base">Desktop wallpaper</span>
-                            <div></div>
-                        </label>
-                        <label for="login-wallpaper" class="cursor-pointer radio-border">
-                            <input type="radio" name="type" id="login-wallpaper" value="login-wallpaper">
-                            <span class="text-c-black font-normal text-xs md:text-base">Login wallpaper</span>
-                            <div></div>
-                        </label>
-                    </div>
-                    <div class="py-4">
-                        <span class="text-c-black font-medium">Choose your favourite wallpaper</span>
-                        <div class="wallpapers w-full pt-4">
-                            <div id="add-div" class="border border-c-yellow bg-c-lighten-gray flex flex-col gap-3 items-center justify-center">
-                                <div class="w-10 h-10 bg-c-yellow rounded-full flex items-center justify-center">
-                                    <i class="ri-add-large-fill ri-lg"></i>
-                                </div>
-                                <span class="text-c-black font-medium text-sm sm:text-base">Add new wallpaper</span>
-                            </div>
-                            <div class="wallpaper-div border border-gray overflow-hidden">
-                                <img class="w-full h-full" src="images/Wallpaper.png" alt="wallpaper">
-                            </div>
-                            <div class="wallpaper-div border border-gray overflow-hidden">
-                                <img class="object-cover w-full h-full" src="images/wallpaper1.jpg" alt="wallpaper" >
-                            </div>
-                            <div class="wallpaper-div border border-gray overflow-hidden">
-                                <img class="object-cover w-full h-full" src="images/wallpaper2.jpg" alt="wallpaper" >
-                            </div>
-                            <div class="wallpaper-div border border-gray overflow-hidden">
-                                <img class="object-cover w-full h-full" src="images/wallpaper3.jpg" alt="wallpaper" >
-                            </div>
-                            <div class="wallpaper-div border border-gray overflow-hidden">
-                                <img class="object-cover w-full h-full" src="images/wallpaper4.jpg" alt="wallpaper" >
-                            </div>
-                            <div class="wallpaper-div border border-gray overflow-hidden">
-                                <img class="object-cover w-full h-full" src="images/wallpaper5.jpg" alt="wallpaper" >
-                            </div>
-                            <div class="wallpaper-div border border-gray overflow-hidden">
-                                <img class="object-cover w-full h-full" src="images/wallpaper6.jpg" alt="wallpaper" >
-                            </div>
-                            <div class="wallpaper-div border border-gray overflow-hidden">
-                                <img class="object-cover w-full h-full" src="images/wallpaper7.jpg" alt="wallpaper" >
-                            </div>
-                            <div class="wallpaper-div border border-gray overflow-hidden">
-                                <img class="object-cover w-full h-full" src="images/wallpaper8.jpg" alt="wallpaper" >
-                            </div>
-                        </div>
-                        <div class="pt-6 flex items-center justify-end">
-                            <button class="bg-c-black hover-bg-c-black text-white rounded-full w-32 py-1.5 text-lg">Save</button>
-                        </div>
-                    </div>
-             </div>
           </div>
-       </div>
+
+          <!-- Content -->
+          <div class="w-full h-full px-5 md:px-5 lg:px-7">
+            <div
+              class="py-5 flex items-center gap-4 sm:gap-6 border-b border-gray tabs"
+            >
+              <label for="themes" class="cursor-pointer radio-border">
+                <input type="radio" name="type" id="themes" value="themes" />
+                <span class="text-c-black font-normal text-xs md:text-base"
+                  >Themes</span
+                >
+                <div></div>
+              </label>
+              <label
+                for="desktop-wallpaper"
+                class="cursor-pointer radio-border"
+              >
+                <input
+                  type="radio"
+                  name="type"
+                  id="desktop-wallpaper"
+                  value="desktop-wallpaper"
+                  checked
+                />
+                <span class="text-c-black font-normal text-xs md:text-base"
+                  >Desktop wallpaper</span
+                >
+                <div></div>
+              </label>
+              <label for="login-wallpaper" class="cursor-pointer radio-border">
+                <input
+                  type="radio"
+                  name="type"
+                  id="login-wallpaper"
+                  value="login-wallpaper"
+                />
+                <span class="text-c-black font-normal text-xs md:text-base"
+                  >Login wallpaper</span
+                >
+                <div></div>
+              </label>
+            </div>
+            <div class="py-4">
+              <span class="text-c-black font-medium"
+                >Choose your favourite wallpaper</span
+              >
+              <div class="wallpapers w-full pt-4">
+                <div
+                  id="add-div"
+                  class="border border-c-yellow bg-c-lighten-gray flex flex-col gap-3 items-center justify-center"
+                >
+                  <div
+                    class="w-10 h-10 bg-c-yellow rounded-full flex items-center justify-center"
+                  >
+                    <i class="ri-add-large-fill ri-lg"></i>
+                  </div>
+                  <span class="text-c-black font-medium text-sm sm:text-base"
+                    >Add new wallpaper</span
+                  >
+                </div>
+                <div class="wallpaper-div border border-gray overflow-hidden">
+                  <img
+                    class="w-full h-full"
+                    src="images/Wallpaper.png"
+                    alt="wallpaper"
+                  />
+                </div>
+                <div class="wallpaper-div border border-gray overflow-hidden">
+                  <img
+                    class="object-cover w-full h-full"
+                    src="images/wallpaper1.jpg"
+                    alt="wallpaper"
+                  />
+                </div>
+                <div class="wallpaper-div border border-gray overflow-hidden">
+                  <img
+                    class="object-cover w-full h-full"
+                    src="images/wallpaper2.jpg"
+                    alt="wallpaper"
+                  />
+                </div>
+                <div class="wallpaper-div border border-gray overflow-hidden">
+                  <img
+                    class="object-cover w-full h-full"
+                    src="images/wallpaper3.jpg"
+                    alt="wallpaper"
+                  />
+                </div>
+                <div class="wallpaper-div border border-gray overflow-hidden">
+                  <img
+                    class="object-cover w-full h-full"
+                    src="images/wallpaper4.jpg"
+                    alt="wallpaper"
+                  />
+                </div>
+                <div class="wallpaper-div border border-gray overflow-hidden">
+                  <img
+                    class="object-cover w-full h-full"
+                    src="images/wallpaper5.jpg"
+                    alt="wallpaper"
+                  />
+                </div>
+                <div class="wallpaper-div border border-gray overflow-hidden">
+                  <img
+                    class="object-cover w-full h-full"
+                    src="images/wallpaper6.jpg"
+                    alt="wallpaper"
+                  />
+                </div>
+                <div class="wallpaper-div border border-gray overflow-hidden">
+                  <img
+                    class="object-cover w-full h-full"
+                    src="images/wallpaper7.jpg"
+                    alt="wallpaper"
+                  />
+                </div>
+                <div class="wallpaper-div border border-gray overflow-hidden">
+                  <img
+                    class="object-cover w-full h-full"
+                    src="images/wallpaper8.jpg"
+                    alt="wallpaper"
+                  />
+                </div>
+              </div>
+              <div class="pt-6 flex items-center justify-end">
+                <button
+                  class="bg-c-black hover-bg-c-black text-white rounded-full w-32 py-1.5 text-lg save"
+                >
+                  Save
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </main>
 
- <script src="script/taskbar.js"></script>   
- <script defer src="script/sidebar.js"></script>
-</body>
+    <script src="script/taskbar.js"></script>
+    <script defer src="script/sidebar.js"></script>
+    <script src="script/tour.js"></script>
+    <script src="script/admin-wallpaper-tour.js"></script>
+  </body>
 </html>
