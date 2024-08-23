@@ -112,6 +112,11 @@ const tg = new tourguide.TourGuideClient({
   rememberStep: true,
 });
 
+// Perform any additional actions after the tour finishes
+tg.onFinish(() => {
+  document.getElementById("tab-sharing").click();
+});
+
 // Start the tour guide
 function startGuide() {
   tg.start();
