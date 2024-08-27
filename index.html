@@ -28,8 +28,11 @@
         </div>
   
 
-    <div class="w-full h-full dashboard cs cm pt-20">
-
+    <div class="w-full h-full dashboard cs cm pt-20 relative">
+      <div id="curtain" class="open">
+        <div class="left"></div>
+        <div class="right"></div>
+      </div>
      <!-- Right click Menu -->
       <div id="context-menu" class="context-menu hidden bg-c-white">
         <ul>
@@ -898,6 +901,10 @@
     <script src="script/desktop-tour.js">
 </script>  
     <script>
+      // After 4 sec hide curtains
+      setTimeout(() => {
+        document.getElementById("curtain").classList.add("hidden");
+      }, 4000);
 
       // Dynamically adding Desktop apps
       const container = document.querySelector(".desktop-apps");
