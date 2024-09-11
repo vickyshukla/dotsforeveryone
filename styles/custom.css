@@ -1389,3 +1389,97 @@ button:focus,
 input[type="button"]:focus {
   outline: none; /* Remove the focus outline */
 }
+
+/********* curtains animation on desktop page ********/
+
+#curtain {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  z-index: 9999;
+  overflow: hidden;
+}
+
+#curtain .left,
+#curtain .right {
+  position: absolute;
+  top: 0;
+  width: 50%;
+  height: 100%;
+  filter: brightness(180%);
+  background-image: url("/images/curtain.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+#curtain .left {
+  left: 0;
+  transform-origin: top right;
+}
+#curtain .right {
+  left: 50%;
+  transform-origin: top left;
+}
+
+/* **********
+	opening
+********** */
+#curtain.open .left,
+#curtain.open .right {
+  filter: brightness(100%);
+}
+#curtain.open .left {
+  animation-fill-mode: forwards;
+  animation-name: curtain-opening, left-curtain-opening;
+  animation-duration: 2s, 4s;
+  animation-timing-function: ease-in-out, ease-in-out;
+  animation-delay: 0s, 0s;
+  animation-iteration-count: 1, 1;
+  animation-direction: normal, normal;
+}
+#curtain.open .right {
+  animation-fill-mode: forwards;
+  animation-name: curtain-opening, right-curtain-opening;
+  animation-duration: 2s, 4s;
+  animation-timing-function: ease-in-out, ease-in-out;
+  animation-delay: 0s, 0s;
+  animation-iteration-count: 1, 1;
+  animation-direction: normal, normal;
+}
+
+/* **********
+	animations
+********** */
+
+@keyframes curtain-opening {
+  /* 2s */
+  from {
+    filter: brightness(180%);
+  }
+  to {
+    filter: brightness(100%);
+  }
+}
+
+@keyframes left-curtain-opening {
+  /* 4s */
+  from {
+    transform: translate(0) rotate(0) scale(1, 1);
+  }
+  to {
+    transform: translate(-100%) rotate(20deg) scale(0, 2);
+  }
+}
+
+@keyframes right-curtain-opening {
+  /* 4s */
+  from {
+    transform: translate(0) rotate(0) scale(1, 1);
+  }
+  to {
+    transform: translate(100%) rotate(-20deg) scale(0, 2);
+  }
+}
