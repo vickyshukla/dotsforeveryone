@@ -409,6 +409,14 @@ body .cm {
   display: block;
 }
 
+.cm .tooltip1 {
+  display: none;
+}
+
+.cm .has-tooltip1:hover~.tooltip1 {
+  display: block;
+}
+
 /* tab css used in storage-file page */
 .cm .tab-control {
   border-bottom: 2px solid transparent;
