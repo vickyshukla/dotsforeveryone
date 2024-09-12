@@ -30,7 +30,6 @@ selectGraph.classList.add('disabled-btn');
 
 // Variable to track current activity and active graph item
 let currentActivity = '';
-let activeGraphItem = null;
 
 // Toggle activity dropdown menu visibility
 activityBtn.addEventListener("click", function () {
@@ -91,40 +90,22 @@ selectGraph.addEventListener('click', function (e) {
     }
 });
 
+
 // Handle graph selection and highlight the selected graph item
-function handleGraphSelection(item, graphToShow, allGraphs, graphList) {
+function handleGraphSelection(item, graphToShow, graphList) {
     // Attach the click event listener to the graph item
     item.addEventListener('click', function (e) {
         e.preventDefault();  // Prevent default link behavior
         e.stopPropagation(); // Prevent event bubbling
 
-        // Hide all graphs
-        allGraphs.forEach(graph => graph.classList.add('hidden'));
-
         // Show the selected graph
         graphToShow.classList.remove('hidden');
-
-        // If there's an active graph item, remove its active state
-        if (activeGraphItem) {
-            activeGraphItem.classList.remove('bg-c-yellow'); // Remove active class from the previous active item
-        }
-        // Add active class to the selected item
-        item.classList.add('bg-c-yellow'); // Highlight the selected item
-
-        // Update the active graph item
-        activeGraphItem = item;
 
         // Hide the graph dropdown menu after selection
         graphList.classList.add('hidden');
     });
 }
 
-const allGraphs = [
-    failedLoginAttemptGraph,
-    userLoginOverTimeGraph,
-    successfulLogoutGraph,
-    // Add more graph elements here
-];
 
 // Store graph items and their corresponding graphs in an array
 const graphItems = [
@@ -136,7 +117,7 @@ const graphItems = [
 
 // Call handleGraphSelection for each graph item dynamically
 graphItems.forEach(({ item, graph }) => {
-    handleGraphSelection(item, graph, allGraphs, userActivityList);
+    handleGraphSelection(item, graph,userActivityList);
 });
 
 // Hide activity and graph dropdowns when clicking outside
@@ -177,12 +158,8 @@ document.querySelectorAll('.close-graph').forEach(function (closeBtn) {
         e.stopPropagation();
 
         // Hide the parent graph container
-        closeBtn.closest('.rounded-md').classList.add('hidden');
+        closeBtn.closest('.graph-box').classList.add('hidden');
+        closeBtn.closest('.graph-container').classList.add('hidden');
 
-        // Remove active class when the graph is closed
-        if (activeGraphItem) {
-            activeGraphItem.classList.remove('bg-c-yellow');  // Clear active state
-            activeGraphItem = null;  // Reset active item
-        }
     });
 });

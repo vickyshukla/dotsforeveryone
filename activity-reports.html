@@ -439,9 +439,8 @@
                 </div>
 
                 <!--content -->
-                <div class="p-4 overflow-y-scroll scroll h-full flex flex-col gap-8">
-                  <div class="flex items-center relative justify-between flex-wrap">
-                    <div class="flex items-center gap-2 flex-wrap filter pb-3">
+                <div class="p-4 overflow-y-scroll scroll h-full">
+                  <div class="flex items-center gap-2 flex-wrap filter pb-3">
                         <div class="activity-dropdown inline-block relative ">
                               <button id="activity-btn"
                                 class="rounded px-6 py-1 custom-outline custom-safety-btn user"
@@ -1285,7 +1284,7 @@
                                 <i class="ri-arrow-down-s-fill"></i>
                               </button>
                               <ul
-                                class="label-dropdown-menu label-custom-dropdown-menu w-full absolute hidden text-c-black shadow bg-custom-pure-white text-xs"
+                                class="label-dropdown-menu label-custom-dropdown-menu w-full absolute hidden text-c-black shadow bg-c-lighten-gray rounded overflow-hidden text-xs"
                               >
                                 <li id="on-label" class="activity-item">
                                   <a
@@ -1304,24 +1303,9 @@
                                 </li>
                               </ul>
                         </div>
-                    </div>
-                    <div id="failed-login-attempt-graph" class="bg-c-medium-white rounded border p-2 rounded-md w-full mt-4 hidden">
-                      <div class="text-right pr-3 pt-2">
-                        <i class="ri-close-circle-fill ri-xl  close-graph"></i>
-                      </div>
-                      <div class="text-c-black font-medium text-xl text-center py-3">
-                        Failed Login Attempts Over Time
-                      </div>
-                        <div class="pt-2">
-                            <div class="failed-login-attempt" style="height: 370px;">
-                                <canvas id="failed-login-attempt-chart"></canvas>
-                            </div>
-                        </div>
-                        <div class="text-c-black font-normal text-lg text-center py-3">
-                          This graph shows the number of failed login attempts across different time periods.
-                        </div>
-                    </div>
-                    <div id="user-login-over-time-graph" class="bg-c-medium-white rounded border p-2 rounded-md w-full mt-4 hidden">
+                  </div>
+                  <div id="graph-container" class="grid-container">
+                      <div id="user-login-over-time-graph" class="bg-c-medium-white rounded border p-2 rounded-md w-full mt-4 hidden graph-box">
                       <div class="text-right pr-3 pt-2">
                         <i class="ri-close-circle-fill ri-xl close-graph"></i>
                       </div>
@@ -1337,7 +1321,23 @@
                           This graph shows the number of failed login attempts across different time periods.
                         </div>
                     </div>
-                    <div id="successful-logout-graph" class="bg-c-medium-white rounded border p-2 rounded-md w-full mt-4 hidden">
+                    <div id="failed-login-attempt-graph" class="bg-c-medium-white rounded border p-2 rounded-md w-full mt-4 hidden graph-box">
+                      <div class="text-right pr-3 pt-2">
+                        <i class="ri-close-circle-fill ri-xl  close-graph"></i>
+                      </div>
+                      <div class="text-c-black font-medium text-xl text-center py-3">
+                        Failed Login Attempts Over Time
+                      </div>
+                        <div class="pt-2">
+                            <div class="failed-login-attempt" style="height: 370px;">
+                                <canvas id="failed-login-attempt-chart"></canvas>
+                            </div>
+                        </div>
+                        <div class="text-c-black font-normal text-lg text-center py-3">
+                          This graph shows the number of failed login attempts across different time periods.
+                        </div>
+                    </div>
+                    <div id="successful-logout-graph" class="bg-c-medium-white rounded border p-2 rounded-md w-full mt-4 hidden graph-box">
                       <div class="text-right pr-3 pt-2">
                         <i class="ri-close-circle-fill ri-xl close-graph"></i>
                       </div>
@@ -1357,7 +1357,7 @@
                 </div>
 
   
-    </main>
+    </main> 
 
 
     <script defer src="script/sidebar.js"></script>
