@@ -409,6 +409,14 @@ body .cm {
   display: block;
 }
 
+.cm .tooltip1 {
+  display: none;
+}
+
+.cm .has-tooltip1:hover~.tooltip1 {
+  display: block;
+}
+
 /* tab css used in storage-file page */
 .cm .tab-control {
   border-bottom: 2px solid transparent;
@@ -441,6 +449,19 @@ body .cm {
   /* Yellow-300 */
   font-weight: 500;
 }
+
+.cm .graph-area{
+  height: 530px;
+  background-color: #f0eded;
+}
+
+.cm .graph-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(500px, 5fr));
+  gap: 1rem;
+
+}
+
 
 /* no dark outline on input focus */
 .cm input:focus,
@@ -547,6 +568,42 @@ body .cm {
 .cm .dropdown:hover .dropdown-menu {
   display: block;
   z-index: 1;
+}
+
+.cm .activity-custom-dropdown-menu {
+  border-radius: 5px;
+  border: 1px solid rgba(104, 134, 134, 0.53);
+  background: var(--color-lighten-gray);
+  margin-top: 1px;
+  width: 10rem;
+  height: 10rem;
+  overflow-y: scroll;
+  z-index: 1;
+}
+
+.cm .activity-custom-dropdown-menu::-webkit-scrollbar{
+  display: none;
+}
+
+
+.cm .graph-custom-dropdown-menu {
+  border-radius: 5px;
+  border: 1px solid rgba(104, 134, 134, 0.53);
+  background: var(--color-lighten-gray);
+  margin-top: 1px;
+  width: 10.5rem;
+  height: 12rem;
+  overflow-y: scroll;
+  z-index: 1;
+}
+
+.cm .graph-custom-dropdown-menu::-webkit-scrollbar {
+  display: none;
+}
+
+.cm .disabled-btn{
+  cursor: not-allowed;
+    opacity: 0.5;
 }
 
 /* responsive taskbar in filemanager and popup in user&group page*/

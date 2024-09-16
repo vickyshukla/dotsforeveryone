@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', function () {
     const pinIcon = document.getElementById('pinned');
     const taskbar = document.querySelector('.taskbar-slide');
+    const main = document.querySelector('main');
     let isPinned = false;
 
 

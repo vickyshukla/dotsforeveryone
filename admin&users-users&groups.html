@@ -28,7 +28,7 @@
         <i onclick="startGuide()" class="ri-question-line cursor-pointer"></i>
       </div>
     </div>
-    <main class="flex w-full h-full flex cm">
+    <main class="flex w-full flex cm">
       <!-- Sidebar -->
       <aside class="h-full relative">
         <input type="checkbox" class="hidden" id="sidebar-toggle" />
@@ -407,9 +407,14 @@
               >
                 Add user
               </div>
-              <button>
+              <button class="has-tooltip1">
                 <i class="ri-file-excel-2-fill ri-xl"></i>
               </button>
+              <div
+                class="absolute py-1 px-2 text-start text-xs tooltip1 -bottom-8 -right-5 z-10 bg-white border rounded-md border-c-yellow z-0 font-normal"
+              >
+                import User
+              </div>
             </div>
           </div>
           <!-- searchbar in mobile-->
