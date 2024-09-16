@@ -450,13 +450,18 @@ body .cm {
   font-weight: 500;
 }
 
-.cm .grid-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
-  /* Adjust minmax width according to your preference */
-  grid-gap: 10px;
-  /* Space between graphs */
+.cm .graph-area{
+  height: 530px;
+  background-color: #f0eded;
 }
+
+.cm .graph-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(500px, 5fr));
+  gap: 1rem;
+
+}
+
 
 /* no dark outline on input focus */
 .cm input:focus,

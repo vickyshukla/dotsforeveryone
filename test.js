@@ -1,45 +1,183 @@
-const addBtn = document.getElementById("add-btn");
-const graphContainer = document.querySelector(".graph-container");
 
-const graphDivInfo = [
-    {
-        filterName: "first-filter",
-        graphShowId: "failed-login-attempt-graph",
-        Title: " Failed Login Attempts Over Time",
-        canvaId: "failed-login-attempt-chart",
-        bottomInfo: "This graph shows the number of failed login attempts across different time periods."
+// Elements
+const activityBtn = document.getElementById('activity-btn');
+const activityMenu = document.querySelector(".activity-dropdown-menu");
+const labelBtn = document.getElementById('label-btn');
+const labelMenu = document.querySelector(".label-dropdown-menu");
+const selectGraph = document.getElementById('select-graph');
 
-    },
-    {
-        filterName: "second-filter",
-        graphShowId: "attempt-graph",
-        Title: "hello Over Time",
-        canvaId: "failed-login-attemp",
-        bottomInfo: " shows the number of failed login attempts across different time periods."
+//Activity Element
+const userActivityList = document.getElementById('user-activity-list');
+const groupActivityList = document.getElementById('group-activity-list');
+const rbacActivityList = document.getElementById('rbac-activity-list');
+const filemanagementActivityList = document.getElementById('filemanagement-activity-list');
+const softwareUsageActivityList = document.getElementById('softwareusage-activity-list');
+const locationBasedActivityList = document.getElementById('locationbased-activity-list');
+const systemPerformanceActivityList = document.getElementById('systemperformance-activity-list');
+const securityActivityList = document.getElementById('security-activity-list');
+const auditLogsActivityList = document.getElementById('auditlogs-activity-list');
 
-    }, {
-        filterName: "third-filter",
-        graphShowId: "graph",
-        Title: "Hello",
-        canvaId: "failed-login",
-        bottomInfo: "failed login attempts across different time periods."
+//Graph Element
+let failedLoginAttemptGraph = document.getElementById('failed-login-attempt-graph');
+let userLoginOverTimeGraph = document.getElementById('user-login-over-time-graph');
+let successfulLogoutGraph = document.getElementById("successful-logout-graph");
+let failedLoginAttemptItem = document.getElementById('failed-login-attempt');
+let userLoginOverTimeItem = document.getElementById('user-login-over-time');
+let successfulLogoutItem = document.getElementById("successful-logout");
 
+
+selectGraph.disabled = true;
+selectGraph.classList.add('disabled-btn');
+
+// Variable to track current activity and active graph item
+let currentActivity = '';
+
+// Toggle activity dropdown menu visibility
+activityBtn.addEventListener("click", function () {
+    activityMenu.classList.toggle('hidden');
+});
+
+// Toggle label dropdown menu visibility
+labelBtn.addEventListener("click", function () {
+    labelMenu.classList.toggle('hidden');
+});
+
+// Handle activity item selection
+document.querySelectorAll('.activity-item').forEach(function (item) {
+    item.addEventListener('click', function (e) {
+        e.stopPropagation();  // Prevent the event from propagating
+
+        // Remove active class (yellow background) from all activity items
+        document.querySelectorAll('.activity-item').forEach(el => el.classList.remove('bg-c-yellow'));
+
+        // Add active class to the clicked activity item
+        item.classList.add('bg-c-yellow');
+
+        // Hide the activity menu after selection
+        activityMenu.classList.add('hidden');
+
+        // Update current activity based on the selected item
+        currentActivity = item.id;
+
+        // Enable the 'Select Graph' button when an activity is selected
+        selectGraph.disabled = false;
+        selectGraph.classList.remove('disabled-btn');
+    });
+});
+
+// Toggle graph dropdown list based on the selected activity
+selectGraph.addEventListener('click', function (e) {
+    e.stopPropagation();  // Prevent click event propagation
+
+    // Show the appropriate graph list based on the current activity
+    if (currentActivity === 'user-activity') {
+        userActivityList.classList.toggle('hidden');
+    } else if (currentActivity === 'group-activity') {
+        groupActivityList.classList.toggle('hidden');
+    } else if (currentActivity === 'rbac-activity') {
+        rbacActivityList.classList.toggle('hidden');
+    } else if (currentActivity === 'filemanagement-activity') {
+        filemanagementActivityList.classList.toggle('hidden');
+    } else if (currentActivity === 'softwareusage-activity') {
+        softwareUsageActivityList.classList.toggle('hidden');
+    } else if (currentActivity === 'locationbased-activity') {
+        locationBasedActivityList.classList.toggle('hidden');
+    } else if (currentActivity === 'systemperformance-activity') {
+        systemPerformanceActivityList.classList.toggle('hidden');
+    } else if (currentActivity === 'security-activity') {
+        securityActivityList.classList.toggle('hidden');
+    } else if (currentActivity === 'auditlogs-activity') {
+        auditLogsActivityList.classList.toggle('hidden');
     }
-]
+});
 
-let currentGraphIndex = 0;
-const maxGraphs = 9; 
 
-addBtn.addEventListener("click", function () {
-    if (currentGraphIndex < graphDivInfo.length && currentGraphIndex < maxGraphs) {
-        const e = graphDivInfo[currentGraphIndex]; // Get the current graph info
+// Handle graph selection and highlight the selected graph item
+function handleGraphSelection(item, graphToShow, graphList) {
+    // Attach the click event listener to the graph item
+    item.addEventListener('click', function (e) {
+        e.preventDefault();  // Prevent default link behavior
+        e.stopPropagation(); // Prevent event bubbling
 
-        // Create a new div element
-        const newDiv = document.createElement("div");
+        // Show the selected graph
+        graphToShow.classList.remove('hidden');
 
-        // Add the graph layout for this filter
-        newDiv.classList.add("graph-div", "p-4", "w-full");
-        newDiv.innerHTML += ` <div class="${e.filterName} flex items-center gap-2 flex-wrap">
+        // Hide the graph dropdown menu after selection
+        graphList.classList.add('hidden');
+    });
+}
+
+
+// Store graph items and their corresponding graphs in an array
+const graphItems = [
+    { item: failedLoginAttemptItem, graph: failedLoginAttemptGraph },
+    { item: userLoginOverTimeItem, graph: userLoginOverTimeGraph },
+    { item: successfulLogoutItem, graph: successfulLogoutGraph },
+    // Add more graph items here
+];
+
+// Call handleGraphSelection for each graph item dynamically
+graphItems.forEach(({ item, graph }) => {
+    handleGraphSelection(item, graph, userActivityList);
+});
+
+// Hide activity and graph dropdowns when clicking outside
+document.addEventListener('click', function (e) {
+    if (!activityMenu.contains(e.target) && !activityBtn.contains(e.target)) {
+        activityMenu.classList.add('hidden');
+    }
+    if (!labelMenu.contains(e.target) && !labelBtn.contains(e.target)) {
+        labelMenu.classList.add('hidden');
+    }
+    if (!userActivityList.contains(e.target) && !groupActivityList.contains(e.target) && !rbacActivityList.contains(e.target) && !filemanagementActivityList.contains(e.target) && !softwareUsageActivityList.contains(e.target) && !locationBasedActivityList.contains(e.target) && !systemPerformanceActivityList.contains(e.target) && !securityActivityList.contains(e.target) && !auditLogsActivityList.contains(e.target) && !selectGraph.contains(e.target)) {
+        hideAllLists();
+    }
+});
+
+// Helper function to show a specific list and hide others
+function showList(listToShow) {
+    hideAllLists();
+    listToShow.classList.remove('hidden');
+}
+
+// Helper function to hide all dropdown lists
+function hideAllLists() {
+    userActivityList.classList.add('hidden');
+    groupActivityList.classList.add('hidden');
+    rbacActivityList.classList.add('hidden');
+    filemanagementActivityList.classList.add('hidden');
+    softwareUsageActivityList.classList.add('hidden');
+    locationBasedActivityList.classList.add('hidden');
+    systemPerformanceActivityList.classList.add('hidden');
+    securityActivityList.classList.add('hidden');
+    auditLogsActivityList.classList.add('hidden');
+}
+
+// Handle graph close functionality
+document.querySelectorAll('.close-graph').forEach(function (closeBtn) {
+    closeBtn.addEventListener('click', function (e) {
+        e.stopPropagation();
+
+        // Hide the parent graph container
+        closeBtn.closest('.graph-area').classList.add('hidden');
+
+    });
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+newDiv.innerHTML += ` <div class="${e.filterName} flex items-center gap-2 flex-wrap">
                           <div class="activity-dropdown inline-block relative">
                                 <button
                                   class="activity-btn rounded px-6 py-1 custom-outline custom-safety-btn"
@@ -130,7 +268,7 @@ addBtn.addEventListener("click", function () {
                                   <span>Select Graph</span>
                                   <i class="ri-arrow-down-s-fill"></i>
                                 </button>
-                                 <ul
+                                <ul
                                   class="user-activity-menu graph-dropdown-menu graph-custom-dropdown-menu absolute hidden text-c-black shadow bg-custom-pure-white text-xs"
                                 >
                                   <li id="user-login-over-time">
@@ -185,7 +323,7 @@ addBtn.addEventListener("click", function () {
                                       class="custom-bg-hover py-2 px-4 block whitespace-no-wrap flex justify-between items-center"
                                       href="#"
                                     >
-                                      File Accessed by Users 
+                                      File Accessed by Users
                                     </a>
                                   </li>
                                   <li class="dropdown-submenu group">
@@ -900,13 +1038,13 @@ addBtn.addEventListener("click", function () {
                         <div class="text-right pr-3 pt-2">
                           <i class="ri-close-circle-fill ri-xl close-graph-div"></i>
                         </div>
-                        <div class="graph-show hidden">
+                        <div class="graph-show">
                           <div id="${e.graphShowId}">
                             <div class="text-c-black font-medium text-xl text-center py-3">
                              ${e.Title}
                             </div>
                               <div class="pt-2">
-                                  <div style="height: 370px;">
+                                  <div class="failed-login-attempt" style="height: 370px;">
                                       <canvas id="${e.canvaId}"></canvas>
                                   </div>
                               </div>
@@ -916,148 +1054,3 @@ addBtn.addEventListener("click", function () {
                           </div>
                         </div>
                       </div>`;
-
-        // Append the new div to the graph container
-        graphContainer.appendChild(newDiv);
-
-       
-
-        // Increment the current graph index to add the next graph on the next click
-        currentGraphIndex++;
-        if (currentGraphIndex === maxGraphs) {
-            alert("Maximum graph limit reached.");
-            addBtn.disabled = true; // Disable the Add button
-        }
-        const filterClass = `.${e.filterName}`;
-        initializeDropdowns(filterClass);
-    } else {
-        console.log("All graphs have been added.");
-    }
-});
-  
-
-
-function initializeDropdowns(filterClass) {
-    const activityBtn = document.querySelectorAll(`${filterClass} .activity-btn`);
-    const activityDropdownMenu = document.querySelectorAll(`${filterClass} .activity-dropdown-menu`);
-    const selectGraphButton = document.querySelectorAll(`${filterClass} .select-graph`);
-    const graphDropdownMenus = {
-        user: document.querySelector(`${filterClass} .user-activity-menu`),
-        group: document.querySelector(`${filterClass} .group-activity-menu`),
-        rbac: document.querySelector(`${filterClass} .rbac-activity-menu`),
-        filemanagement: document.querySelector(`${filterClass} .filemanagement-activity-menu`),
-        softwareusage: document.querySelector(`${filterClass} .softwareusage-activity-menu`),
-        locationbased: document.querySelector(`${filterClass} .locationbased-activity-menu`),
-        systemperformance: document.querySelector(`${filterClass} .systemperformance-activity-menu`),
-        security: document.querySelector(`${filterClass} .security-activity-menu`),
-        auditlogs: document.querySelector(`${filterClass} .auditlogs-activity-menu`),
-        
-    };
-
-
-    let selectedActivity = ''; // To keep track of the selected activity
-
-    selectGraphButton.forEach(button => {
-        button.disabled = true;
-        button.classList.add('disabled-btn');
-    });
-
-    // Activity type dropdown toggle
-    activityBtn.forEach((button, index) => {
-        const menu = activityDropdownMenu[index];
-        button.addEventListener('click', function (event) {
-            event.stopPropagation();
-            // Close other dropdowns
-            activityDropdownMenu.forEach((otherMenu, otherIndex) => {
-                if (otherIndex !== index) {
-                    otherMenu.classList.add("hidden");
-                }
-            });
-            // Toggle the current menu
-            menu.classList.toggle("hidden");
-        });
-    });
-
-    // Handle activity item selection
-    document.querySelectorAll(`${filterClass} .activity-item`).forEach(function (item) {
-        item.addEventListener('click', function (e) {
-            e.stopPropagation(); // Prevent event propagation
-            // Remove active class from all activity items
-            document.querySelectorAll(`${filterClass} .activity-item`).forEach(el => el.classList.remove('bg-c-yellow'));
-            // Add active class to the selected item
-            item.classList.add('bg-c-yellow');
-            // Get selected activity's ID
-            selectedActivity = item.id;
-            // Enable the Select Graph button
-            selectGraphButton.forEach(button => {
-                button.disabled = false;
-                button.classList.remove('disabled-btn');
-            });
-            // Hide the activity dropdown after selection
-            activityDropdownMenu.forEach(menu => menu.classList.add('hidden'));
-            // Hide all graph dropdown menus
-            Object.values(graphDropdownMenus).forEach(menu => {
-                menu.classList.add("hidden");
-            });
-        });
-    });
-
-    // Handle Select Graph button click
-    selectGraphButton.forEach(button => {
-        button.addEventListener("click", function (event) {
-            event.stopPropagation();
-            if (!selectedActivity) return; // Do nothing if no activity is selected
-            // Toggle the current graph menu based on the selected activity
-            const currentGraphMenu = graphDropdownMenus[selectedActivity];
-            if (currentGraphMenu) {
-                const isVisible = !currentGraphMenu.classList.contains("hidden");
-                Object.values(graphDropdownMenus).forEach(menu => {
-                    menu.classList.add("hidden"); // Hide all graph menus
-                });
-                if (!isVisible) {
-                    currentGraphMenu.classList.remove("hidden"); // Show the current menu if it was hidden
-                }
-            }
-        });
-    });
-
-
-    // Close dropdowns when clicking outside
-    document.addEventListener("click", function () {
-        // Hide all activity dropdowns
-        activityDropdownMenu.forEach(menu => {
-            if (!menu.classList.contains("hidden")) {
-                menu.classList.add("hidden");
-            }
-        });
-        // Hide all graph dropdowns
-        Object.values(graphDropdownMenus).forEach(menu => {
-            if (!menu.classList.contains("hidden")) {
-                menu.classList.add("hidden");
-            }
-        });
-    });
-
-    document.querySelector('.close-graph').addEventListener('click', function (e) {
-            e.stopPropagation();
-
-            document.querySelector(".graph-hidden-area").classList.add('hidden')
-
-        });
-
-    document.querySelectorAll('.close-graph-div').forEach(function (closeBtn) {
-        
-        closeBtn.addEventListener('click', function (e) {
-            e.stopPropagation();
-            
-            // Hide the parent graph container
-            closeBtn.closest(".graph-div").classList.add('hidden');
-
-        });
-    });
-
-}
-
-// Initialize dropdowns for each filter
-initializeDropdowns('.default-filter');
-
