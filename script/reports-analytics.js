@@ -65,7 +65,7 @@ addBtn.addEventListener("click", function () {
                                       Group Activity
                                     </a>
                                   </li>
-                                  <li class="dropdown-submenu group activity-item rbac-activity">
+                                  <li id="rbac" class="dropdown-submenu group activity-item rbac-activity">
                                     <a
                                       class="custom-bg-hover py-2 px-4 block whitespace-no-wrap flex justify-between items-center"
                                       href="#"
@@ -73,7 +73,7 @@ addBtn.addEventListener("click", function () {
                                       RBAC
                                     </a>
                                   </li>
-                                  <li class="dropdown-submenu group activity-item filemanagement-activity">
+                                  <li id="filemanagement" class="dropdown-submenu group activity-item filemanagement-activity">
                                     <a
                                       class="custom-bg-hover py-2 px-4 block whitespace-no-wrap flex justify-between items-center"
                                       href="#"
@@ -81,7 +81,7 @@ addBtn.addEventListener("click", function () {
                                       File management 
                                     </a>
                                   </li>
-                                  <li class="dropdown-submenu group activity-item softwareusage-activity">
+                                  <li id="softwareusage" class="dropdown-submenu group activity-item softwareusage-activity">
                                     <a
                                       class="custom-bg-hover py-2 px-4 block whitespace-no-wrap flex justify-between items-center"
                                       href="#"
@@ -89,7 +89,7 @@ addBtn.addEventListener("click", function () {
                                       Software Usage
                                     </a>
                                   </li>
-                                  <li class="dropdown-submenu group activity-item locationbased-activity">
+                                  <li id="locationbased" class="dropdown-submenu group activity-item locationbased-activity">
                                     <a
                                       class="custom-bg-hover py-2 px-4 block whitespace-no-wrap flex justify-between items-center"
                                       href="#"
@@ -97,7 +97,7 @@ addBtn.addEventListener("click", function () {
                                       Location-Based Metrics 
                                     </a>
                                   </li>
-                                  <li class="dropdown-submenu group activity-item systemperformance-activity">
+                                  <li id="systemperformance" class="dropdown-submenu group activity-item systemperformance-activity">
                                     <a
                                       class="custom-bg-hover py-2 px-4 block whitespace-no-wrap flex justify-between items-center"
                                       href="#"
@@ -105,7 +105,7 @@ addBtn.addEventListener("click", function () {
                                       System Performance 
                                     </a>
                                   </li>
-                                  <li class="dropdown-submenu group activity-item security-activity">
+                                  <li id="security" class="dropdown-submenu group activity-item security-activity">
                                     <a
                                       class="custom-bg-hover py-2 px-4 block whitespace-no-wrap flex justify-between items-center"
                                       href="#"
@@ -113,7 +113,7 @@ addBtn.addEventListener("click", function () {
                                       Security
                                     </a>
                                   </li>
-                                  <li class="dropdown-submenu group activity-item auditlogs-activity">
+                                  <li id="auditlogs" class="dropdown-submenu group activity-item auditlogs-activity">
                                     <a
                                       class="rounded-b custom-bg-hover py-2 px-4 block whitespace-no-wrap flex justify-between items-center"
                                       href="#"
@@ -915,6 +915,11 @@ addBtn.addEventListener("click", function () {
                               </div>
                           </div>
                         </div>
+                        <div class="flex justify-center items-center h-full suggestion">
+                         <h1 class="text-4xl text-c-black">
+                          Select Graph From Filter
+                         </h1>
+                        </div>
                       </div>`;
 
         // Append the new div to the graph container
@@ -1041,7 +1046,8 @@ function initializeDropdowns(filterClass) {
     document.querySelector('.close-graph').addEventListener('click', function (e) {
             e.stopPropagation();
 
-            document.querySelector(".graph-hidden-area").classList.add('hidden')
+      document.querySelector(".graph-hidden-area").classList.add('hidden')
+      document.querySelector(".suggestion").classList.remove("hidden")
 
         });
 
