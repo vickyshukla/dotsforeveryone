@@ -439,7 +439,12 @@
                 </div>
 
                 <!--content -->
-                <div class="overflow-y-scroll scroll">
+                <div class="overflow-y-scroll scroll relative h-full">
+                   <div class="graph-modal graph-effect-1" id="modal">
+                         <div style="height: 400px;">
+                           <canvas id="successful-logout-chart"></canvas>
+                          </div> 
+                    </div>
                   <div class="graph-container">
                     <div class="p-4 w-full">
                       <div class="default-filter flex items-center gap-2 flex-wrap">
@@ -1299,8 +1304,10 @@
                       </div>
                       <div class="graph-area rounded mt-6 relative">
                         <div class="graph-hidden-area">
-                           <div class="text-right pr-3 pt-2">
-                            <i class="ri-close-circle-fill ri-xl close-graph"></i>
+                           <div class="pr-3 pt-4 flex gap-3 justify-end">
+                            <i class="ri-eye-off-fill ri-lg" id="md-trigger"></i>
+                            <i class="ri-eye-fill ri-lg hidden" id="md-close"></i>
+                            <i class="ri-close-circle-fill ri-lg close-graph"></i>
                           </div>
                           <div class="graph-show">
                             <div id="user-login-over-time-graph" class="">
@@ -1309,7 +1316,7 @@
                               </div>
                                 <div class="pt-2">
                                     <div style="height: 370px;">
-                                        <canvas id="user-login-chart"></canvas>
+                                        <canvas class="user-login-chart"></canvas>
                                     </div>
                                 </div>
                                 <div class="text-c-black font-normal text-lg text-center py-3">
@@ -1327,6 +1334,14 @@
                       </div>
                     </div>
                 </div>
+                <div class="md-overlay">
+                  <button class="nav-btn left" id="prev-slide"><i class="ri-arrow-left-wide-line"></i></button>
+                  <button class="nav-btn right" id="next-slide"><i class="ri-arrow-right-wide-line"></i></button>
+                  <div class="nav-track" id="nav-track">
+                    <span id="slide-indicator"></span>
+                  </div>
+                </div>
+                </div>
 
   
     </main> 
@@ -1337,7 +1352,63 @@
     <script defer src="script/graph-setup.js"></script>
     <script defer src="script/reports-analytics.js"></script>
     <script src="script/taskbar.js"></script>
-    
+    <script defer>
+          document.getElementById("md-trigger").addEventListener("click", function(e) {
+    document.getElementById("modal").classList.toggle("graph-show");
+    document.getElementById('md-close').classList.remove('hidden')
+     document.getElementById('md-trigger').classList.add('hidden')
+    e.preventDefault();
+});
+
+document.getElementById('md-close').addEventListener("click",function(e){
+   document.getElementById("modal").classList.toggle("graph-show");
+    document.getElementById('md-close').classList.add('hidden')
+     document.getElementById('md-trigger').classList.remove('hidden')
+    e.preventDefault();
+})
+
+
+
+let currentSlide = 1;
+const totalSlides = 10;
+
+// Function to update the slide indicator and navigation logic
+function updateSlideIndicator(slide) {
+    document.getElementById('slide-indicator').textContent = `${slide}/${totalSlides}`;
+}
+
+updateSlideIndicator(currentSlide);
+
+document.getElementById('prev-slide').addEventListener('click', function(e) {
+   e.stopPropagation();
+    if (currentSlide > 1) {
+        currentSlide--;
+        updateSlideIndicator(currentSlide);
+    }
+});
+
+document.getElementById('next-slide').addEventListener('click', function(e) {
+   e.stopPropagation();
+    if (currentSlide < totalSlides) {
+        currentSlide++;
+        updateSlideIndicator(currentSlide);
+    }
+});
+
+// Event listener to close modal when clicking outside
+document.querySelector('.md-overlay').addEventListener('click', function(e) {
+    document.getElementById('modal').classList.remove('graph-show');
+     document.getElementById('md-trigger').classList.remove('hidden')
+      document.getElementById('md-close').classList.add('hidden')
+});
+
+document.getElementById('modal').addEventListener('click', function(e) {
+    e.stopPropagation();
+});
+
+
+
+    </script>
 </body>
 
 </html>

@@ -47,7 +47,7 @@ new Chart(ctx1, {
 });
 
 // for bar chart - user login data
-const ctx2 = document.getElementById('user-login-chart');
+const ctx2 = document.querySelector('.user-login-chart');
 
 new Chart(ctx2, {
     type: 'bar',

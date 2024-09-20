@@ -897,9 +897,11 @@ addBtn.addEventListener("click", function () {
                           </button>   
                       </div>
                        <div class="graph-area rounded mt-6">
-                        <div class="text-right pr-3 pt-2">
-                          <i class="ri-close-circle-fill ri-xl close-graph-div"></i>
-                        </div>
+                         <div class="pr-3 pt-4 flex gap-3 justify-end">
+                            <i class="ri-eye-off-fill ri-lg" id="md-trigger"></i>
+                            <i class="ri-eye-fill ri-lg hidden" id="md-close"></i>
+                            <i class="ri-close-circle-fill ri-lg close-graph-div"></i>
+                          </div>
                         <div class="graph-show hidden">
                           <div id="${e.graphShowId}">
                             <div class="text-c-black font-medium text-xl text-center py-3">
