@@ -1,0 +1,177 @@
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Resizable Sections</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="styles/custom.css">
+    <link rel="stylesheet" href="styles/root.css">
+    <link rel="stylesheet" href="styles/common.css">
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script>
+    <style>
+        .resizable-container {
+            display: flex;
+            flex-wrap: nowrap; 
+            width: 100%;
+            height: calc(100% - 50px); 
+            overflow: hidden;
+        }
+        .resizable {
+            position: relative;
+            min-width: 100px;
+            flex-basis: 33.33%;
+            border: 1px solid #ccc;
+            transition: flex-basis 0.1s ease; 
+            overflow: hidden; 
+        }
+        .resize-handle {
+            position: absolute;
+            width: 20px; 
+            height: 100%;
+            right: -5px; 
+            top: 0;
+            cursor: ew-resize;
+            z-index: 1;
+        }
+        .iframe-container {
+            height: calc(70vh - 40px); 
+            overflow: auto; 
+        }
+        .sticky-header {
+            position: sticky;
+            top: 0;
+            z-index: 2; 
+            padding: 10px; 
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        @media (max-width: 768px) {
+            .resizable-container {
+                flex-direction: column; 
+                height: auto;
+            }
+
+            .resizable {
+                flex-basis: auto; 
+                min-width: 100%; 
+                height: 300px; 
+                overflow: hidden; 
+            }
+
+            .resize-handle {
+                display: none; 
+            }
+
+            .overflow-x-auto {
+                overflow-x: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <main class="flex w-full h-full cm">
+        <div id="box" class="draggableelement popupiframe fixed inset-0 bg-black-900 bg-opacity-50 flex items-center justify-center rounded-lg">
+            <div class="draggable bg-black bg-opacity-70 rounded-lg shadow-lg w-full h-full relative scroll">
+                <div class="sticky-header flex justify-between items-center p-1 pr-2 border-b border-c-light-gray1 bg-c-gray-gradient">
+                    <h2 class="text-white ml-2 font-thin">Comparison of versions</h2>
+                    <div class="flex items-center">
+                        <a href="#" id="minimizebtn" class="minimizeiframe-btn"><img src="images/minimize.svg" /></a>
+                        <a href="#" class="maximizeiframe-btn"><img src="images/maximize.svg" /></a>
+                        <a href="#" class="closeiframe-btn" onclick="togglePane('.popupiframe')"><img src="images/close.svg" /></a>
+                    </div>
+                </div>
+                <div class="resizable-container text-xs">
+                    <div id="section-1" class="resizable bg-c-white">
+                        <div class="overflow-x-auto">
+                            <table class="min-w-full bg-c-white shadow-lg text-xs">
+                                <thead class="bg-gray-100 rounded-t-lg">
+                                    <tr class="text-left font-medium border-none">
+                                        <th class="px-4 py-2">Modification</th>
+                                        <th class="px-4 py-2">Size</th>
+                                        <th class="px-4 py-2">Editor</th>
+                                        <th class="px-4 py-2">Ver.</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="cursor-pointer text-left">
+                                        <td class="px-4 py-2">2024-09-30 17:23</td>
+                                        <td class="px-4 py-2">236KB</td>
+                                        <td class="px-4 py-2">
+                                            <div class="flex items-center">
+                                                <img src="images/me.png" alt="Your Image" class="w-6 h-6 pr-1" />Me
+                                            </div>
+                                        </td>
+                                        <td class="px-4 py-2"><span class="bg-blue-100 px-2 py-1 rounded text-blue-500">Current Version</span></td>
+                                    </tr>
+                                    <tr class="cursor-pointer text-left">
+                                        <td class="px-4 py-2">2024-09-30 17:23</td>
+                                        <td class="px-4 py-2">236KB</td>
+                                        <td class="px-4 py-2">
+                                            <div class="flex items-center">
+                                                <img src="images/me.png" alt="Your Image" class="w-6 h-6 pr-1" />Me
+                                            </div>
+                                        </td>
+                                        <td class="px-4 py-2"><span class="bg-green-400 px-2 py-1 rounded text-white">V1</span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="resize-handle"></div>
+                    </div>
+                    <div id="section-2" class="resizable bg-c-white">
+                        <div>
+                            <div class="sticky-header" style="z-index:1">
+                                <span class="bg-blue-100 px-2 py-1 rounded text-blue-500">Current Version</span>
+                                <span class="bg-blue-100 px-2 py-1 rounded text-blue-500">2024-09-30 11:25:34 9.6KB</span>
+                            </div>
+                            <div class="iframe-container">
+                                <iframe
+                                    src="http://web.simmons.edu/~grovesd/comm244/notes/week2/links"                     
+                                    style="height: 100%; width: 100%; border: none;"
+                                ></iframe>
+                            </div>
+                        </div>
+                        <div class="resize-handle"></div>
+                    </div>
+                    <div id="section-3" class="resizable bg-c-white">
+                        <div>
+                            <div class="sticky-header" style="z-index:1">
+                                <span class="bg-green-400 px-2 py-1 rounded text-white">V1</span>
+                                <span class="bg-gray-300 px-2 py-1 rounded text-gray-400">2024-09-30 11:25:34 9.6KB</span>
+                            </div>
+                            <div class="iframe-container">
+                                <iframe
+                                    src="http://web.simmons.edu/~grovesd/comm244/notes/week2/links"
+                                    style="height: 100%; width: 100%; border: none;"
+                                ></iframe>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        $(document).ready(function() {
+            // Initialize the resizable sections
+            $(".resizable").resizable({
+                handles: "e", 
+                minWidth: 100, 
+                resize: function(event, ui) {
+                    const $nextResizable = $(this).next('.resizable');
+                    const newWidth = ui.size.width;
+
+                    const nextWidth = $nextResizable.outerWidth() - (newWidth - ui.originalSize.width);
+                    if (nextWidth >= 100) {
+                        $nextResizable.css('flex-basis', nextWidth + 'px');
+                    } else {
+                        ui.size.width = ui.originalSize.width;
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
