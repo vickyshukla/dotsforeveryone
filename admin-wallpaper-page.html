@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="styles/root.css" />
     <link rel="stylesheet" href="styles/common.css" />
     <link rel="stylesheet" href="styles/tour.min.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
   </head>
   <body class="w-full h-screen">
     <!-- Taskbar -->
@@ -110,9 +111,7 @@
             >
               <label for="themes" class="cursor-pointer radio-border">
                 <input type="radio" name="type" id="themes" value="themes" />
-                <span class="text-c-black font-normal text-xs md:text-base"
-                  >Themes</span
-                >
+                <button onclick="showModal()" class="text-c-black font-normal text-xs md:text-base">Themes</button>
                 <div></div>
               </label>
               <label
@@ -237,7 +236,90 @@
           </div>
         </div>
       </div>
+      <!-- theme popup -->
+    <div
+      id="theme"
+      role="dialog"
+      class="fixed hidden inset-0 flex items-center justify-center bg-black bg-opacity-60 z-10"
+    >
+      <div
+        class="bg-white rounded-2xl overflow-hidden shadow-lg max-w-2xl w-full modal-content"
+      >
+        <!-- Sticky header -->
+        <div
+          class="sticky top-0 flex py-2 px-5 justify-between items-center border-b border-gray-3 bg-white z-10 text-c-black"
+        >
+          <div class="text-lg font-normal">Custom Theme</div>
+          <button
+            type="button"
+            id="closeModalButton"
+            class="py-1.5 rounded-md"
+            onclick="event.stopPropagation();hideModal();stopCamera();"
+          >
+            <i class="ri-close-circle-fill text-black ri-lg"></i>
+          </button>
+        </div>
+
+        <div class="bg-white overflow-y-auto scroll" style="max-height: calc(100vh - 8rem)">
+          <div
+            class="grid grid-cols-1 sm:grid-cols-3 gap-4 p-4 place-items-center"
+          >
+            <div class="group relative cursor-pointer w-48 h-32">
+              <img
+                src="images/wallpaper1.jpg"
+                alt="Default"
+                class="w-full h-full object-cover rounded-2xl"
+              />
+              <div
+                class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent text-white text-center py-2 opacity-0 group-hover:opacity-100 rounded-b-2xl"
+              >
+                Default
+              </div>
+            </div>
+
+            <div class="group relative cursor-pointer w-48 h-32">
+              <img
+                src="images/wallpaper2.jpg"
+                alt="Jungle"
+                class="w-full h-full object-cover rounded-2xl"
+              />
+              <div
+                class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent text-white text-center py-2 opacity-0 group-hover:opacity-100 rounded-b-2xl"
+              >
+                Jungle
+              </div>
+            </div>
+
+            <div class="group relative cursor-pointer w-48 h-32">
+              <img
+                src="images/wallpaper3.jpg"
+                alt="Sea"
+                class="w-full h-full object-cover rounded-2xl"
+              />
+              <div
+                class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent text-white text-center py-2 opacity-0 group-hover:opacity-100 rounded-b-2xl"
+              >
+                Sea
+              </div>
+            </div>
+            <!-- Add more items dynamically -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+
     </main>
+    <script>
+      function showModal() {
+        $("#theme").removeClass("hidden");
+      }
+
+      // hideModal - Hide the modal by adding the hidden class
+      function hideModal() {
+        $("#theme").addClass("hidden");
+      }
+    </script>
 
     <script src="script/taskbar.js"></script>
     <script defer src="script/sidebar.js"></script>
